@@ -104,6 +104,35 @@ function renderCharts(charts) {
   });
 }
 
+function toggleLanguage() {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+
+  // تغيير اتجاه الصفحة
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+
+  // تحديث كل العناصر التي تستخدم data-ar / data-en
+  document.querySelectorAll("[data-ar]").forEach(el => {
+    el.textContent = el.dataset[currentLang];
+  });
+
+  // إعادة تحميل الواجهة (الجداول – البطاقات – الرسوم)
+  reloadUI();
+}
+function reloadUI() {
+  fetch("data.json")
+    .then(res => res.json())
+    .then(data => {
+      renderStats(data.stats);
+      renderCharts(data.charts);
+      renderCategoryCards(data.categories_cards);
+      renderProjectsTable(data.tables.projects);
+      renderTrainingTable(data.tables.training);
+      renderGallery(data.gallery);
+    })
+    .catch(err => console.error(err));
+}
+
 /* =========================
    CATEGORY CARDS
 ========================= */
