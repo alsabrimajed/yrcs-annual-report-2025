@@ -455,4 +455,24 @@ html[dir="ltr"] .category-card {
 .projects-table thead {
   display: table-header-group;
 }
+.projects-table th {
+  background-color: var(--secondary-blue) !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+.projects-table thead {
+  display: table-header-group;
+}
+
+.projects-table th {
+  background-color: #1f4e79 !important;
+  color: #fff !important;
+  font-weight: 700;
+}
+
+@media print {
+  .projects-table thead {
+    display: table-header-group;
+  }
+}
 
