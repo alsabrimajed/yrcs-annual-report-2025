@@ -182,6 +182,27 @@ function renderTrainingTable(training) {
     );
   });
 }
+function renderProjectsTable(projects) {
+  const tbody = document.getElementById("projectsTableBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+
+  projects.forEach((p, i) => {
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr>
+        <td>${i + 1}</td>
+        <td>${p.name[currentLang]}</td>
+        <td>${p.category[currentLang]}</td>
+        <td>${p.location[currentLang]}</td>
+        <td>${p.period[currentLang]}</td>
+        <td>${p.donor[currentLang]}</td>
+        <td>${p.beneficiaries.toLocaleString()}</td>
+      </tr>`
+    );
+  });
+}
 
 /* =========================
    GALLERY (AR / EN)
