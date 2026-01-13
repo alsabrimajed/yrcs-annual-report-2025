@@ -1,3 +1,11 @@
+/* =========================
+   GLOBAL LANGUAGE
+========================= */
+let currentLang = "ar"; // change to "en" for English
+
+/* =========================
+   LOAD DATA
+========================= */
 fetch("data.json")
   .then(res => res.json())
   .then(data => {
@@ -19,27 +27,6 @@ function renderStats(stats) {
     if (stats[key] !== undefined) {
       animateCounter(el, stats[key]);
     }
-  });
-}
-function renderTrainingTable(training) {
-  const tbody = document.getElementById("trainingTableBody");
-  if (!tbody) return;
-
-  tbody.innerHTML = "";
-
-  training.forEach((t, i) => {
-    tbody.insertAdjacentHTML(
-      "beforeend",
-      `<tr>
-        <td>${i + 1}</td>
-        <td>${t.name}</td>
-        <td>${t.location}</td>
-        <td>${t.period}</td>
-        <td>${t.target}</td>
-        <td>${t.donor}</td>
-        <td>${t.trainees}</td>
-      </tr>`
-    );
   });
 }
 
@@ -68,7 +55,10 @@ function renderCharts(charts) {
       labels: charts.categories.labels,
       datasets: [{
         data: charts.categories.values,
-        backgroundColor: ["#e74c3c", "#3498db", "#27ae60", "#9b59b6", "#f39c12", "#95a5a6"]
+        backgroundColor: [
+          "#e74c3c", "#3498db", "#27ae60",
+          "#9b59b6", "#f39c12", "#95a5a6"
+        ]
       }]
     }
   });
@@ -78,7 +68,7 @@ function renderCharts(charts) {
     data: {
       labels: charts.donors.labels,
       datasets: [{
-        label: "المستفيدون",
+        label: currentLang === "ar" ? "المستفيدون" : "Beneficiaries",
         data: charts.donors.values,
         backgroundColor: "#3498db"
       }]
@@ -91,7 +81,10 @@ function renderCharts(charts) {
       labels: charts.activities.labels,
       datasets: [{
         data: charts.activities.values,
-        backgroundColor: ["#e67e22", "#2ecc71", "#e74c3c", "#3498db"]
+        backgroundColor: [
+          "#e67e22", "#2ecc71",
+          "#e74c3c", "#3498db"
+        ]
       }]
     }
   });
@@ -101,7 +94,7 @@ function renderCharts(charts) {
     data: {
       labels: charts.ambulance_monthly.labels,
       datasets: [{
-        label: "حالات الإحالة",
+        label: currentLang === "ar" ? "حالات الإسعاف" : "Ambulance Cases",
         data: charts.ambulance_monthly.values,
         borderColor: "#e74c3c",
         fill: false,
@@ -128,8 +121,13 @@ function renderCategoryCards(categories) {
           <i class="fas ${cat.icon}"></i>
         </div>
         <h4>${cat.title}</h4>
-        <span class="category-count">${cat.projects} مشاريع</span>
-        <span class="category-beneficiaries">${cat.beneficiaries.toLocaleString()} مستفيد</span>
+        <span class="category-count">
+          ${cat.projects} ${currentLang === "ar" ? "مشاريع" : "Projects"}
+        </span>
+        <span class="category-beneficiaries">
+          ${cat.beneficiaries.toLocaleString()}
+          ${currentLang === "ar" ? "مستفيد" : "Beneficiaries"}
+        </span>
       </div>`
     );
   });
@@ -161,7 +159,32 @@ function renderProjectsTable(projects) {
 }
 
 /* =========================
-   GALLERY
+   TRAINING TABLE
+========================= */
+function renderTrainingTable(training) {
+  const tbody = document.getElementById("trainingTableBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+
+  training.forEach((t, i) => {
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr>
+        <td>${i + 1}</td>
+        <td>${t.name}</td>
+        <td>${t.location}</td>
+        <td>${t.period}</td>
+        <td>${t.target}</td>
+        <td>${t.donor}</td>
+        <td>${t.trainees}</td>
+      </tr>`
+    );
+  });
+}
+
+/* =========================
+   GALLERY (AR / EN)
 ========================= */
 function renderGallery(items) {
   const grid = document.querySelector(".gallery-grid");
@@ -173,9 +196,11 @@ function renderGallery(items) {
     grid.insertAdjacentHTML(
       "beforeend",
       `<div class="gallery-item">
-        <img src="${item.image}" alt="${item.caption}">
+        <img src="${item.image}"
+             alt="${item.caption[currentLang]}"
+             loading="lazy">
         <div class="gallery-overlay">
-          <span>${item.caption}</span>
+          <span>${item.caption[currentLang]}</span>
         </div>
       </div>`
     );

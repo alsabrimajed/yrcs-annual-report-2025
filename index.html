@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>التقرير السنوي 2025 - جمعية الهلال الأحمر اليمني فرع مأرب</title>
+  <title>Annual Report 2025 – Yemen Red Crescent Society | Marib Branch</title>
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
@@ -19,17 +19,23 @@
 <!-- ================= HEADER ================= -->
 <header class="header">
   <div class="header-content">
-    <img src="Assets/logo.png" alt="شعار الهلال الأحمر" class="logo">
+    <img src="Assets/logo.png" alt="YRCS Logo" class="logo">
     <div class="header-text">
-      <h1>جمعية الهلال الأحمر اليمني</h1>
-      <h2>فرع مأرب</h2>
-      <p class="tagline">التقرير السنوي للمشاريع والأنشطة 2025</p>
+      <h1 data-ar="جمعية الهلال الأحمر اليمني" data-en="Yemen Red Crescent Society"></h1>
+      <h2 data-ar="فرع مأرب" data-en="Marib Branch"></h2>
+      <p class="tagline"
+         data-ar="التقرير السنوي للمشاريع والأنشطة 2025"
+         data-en="Annual Projects & Activities Report 2025"></p>
     </div>
   </div>
 
   <div class="header-actions">
+    <button onclick="toggleLanguage()" class="btn btn-lang">
+      🌐 AR / EN
+    </button>
     <button onclick="window.print()" class="btn btn-print">
-      <i class="fas fa-print"></i> طباعة التقرير
+      <i class="fas fa-print"></i>
+      <span data-ar="طباعة التقرير" data-en="Print Report"></span>
     </button>
   </div>
 </header>
@@ -42,49 +48,49 @@
       <div class="stat-card">
         <i class="fas fa-users"></i>
         <div class="stat-number" data-key="total_beneficiaries">0</div>
-        <span>إجمالي المستفيدين</span>
+        <span data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-project-diagram"></i>
         <div class="stat-number" data-key="projects">0</div>
-        <span>مشروع استجابة</span>
+        <span data-ar="مشاريع استجابة" data-en="Response Projects"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-graduation-cap"></i>
         <div class="stat-number" data-key="trainees">0</div>
-        <span>متدرب</span>
+        <span data-ar="متدرب" data-en="Trainees"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-bomb"></i>
         <div class="stat-number" data-key="mine_awareness">0</div>
-        <span>توعية ألغام</span>
+        <span data-ar="توعية ألغام" data-en="Mine Awareness"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-ambulance"></i>
         <div class="stat-number" data-key="ambulance_cases">0</div>
-        <span>إحالات إسعافية</span>
+        <span data-ar="إحالات إسعافية" data-en="Ambulance Referrals"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-bullhorn"></i>
         <div class="stat-number" data-key="movement_awareness">0</div>
-        <span>تعريف بالحركة</span>
+        <span data-ar="التعريف بالحركة" data-en="Movement Awareness"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-school"></i>
         <div class="stat-number" data-key="classrooms">0</div>
-        <span>فصول دراسية</span>
+        <span data-ar="فصول دراسية" data-en="Classrooms"></span>
       </div>
 
       <div class="stat-card">
         <i class="fas fa-handshake"></i>
         <div class="stat-number" data-key="donors">0</div>
-        <span>جهات مانحة</span>
+        <span data-ar="جهات مانحة" data-en="Donors"></span>
       </div>
 
     </div>
@@ -94,7 +100,11 @@
 <!-- ================= CHARTS ================= -->
 <section class="charts-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-chart-pie"></i> الإحصائيات البيانية</h2>
+    <h2 class="section-title"
+        data-ar="الإحصائيات البيانية"
+        data-en="Statistical Overview">
+      <i class="fas fa-chart-pie"></i>
+    </h2>
 
     <div class="charts-grid">
       <canvas id="categoryChart"></canvas>
@@ -108,7 +118,11 @@
 <!-- ================= CATEGORY CARDS ================= -->
 <section class="category-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-th-large"></i> مشاريع الاستجابة حسب الفئة</h2>
+    <h2 class="section-title"
+        data-ar="مشاريع الاستجابة حسب الفئة"
+        data-en="Response Projects by Category">
+      <i class="fas fa-th-large"></i>
+    </h2>
     <div class="category-cards"></div>
   </div>
 </section>
@@ -116,18 +130,22 @@
 <!-- ================= PROJECTS TABLE ================= -->
 <section class="table-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-table"></i> جدول مشاريع الاستجابة</h2>
+    <h2 class="section-title"
+        data-ar="جدول مشاريع الاستجابة"
+        data-en="Response Projects Table">
+      <i class="fas fa-table"></i>
+    </h2>
 
     <table class="projects-table">
       <thead>
         <tr>
           <th>#</th>
-          <th>اسم المشروع</th>
-          <th>الفئة</th>
-          <th>الموقع</th>
-          <th>الفترة</th>
-          <th>الجهة الممولة</th>
-          <th>المستفيدين</th>
+          <th data-ar="اسم المشروع" data-en="Project Name"></th>
+          <th data-ar="الفئة" data-en="Category"></th>
+          <th data-ar="الموقع" data-en="Location"></th>
+          <th data-ar="الفترة" data-en="Period"></th>
+          <th data-ar="الجهة الممولة" data-en="Donor"></th>
+          <th data-ar="المستفيدين" data-en="Beneficiaries"></th>
         </tr>
       </thead>
       <tbody id="projectsTableBody"></tbody>
@@ -138,18 +156,22 @@
 <!-- ================= TRAINING ================= -->
 <section class="table-section activity-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-graduation-cap"></i> التدريب وبناء القدرات</h2>
+    <h2 class="section-title"
+        data-ar="التدريب وبناء القدرات"
+        data-en="Training & Capacity Building">
+      <i class="fas fa-graduation-cap"></i>
+    </h2>
 
     <table class="projects-table">
       <thead>
         <tr>
           <th>#</th>
-          <th>اسم الدورة</th>
-          <th>مكان التنفيذ</th>
-          <th>الفترة</th>
-          <th>الفئة المستهدفة</th>
-          <th>الجهة الممولة</th>
-          <th>عدد المتدربين</th>
+          <th data-ar="اسم الدورة" data-en="Training Title"></th>
+          <th data-ar="مكان التنفيذ" data-en="Location"></th>
+          <th data-ar="الفترة" data-en="Period"></th>
+          <th data-ar="الفئة المستهدفة" data-en="Target Group"></th>
+          <th data-ar="الجهة الممولة" data-en="Donor"></th>
+          <th data-ar="عدد المتدربين" data-en="Trainees"></th>
         </tr>
       </thead>
       <tbody id="trainingTableBody"></tbody>
@@ -160,18 +182,38 @@
 <!-- ================= GALLERY ================= -->
 <section class="gallery-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-images"></i> معرض الصور</h2>
+    <h2 class="section-title"
+        data-ar="معرض الصور"
+        data-en="Photo Gallery">
+      <i class="fas fa-images"></i>
+    </h2>
     <div class="gallery-grid"></div>
   </div>
 </section>
 
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
-  <p>© 2025 جمعية الهلال الأحمر اليمني – فرع مأرب</p>
+  <p data-ar="© 2025 جمعية الهلال الأحمر اليمني – فرع مأرب"
+     data-en="© 2025 Yemen Red Crescent Society – Marib Branch"></p>
 </footer>
 
-<!-- Script -->
+<!-- ================= SCRIPT ================= -->
 <script src="script.js"></script>
+
+<script>
+function toggleLanguage() {
+  currentLang = currentLang === "ar" ? "en" : "ar";
+
+  document.documentElement.lang = currentLang;
+  document.documentElement.dir  = currentLang === "ar" ? "rtl" : "ltr";
+
+  document.querySelectorAll("[data-ar]").forEach(el => {
+    el.textContent = el.dataset[currentLang];
+  });
+
+  location.reload(); // reload to re-render charts & tables correctly
+}
+</script>
 
 </body>
 </html>

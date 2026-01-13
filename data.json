@@ -11,113 +11,870 @@
   },
 
   "charts": {
-    "categories": {
-      "labels": ["التقييم", "الإيواء", "زراعي", "جلسات نقاش", "التحقق", "مساعدات نقدية"],
-      "values": [5, 3, 4, 3, 3, 1]
-    },
-    "donors": {
-      "labels": ["ICRC", "IFRC", "NRCS", "GRC"],
-      "values": [6200, 4800, 3500, 3165]
-    },
-    "activities": {
-      "labels": ["توعية ألغام", "تدريب", "إحالة إسعافية", "إعلام"],
-      "values": [6705, 131, 747, 362]
-    },
-    "ambulance_monthly": {
-      "labels": ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
-      "values": [57, 48, 52, 51, 55, 55, 60, 65, 69, 78, 77, 80]
-    }
+  "categories": {
+    "labels": [
+      { "ar": "التقييم", "en": "Assessment" },
+      { "ar": "الإيواء", "en": "Shelter" },
+      { "ar": "زراعي", "en": "Agriculture" },
+      { "ar": "جلسات نقاش", "en": "Focus Group Discussions" },
+      { "ar": "التحقق", "en": "Verification" },
+      { "ar": "مساعدات نقدية", "en": "Cash Assistance" }
+    ],
+    "values": [5, 3, 4, 3, 3, 1]
   },
 
+  "donors": {
+    "labels": ["ICRC", "IFRC", "NRCS", "GRC"],
+    "values": [6200, 4800, 3500, 3165]
+  },
+
+  "activities": {
+    "labels": [
+      { "ar": "توعية ألغام", "en": "Mine Risk Education" },
+      { "ar": "تدريب", "en": "Training" },
+      { "ar": "إحالة إسعافية", "en": "Ambulance Referrals" },
+      { "ar": "إعلام", "en": "Media & Awareness" }
+    ],
+    "values": [6705, 131, 747, 362]
+  },
+
+  "ambulance_monthly": {
+    "labels": [
+      { "ar": "يناير", "en": "January" },
+      { "ar": "فبراير", "en": "February" },
+      { "ar": "مارس", "en": "March" },
+      { "ar": "أبريل", "en": "April" },
+      { "ar": "مايو", "en": "May" },
+      { "ar": "يونيو", "en": "June" },
+      { "ar": "يوليو", "en": "July" },
+      { "ar": "أغسطس", "en": "August" },
+      { "ar": "سبتمبر", "en": "September" },
+      { "ar": "أكتوبر", "en": "October" },
+      { "ar": "نوفمبر", "en": "November" },
+      { "ar": "ديسمبر", "en": "December" }
+    ],
+    "values": [57, 48, 52, 51, 55, 55, 60, 65, 69, 78, 77, 80]
+  }
+}
+,
+
   "categories_cards": [
-    { "key": "assessment", "title": "التقييم", "icon": "fa-clipboard-check", "projects": 5, "beneficiaries": 1288 },
-    { "key": "shelter", "title": "الإيواء", "icon": "fa-home", "projects": 3, "beneficiaries": 3100 },
-    { "key": "agriculture", "title": "زراعي", "icon": "fa-seedling", "projects": 4, "beneficiaries": 950 },
-    { "key": "discussion", "title": "جلسات نقاش", "icon": "fa-comments", "projects": 3, "beneficiaries": 19 },
-    { "key": "verification", "title": "التحقق", "icon": "fa-check-double", "projects": 3, "beneficiaries": 1800 },
-    { "key": "cash", "title": "مساعدات نقدية", "icon": "fa-money-bill-wave", "projects": 1, "beneficiaries": 1000 }
-  ],
+  {
+    "key": "assessment",
+    "title": { "ar": "التقييم", "en": "Assessment" },
+    "icon": "fa-clipboard-check",
+    "projects": 5,
+    "beneficiaries": 1288
+  },
+  {
+    "key": "shelter",
+    "title": { "ar": "الإيواء", "en": "Shelter" },
+    "icon": "fa-home",
+    "projects": 3,
+    "beneficiaries": 3100
+  },
+  {
+    "key": "agriculture",
+    "title": { "ar": "زراعي", "en": "Agriculture" },
+    "icon": "fa-seedling",
+    "projects": 4,
+    "beneficiaries": 950
+  },
+  {
+    "key": "discussion",
+    "title": { "ar": "جلسات نقاش", "en": "Focus Group Discussions" },
+    "icon": "fa-comments",
+    "projects": 3,
+    "beneficiaries": 19
+  },
+  {
+    "key": "verification",
+    "title": { "ar": "التحقق", "en": "Verification" },
+    "icon": "fa-check-double",
+    "projects": 3,
+    "beneficiaries": 1800
+  },
+  {
+    "key": "cash",
+    "title": { "ar": "مساعدات نقدية", "en": "Cash Assistance" },
+    "icon": "fa-money-bill-wave",
+    "projects": 1,
+    "beneficiaries": 1000
+  }
+]
+,
 
   "tables": {
-    "projects": [
-      { "name": "تقييم متعدد القطاعات للنازحين واللاجئين", "category": "تقييم", "location": "مخيم السويداء", "period": "25 مارس – 30 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 50 },
-      { "name": "التحقق من مستحقي مواد إغاثية", "category": "تحقق", "location": "حول الجامعة – مخيم سكن العمال", "period": "28 مارس – 30 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 150 },
-      { "name": "توزيع 1500 سلة غذائية", "category": "إغاثة", "location": "حول الجامعة – مخيم الشبكة", "period": "26 مارس – 27 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 1500 },
-      { "name": "جلسة نقاش مجتمعي مع النازحين", "category": "جلسات نقاش", "location": "مخيم الفرع", "period": "23 مارس – 24 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 19 },
-      { "name": "تقييم ميداني للنازحين", "category": "تقييم", "location": "المطار – مدينة مأرب", "period": "1 مارس – 5 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 60 },
-      { "name": "جلسة نقاش خاصة بالنازحين", "category": "جلسات نقاش", "location": "مخيم الفرع", "period": "10 مارس – 12 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 18 },
-      { "name": "التقييم السريع للأسر المتضررة من السيول", "category": "تقييم", "location": "مديرية الوادي", "period": "14 مارس – 17 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 75 },
-      { "name": "جلسة نقاش لتقييم احتياجات مستفيدي النقد", "category": "جلسات نقاش", "location": "مكتب اللجنة الدولية", "period": "17 مارس – 20 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 7 },
-      { "name": "التحقق من مستحقي مساعدات نقدية", "category": "تحقق", "location": "الروضة – المدينة", "period": "20 سبتمبر – 30 سبتمبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 300 },
-      { "name": "التحقق من مستحقي المساعدات الغذائية", "category": "تحقق", "location": "المدينة والوادي", "period": "25 سبتمبر – 30 سبتمبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 350 },
-      { "name": "توزيع مساعدات نقدية", "category": "مساعدات نقدية", "location": "المدينة والوادي", "period": "1 أكتوبر – 15 أكتوبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 600 },
-      { "name": "توزيع بذور الخضروات والبطاطس", "category": "زراعي", "location": "مديرية المدينة", "period": "16 أكتوبر – 18 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 400 },
-      { "name": "توزيع بذور القمح", "category": "زراعي", "location": "مديرية المدينة", "period": "20 أكتوبر – 23 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 350 },
-      { "name": "توزيع بذور البطاطس", "category": "زراعي", "location": "المدينة والوادي", "period": "25 أكتوبر – 30 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 300 },
-      { "name": "تقييم الملاجئ المتضررة", "category": "تقييم", "location": "مخيمات النازحين – المدينة", "period": "27 أكتوبر – 30 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 250 },
-      { "name": "توزيع 1100 سلة غذائية", "category": "إغاثة", "location": "مديرية صرواح", "period": "1 نوفمبر – 3 نوفمبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 1100 },
-      { "name": "إدخال آلية الإسعاف في التدخل الصحي", "category": "تقييم", "location": "مديريات المدينة", "period": "7 سبتمبر – 30 سبتمبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 850 },
-      { "name": "توزيع بذور الخضروات (الدفعة الثانية)", "category": "زراعي", "location": "المدينة والوادي", "period": "1 نوفمبر – 5 نوفمبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 300 },
-      { "name": "توزيع 500 سلة غذائية للنازحين", "category": "إغاثة", "location": "مخيم الفرع", "period": "25 ديسمبر – 28 ديسمبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 500 }
-    ],
-
+  "projects": [
+    {
+      "name": { "ar": "تقييم متعدد القطاعات للنازحين واللاجئين", "en": "Multi-sector assessment for IDPs and refugees" },
+      "category": { "ar": "تقييم", "en": "Assessment" },
+      "location": { "ar": "مخيم السويداء", "en": "Al-Suwaida Camp" },
+      "period": { "ar": "25 مارس – 30 مارس 2025", "en": "25 March – 30 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 50
+    },
+    {
+      "name": { "ar": "التحقق من مستحقي مواد إغاثية", "en": "Verification of relief assistance beneficiaries" },
+      "category": { "ar": "تحقق", "en": "Verification" },
+      "location": { "ar": "حول الجامعة – مخيم سكن العمال", "en": "Near the University – Workers Housing Camp" },
+      "period": { "ar": "28 مارس – 30 مارس 2025", "en": "28 March – 30 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 150
+    },
+    {
+      "name": { "ar": "توزيع 1500 سلة غذائية", "en": "Distribution of 1,500 food baskets" },
+      "category": { "ar": "إغاثة", "en": "Relief" },
+      "location": { "ar": "حول الجامعة – مخيم الشبكة", "en": "Near the University – Al-Shabaka Camp" },
+      "period": { "ar": "26 مارس – 27 مارس 2025", "en": "26 March – 27 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 1500
+    },
+    {
+      "name": { "ar": "جلسة نقاش مجتمعي مع النازحين", "en": "Community focus group discussion with IDPs" },
+      "category": { "ar": "جلسات نقاش", "en": "Focus Group Discussions" },
+      "location": { "ar": "مخيم الفرع", "en": "Branch Camp" },
+      "period": { "ar": "23 مارس – 24 مارس 2025", "en": "23 March – 24 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 19
+    },
+    {
+      "name": { "ar": "تقييم ميداني للنازحين", "en": "Field assessment for IDPs" },
+      "category": { "ar": "تقييم", "en": "Assessment" },
+      "location": { "ar": "المطار – مدينة مأرب", "en": "Airport Area – Marib City" },
+      "period": { "ar": "1 مارس – 5 مارس 2025", "en": "1 March – 5 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 60
+    },
+    {
+      "name": { "ar": "جلسة نقاش خاصة بالنازحين", "en": "Focused discussion session with IDPs" },
+      "category": { "ar": "جلسات نقاش", "en": "Focus Group Discussions" },
+      "location": { "ar": "مخيم الفرع", "en": "Branch Camp" },
+      "period": { "ar": "10 مارس – 12 مارس 2025", "en": "10 March – 12 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 18
+    },
+    {
+      "name": { "ar": "التقييم السريع للأسر المتضررة من السيول", "en": "Rapid assessment of flood-affected households" },
+      "category": { "ar": "تقييم", "en": "Assessment" },
+      "location": { "ar": "مديرية الوادي", "en": "Al-Wadi District" },
+      "period": { "ar": "14 مارس – 17 مارس 2025", "en": "14 March – 17 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 75
+    },
+    {
+      "name": { "ar": "جلسة نقاش لتقييم احتياجات مستفيدي النقد", "en": "FGD to assess cash assistance beneficiaries’ needs" },
+      "category": { "ar": "جلسات نقاش", "en": "Focus Group Discussions" },
+      "location": { "ar": "مكتب اللجنة الدولية", "en": "ICRC Office" },
+      "period": { "ar": "17 مارس – 20 مارس 2025", "en": "17 March – 20 March 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 7
+    },
+    {
+      "name": { "ar": "التحقق من مستحقي مساعدات نقدية", "en": "Verification of cash assistance beneficiaries" },
+      "category": { "ar": "تحقق", "en": "Verification" },
+      "location": { "ar": "الروضة – المدينة", "en": "Al-Rawdah – City" },
+      "period": { "ar": "20 سبتمبر – 30 سبتمبر 2025", "en": "20 September – 30 September 2025" },
+      "donor": { "ar": "الصليب الأحمر", "en": "Red Cross" },
+      "beneficiaries": 300
+    },
+    {
+      "name": { "ar": "التحقق من مستحقي المساعدات الغذائية", "en": "Verification of food assistance beneficiaries" },
+      "category": { "ar": "تحقق", "en": "Verification" },
+      "location": { "ar": "المدينة والوادي", "en": "City and Valley Districts" },
+      "period": { "ar": "25 سبتمبر – 30 سبتمبر 2025", "en": "25 September – 30 September 2025" },
+      "donor": { "ar": "الصليب الأحمر", "en": "Red Cross" },
+      "beneficiaries": 350
+    },
+    {
+      "name": { "ar": "توزيع مساعدات نقدية", "en": "Cash assistance distribution" },
+      "category": { "ar": "مساعدات نقدية", "en": "Cash Assistance" },
+      "location": { "ar": "المدينة والوادي", "en": "City and Valley Districts" },
+      "period": { "ar": "1 أكتوبر – 15 أكتوبر 2025", "en": "1 October – 15 October 2025" },
+      "donor": { "ar": "الصليب الأحمر", "en": "Red Cross" },
+      "beneficiaries": 600
+    },
+    {
+      "name": { "ar": "توزيع بذور الخضروات والبطاطس", "en": "Distribution of vegetable and potato seeds" },
+      "category": { "ar": "زراعي", "en": "Agriculture" },
+      "location": { "ar": "مديرية المدينة", "en": "City District" },
+      "period": { "ar": "16 أكتوبر – 18 أكتوبر 2025", "en": "16 October – 18 October 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 400
+    },
+    {
+      "name": { "ar": "توزيع بذور القمح", "en": "Distribution of wheat seeds" },
+      "category": { "ar": "زراعي", "en": "Agriculture" },
+      "location": { "ar": "مديرية المدينة", "en": "City District" },
+      "period": { "ar": "20 أكتوبر – 23 أكتوبر 2025", "en": "20 October – 23 October 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 350
+    },
+    {
+      "name": { "ar": "توزيع بذور البطاطس", "en": "Distribution of potato seeds" },
+      "category": { "ar": "زراعي", "en": "Agriculture" },
+      "location": { "ar": "المدينة والوادي", "en": "City and Valley Districts" },
+      "period": { "ar": "25 أكتوبر – 30 أكتوبر 2025", "en": "25 October – 30 October 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 300
+    },
+    {
+      "name": { "ar": "تقييم الملاجئ المتضررة", "en": "Assessment of damaged shelters" },
+      "category": { "ar": "تقييم", "en": "Assessment" },
+      "location": { "ar": "مخيمات النازحين – المدينة", "en": "IDP Camps – City" },
+      "period": { "ar": "27 أكتوبر – 30 أكتوبر 2025", "en": "27 October – 30 October 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 250
+    },
+    {
+      "name": { "ar": "توزيع 1100 سلة غذائية", "en": "Distribution of 1,100 food baskets" },
+      "category": { "ar": "إغاثة", "en": "Relief" },
+      "location": { "ar": "مديرية صرواح", "en": "Sirwah District" },
+      "period": { "ar": "1 نوفمبر – 3 نوفمبر 2025", "en": "1 November – 3 November 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 1100
+    },
+    {
+      "name": { "ar": "إدخال آلية الإسعاف في التدخل الصحي", "en": "Integration of ambulance services into health response" },
+      "category": { "ar": "تقييم", "en": "Assessment" },
+      "location": { "ar": "مديريات المدينة", "en": "City Districts" },
+      "period": { "ar": "7 سبتمبر – 30 سبتمبر 2025", "en": "7 September – 30 September 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 850
+    },
+    {
+      "name": { "ar": "توزيع بذور الخضروات (الدفعة الثانية)", "en": "Distribution of vegetable seeds (second batch)" },
+      "category": { "ar": "زراعي", "en": "Agriculture" },
+      "location": { "ar": "المدينة والوادي", "en": "City and Valley Districts" },
+      "period": { "ar": "1 نوفمبر – 5 نوفمبر 2025", "en": "1 November – 5 November 2025" },
+      "donor": { "ar": "اللجنة الدولية", "en": "ICRC" },
+      "beneficiaries": 300
+    },
+    {
+      "name": { "ar": "توزيع 500 سلة غذائية للنازحين", "en": "Distribution of 500 food baskets for IDPs" },
+      "category": { "ar": "إغاثة", "en": "Relief" },
+      "location": { "ar": "مخيم الفرع", "en": "Branch Camp" },
+      "period": { "ar": "25 ديسمبر – 28 ديسمبر 2025", "en": "25 December – 28 December 2025" },
+      "donor": { "ar": "الصليب الأحمر", "en": "Red Cross" },
+      "beneficiaries": 500
+    }
+  ]
+}
+,
     "training": [
-        {
-    "name": "دورة في أدوات تنفيذ برامج التحويلات النقدية والقسائم",
-    "location": "مبنى الفرع",
-    "period": "2 يوليو 2025 – 8 يوليو 2025",
-    "target": "المتطوعين",
-    "donor": "اللجنة الدولية",
+  {
+    "name": {
+      "ar": "دورة في أدوات تنفيذ برامج التحويلات النقدية والقسائم",
+      "en": "Training on Cash and Voucher Assistance (CVA) Implementation Tools"
+    },
+    "location": {
+      "ar": "مبنى الفرع",
+      "en": "Branch Building"
+    },
+    "period": {
+      "ar": "2 يوليو 2025 – 8 يوليو 2025",
+      "en": "2 July 2025 – 8 July 2025"
+    },
+    "target": {
+      "ar": "المتطوعين",
+      "en": "Volunteers"
+    },
+    "donor": {
+      "ar": "اللجنة الدولية",
+      "en": "ICRC"
+    },
     "trainees": 5
   },
   {
-    "name": "تدريب إسعافات أولية 100 فرد من مكاتب السلطة المحلية",
-    "location": "مبنى الفرع",
-    "period": "30 أغسطس 2025 – 3 سبتمبر 2025",
-    "target": "مكاتب السلطة المحلية",
-    "donor": "الصليب الأحمر النرويجي",
+    "name": {
+      "ar": "تدريب إسعافات أولية 100 فرد من مكاتب السلطة المحلية",
+      "en": "First Aid Training for 100 Local Authority Staff"
+    },
+    "location": {
+      "ar": "مبنى الفرع",
+      "en": "Branch Building"
+    },
+    "period": {
+      "ar": "30 أغسطس 2025 – 3 سبتمبر 2025",
+      "en": "30 August 2025 – 3 September 2025"
+    },
+    "target": {
+      "ar": "مكاتب السلطة المحلية",
+      "en": "Local Authority Offices"
+    },
+    "donor": {
+      "ar": "الصليب الأحمر النرويجي",
+      "en": "Norwegian Red Cross"
+    },
     "trainees": 100
   },
   {
-    "name": "دورة تقييم المبادرة المجتمعية",
-    "location": "مبنى الفرع",
-    "period": "24 سبتمبر 2025 – 26 سبتمبر 2025",
-    "target": "المتطوعين",
-    "donor": "اللجنة الدولية",
+    "name": {
+      "ar": "دورة تقييم المبادرة المجتمعية",
+      "en": "Community Initiative Assessment Training"
+    },
+    "location": {
+      "ar": "مبنى الفرع",
+      "en": "Branch Building"
+    },
+    "period": {
+      "ar": "24 سبتمبر 2025 – 26 سبتمبر 2025",
+      "en": "24 September 2025 – 26 September 2025"
+    },
+    "target": {
+      "ar": "المتطوعين",
+      "en": "Volunteers"
+    },
+    "donor": {
+      "ar": "اللجنة الدولية",
+      "en": "ICRC"
+    },
     "trainees": 6
   }
-],
-    "mines": [],
-    "events": [],
-    "media": [],
-    "rfl": [],
+]
+,
+    "mines": [
+        {
+    "month": {
+      "ar": "سبتمبر",
+      "en": "September"
+    },
+    "location": {
+      "ar": "مخيمات المدينة والوادي",
+      "en": "City and Valley IDP Camps"
+    },
+    "male": 1633,
+    "female": 1655,
+    "total": 3288
+  },
+  {
+    "month": {
+      "ar": "نوفمبر",
+      "en": "November"
+    },
+    "location": {
+      "ar": "مديريتي المدينة والوادي",
+      "en": "City and Valley Districts"
+    },
+    "male": 572,
+    "female": 704,
+    "total": 1276
+  },
+  {
+    "month": {
+      "ar": "ديسمبر",
+      "en": "December"
+    },
+    "location": {
+      "ar": "مديريتي المدينة والوادي",
+      "en": "City and Valley Districts"
+    },
+    "male": 1442,
+    "female": 989,
+    "total": 2431
+  }
+    ],
+    "events": [
+        {
+    "name": {
+      "ar": "جلسة تعريفية بمشروع التحضير للمؤتمر الدولي لعائلات المفقودين",
+      "en": "Orientation Session on the International Conference Preparation Project for Families of the Missing"
+    },
+    "category": {
+      "ar": "إعادة الروابط",
+      "en": "Restoring Family Links"
+    },
+    "location": {
+      "ar": "مكتب اللجنة الدولية",
+      "en": "ICRC Office"
+    },
+    "date": {
+      "ar": "10 نوفمبر 2025",
+      "en": "10 November 2025"
+    },
+    "donor": {
+      "ar": "اللجنة الدولية",
+      "en": "ICRC"
+    },
+    "volunteers": 2
+  },
+  {
+    "name": {
+      "ar": "مشاركة في مشروع التحضير للمؤتمر الدولي لعائلات المفقودين",
+      "en": "Participation in the International Conference Preparation Project for Families of the Missing"
+    },
+    "category": {
+      "ar": "إعادة الروابط",
+      "en": "Restoring Family Links"
+    },
+    "location": {
+      "ar": "مكتب اللجنة الدولية",
+      "en": "ICRC Office"
+    },
+    "date": {
+      "ar": "11 نوفمبر 2025",
+      "en": "11 November 2025"
+    },
+    "donor": {
+      "ar": "اللجنة الدولية",
+      "en": "ICRC"
+    },
+    "volunteers": 3
+  },
+  {
+    "name": {
+      "ar": "خدمات إسعافية لماراثون الفروسية بمأرب",
+      "en": "First Aid Services for the Equestrian Marathon in Marib"
+    },
+    "category": {
+      "ar": "خدمات إسعافية",
+      "en": "First Aid Services"
+    },
+    "location": {
+      "ar": "جولة المطار – مأرب",
+      "en": "Airport Roundabout – Marib"
+    },
+    "date": {
+      "ar": "7 أكتوبر 2025",
+      "en": "7 October 2025"
+    },
+    "donor": {
+      "ar": "ذاتي",
+      "en": "Self-Funded"
+    },
+    "volunteers": 4
+  },
+  {
+    "name": {
+      "ar": "فعالية ذكرى التأسيس",
+      "en": "Founding Anniversary Event"
+    },
+    "category": {
+      "ar": "فعاليات",
+      "en": "Events"
+    },
+    "location": {
+      "ar": "قاعة لبدي",
+      "en": "Labadi Hall"
+    },
+    "date": {
+      "ar": "19 مارس 2025",
+      "en": "19 March 2025"
+    },
+    "donor": {
+      "ar": "ذاتي",
+      "en": "Self-Funded"
+    },
+    "volunteers": 150
+  },
+  {
+    "name": {
+      "ar": "فعالية افتتاح مخزن جمعية الهلال الأحمر اليمني فرع مأرب",
+      "en": "Opening Ceremony of YRCS Marib Branch Warehouse"
+    },
+    "category": {
+      "ar": "فعاليات",
+      "en": "Events"
+    },
+    "location": {
+      "ar": "مخزن الفرع",
+      "en": "Branch Warehouse"
+    },
+    "date": {
+      "ar": "18 مايو 2025",
+      "en": "18 May 2025"
+    },
+    "donor": {
+      "ar": "اللجنة الدولية",
+      "en": "ICRC"
+    },
+    "volunteers": 30
+  }
+    ],
+    "media": [
+        {
+    "quarter": {
+      "ar": "الربع الأول",
+      "en": "Q1"
+    },
+    "activity": {
+      "ar": "ورشة",
+      "en": "Workshop"
+    },
+    "count": 1,
+    "location": {
+      "ar": "المدينة – مبنى الفرع",
+      "en": "City – Branch Building"
+    },
+    "target": {
+      "ar": "وجهاء المجتمع",
+      "en": "Community Leaders"
+    },
+    "beneficiaries": 20
+  },
+  {
+    "quarter": {
+      "ar": "الربع الأول",
+      "en": "Q1"
+    },
+    "activity": {
+      "ar": "جلسة",
+      "en": "Session"
+    },
+    "count": 4,
+    "location": {
+      "ar": "حريب",
+      "en": "Harib"
+    },
+    "target": {
+      "ar": "المجتمع",
+      "en": "Community"
+    },
+    "beneficiaries": 69
+  },
+  {
+    "quarter": {
+      "ar": "الربع الثاني",
+      "en": "Q2"
+    },
+    "activity": {
+      "ar": "ورشة",
+      "en": "Workshop"
+    },
+    "count": 1,
+    "location": {
+      "ar": "المدينة – مبنى الفرع",
+      "en": "City – Branch Building"
+    },
+    "target": {
+      "ar": "إعلاميين",
+      "en": "Media Professionals"
+    },
+    "beneficiaries": 20
+  },
+  {
+    "quarter": {
+      "ar": "الربع الثاني",
+      "en": "Q2"
+    },
+    "activity": {
+      "ar": "جلسة",
+      "en": "Session"
+    },
+    "count": 4,
+    "location": {
+      "ar": "الرويك",
+      "en": "Al-Ruwaik"
+    },
+    "target": {
+      "ar": "المجتمع",
+      "en": "Community"
+    },
+    "beneficiaries": 73
+  },
+  {
+    "quarter": {
+      "ar": "الربع الثالث",
+      "en": "Q3"
+    },
+    "activity": {
+      "ar": "ورشة",
+      "en": "Workshop"
+    },
+    "count": 1,
+    "location": {
+      "ar": "المدينة – مبنى الفرع",
+      "en": "City – Branch Building"
+    },
+    "target": {
+      "ar": "مكاتب حكومية",
+      "en": "Government Offices"
+    },
+    "beneficiaries": 20
+  },
+  {
+    "quarter": {
+      "ar": "الربع الثالث",
+      "en": "Q3"
+    },
+    "activity": {
+      "ar": "جلسة",
+      "en": "Session"
+    },
+    "count": 4,
+    "location": {
+      "ar": "حريب",
+      "en": "Harib"
+    },
+    "target": {
+      "ar": "مجتمع محلي",
+      "en": "Local Community"
+    },
+    "beneficiaries": 61
+  },
+  {
+    "quarter": {
+      "ar": "الربع الرابع",
+      "en": "Q4"
+    },
+    "activity": {
+      "ar": "ورشة",
+      "en": "Workshop"
+    },
+    "count": 1,
+    "location": {
+      "ar": "المدينة – مبنى الفرع",
+      "en": "City – Branch Building"
+    },
+    "target": {
+      "ar": "عمال مراكز",
+      "en": "Center Staff"
+    },
+    "beneficiaries": 20
+  },
+  {
+    "quarter": {
+      "ar": "الربع الرابع",
+      "en": "Q4"
+    },
+    "activity": {
+      "ar": "جلسة",
+      "en": "Session"
+    },
+    "count": 5,
+    "location": {
+      "ar": "الوادي / الرويك",
+      "en": "Valley / Al-Ruwaik"
+    },
+    "target": {
+      "ar": "مجتمع محلي",
+      "en": "Local Community"
+    },
+    "beneficiaries": 80
+  }
+    ],
+    "rfl": [
+        {
+    "activity": {
+      "ar": "التعريف بأنشطة الجمعية",
+      "en": "Awareness of Society Activities"
+    },
+    "cases": 1130
+  },
+  {
+    "activity": {
+      "ar": "مشاركة الخط الساخن",
+      "en": "Hotline Promotion"
+    },
+    "cases": 141
+  },
+  {
+    "activity": {
+      "ar": "بلاغات عن مفقودين",
+      "en": "Missing Persons Reports"
+    },
+    "cases": 9
+  },
+  {
+    "activity": {
+      "ar": "رسائل موزعة",
+      "en": "Messages Delivered"
+    },
+    "cases": 1
+  },
+  {
+    "activity": {
+      "ar": "إقامة نشاط اليوم العالمي للمفقودين لأسر المفقودين",
+      "en": "International Day of the Missing Activities for Families"
+    },
+    "cases": 20
+  },
+  {
+    "activity": {
+      "ar": "ورشة عمل للمختصين للتعريف بالقانون الدولي الإنساني",
+      "en": "Workshop for Specialists on International Humanitarian Law"
+    },
+    "cases": 25
+  },
+  {
+    "activity": {
+      "ar": "المشاركة في تسليم رفات للجهات المختصة بالتعاون مع فرع حضرموت",
+      "en": "Participation in Handover of Human Remains with Hadramout Branch"
+    },
+    "cases": 40
+  }
+    ],
 
     "ambulance": [
-      { "month": "يناير", "alfalaj": 25, "alkassara": 26, "seiyun": 6, "alateer": 0, "total": 57 },
-      { "month": "فبراير", "alfalaj": 23, "alkassara": 25, "seiyun": 0, "alateer": 0, "total": 48 },
-      { "month": "مارس", "alfalaj": 25, "alkassara": 27, "seiyun": 0, "alateer": 0, "total": 52 },
-      { "month": "أبريل", "alfalaj": 24, "alkassara": 27, "seiyun": 0, "alateer": 0, "total": 51 },
-      { "month": "مايو", "alfalaj": 26, "alkassara": 29, "seiyun": 0, "alateer": 0, "total": 55 },
-      { "month": "يونيو", "alfalaj": 27, "alkassara": 28, "seiyun": 0, "alateer": 0, "total": 55 },
-      { "month": "يوليو", "alfalaj": 29, "alkassara": 31, "seiyun": 0, "alateer": 0, "total": 60 },
-      { "month": "أغسطس", "alfalaj": 33, "alkassara": 32, "seiyun": 0, "alateer": 0, "total": 65 },
-      { "month": "سبتمبر", "alfalaj": 30, "alkassara": 29, "seiyun": 10, "alateer": 0, "total": 69 },
-      { "month": "أكتوبر", "alfalaj": 32, "alkassara": 30, "seiyun": 16, "alateer": 0, "total": 78 },
-      { "month": "نوفمبر", "alfalaj": 30, "alkassara": 29, "seiyun": 18, "alateer": 0, "total": 77 },
-      { "month": "ديسمبر", "alfalaj": 32, "alkassara": 30, "seiyun": 18, "alateer": 0, "total": 80 }
-    ]
+       {
+    "month": { "ar": "يناير", "en": "January" },
+    "alfalaj": 25,
+    "alkassara": 26,
+    "seiyun": 6,
+    "alateer": 0,
+    "total": 57
   },
+  {
+    "month": { "ar": "فبراير", "en": "February" },
+    "alfalaj": 23,
+    "alkassara": 25,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 48
+  },
+  {
+    "month": { "ar": "مارس", "en": "March" },
+    "alfalaj": 25,
+    "alkassara": 27,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 52
+  },
+  {
+    "month": { "ar": "أبريل", "en": "April" },
+    "alfalaj": 24,
+    "alkassara": 27,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 51
+  },
+  {
+    "month": { "ar": "مايو", "en": "May" },
+    "alfalaj": 26,
+    "alkassara": 29,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 55
+  },
+  {
+    "month": { "ar": "يونيو", "en": "June" },
+    "alfalaj": 27,
+    "alkassara": 28,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 55
+  },
+  {
+    "month": { "ar": "يوليو", "en": "July" },
+    "alfalaj": 29,
+    "alkassara": 31,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 60
+  },
+  {
+    "month": { "ar": "أغسطس", "en": "August" },
+    "alfalaj": 33,
+    "alkassara": 32,
+    "seiyun": 0,
+    "alateer": 0,
+    "total": 65
+  },
+  {
+    "month": { "ar": "سبتمبر", "en": "September" },
+    "alfalaj": 30,
+    "alkassara": 29,
+    "seiyun": 10,
+    "alateer": 0,
+    "total": 69
+  },
+  {
+    "month": { "ar": "أكتوبر", "en": "October" },
+    "alfalaj": 32,
+    "alkassara": 30,
+    "seiyun": 16,
+    "alateer": 0,
+    "total": 78
+  },
+  {
+    "month": { "ar": "نوفمبر", "en": "November" },
+    "alfalaj": 30,
+    "alkassara": 29,
+    "seiyun": 18,
+    "alateer": 0,
+    "total": 77
+  },
+  {
+    "month": { "ar": "ديسمبر", "en": "December" },
+    "alfalaj": 32,
+    "alkassara": 30,
+    "seiyun": 18,
+    "alateer": 0,
+    "total": 80
+  }
+    ]
+  ,
 
   "gallery": [
-    { "image": "Assets/gallery/توزيع 1600 سلو إيوائية فبراير (1).jpg", "caption": "توزيع مواد إيوائية" },
-    { "image": "Assets/gallery/التقييم الأولي لأضرار الأمطار والسيول (1).jpg", "caption": "تقييم أضرار الأمطار والسيول" },
-    { "image": "Assets/gallery/التوعية بالألغام (1).jpeg", "caption": "التوعية بمخاطر الألغام" },
-    { "image": "Assets/gallery/مبادرة بناء 3 فصول.jpeg", "caption": "مبادرة بناء فصول دراسية" },
-    { "image": "Assets/gallery/التدريب (1).jpg", "caption": "التدريب وبناء القدرات" },
-    { "image": "Assets/gallery/مشروع 500 حقيبة إيواء ديسمبر (1).jpeg", "caption": "توزيع حقائب إيواء" },
-    { "image": "Assets/gallery/إدخال سيارة إسعاف إلى الخدمة.jpeg", "caption": "إدخال سيارة إسعاف إلى الخدمة" },
-    { "image": "Assets/gallery/توزيع درنات البطاطس.jpeg", "caption": "توزيع درنات البطاطس" },
-    { "image": "Assets/gallery/اليوم العالمي للمفقودين.jpeg", "caption": "اليوم العالمي للمفقودين" },
-    { "image": "Assets/gallery/الإحالة (نقل حالات).jpeg", "caption": "نقل الحالات الإسعافية" }
+     {
+    "image": "Assets/gallery/توزيع 1600 سلو إيوائية فبراير (1).jpg",
+    "caption": {
+      "ar": "توزيع مواد إيوائية",
+      "en": "Distribution of Shelter Materials"
+    }
+  },
+  {
+    "image": "Assets/gallery/التقييم الأولي لأضرار الأمطار والسيول (1).jpg",
+    "caption": {
+      "ar": "التقييم الأولي لأضرار الأمطار والسيول",
+      "en": "Initial Assessment of Flood and Rain Damage"
+    }
+  },
+  {
+    "image": "Assets/gallery/التوعية بالألغام (1).jpeg",
+    "caption": {
+      "ar": "التوعية بمخاطر الألغام",
+      "en": "Mine Risk Awareness"
+    }
+  },
+  {
+    "image": "Assets/gallery/مبادرة بناء 3 فصول.jpeg",
+    "caption": {
+      "ar": "مبادرة بناء فصول دراسية",
+      "en": "Classroom Construction Initiative"
+    }
+  },
+  {
+    "image": "Assets/gallery/التدريب (1).jpg",
+    "caption": {
+      "ar": "التدريب وبناء القدرات",
+      "en": "Training and Capacity Building"
+    }
+  },
+  {
+    "image": "Assets/gallery/مشروع 500 حقيبة إيواء ديسمبر (1).jpeg",
+    "caption": {
+      "ar": "توزيع حقائب إيواء",
+      "en": "Distribution of Shelter Kits"
+    }
+  },
+  {
+    "image": "Assets/gallery/إدخال سيارة إسعاف إلى الخدمة.jpeg",
+    "caption": {
+      "ar": "إدخال سيارة إسعاف إلى الخدمة",
+      "en": "Ambulance Put into Service"
+    }
+  },
+  {
+    "image": "Assets/gallery/توزيع درنات البطاطس.jpeg",
+    "caption": {
+      "ar": "توزيع درنات البطاطس",
+      "en": "Distribution of Potato Tubers"
+    }
+  },
+  {
+    "image": "Assets/gallery/اليوم العالمي للمفقودين.jpeg",
+    "caption": {
+      "ar": "اليوم العالمي للمفقودين",
+      "en": "International Day of the Missing"
+    }
+  },
+  {
+    "image": "Assets/gallery/الإحالة (نقل حالات).jpeg",
+    "caption": {
+      "ar": "نقل الحالات الإسعافية",
+      "en": "Emergency Medical Referrals"
+    }
+  }
   ]
 }
