@@ -226,16 +226,25 @@ function renderGallery(items) {
   grid.innerHTML = "";
 
   items.forEach(item => {
-    grid.insertAdjacentHTML(
-      "beforeend",
-      `<div class="gallery-item">
-        <img src="${item.image}"
-             alt="${item.caption[currentLang]}"
-             loading="lazy">
-        <div class="gallery-overlay">
-          <span>${item.caption[currentLang]}</span>
-        </div>
-      </div>`
-    );
+    const img = document.createElement("img");
+    img.src = item.image;
+    img.alt = item.caption[currentLang];
+    img.loading = "lazy";
+
+    img.onerror = () => {
+      console.error("Image not found:", img.src);
+    };
+
+    const wrapper = document.createElement("div");
+    wrapper.className = "gallery-item";
+    wrapper.appendChild(img);
+
+    const overlay = document.createElement("div");
+    overlay.className = "gallery-overlay";
+    overlay.innerHTML = `<span>${item.caption[currentLang]}</span>`;
+
+    wrapper.appendChild(overlay);
+    grid.appendChild(wrapper);
   });
 }
+
