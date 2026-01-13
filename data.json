@@ -25,7 +25,7 @@
     },
     "ambulance_monthly": {
       "labels": ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
-      "values": [40, 55, 60, 70, 65, 75, 80, 90, 85, 70, 55, 52]
+      "values": [57, 48, 52, 51, 55, 55, 60, 65, 69, 78, 77, 80]
     }
   },
 
@@ -38,44 +38,50 @@
     { "key": "cash", "title": "مساعدات نقدية", "icon": "fa-money-bill-wave", "projects": 1, "beneficiaries": 1000 }
   ],
 
-  "recommendations": [
-    {
-      "sector": "الأمن الغذائي",
-      "icon": "fa-utensils",
-      "color": "var(--primary-red)",
-      "text": "توسيع نطاق مشاريع الأمن الغذائي وسبل العيش لتشمل مناطق ريفية نائية، وزيادة دعم المزارعين بالتقنيات الحديثة."
-    },
-    {
-      "sector": "قطاع الإيواء",
-      "icon": "fa-home",
-      "color": "var(--secondary-blue)",
-      "text": "زيادة التدخلات في قطاع الإيواء، خاصة الحلول المستدامة وصيانة المساكن المتضررة بدلاً من الإغاثة الطارئة فقط."
-    },
-    {
-      "sector": "بناء القدرات",
-      "icon": "fa-users-cog",
-      "color": "var(--accent-green)",
-      "text": "تعزيز برامج بناء القدرات للمتطوعين والموظفين في مجالات إدارة الكوارث والتقييم والرصد والتقييم."
-    },
-    {
-      "sector": "الاستدامة",
-      "icon": "fa-leaf",
-      "color": "#9B59B6",
-      "text": "التركيز على المشاريع ذات الأثر المستدام وطويل الأمد، وتعزيز الشراكات المجتمعية لضمان استمرارية الخدمات."
-    },
-    {
-      "sector": "الصحة والتوعية",
-      "icon": "fa-heartbeat",
-      "color": "#E74C3C",
-      "text": "الاهتمام بالأنشطة الصحية وحملات التوعية الصحية المجتمعية، نظراً لانتشار الأوبئة والحاجة الماسة لتعزيز السلوكيات الصحية السليمة."
-    },
-    {
-      "sector": "التدريب التخصصي",
-      "icon": "fa-user-md",
-      "color": "#F39C12",
-      "text": "تأهيل وتدريب المتطوعين في دورات تخصصية دقيقة مثل انتشال الجثث، الإخلاء، والإسعافات الأولية المتقدمة لرفع جاهزية فرق الاستجابة."
-    }
-  ],
+  "tables": {
+    "projects": [
+      { "name": "تقييم متعدد القطاعات للنازحين واللاجئين", "category": "تقييم", "location": "مخيم السويداء", "period": "25 مارس – 30 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 50 },
+      { "name": "التحقق من مستحقي مواد إغاثية", "category": "تحقق", "location": "حول الجامعة – مخيم سكن العمال", "period": "28 مارس – 30 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 150 },
+      { "name": "توزيع 1500 سلة غذائية", "category": "إغاثة", "location": "حول الجامعة – مخيم الشبكة", "period": "26 مارس – 27 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 1500 },
+      { "name": "جلسة نقاش مجتمعي مع النازحين", "category": "جلسات نقاش", "location": "مخيم الفرع", "period": "23 مارس – 24 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 19 },
+      { "name": "تقييم ميداني للنازحين", "category": "تقييم", "location": "المطار – مدينة مأرب", "period": "1 مارس – 5 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 60 },
+      { "name": "جلسة نقاش خاصة بالنازحين", "category": "جلسات نقاش", "location": "مخيم الفرع", "period": "10 مارس – 12 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 18 },
+      { "name": "التقييم السريع للأسر المتضررة من السيول", "category": "تقييم", "location": "مديرية الوادي", "period": "14 مارس – 17 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 75 },
+      { "name": "جلسة نقاش لتقييم احتياجات مستفيدي النقد", "category": "جلسات نقاش", "location": "مكتب اللجنة الدولية", "period": "17 مارس – 20 مارس 2025", "donor": "اللجنة الدولية", "beneficiaries": 7 },
+      { "name": "التحقق من مستحقي مساعدات نقدية", "category": "تحقق", "location": "الروضة – المدينة", "period": "20 سبتمبر – 30 سبتمبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 300 },
+      { "name": "التحقق من مستحقي المساعدات الغذائية", "category": "تحقق", "location": "المدينة والوادي", "period": "25 سبتمبر – 30 سبتمبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 350 },
+      { "name": "توزيع مساعدات نقدية", "category": "مساعدات نقدية", "location": "المدينة والوادي", "period": "1 أكتوبر – 15 أكتوبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 600 },
+      { "name": "توزيع بذور الخضروات والبطاطس", "category": "زراعي", "location": "مديرية المدينة", "period": "16 أكتوبر – 18 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 400 },
+      { "name": "توزيع بذور القمح", "category": "زراعي", "location": "مديرية المدينة", "period": "20 أكتوبر – 23 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 350 },
+      { "name": "توزيع بذور البطاطس", "category": "زراعي", "location": "المدينة والوادي", "period": "25 أكتوبر – 30 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 300 },
+      { "name": "تقييم الملاجئ المتضررة", "category": "تقييم", "location": "مخيمات النازحين – المدينة", "period": "27 أكتوبر – 30 أكتوبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 250 },
+      { "name": "توزيع 1100 سلة غذائية", "category": "إغاثة", "location": "مديرية صرواح", "period": "1 نوفمبر – 3 نوفمبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 1100 },
+      { "name": "إدخال آلية الإسعاف في التدخل الصحي", "category": "تقييم", "location": "مديريات المدينة", "period": "7 سبتمبر – 30 سبتمبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 850 },
+      { "name": "توزيع بذور الخضروات (الدفعة الثانية)", "category": "زراعي", "location": "المدينة والوادي", "period": "1 نوفمبر – 5 نوفمبر 2025", "donor": "اللجنة الدولية", "beneficiaries": 300 },
+      { "name": "توزيع 500 سلة غذائية للنازحين", "category": "إغاثة", "location": "مخيم الفرع", "period": "25 ديسمبر – 28 ديسمبر 2025", "donor": "الصليب الأحمر", "beneficiaries": 500 }
+    ],
+
+    "training": [],
+    "mines": [],
+    "events": [],
+    "media": [],
+    "rfl": [],
+
+    "ambulance": [
+      { "month": "يناير", "alfalaj": 25, "alkassara": 26, "seiyun": 6, "alateer": 0, "total": 57 },
+      { "month": "فبراير", "alfalaj": 23, "alkassara": 25, "seiyun": 0, "alateer": 0, "total": 48 },
+      { "month": "مارس", "alfalaj": 25, "alkassara": 27, "seiyun": 0, "alateer": 0, "total": 52 },
+      { "month": "أبريل", "alfalaj": 24, "alkassara": 27, "seiyun": 0, "alateer": 0, "total": 51 },
+      { "month": "مايو", "alfalaj": 26, "alkassara": 29, "seiyun": 0, "alateer": 0, "total": 55 },
+      { "month": "يونيو", "alfalaj": 27, "alkassara": 28, "seiyun": 0, "alateer": 0, "total": 55 },
+      { "month": "يوليو", "alfalaj": 29, "alkassara": 31, "seiyun": 0, "alateer": 0, "total": 60 },
+      { "month": "أغسطس", "alfalaj": 33, "alkassara": 32, "seiyun": 0, "alateer": 0, "total": 65 },
+      { "month": "سبتمبر", "alfalaj": 30, "alkassara": 29, "seiyun": 10, "alateer": 0, "total": 69 },
+      { "month": "أكتوبر", "alfalaj": 32, "alkassara": 30, "seiyun": 16, "alateer": 0, "total": 78 },
+      { "month": "نوفمبر", "alfalaj": 30, "alkassara": 29, "seiyun": 18, "alateer": 0, "total": 77 },
+      { "month": "ديسمبر", "alfalaj": 32, "alkassara": 30, "seiyun": 18, "alateer": 0, "total": 80 }
+    ]
+  },
 
   "gallery": [
     { "image": "Assets/gallery/توزيع 1600 سلو إيوائية فبراير (1).jpg", "caption": "توزيع مواد إيوائية" },
@@ -88,15 +94,5 @@
     { "image": "Assets/gallery/توزيع درنات البطاطس.jpeg", "caption": "توزيع درنات البطاطس" },
     { "image": "Assets/gallery/اليوم العالمي للمفقودين.jpeg", "caption": "اليوم العالمي للمفقودين" },
     { "image": "Assets/gallery/الإحالة (نقل حالات).jpeg", "caption": "نقل الحالات الإسعافية" }
-  ],
-
-  "tables": {
-    "projects": [],
-    "training": [],
-    "mines": [],
-    "events": [],
-    "media": [],
-    "rfl": [],
-    "ambulance": []
-  }
+  ]
 }
