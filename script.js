@@ -1,7 +1,7 @@
 /* =========================
    GLOBAL LANGUAGE
 ========================= */
-let currentLang = "ar"; // change to "en" for English
+let currentLang = "ar"; // "ar" or "en"
 
 /* =========================
    LOAD DATA
@@ -120,10 +120,14 @@ function renderCategoryCards(categories) {
         <div class="category-icon">
           <i class="fas ${cat.icon}"></i>
         </div>
-        <h4>${cat.title}</h4>
+
+        <h4>${cat.title[currentLang]}</h4>
+
         <span class="category-count">
-          ${cat.projects} ${currentLang === "ar" ? "مشاريع" : "Projects"}
+          ${cat.projects}
+          ${currentLang === "ar" ? "مشاريع" : "Projects"}
         </span>
+
         <span class="category-beneficiaries">
           ${cat.beneficiaries.toLocaleString()}
           ${currentLang === "ar" ? "مستفيد" : "Beneficiaries"}
@@ -134,54 +138,8 @@ function renderCategoryCards(categories) {
 }
 
 /* =========================
-   PROJECTS TABLE
+   PROJECTS TABLE (AR / EN)
 ========================= */
-function renderProjectsTable(projects) {
-  const tbody = document.getElementById("projectsTableBody");
-  if (!tbody) return;
-
-  tbody.innerHTML = "";
-
-  projects.forEach((p, i) => {
-    tbody.insertAdjacentHTML(
-      "beforeend",
-      `<tr>
-        <td>${i + 1}</td>
-        <td>${p.name}</td>
-        <td>${p.category}</td>
-        <td>${p.location}</td>
-        <td>${p.period}</td>
-        <td>${p.donor}</td>
-        <td>${p.beneficiaries.toLocaleString()}</td>
-      </tr>`
-    );
-  });
-}
-
-/* =========================
-   TRAINING TABLE
-========================= */
-function renderTrainingTable(training) {
-  const tbody = document.getElementById("trainingTableBody");
-  if (!tbody) return;
-
-  tbody.innerHTML = "";
-
-  training.forEach((t, i) => {
-    tbody.insertAdjacentHTML(
-      "beforeend",
-      `<tr>
-        <td>${i + 1}</td>
-        <td>${t.name}</td>
-        <td>${t.location}</td>
-        <td>${t.period}</td>
-        <td>${t.target}</td>
-        <td>${t.donor}</td>
-        <td>${t.trainees}</td>
-      </tr>`
-    );
-  });
-}
 function renderProjectsTable(projects) {
   const tbody = document.getElementById("projectsTableBody");
   if (!tbody) return;
@@ -199,6 +157,31 @@ function renderProjectsTable(projects) {
         <td>${p.period[currentLang]}</td>
         <td>${p.donor[currentLang]}</td>
         <td>${p.beneficiaries.toLocaleString()}</td>
+      </tr>`
+    );
+  });
+}
+
+/* =========================
+   TRAINING TABLE (AR / EN)
+========================= */
+function renderTrainingTable(training) {
+  const tbody = document.getElementById("trainingTableBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+
+  training.forEach((t, i) => {
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr>
+        <td>${i + 1}</td>
+        <td>${t.name[currentLang]}</td>
+        <td>${t.location[currentLang]}</td>
+        <td>${t.period[currentLang]}</td>
+        <td>${t.target[currentLang]}</td>
+        <td>${t.donor[currentLang]}</td>
+        <td>${t.trainees}</td>
       </tr>`
     );
   });
