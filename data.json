@@ -5,7 +5,9 @@
     "trainees": 131,
     "mine_awareness": 6705,
     "ambulance_cases": 747,
-    "movement_awareness": 362
+    "movement_awareness": 362,
+    "classrooms": 3,
+    "donors": 5
   },
 
   "charts": {
@@ -27,59 +29,97 @@
     }
   },
 
-  "tables": {
-    "projects": [
-      {
-        "name": "توزيع سلال إيوائية",
-        "category": "الإيواء",
-        "location": "مأرب",
-        "period": "فبراير 2025",
-        "donor": "ICRC",
-        "beneficiaries": 1600
-      },
-      {
-        "name": "التقييم متعدد القطاعات",
-        "category": "التقييم",
-        "location": "حريب",
-        "period": "مارس 2025",
-        "donor": "IFRC",
-        "beneficiaries": 450
-      },
-      {
-        "name": "مساعدات نقدية",
-        "category": "نقدي",
-        "location": "الوادي",
-        "period": "أبريل 2025",
-        "donor": "NRCS",
-        "beneficiaries": 1000
-      }
-    ],
+  "categories_cards": [
+    {
+      "key": "assessment",
+      "title": "التقييم",
+      "icon": "fa-clipboard-check",
+      "projects": 5,
+      "beneficiaries": 1288
+    },
+    {
+      "key": "shelter",
+      "title": "الإيواء",
+      "icon": "fa-home",
+      "projects": 3,
+      "beneficiaries": 3100
+    },
+    {
+      "key": "agriculture",
+      "title": "زراعي",
+      "icon": "fa-seedling",
+      "projects": 4,
+      "beneficiaries": 950
+    },
+    {
+      "key": "discussion",
+      "title": "جلسات نقاش",
+      "icon": "fa-comments",
+      "projects": 3,
+      "beneficiaries": 19
+    },
+    {
+      "key": "verification",
+      "title": "التحقق",
+      "icon": "fa-check-double",
+      "projects": 3,
+      "beneficiaries": 1800
+    },
+    {
+      "key": "cash",
+      "title": "مساعدات نقدية",
+      "icon": "fa-money-bill-wave",
+      "projects": 1,
+      "beneficiaries": 1000
+    }
+  ],
 
-    "training": [
-      {
-        "title": "إسعافات أولية",
-        "location": "مأرب",
-        "period": "يونيو 2025",
-        "target": "متطوعين",
-        "donor": "IFRC",
-        "count": 70
-      },
-      {
-        "title": "إدارة الكوارث",
-        "location": "مأرب",
-        "period": "أغسطس 2025",
-        "target": "موظفين",
-        "donor": "GRC",
-        "count": 35
-      },
-      {
-        "title": "إعداد المبادرات",
-        "location": "مأرب",
-        "period": "نوفمبر 2025",
-        "target": "شباب",
-        "donor": "NRCS",
-        "count": 56
-      }
-    ]
+  "recommendations": [
+    {
+      "sector": "الأمن الغذائي",
+      "icon": "fa-utensils",
+      "color": "--primary-red",
+      "text": "توسيع نطاق مشاريع الأمن الغذائي وسبل العيش لتشمل مناطق ريفية نائية، وزيادة دعم المزارعين بالتقنيات الحديثة."
+    },
+    {
+      "sector": "قطاع الإيواء",
+      "icon": "fa-home",
+      "color": "--secondary-blue",
+      "text": "زيادة التدخلات في قطاع الإيواء، خاصة الحلول المستدامة وصيانة المساكن المتضررة بدلاً من الإغاثة الطارئة فقط."
+    },
+    {
+      "sector": "بناء القدرات",
+      "icon": "fa-users-cog",
+      "color": "--accent-green",
+      "text": "تعزيز برامج بناء القدرات للمتطوعين والموظفين في مجالات إدارة الكوارث والتقييم والرصد والتقييم."
+    },
+    {
+      "sector": "الاستدامة",
+      "icon": "fa-leaf",
+      "color": "#9B59B6",
+      "text": "التركيز على المشاريع ذات الأثر المستدام وطويل الأمد، وتعزيز الشراكات المجتمعية لضمان استمرارية الخدمات."
+    },
+    {
+      "sector": "الصحة والتوعية",
+      "icon": "fa-heartbeat",
+      "color": "#E74C3C",
+      "text": "الاهتمام بالأنشطة الصحية وحملات التوعية الصحية المجتمعية، نظراً لانتشار الأوبئة والحاجة الماسة لتعزيز السلوكيات الصحية السليمة."
+    },
+    {
+      "sector": "التدريب التخصصي",
+      "icon": "fa-user-md",
+      "color": "#F39C12",
+      "text": "تأهيل وتدريب المتطوعين في دورات تخصصية دقيقة مثل انتشال الجثث، الإخلاء، والإسعافات الأولية المتقدمة لرفع جاهزية فرق الاستجابة."
+    }
+  ],
+
+  "tables": {
+    "projects": [],
+    "training": [],
+    "mines": [],
+    "events": [],
+    "media": [],
+    "rfl": [],
+    "ambulance": []
   }
 }
