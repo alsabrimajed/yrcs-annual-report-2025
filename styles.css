@@ -452,4 +452,7 @@ html[dir="ltr"] .category-card {
   background: transparent;
   color: #fff;
 }
+.projects-table thead {
+  display: table-header-group;
+}
 
