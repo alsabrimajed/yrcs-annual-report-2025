@@ -24,73 +24,37 @@
       "values": [6705, 131, 747, 362]
     },
     "ambulance_monthly": {
-      "labels": ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"],
-      "values": [40,55,60,70,65,75,80,90,85,70,55,52]
+      "labels": ["يناير", "فبراير", "مارس", "أبريل", "مايو", "يونيو", "يوليو", "أغسطس", "سبتمبر", "أكتوبر", "نوفمبر", "ديسمبر"],
+      "values": [40, 55, 60, 70, 65, 75, 80, 90, 85, 70, 55, 52]
     }
   },
 
   "categories_cards": [
-    {
-      "key": "assessment",
-      "title": "التقييم",
-      "icon": "fa-clipboard-check",
-      "projects": 5,
-      "beneficiaries": 1288
-    },
-    {
-      "key": "shelter",
-      "title": "الإيواء",
-      "icon": "fa-home",
-      "projects": 3,
-      "beneficiaries": 3100
-    },
-    {
-      "key": "agriculture",
-      "title": "زراعي",
-      "icon": "fa-seedling",
-      "projects": 4,
-      "beneficiaries": 950
-    },
-    {
-      "key": "discussion",
-      "title": "جلسات نقاش",
-      "icon": "fa-comments",
-      "projects": 3,
-      "beneficiaries": 19
-    },
-    {
-      "key": "verification",
-      "title": "التحقق",
-      "icon": "fa-check-double",
-      "projects": 3,
-      "beneficiaries": 1800
-    },
-    {
-      "key": "cash",
-      "title": "مساعدات نقدية",
-      "icon": "fa-money-bill-wave",
-      "projects": 1,
-      "beneficiaries": 1000
-    }
+    { "key": "assessment", "title": "التقييم", "icon": "fa-clipboard-check", "projects": 5, "beneficiaries": 1288 },
+    { "key": "shelter", "title": "الإيواء", "icon": "fa-home", "projects": 3, "beneficiaries": 3100 },
+    { "key": "agriculture", "title": "زراعي", "icon": "fa-seedling", "projects": 4, "beneficiaries": 950 },
+    { "key": "discussion", "title": "جلسات نقاش", "icon": "fa-comments", "projects": 3, "beneficiaries": 19 },
+    { "key": "verification", "title": "التحقق", "icon": "fa-check-double", "projects": 3, "beneficiaries": 1800 },
+    { "key": "cash", "title": "مساعدات نقدية", "icon": "fa-money-bill-wave", "projects": 1, "beneficiaries": 1000 }
   ],
 
   "recommendations": [
     {
       "sector": "الأمن الغذائي",
       "icon": "fa-utensils",
-      "color": "--primary-red",
+      "color": "var(--primary-red)",
       "text": "توسيع نطاق مشاريع الأمن الغذائي وسبل العيش لتشمل مناطق ريفية نائية، وزيادة دعم المزارعين بالتقنيات الحديثة."
     },
     {
       "sector": "قطاع الإيواء",
       "icon": "fa-home",
-      "color": "--secondary-blue",
+      "color": "var(--secondary-blue)",
       "text": "زيادة التدخلات في قطاع الإيواء، خاصة الحلول المستدامة وصيانة المساكن المتضررة بدلاً من الإغاثة الطارئة فقط."
     },
     {
       "sector": "بناء القدرات",
       "icon": "fa-users-cog",
-      "color": "--accent-green",
+      "color": "var(--accent-green)",
       "text": "تعزيز برامج بناء القدرات للمتطوعين والموظفين في مجالات إدارة الكوارث والتقييم والرصد والتقييم."
     },
     {
@@ -111,6 +75,19 @@
       "color": "#F39C12",
       "text": "تأهيل وتدريب المتطوعين في دورات تخصصية دقيقة مثل انتشال الجثث، الإخلاء، والإسعافات الأولية المتقدمة لرفع جاهزية فرق الاستجابة."
     }
+  ],
+
+  "gallery": [
+    { "image": "Assets/gallery/توزيع 1600 سلو إيوائية فبراير (1).jpg", "caption": "توزيع مواد إيوائية" },
+    { "image": "Assets/gallery/التقييم الأولي لأضرار الأمطار والسيول (1).jpg", "caption": "تقييم أضرار الأمطار والسيول" },
+    { "image": "Assets/gallery/التوعية بالألغام (1).jpeg", "caption": "التوعية بمخاطر الألغام" },
+    { "image": "Assets/gallery/مبادرة بناء 3 فصول.jpeg", "caption": "مبادرة بناء فصول دراسية" },
+    { "image": "Assets/gallery/التدريب (1).jpg", "caption": "التدريب وبناء القدرات" },
+    { "image": "Assets/gallery/مشروع 500 حقيبة إيواء ديسمبر (1).jpeg", "caption": "توزيع حقائب إيواء" },
+    { "image": "Assets/gallery/إدخال سيارة إسعاف إلى الخدمة.jpeg", "caption": "إدخال سيارة إسعاف إلى الخدمة" },
+    { "image": "Assets/gallery/توزيع درنات البطاطس.jpeg", "caption": "توزيع درنات البطاطس" },
+    { "image": "Assets/gallery/اليوم العالمي للمفقودين.jpeg", "caption": "اليوم العالمي للمفقودين" },
+    { "image": "Assets/gallery/الإحالة (نقل حالات).jpeg", "caption": "نقل الحالات الإسعافية" }
   ],
 
   "tables": {
