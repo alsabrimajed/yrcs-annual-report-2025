@@ -1,13 +1,12 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
-
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>التقرير السنوي 2025 | جمعية الهلال الأحمر اليمني – فرع مأرب</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>التقرير السنوي 2025 | جمعية الهلال الأحمر اليمني </title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="styles.css" />
 
   <!-- Fonts & Icons -->
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
@@ -26,13 +25,11 @@
       <img src="شعار الهلال الأحمر مفرغ.png" alt="شعار جمعية الهلال الأحمر اليمني" class="logo">
       <div class="header-text">
         <h1>جمعية الهلال الأحمر اليمني</h1>
-        <h2>فرع مأرب</h2>
-        <p class="tagline">التقرير السنوي للمشاريع والأنشطة – 2025</p>
+         <p class="tagline">التقرير السنوي للمشاريع والأنشطة – 2025</p>
       </div>
     </div>
-
     <div class="header-actions">
-      <button onclick="window.print()" class="btn btn-print">
+      <button class="btn btn-print" onclick="window.print()">
         <i class="fas fa-print"></i> طباعة التقرير
       </button>
     </div>
@@ -43,43 +40,36 @@
 <section class="hero-stats">
   <div class="container">
     <div class="stats-grid">
-
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-users"></i></div>
         <div class="stat-number" data-key="total_beneficiaries">0</div>
         <div class="stat-label">إجمالي المستفيدين</div>
       </div>
-
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
         <div class="stat-number" data-key="projects">0</div>
         <div class="stat-label">مشاريع استجابة</div>
       </div>
-
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
         <div class="stat-number" data-key="trainees">0</div>
         <div class="stat-label">متدرب</div>
       </div>
-
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-bomb"></i></div>
         <div class="stat-number" data-key="mine_awareness">0</div>
         <div class="stat-label">مستفيد توعية ألغام</div>
       </div>
-
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-ambulance"></i></div>
         <div class="stat-number" data-key="ambulance_cases">0</div>
         <div class="stat-label">حالات إحالة إسعافية</div>
       </div>
-
       <div class="stat-card">
         <div class="stat-icon"><i class="fas fa-bullhorn"></i></div>
         <div class="stat-number" data-key="movement_awareness">0</div>
         <div class="stat-label">التعريف بالحركة الدولية</div>
       </div>
-
     </div>
   </div>
 </section>
@@ -87,38 +77,23 @@
 <!-- ================= Charts ================= -->
 <section class="charts-section">
   <div class="container">
-    <h2 class="section-title">
-      <i class="fas fa-chart-pie"></i>
-      الإحصائيات البيانية
-    </h2>
-
+    <h2 class="section-title"><i class="fas fa-chart-pie"></i> الإحصائيات البيانية</h2>
     <div class="charts-grid">
       <div class="chart-card">
         <h3>توزيع مشاريع الاستجابة حسب الفئة</h3>
-        <div class="chart-container">
-          <canvas id="categoryChart"></canvas>
-        </div>
+        <div class="chart-container"><canvas id="categoryChart"></canvas></div>
       </div>
-
       <div class="chart-card">
         <h3>المستفيدون حسب الجهة الممولة</h3>
-        <div class="chart-container">
-          <canvas id="donorChart"></canvas>
-        </div>
+        <div class="chart-container"><canvas id="donorChart"></canvas></div>
       </div>
-
       <div class="chart-card">
         <h3>توزيع المستفيدين حسب نوع النشاط</h3>
-        <div class="chart-container">
-          <canvas id="activitiesChart"></canvas>
-        </div>
+        <div class="chart-container"><canvas id="activitiesChart"></canvas></div>
       </div>
-
       <div class="chart-card">
         <h3>حالات الإحالة الإسعافية الشهرية</h3>
-        <div class="chart-container">
-          <canvas id="ambulanceChart"></canvas>
-        </div>
+        <div class="chart-container"><canvas id="ambulanceChart"></canvas></div>
       </div>
     </div>
   </div>
@@ -127,12 +102,7 @@
 <!-- ================= Category Cards ================= -->
 <section class="category-section">
   <div class="container">
-    <h2 class="section-title">
-      <i class="fas fa-th-large"></i>
-      مشاريع الاستجابة حسب الفئة
-    </h2>
-
-    <!-- Dynamic -->
+    <h2 class="section-title"><i class="fas fa-th-large"></i> مشاريع الاستجابة حسب الفئة</h2>
     <div class="category-cards" id="categoryCards"></div>
   </div>
 </section>
@@ -145,13 +115,8 @@
       <table class="projects-table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>اسم المشروع</th>
-            <th>الفئة</th>
-            <th>الموقع</th>
-            <th>الفترة</th>
-            <th>الجهة الممولة</th>
-            <th>عدد المستفيدين</th>
+            <th>#</th><th>اسم المشروع</th><th>الفئة</th><th>الموقع</th>
+            <th>الفترة</th><th>الجهة الممولة</th><th>عدد المستفيدين</th>
           </tr>
         </thead>
         <tbody id="projectsTableBody"></tbody>
@@ -167,13 +132,8 @@
       <table class="projects-table">
         <thead>
           <tr>
-            <th>#</th>
-            <th>اسم الدورة</th>
-            <th>الموقع</th>
-            <th>الفترة</th>
-            <th>الفئة المستهدفة</th>
-            <th>الجهة الممولة</th>
-            <th>عدد المتدربين</th>
+            <th>#</th><th>اسم الدورة</th><th>الموقع</th><th>الفترة</th>
+            <th>الفئة المستهدفة</th><th>الجهة الممولة</th><th>عدد المتدربين</th>
           </tr>
         </thead>
         <tbody id="trainingTableBody"></tbody>
@@ -182,15 +142,18 @@
   </div>
 </section>
 
+<!-- ================= Gallery (Dynamic from Assets) ================= -->
+<section class="gallery-section">
+  <div class="container">
+    <h2 class="section-title"><i class="fas fa-images"></i> معرض الصور</h2>
+    <div class="gallery-grid" id="galleryGrid"></div>
+  </div>
+</section>
+
 <!-- ================= Recommendations ================= -->
 <section class="recommendations-section" style="padding:80px 20px;background:#fff;">
   <div class="container">
-    <h2 class="section-title">
-      <i class="fas fa-lightbulb"></i>
-      المقترحات والتوصيات
-    </h2>
-
-    <!-- Dynamic -->
+    <h2 class="section-title"><i class="fas fa-lightbulb"></i> المقترحات والتوصيات</h2>
     <div class="recommendations-grid" id="recommendationsGrid"></div>
   </div>
 </section>
@@ -206,6 +169,5 @@
 
 <!-- ================= Script ================= -->
 <script src="script.js"></script>
-
 </body>
 </html>
