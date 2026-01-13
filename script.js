@@ -5,6 +5,7 @@ fetch("data.json")
     renderCharts(data.charts);
     renderCategoryCards(data.categories_cards);
     renderProjectsTable(data.tables.projects);
+    renderTrainingTable(data.tables.training);
     renderGallery(data.gallery);
   })
   .catch(err => console.error("Error loading data.json", err));
@@ -18,6 +19,27 @@ function renderStats(stats) {
     if (stats[key] !== undefined) {
       animateCounter(el, stats[key]);
     }
+  });
+}
+function renderTrainingTable(training) {
+  const tbody = document.getElementById("trainingTableBody");
+  if (!tbody) return;
+
+  tbody.innerHTML = "";
+
+  training.forEach((t, i) => {
+    tbody.insertAdjacentHTML(
+      "beforeend",
+      `<tr>
+        <td>${i + 1}</td>
+        <td>${t.name}</td>
+        <td>${t.location}</td>
+        <td>${t.period}</td>
+        <td>${t.target}</td>
+        <td>${t.donor}</td>
+        <td>${t.trainees}</td>
+      </tr>`
+    );
   });
 }
 
