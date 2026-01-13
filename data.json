@@ -1,0 +1,85 @@
+{
+  "stats": {
+    "total_beneficiaries": 17665,
+    "projects": 19,
+    "trainees": 131,
+    "mine_awareness": 6705,
+    "ambulance_cases": 747,
+    "movement_awareness": 362
+  },
+
+  "charts": {
+    "categories": {
+      "labels": ["التقييم", "الإيواء", "زراعي", "جلسات نقاش", "التحقق", "مساعدات نقدية"],
+      "values": [5, 3, 4, 3, 3, 1]
+    },
+    "donors": {
+      "labels": ["ICRC", "IFRC", "NRCS", "GRC"],
+      "values": [6200, 4800, 3500, 3165]
+    },
+    "activities": {
+      "labels": ["توعية ألغام", "تدريب", "إحالة إسعافية", "إعلام"],
+      "values": [6705, 131, 747, 362]
+    },
+    "ambulance_monthly": {
+      "labels": ["يناير","فبراير","مارس","أبريل","مايو","يونيو","يوليو","أغسطس","سبتمبر","أكتوبر","نوفمبر","ديسمبر"],
+      "values": [40,55,60,70,65,75,80,90,85,70,55,52]
+    }
+  },
+
+  "tables": {
+    "projects": [
+      {
+        "name": "توزيع سلال إيوائية",
+        "category": "الإيواء",
+        "location": "مأرب",
+        "period": "فبراير 2025",
+        "donor": "ICRC",
+        "beneficiaries": 1600
+      },
+      {
+        "name": "التقييم متعدد القطاعات",
+        "category": "التقييم",
+        "location": "حريب",
+        "period": "مارس 2025",
+        "donor": "IFRC",
+        "beneficiaries": 450
+      },
+      {
+        "name": "مساعدات نقدية",
+        "category": "نقدي",
+        "location": "الوادي",
+        "period": "أبريل 2025",
+        "donor": "NRCS",
+        "beneficiaries": 1000
+      }
+    ],
+
+    "training": [
+      {
+        "title": "إسعافات أولية",
+        "location": "مأرب",
+        "period": "يونيو 2025",
+        "target": "متطوعين",
+        "donor": "IFRC",
+        "count": 70
+      },
+      {
+        "title": "إدارة الكوارث",
+        "location": "مأرب",
+        "period": "أغسطس 2025",
+        "target": "موظفين",
+        "donor": "GRC",
+        "count": 35
+      },
+      {
+        "title": "إعداد المبادرات",
+        "location": "مأرب",
+        "period": "نوفمبر 2025",
+        "target": "شباب",
+        "donor": "NRCS",
+        "count": 56
+      }
+    ]
+  }
+}

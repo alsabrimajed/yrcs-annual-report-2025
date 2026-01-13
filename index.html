@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
   <meta charset="UTF-8">
@@ -38,44 +38,44 @@
   </div>
 </header>
 
-<!-- ================= Hero Stats ================= -->
+<!-- ================= Hero Stats (from data.json) ================= -->
 <section class="hero-stats">
   <div class="container">
     <div class="stats-grid">
 
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-users"></i></div>
-        <div class="stat-number" data-count="17665">0</div>
+        <div class="stat-icon"><i class="fas fa-users" aria-hidden="true"></i></div>
+        <div class="stat-number" data-key="total_beneficiaries">0</div>
         <div class="stat-label">إجمالي المستفيدين</div>
       </div>
 
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-project-diagram"></i></div>
-        <div class="stat-number" data-count="19">0</div>
-        <div class="stat-label">مشروع استجابة</div>
+        <div class="stat-icon"><i class="fas fa-project-diagram" aria-hidden="true"></i></div>
+        <div class="stat-number" data-key="projects">0</div>
+        <div class="stat-label">مشاريع استجابة</div>
       </div>
 
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-graduation-cap"></i></div>
-        <div class="stat-number" data-count="131">0</div>
+        <div class="stat-icon"><i class="fas fa-graduation-cap" aria-hidden="true"></i></div>
+        <div class="stat-number" data-key="trainees">0</div>
         <div class="stat-label">متدرب</div>
       </div>
 
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-bomb"></i></div>
-        <div class="stat-number" data-count="6705">0</div>
+        <div class="stat-icon"><i class="fas fa-bomb" aria-hidden="true"></i></div>
+        <div class="stat-number" data-key="mine_awareness">0</div>
         <div class="stat-label">مستفيد توعية ألغام</div>
       </div>
 
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-ambulance"></i></div>
-        <div class="stat-number" data-count="747">0</div>
-        <div class="stat-label">حالة إحالة إسعافية</div>
+        <div class="stat-icon"><i class="fas fa-ambulance" aria-hidden="true"></i></div>
+        <div class="stat-number" data-key="ambulance_cases">0</div>
+        <div class="stat-label">حالات إحالة إسعافية</div>
       </div>
 
       <div class="stat-card">
-        <div class="stat-icon"><i class="fas fa-bullhorn"></i></div>
-        <div class="stat-number" data-count="362">0</div>
+        <div class="stat-icon"><i class="fas fa-bullhorn" aria-hidden="true"></i></div>
+        <div class="stat-number" data-key="movement_awareness">0</div>
         <div class="stat-label">التعريف بالحركة الدولية</div>
       </div>
 
@@ -86,7 +86,10 @@
 <!-- ================= Charts ================= -->
 <section class="charts-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-chart-pie"></i> الإحصائيات البيانية</h2>
+    <h2 class="section-title">
+      <i class="fas fa-chart-pie" aria-hidden="true"></i>
+      الإحصائيات البيانية
+    </h2>
 
     <div class="charts-grid">
       <div class="chart-card">
@@ -123,7 +126,10 @@
 <!-- ================= Projects Table ================= -->
 <section class="table-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-table"></i> مشاريع الاستجابة</h2>
+    <h2 class="section-title">
+      <i class="fas fa-table" aria-hidden="true"></i>
+      مشاريع الاستجابة
+    </h2>
 
     <div class="table-wrapper">
       <table class="projects-table">
@@ -135,21 +141,23 @@
             <th>الموقع</th>
             <th>الفترة</th>
             <th>الجهة الممولة</th>
-            <th>المستفيدون</th>
+            <th>عدد المستفيدين</th>
           </tr>
         </thead>
-        <tbody id="projectsTableBody"></tbody>
+        <tbody id="projectsTableBody">
+          <!-- يُملأ من data.json -->
+        </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ================= Training ================= -->
+<!-- ================= Training Table ================= -->
 <section class="table-section activity-section" style="background: var(--light-gray);">
   <div class="container">
     <h2 class="section-title">
-      <i class="fas fa-graduation-cap"></i> التدريب وبناء القدرات
-      <span class="total-badge">131 متدرب</span>
+      <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+      التدريب وبناء القدرات
     </h2>
 
     <div class="table-wrapper">
@@ -157,7 +165,7 @@
         <thead>
           <tr>
             <th>#</th>
-            <th>الدورة</th>
+            <th>اسم الدورة</th>
             <th>الموقع</th>
             <th>الفترة</th>
             <th>الفئة المستهدفة</th>
@@ -165,16 +173,21 @@
             <th>عدد المتدربين</th>
           </tr>
         </thead>
-        <tbody id="trainingTableBody"></tbody>
+        <tbody id="trainingTableBody">
+          <!-- يُملأ من data.json -->
+        </tbody>
       </table>
     </div>
   </div>
 </section>
 
-<!-- ================= Gallery ================= -->
+<!-- ================= Gallery (static images) ================= -->
 <section class="gallery-section">
   <div class="container">
-    <h2 class="section-title"><i class="fas fa-images"></i> معرض الصور</h2>
+    <h2 class="section-title">
+      <i class="fas fa-images" aria-hidden="true"></i>
+      معرض الصور
+    </h2>
 
     <div class="gallery-grid">
       <div class="gallery-item">
