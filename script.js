@@ -1,9 +1,12 @@
 /* =========================
    GLOBAL LANGUAGE
 ========================= */
-let currentLang = "ar";
+let currentLang = localStorage.getItem("lang") || "ar";
 let appData = null;
 
+/* =========================
+   STATIC TEXTS
+========================= */
 function updateStaticTexts() {
   document.querySelectorAll("[data-ar]").forEach(el => {
     el.textContent = el.dataset[currentLang];
@@ -17,12 +20,16 @@ fetch("data.json")
   .then(res => res.json())
   .then(data => {
     appData = data;
+
+    document.documentElement.lang = currentLang;
+    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
+
     renderAll();
   })
   .catch(err => console.error("Error loading data.json", err));
 
 function renderAll() {
-   updateStaticTexts();   // ✅ مهم جداً
+  updateStaticTexts();
   renderStats(appData.stats);
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
@@ -35,11 +42,13 @@ function renderAll() {
    LANGUAGE TOGGLE
 ========================= */
 function toggleLanguage() {
-   currentLang = currentLang === "ar" ? "en" : "ar";
+  currentLang = currentLang === "ar" ? "en" : "ar";
+  localStorage.setItem("lang", currentLang);
+
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
-  updateStaticTexts();   // ✅ نفس الدالة
+  clearCharts();
   renderAll();
 }
 
@@ -70,7 +79,7 @@ function animateCounter(el, target) {
 }
 
 /* =========================
-   CHARTS (FIXED)
+   CHARTS (FIXED & STABLE)
 ========================= */
 let chartsCache = [];
 
@@ -80,6 +89,7 @@ function clearCharts() {
 }
 
 function renderCharts(charts) {
+  clearCharts();
 
   const mapLabels = labels =>
     labels.map(l => typeof l === "object" ? l[currentLang] : l);
@@ -87,17 +97,13 @@ function renderCharts(charts) {
   const commonOptions = {
     responsive: true,
     maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        position: "bottom",
-        labels: { font: { size: 12 } }
-      }
-    }
+    plugins: { legend: { position: "bottom" } }
   };
 
   chartsCache.push(
-    new Chart(categoryChart, {
+    new Chart(document.getElementById("categoryChart"), {
       type: "pie",
+      options: commonOptions,
       data: {
         labels: mapLabels(charts.categories.labels),
         datasets: [{
@@ -107,14 +113,14 @@ function renderCharts(charts) {
             "#9b59b6", "#f39c12", "#95a5a6"
           ]
         }]
-      },
-      options: commonOptions
+      }
     })
   );
 
   chartsCache.push(
-    new Chart(donorChart, {
+    new Chart(document.getElementById("donorChart"), {
       type: "bar",
+      options: commonOptions,
       data: {
         labels: mapLabels(charts.donors.labels),
         datasets: [{
@@ -122,14 +128,14 @@ function renderCharts(charts) {
           data: charts.donors.values,
           backgroundColor: "#3498db"
         }]
-      },
-      options: commonOptions
+      }
     })
   );
 
   chartsCache.push(
-    new Chart(activitiesChart, {
+    new Chart(document.getElementById("activitiesChart"), {
       type: "doughnut",
+      options: commonOptions,
       data: {
         labels: mapLabels(charts.activities.labels),
         datasets: [{
@@ -139,14 +145,14 @@ function renderCharts(charts) {
             "#e74c3c", "#3498db"
           ]
         }]
-      },
-      options: commonOptions
+      }
     })
   );
 
   chartsCache.push(
-    new Chart(ambulanceChart, {
+    new Chart(document.getElementById("ambulanceChart"), {
       type: "line",
+      options: commonOptions,
       data: {
         labels: mapLabels(charts.ambulance_monthly.labels),
         datasets: [{
@@ -156,8 +162,7 @@ function renderCharts(charts) {
           tension: 0.3,
           fill: false
         }]
-      },
-      options: commonOptions
+      }
     })
   );
 }
@@ -228,7 +233,7 @@ function renderTrainingTable(training) {
 }
 
 /* =========================
-   GALLERY (FINAL FIX)
+   GALLERY
 ========================= */
 function renderGallery(items) {
   const grid = document.querySelector(".gallery-grid");
