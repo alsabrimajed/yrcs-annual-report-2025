@@ -35,6 +35,9 @@ function renderAll() {
   renderCategoryCards(appData.categories_cards);
   renderProjectsTable(appData.tables.projects);
   renderTrainingTable(appData.tables.training);
+  renderMinesTable(appData.tables.mines);     // ✅
+  renderEventsTable(appData.tables.events);   // ✅
+  renderMediaTable(appData.tables.media);     // ✅
   renderGallery(appData.gallery);
 }
 
@@ -234,6 +237,64 @@ function renderTrainingTable(training) {
   });
 }
 
+function renderMinesTable(items) {
+  const tbody = document.getElementById("minesTableBody");
+  if (!tbody || !items) return;
+
+  tbody.innerHTML = "";
+
+  items.forEach((m, i) => {
+    tbody.insertAdjacentHTML("beforeend", `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${m.month}</td>
+        <td>${m.location}</td>
+        <td>${m.male}</td>
+        <td>${m.female}</td>
+        <td>${m.total}</td>
+      </tr>
+    `);
+  });
+}
+function renderEventsTable(items) {
+  const tbody = document.getElementById("eventsTableBody");
+  if (!tbody || !items) return;
+
+  tbody.innerHTML = "";
+
+  items.forEach((e, i) => {
+    tbody.insertAdjacentHTML("beforeend", `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${e.name}</td>
+        <td>${e.category}</td>
+        <td>${e.location}</td>
+        <td>${e.date}</td>
+        <td>${e.donor}</td>
+        <td>${e.volunteers}</td>
+      </tr>
+    `);
+  });
+}
+function renderMediaTable(items) {
+  const tbody = document.getElementById("mediaTableBody");
+  if (!tbody || !items) return;
+
+  tbody.innerHTML = "";
+
+  items.forEach((m, i) => {
+    tbody.insertAdjacentHTML("beforeend", `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${m.quarter}</td>
+        <td>${m.activity}</td>
+        <td>${m.count}</td>
+        <td>${m.location}</td>
+        <td>${m.beneficiaries}</td>
+      </tr>
+    `);
+  });
+}
 
 /* =========================
    GALLERY
