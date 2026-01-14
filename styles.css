@@ -483,3 +483,18 @@ html[dir="ltr"] .category-card {
   }
 }
 
+/* ===============================
+   Tables Direction Fix
+================================ */
+table {
+  direction: rtl;
+}
+
+html[dir="ltr"] table {
+  direction: ltr;
+}
+
+.projects-table th,
+.projects-table td {
+  white-space: nowrap;
+}

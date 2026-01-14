@@ -215,6 +215,8 @@ function renderProjectsTable(projects) {
 ========================= */
 function renderTrainingTable(training) {
   const tbody = document.getElementById("trainingTableBody");
+  if (!tbody) return;
+
   tbody.innerHTML = "";
 
   training.forEach((t, i) => {
@@ -231,6 +233,7 @@ function renderTrainingTable(training) {
     `);
   });
 }
+
 
 /* =========================
    GALLERY
