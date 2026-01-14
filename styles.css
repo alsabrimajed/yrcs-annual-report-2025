@@ -171,11 +171,18 @@ body {
   gap: 30px;
 }
 
-.chart-card {
+ .chart-card {
   background: #fff;
-  padding: 25px;
+  padding: 20px;
   border-radius: 15px;
   box-shadow: var(--shadow-soft);
+  height: 320px;          /* 👈 التحكم بالحجم */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.chart-card canvas {
+  max-height: 260px !important;
 }
 
 .chart-container {
