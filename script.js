@@ -34,10 +34,11 @@ function renderAll() {
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
   renderProjectsTable(appData.tables.projects);
-  renderTrainingTable(appData.tables.training);
-  renderMinesTable(appData.tables.mines);     // ✅
-  renderEventsTable(appData.tables.events);   // ✅
-  renderMediaTable(appData.tables.media);     // ✅
+    renderTrainingTable(appData.tables.training);
+
+  renderMinesTable(appData.tables.mines_awareness);
+  renderEventsTable(appData.tables.events);
+  renderMediaTable(appData.tables.media);
   renderGallery(appData.gallery);
 }
 
@@ -216,9 +217,9 @@ function renderProjectsTable(projects) {
 /* =========================
    TRAINING TABLE
 ========================= */
-function renderTrainingTable(training) {
+ function renderTrainingTable(training) {
   const tbody = document.getElementById("trainingTableBody");
-  if (!tbody) return;
+  if (!tbody || !training) return;
 
   tbody.innerHTML = "";
 
@@ -226,18 +227,17 @@ function renderTrainingTable(training) {
     tbody.insertAdjacentHTML("beforeend", `
       <tr>
         <td>${i + 1}</td>
-        <td>${t.name}</td>
-        <td>${t.location}</td>
-        <td>${t.period}</td>
-        <td>${t.target}</td>
-        <td>${t.donor}</td>
+        <td>${t.name?.[currentLang] || t.name}</td>
+        <td>${t.location?.[currentLang] || t.location}</td>
+        <td>${t.period?.[currentLang] || t.period}</td>
+        <td>${t.target?.[currentLang] || t.target}</td>
+        <td>${t.donor?.[currentLang] || t.donor}</td>
         <td>${t.trainees}</td>
       </tr>
     `);
   });
 }
-
-function renderMinesTable(items) {
+ function renderMinesTable(items) {
   const tbody = document.getElementById("minesTableBody");
   if (!tbody || !items) return;
 
@@ -247,8 +247,8 @@ function renderMinesTable(items) {
     tbody.insertAdjacentHTML("beforeend", `
       <tr>
         <td>${i + 1}</td>
-        <td>${m.month}</td>
-        <td>${m.location}</td>
+        <td>${m.month?.[currentLang] || m.month}</td>
+        <td>${m.location?.[currentLang] || m.location}</td>
         <td>${m.male}</td>
         <td>${m.female}</td>
         <td>${m.total}</td>
@@ -256,7 +256,8 @@ function renderMinesTable(items) {
     `);
   });
 }
-function renderEventsTable(items) {
+
+ function renderEventsTable(items) {
   const tbody = document.getElementById("eventsTableBody");
   if (!tbody || !items) return;
 
@@ -266,17 +267,18 @@ function renderEventsTable(items) {
     tbody.insertAdjacentHTML("beforeend", `
       <tr>
         <td>${i + 1}</td>
-        <td>${e.name}</td>
-        <td>${e.category}</td>
-        <td>${e.location}</td>
+        <td>${e.name?.[currentLang] || e.name}</td>
+        <td>${e.category?.[currentLang] || e.category}</td>
+        <td>${e.location?.[currentLang] || e.location}</td>
         <td>${e.date}</td>
-        <td>${e.donor}</td>
+        <td>${e.donor?.[currentLang] || e.donor}</td>
         <td>${e.volunteers}</td>
       </tr>
     `);
   });
 }
-function renderMediaTable(items) {
+
+ function renderMediaTable(items) {
   const tbody = document.getElementById("mediaTableBody");
   if (!tbody || !items) return;
 
@@ -286,11 +288,11 @@ function renderMediaTable(items) {
     tbody.insertAdjacentHTML("beforeend", `
       <tr>
         <td>${i + 1}</td>
-        <td>${m.quarter}</td>
-        <td>${m.activity}</td>
+        <td>${m.quarter?.[currentLang] || m.quarter}</td>
+        <td>${m.activity?.[currentLang] || m.activity}</td>
         <td>${m.count}</td>
-        <td>${m.location}</td>
-        <td>${m.beneficiaries}</td>
+        <td>${m.location?.[currentLang] || m.location}</td>
+        <td>${m.beneficiaries.toLocaleString()}</td>
       </tr>
     `);
   });
