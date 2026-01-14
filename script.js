@@ -222,6 +222,8 @@ function renderProjectsTable(projects) {
    TRAINING TABLE
 ========================= */
  function renderTrainingTable(training) {
+  console.log("MINES:", items);
+
   const tbody = document.getElementById("trainingTableBody");
   if (!tbody || !training) return;
 
@@ -242,6 +244,8 @@ function renderProjectsTable(projects) {
   });
 }
  function renderMinesTable(items) {
+  console.log("MINES:", items);
+
   const tbody = document.getElementById("minesTableBody");
   if (!tbody || !items) return;
 
@@ -262,6 +266,8 @@ function renderProjectsTable(projects) {
 }
 
  function renderEventsTable(items) {
+  console.log("MINES:", items);
+
   const tbody = document.getElementById("eventsTableBody");
   if (!tbody || !items) return;
 
@@ -283,6 +289,8 @@ function renderProjectsTable(projects) {
 }
 
  function renderMediaTable(items) {
+  console.log("MINES:", items);
+
   const tbody = document.getElementById("mediaTableBody");
   if (!tbody || !items) return;
 
@@ -306,6 +314,8 @@ function renderProjectsTable(projects) {
    GALLERY
 ========================= */
 function renderGallery(items) {
+  console.log("MINES:", items);
+
   const grid = document.querySelector(".gallery-grid");
   grid.innerHTML = "";
 
