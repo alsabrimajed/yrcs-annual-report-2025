@@ -2,12 +2,11 @@
    GLOBAL LANGUAGE
 ========================= */
 let currentLang = "ar";
+let appData = null;
 
 /* =========================
    LOAD DATA
 ========================= */
-let appData = null;
-
 fetch("data.json")
   .then(res => res.json())
   .then(data => {
@@ -18,6 +17,7 @@ fetch("data.json")
 
 function renderAll() {
   renderStats(appData.stats);
+  clearCharts();
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
   renderProjectsTable(appData.tables.projects);
@@ -38,7 +38,7 @@ function toggleLanguage() {
     el.textContent = el.dataset[currentLang];
   });
 
-  renderAll(); // re-render content safely
+  renderAll();
 }
 
 /* =========================
@@ -68,7 +68,7 @@ function animateCounter(el, target) {
 }
 
 /* =========================
-   CHARTS
+   CHARTS (FIXED)
 ========================= */
 let chartsCache = [];
 
@@ -77,70 +77,87 @@ function clearCharts() {
   chartsCache = [];
 }
 
- function renderCharts(charts) {
+function renderCharts(charts) {
 
-  const mapLabels = (labels) =>
+  const mapLabels = labels =>
     labels.map(l => typeof l === "object" ? l[currentLang] : l);
 
-  /* CATEGORY PIE */
-  new Chart(document.getElementById("categoryChart"), {
-    type: "pie",
-    data: {
-      labels: mapLabels(charts.categories.labels),
-      datasets: [{
-        data: charts.categories.values,
-        backgroundColor: [
-          "#e74c3c", "#3498db", "#27ae60",
-          "#9b59b6", "#f39c12", "#95a5a6"
-        ]
-      }]
+  const commonOptions = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        position: "bottom",
+        labels: { font: { size: 12 } }
+      }
     }
-  });
+  };
 
-  /* DONORS BAR */
-  new Chart(document.getElementById("donorChart"), {
-    type: "bar",
-    data: {
-      labels: mapLabels(charts.donors.labels),
-      datasets: [{
-        label: currentLang === "ar" ? "المستفيدون" : "Beneficiaries",
-        data: charts.donors.values,
-        backgroundColor: "#3498db"
-      }]
-    }
-  });
+  chartsCache.push(
+    new Chart(categoryChart, {
+      type: "pie",
+      data: {
+        labels: mapLabels(charts.categories.labels),
+        datasets: [{
+          data: charts.categories.values,
+          backgroundColor: [
+            "#e74c3c", "#3498db", "#27ae60",
+            "#9b59b6", "#f39c12", "#95a5a6"
+          ]
+        }]
+      },
+      options: commonOptions
+    })
+  );
 
-  /* ACTIVITIES DOUGHNUT */
-  new Chart(document.getElementById("activitiesChart"), {
-    type: "doughnut",
-    data: {
-      labels: mapLabels(charts.activities.labels),
-      datasets: [{
-        data: charts.activities.values,
-        backgroundColor: [
-          "#e67e22", "#2ecc71",
-          "#e74c3c", "#3498db"
-        ]
-      }]
-    }
-  });
+  chartsCache.push(
+    new Chart(donorChart, {
+      type: "bar",
+      data: {
+        labels: mapLabels(charts.donors.labels),
+        datasets: [{
+          label: currentLang === "ar" ? "المستفيدون" : "Beneficiaries",
+          data: charts.donors.values,
+          backgroundColor: "#3498db"
+        }]
+      },
+      options: commonOptions
+    })
+  );
 
-  /* AMBULANCE LINE */
-  new Chart(document.getElementById("ambulanceChart"), {
-    type: "line",
-    data: {
-      labels: mapLabels(charts.ambulance_monthly.labels),
-      datasets: [{
-        label: currentLang === "ar"
-          ? "حالات الإسعاف"
-          : "Ambulance Cases",
-        data: charts.ambulance_monthly.values,
-        borderColor: "#e74c3c",
-        fill: false,
-        tension: 0.3
-      }]
-    }
-  });
+  chartsCache.push(
+    new Chart(activitiesChart, {
+      type: "doughnut",
+      data: {
+        labels: mapLabels(charts.activities.labels),
+        datasets: [{
+          data: charts.activities.values,
+          backgroundColor: [
+            "#e67e22", "#2ecc71",
+            "#e74c3c", "#3498db"
+          ]
+        }]
+      },
+      options: commonOptions
+    })
+  );
+
+  chartsCache.push(
+    new Chart(ambulanceChart, {
+      type: "line",
+      data: {
+        labels: mapLabels(charts.ambulance_monthly.labels),
+        datasets: [{
+          label: currentLang === "ar" ? "حالات الإسعاف" : "Ambulance Cases",
+          data: charts.ambulance_monthly.values,
+          borderColor: "#e74c3c",
+          tension: 0.3,
+          fill: false
+        }]
+      },
+      options: commonOptions
+    })
+  );
 }
 
 /* =========================
@@ -156,7 +173,9 @@ function renderCategoryCards(categories) {
         <div class="category-icon"><i class="fas ${cat.icon}"></i></div>
         <h4>${cat.title?.[currentLang] || cat.title}</h4>
         <span>${cat.projects} ${currentLang === "ar" ? "مشاريع" : "Projects"}</span>
-        <span>${cat.beneficiaries.toLocaleString()} ${currentLang === "ar" ? "مستفيد" : "Beneficiaries"}</span>
+        <span>${cat.beneficiaries.toLocaleString()}
+          ${currentLang === "ar" ? "مستفيد" : "Beneficiaries"}
+        </span>
       </div>
     `);
   });
@@ -207,7 +226,7 @@ function renderTrainingTable(training) {
 }
 
 /* =========================
-   GALLERY (FIXED)
+   GALLERY (FINAL FIX)
 ========================= */
 function renderGallery(items) {
   const grid = document.querySelector(".gallery-grid");
@@ -215,13 +234,12 @@ function renderGallery(items) {
 
   items.forEach(item => {
     const src = encodeURI(item.image);
+    const caption = item.caption?.[currentLang] || item.caption;
 
     grid.insertAdjacentHTML("beforeend", `
       <div class="gallery-item">
-        <img src="${src}" alt="${item.caption?.[currentLang] || item.caption}" loading="lazy">
-        <div class="gallery-overlay">
-          <span>${item.caption?.[currentLang] || item.caption}</span>
-        </div>
+        <img src="${src}" alt="${caption}" loading="lazy">
+        <div class="gallery-overlay"><span>${caption}</span></div>
       </div>
     `);
   });
