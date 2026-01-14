@@ -4,6 +4,12 @@
 let currentLang = "ar";
 let appData = null;
 
+function updateStaticTexts() {
+  document.querySelectorAll("[data-ar]").forEach(el => {
+    el.textContent = el.dataset[currentLang];
+  });
+}
+
 /* =========================
    LOAD DATA
 ========================= */
@@ -16,8 +22,8 @@ fetch("data.json")
   .catch(err => console.error("Error loading data.json", err));
 
 function renderAll() {
+   updateStaticTexts();   // ✅ مهم جداً
   renderStats(appData.stats);
-  clearCharts();
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
   renderProjectsTable(appData.tables.projects);
@@ -29,15 +35,11 @@ function renderAll() {
    LANGUAGE TOGGLE
 ========================= */
 function toggleLanguage() {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-
+   currentLang = currentLang === "ar" ? "en" : "ar";
   document.documentElement.lang = currentLang;
   document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
-  document.querySelectorAll("[data-ar]").forEach(el => {
-    el.textContent = el.dataset[currentLang];
-  });
-
+  updateStaticTexts();   // ✅ نفس الدالة
   renderAll();
 }
 
