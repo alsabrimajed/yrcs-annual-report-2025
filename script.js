@@ -29,16 +29,20 @@ fetch("data.json")
   .catch(err => console.error("Error loading data.json", err));
 
 function renderAll() {
-  updateStaticTexts();
+   updateStaticTexts();
+
   renderStats(appData.stats);
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
-  renderProjectsTable(appData.tables.projects);
-    renderTrainingTable(appData.tables.training);
 
-  renderMinesTable(appData.tables.mines_awareness);
-  renderEventsTable(appData.tables.events);
-  renderMediaTable(appData.tables.media);
+  renderProjectsTable(appData.tables.projects);
+  renderTrainingTable(appData.tables.training);
+
+  // 🔽 التعديل هنا
+  renderMinesTable(appData.tables.mines);
+  renderEventsTable(appData.tables.events_activities);
+  renderMediaTable(appData.tables.media_movement);
+
   renderGallery(appData.gallery);
 }
 
