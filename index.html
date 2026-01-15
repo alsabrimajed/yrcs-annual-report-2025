@@ -294,20 +294,7 @@
 <!-- ================= SCRIPT ================= -->
 <script src="script.js"></script>
 
-<script>
-function toggleLanguage() {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir  = currentLang === "ar" ? "rtl" : "ltr";
-
-  document.querySelectorAll("[data-ar]").forEach(el => {
-    el.textContent = el.dataset[currentLang];
-  });
-
-  location.reload(); // reload to re-render charts & tables correctly
-}
-</script>
+ 
 
 </body>
 </html>
