@@ -421,3 +421,17 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 });
+const categoryClassMap = {
+  "تقييم": "badge-assessment",
+  "Assessment": "badge-assessment",
+  "تحقق": "badge-verification",
+  "Verification": "badge-verification",
+  "إيواء": "badge-shelter",
+  "Shelter": "badge-shelter",
+  "زراعي": "badge-agriculture",
+  "Agriculture": "badge-agriculture",
+  "جلسات نقاش": "badge-fgd",
+  "Focus Group Discussions": "badge-fgd",
+  "مساعدات نقدية": "badge-cash",
+  "Cash Assistance": "badge-cash"
+};

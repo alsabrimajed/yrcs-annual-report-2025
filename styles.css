@@ -760,4 +760,108 @@ html[dir="ltr"] .category-card {
     transform: translateY(0);
   }
 }
+/* ================= TABLE STYLE (YRCS) ================= */
+
+.projects-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.06);
+  font-size: 14px;
+}
+
+/* ===== HEADER ===== */
+.projects-table thead th {
+  background: linear-gradient(135deg, #e63946, #ff5c77);
+  color: #fff;
+  padding: 16px 14px;
+  text-align: center;
+  font-weight: 700;
+  border: none;
+  white-space: nowrap;
+}
+
+/* ===== BODY ===== */
+.projects-table tbody td {
+  padding: 14px 12px;
+  border-bottom: 1px solid #eee;
+  text-align: center;
+  vertical-align: middle;
+}
+
+.projects-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+/* ===== HOVER ===== */
+.projects-table tbody tr {
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.projects-table tbody tr:hover {
+  background: #fff5f6;
+  transform: scale(1.005);
+}
+
+/* ===== NUMBER COLUMN ===== */
+.projects-table tbody td:first-child {
+  font-weight: 700;
+  color: #e63946;
+}
+
+/* ================= BADGES ================= */
+
+.badge {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #fff;
+  white-space: nowrap;
+}
+
+/* ===== BADGE COLORS ===== */
+.badge-assessment {
+  background: #4ecdc4;
+}
+
+.badge-verification {
+  background: #4d96ff;
+}
+
+.badge-shelter {
+  background: #ff6b6b;
+}
+
+.badge-agriculture {
+  background: #6bcf63;
+}
+
+.badge-fgd {
+  background: #9b59b6;
+}
+
+.badge-cash {
+  background: #f39c12;
+}
+
+/* ================= RESPONSIVE ================= */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+@media (max-width: 768px) {
+  .projects-table {
+    font-size: 13px;
+  }
+
+  .projects-table thead th,
+  .projects-table tbody td {
+    padding: 12px 10px;
+  }
+}
 
