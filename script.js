@@ -403,3 +403,21 @@ revealElements.forEach(el => el.classList.add("reveal"));
 
 window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
+/* ================= TABS LOGIC ================= */
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+
+    document.querySelectorAll(".tab-btn")
+      .forEach(b => b.classList.remove("active"));
+
+    document.querySelectorAll(".tab-content")
+      .forEach(c => c.classList.remove("active"));
+
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab)
+      .classList.add("active");
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  });
+});

@@ -18,6 +18,27 @@
 
 <!-- ================= HEADER ================= -->
 <header class="header">
+  <!-- ================= TABS ================= -->
+<div class="tabs-container">
+  <button class="tab-btn active" data-tab="tab-overview"
+    data-ar="نظرة عامة" data-en="Overview"></button>
+
+  <button class="tab-btn" data-tab="tab-charts"
+    data-ar="الرسوم البيانية" data-en="Charts"></button>
+
+  <button class="tab-btn" data-tab="tab-projects"
+    data-ar="المشاريع" data-en="Projects"></button>
+
+  <button class="tab-btn" data-tab="tab-training"
+    data-ar="التدريب" data-en="Training"></button>
+
+  <button class="tab-btn" data-tab="tab-activities"
+    data-ar="الأنشطة" data-en="Activities"></button>
+
+  <button class="tab-btn" data-tab="tab-gallery"
+    data-ar="المعرض" data-en="Gallery"></button>
+</div>
+
   <div class="header-content">
     <img src="Assets/logo.png" alt="YRCS Logo" class="logo">
     <div class="header-text">
@@ -40,6 +61,7 @@
 </header>
 
 <!-- ================= HERO STATS ================= -->
+ <section class="tab-content active" id="tab-overview">
 <section class="hero-stats">
   <div class="container">
      <div class="stats-grid">
@@ -97,6 +119,21 @@
   </div>
 </section>
 
+
+
+<!-- ================= CATEGORY CARDS ================= -->
+<section class="category-section">
+  <div class="container">
+    <h2 class="section-title"
+        data-ar="مشاريع الاستجابة حسب الفئة"
+        data-en="Response Projects by Category">
+      <i class="fas fa-th-large"></i>
+    </h2>
+    <div class="category-cards"></div>
+  </div>
+</section>
+</section>
+<section class="tab-content" id="tab-charts">
 <!-- ================= CHARTS ================= -->
 <section class="charts-section">
   <div class="container">
@@ -126,19 +163,8 @@
 
   </div>
 </section>
-
-<!-- ================= CATEGORY CARDS ================= -->
-<section class="category-section">
-  <div class="container">
-    <h2 class="section-title"
-        data-ar="مشاريع الاستجابة حسب الفئة"
-        data-en="Response Projects by Category">
-      <i class="fas fa-th-large"></i>
-    </h2>
-    <div class="category-cards"></div>
-  </div>
 </section>
-
+<section class="tab-content" id="tab-projects">
 <!-- ================= PROJECTS TABLE ================= -->
 <section class="table-section">
   <div class="container">
@@ -164,7 +190,8 @@
     </table>
   </div>
 </section>
-
+</section>
+<section class="tab-content" id="tab-training">
 <!-- ================= TRAINING ================= -->
 <section class="table-section activity-section">
   <div class="container">
@@ -190,6 +217,8 @@
     </table>
   </div>
 </section>
+</section>
+<section class="tab-content" id="tab-activities">
  <section class="table-section">
   <div class="container">
 
@@ -270,7 +299,8 @@
   </div>
 </section>
 
- 
+ </section>
+ <section class="tab-content" id="tab-gallery">
 
 <!-- ================= GALLERY ================= -->
 <section class="gallery-section">
@@ -283,7 +313,7 @@
     <div class="gallery-grid"></div>
   </div>
 </section>
-
+</section>
 <!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p data-ar="© 2025 جمعية الهلال الأحمر اليمني   "
