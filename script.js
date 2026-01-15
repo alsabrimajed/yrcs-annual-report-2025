@@ -379,3 +379,27 @@ function initLazyLoading() {
   images.forEach(img => observer.observe(img));
 }
 
+/* ===============================
+   Reveal on Scroll
+================================ */
+
+const revealElements = document.querySelectorAll(".category-card");
+
+const revealOnScroll = () => {
+  revealElements.forEach((el, index) => {
+    const windowHeight = window.innerHeight;
+    const elementTop = el.getBoundingClientRect().top;
+    const revealPoint = 120;
+
+    if (elementTop < windowHeight - revealPoint) {
+      el.classList.add("active");
+      el.style.transitionDelay = `${index * 0.1}s`;
+    }
+  });
+};
+
+// Add reveal class initially
+revealElements.forEach(el => el.classList.add("reveal"));
+
+window.addEventListener("scroll", revealOnScroll);
+window.addEventListener("load", revealOnScroll);
