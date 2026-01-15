@@ -500,3 +500,17 @@ html[dir="ltr"] table {
 .projects-table td {
   white-space: nowrap;
 }
+ /* =========================
+   Lazy Loading – YRCS
+========================= */
+.lazy-image {
+  background: #fff;
+  object-fit: contain;
+  filter: blur(8px);
+  transition: filter 0.5s ease, transform 0.4s ease;
+}
+
+.lazy-image.loaded {
+  filter: blur(0);
+  object-fit: cover;
+}

@@ -39,7 +39,7 @@ function renderAll() {
   renderTrainingTable(appData.tables.training);
 
   // 🔽 التعديل هنا
-   renderMinesTable(appData.tables.mines);
+   renderMinesTable(appData.tables.mines_awareness);
   renderEventsTable(appData.tables.events);
   renderMediaTable(appData.tables.media);
 
@@ -313,10 +313,16 @@ function renderProjectsTable(projects) {
 /* =========================
    GALLERY
 ========================= */
+ /* =========================
+   GALLERY – ADVANCED LAZY LOADING
+========================= */
+ /* =========================
+   GALLERY – YRCS LAZY LOADING
+========================= */
 function renderGallery(items) {
-  
-
   const grid = document.querySelector(".gallery-grid");
+  if (!grid || !items) return;
+
   grid.innerHTML = "";
 
   items.forEach(item => {
@@ -325,9 +331,51 @@ function renderGallery(items) {
 
     grid.insertAdjacentHTML("beforeend", `
       <div class="gallery-item">
-        <img src="${src}" alt="${caption}" loading="lazy">
-        <div class="gallery-overlay"><span>${caption}</span></div>
+        <img
+          class="lazy-image"
+          src="Assets/placeholder.png"
+          data-src="${src}"
+          alt="${caption}"
+        >
+        <div class="gallery-overlay">
+          <span>${caption}</span>
+        </div>
       </div>
     `);
   });
+
+  initLazyLoading();
 }
+
+/* =========================
+   LAZY LOADING (IntersectionObserver)
+========================= */
+/* =========================
+========================= */
+function initLazyLoading() {
+  const images = document.querySelectorAll("img.lazy-image");
+
+  if (!("IntersectionObserver" in window)) {
+    images.forEach(img => {
+      img.src = img.dataset.src;
+      img.classList.add("loaded");
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.classList.add("loaded");
+        obs.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: "200px"
+  });
+
+  images.forEach(img => observer.observe(img));
+}
+
