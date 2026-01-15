@@ -39,7 +39,7 @@ function renderAll() {
   renderTrainingTable(appData.tables.training);
 
   // 🔽 التعديل هنا
-   renderMinesTable(appData.tables.mines_awareness);
+   renderMinesTable(appData.tables.mines);
   renderEventsTable(appData.tables.events);
   renderMediaTable(appData.tables.media);
 
