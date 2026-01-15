@@ -597,4 +597,102 @@ html[dir="ltr"] table {
 html[dir="ltr"] .hero-stats .stat-card {
   text-align: center;
 }
+/* ===============================
+   CATEGORY CARDS – MODERN STYLE
+================================ */
+
+.category-section {
+  padding: 80px 0;
+  background: #f6f7f9;
+}
+
+.category-cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 26px;
+}
+
+/* CARD */
+.category-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 28px 22px 26px;
+  text-align: center;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+  position: relative;
+  overflow: hidden;
+  transition: transform .35s ease, box-shadow .35s ease;
+}
+
+.category-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+}
+
+/* TOP COLOR BAR */
+.category-card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 6px;
+  width: 100%;
+  background: var(--cat-color, #ccc);
+}
+
+/* ICON CIRCLE */
+.category-icon {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  margin: 10px auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--cat-color, #ccc);
+}
+
+.category-icon i {
+  color: #fff;
+  font-size: 1.5rem;
+}
+
+/* TITLE */
+.category-card h4 {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: #222;
+}
+
+/* PROJECT COUNT */
+.category-card span {
+  display: block;
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* BENEFICIARIES */
+.category-beneficiaries,
+.category-card span:last-child {
+  margin-top: 6px;
+  font-weight: 700;
+  color: #d11a2a;
+}
+
+/* ===============================
+   CATEGORY COLORS
+================================ */
+
+.category-card:nth-child(1) { --cat-color: #e74c3c; } /* تقييم */
+.category-card:nth-child(2) { --cat-color: #ff6b00; } /* الإيواء */
+.category-card:nth-child(3) { --cat-color: #2ecc71; } /* زراعي */
+.category-card:nth-child(4) { --cat-color: #9b59b6; } /* جلسات */
+.category-card:nth-child(5) { --cat-color: #3498db; } /* التحقق */
+.category-card:nth-child(6) { --cat-color: #f39c12; } /* نقدي */
+
+/* RTL / LTR safe */
+html[dir="ltr"] .category-card {
+  text-align: center;
+}
 
