@@ -805,8 +805,8 @@
     ]
   ,
 
-  "gallery": [
-      {
+   "gallery": [
+  {
     "image": "Assets/gallery/shelter_kit_distribution_1600_february.jpg",
     "caption": {
       "ar": "توزيع مواد إيوائية",
@@ -835,7 +835,7 @@
     }
   },
   {
-    "image": "Assets/gallery/training_session_01.jpg",
+    "image": "Assets/gallery/training_session_01.jpeg",
     "caption": {
       "ar": "التدريب وبناء القدرات",
       "en": "Training and Capacity Building"
@@ -876,6 +876,7 @@
       "en": "Emergency Medical Referrals"
     }
   }
-  ]
+]
+
 }
 }
