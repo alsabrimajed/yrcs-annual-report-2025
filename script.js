@@ -511,16 +511,25 @@ function renderSectorImpactChart(sectors) {
     })
   );
 }
- function renderSectorImpactCards(sectors) {
+function renderSectorImpactCards(sectors) {
   const container = document.getElementById("sectorImpactGrid");
   if (!container || !sectors) return;
 
   container.innerHTML = "";
 
-  const total = Object.values(sectors)
-    .reduce((sum, s) => sum + s.beneficiaries, 0);
+  // 🔢 استخراج القيم الرقمية فقط
+  const sectorList = Object.values(sectors).map(s => ({
+    ...s,
+    beneficiaries: Number(s.beneficiaries) || 0
+  }));
 
-  // ⭐ بطاقة الإجمالي
+  // ⭐ حساب الإجمالي
+  const total = sectorList.reduce(
+    (sum, s) => sum + s.beneficiaries,
+    0
+  );
+
+  /* ================= TOTAL CARD ================= */
   container.insertAdjacentHTML("beforeend", `
     <div class="stat-card impact-card total-impact">
       <i class="fas fa-globe"></i>
@@ -529,19 +538,27 @@ function renderSectorImpactChart(sectors) {
     </div>
   `);
 
-  // 🧩 القطاعات
-  Object.values(sectors).forEach(sector => {
-    const percent = ((sector.beneficiaries / total) * 100).toFixed(1);
+  /* ================= SECTOR CARDS ================= */
+  sectorList.forEach(sector => {
+    const percent =
+      total > 0
+        ? ((sector.beneficiaries / total) * 100).toFixed(1)
+        : "0.0";
 
     container.insertAdjacentHTML("beforeend", `
       <div class="stat-card impact-card"
            title="${percent}%">
         <i class="fas ${sector.icon}"></i>
+
         <div class="stat-number">
           ${sector.beneficiaries.toLocaleString()}
         </div>
+
         <span>${sector.label[currentLang]}</span>
-        <small class="impact-percent">${percent}%</small>
+
+        <small class="impact-percent">
+          ${percent}%
+        </small>
       </div>
     `);
   });
