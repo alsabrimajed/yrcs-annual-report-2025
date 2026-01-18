@@ -876,5 +876,73 @@ html[dir="ltr"] .category-card {
 .impact-card .stat-number {
   color: var(--primary-red);
 }
+/* ===============================
+   Sector Impact Enhancements
+================================ */
+
+.impact-card {
+  position: relative;
+  overflow: hidden;
+  transform: translateY(25px);
+  opacity: 0;
+  transition: all 0.6s ease;
+}
+
+.impact-card.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.impact-card i {
+  font-size: 2.4rem;
+  color: var(--secondary-blue);
+  margin-bottom: 8px;
+}
+
+.impact-card .stat-number {
+  font-size: 2.1rem;
+  font-weight: 800;
+  color: var(--primary-red);
+}
+
+.impact-percent {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+}
+
+/* ⭐ Total Impact Card */
+.total-impact {
+  background: linear-gradient(135deg, var(--secondary-blue), #163c5f);
+  color: #fff;
+}
+
+.total-impact i,
+.total-impact .stat-number {
+  color: #fff;
+}
+
+/* 🧾 Tooltip */
+.impact-card::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #111;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.impact-card:hover::after {
+  opacity: 1;
+}
 
 

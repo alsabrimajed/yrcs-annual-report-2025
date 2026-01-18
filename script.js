@@ -511,21 +511,52 @@ function renderSectorImpactChart(sectors) {
     })
   );
 }
-function renderSectorImpactCards(sectors) {
+ function renderSectorImpactCards(sectors) {
   const container = document.getElementById("sectorImpactGrid");
   if (!container || !sectors) return;
 
   container.innerHTML = "";
 
+  // 🔢 حساب الإجمالي
+  const total = Object.values(sectors)
+    .reduce((sum, s) => sum + (s.beneficiaries || 0), 0);
+
+  // ⭐ بطاقة الإجمالي
+  container.insertAdjacentHTML("beforeend", `
+    <div class="stat-card impact-card total-impact animate">
+      <i class="fas fa-globe"></i>
+      <div class="stat-number">${total.toLocaleString()}</div>
+      <span>${currentLang === "ar" ? "إجمالي الأثر" : "Total Impact"}</span>
+    </div>
+  `);
+
+  // 🧩 بطاقات القطاعات
   Object.values(sectors).forEach(sector => {
+    const percentage = ((sector.beneficiaries / total) * 100).toFixed(1);
+
     container.insertAdjacentHTML("beforeend", `
-      <div class="stat-card impact-card">
+      <div class="stat-card impact-card animate"
+           title="${percentage}%">
         <i class="fas ${sector.icon}"></i>
+
         <div class="stat-number">
           ${sector.beneficiaries.toLocaleString()}
         </div>
+
         <span>${sector.label[currentLang]}</span>
+
+        <small class="impact-percent">
+          ${percentage}%
+        </small>
       </div>
     `);
   });
+
+  // 🎞️ تشغيل الأنيميشن
+  requestAnimationFrame(() => {
+    document.querySelectorAll(".impact-card").forEach(card => {
+      card.classList.add("show");
+    });
+  });
 }
+
