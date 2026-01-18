@@ -918,13 +918,7 @@
     "indirect_beneficiaries": 57740,
     "total_beneficiaries": 61200
   },
-  "grand_total": {
-    "label": {
-      "ar": "الإجمالي",
-      "en": "Grand Total"
-    },
-    "beneficiaries": 3791371
-  }
+   
 }
 
 }
