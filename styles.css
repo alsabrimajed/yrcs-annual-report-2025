@@ -864,85 +864,67 @@ html[dir="ltr"] .category-card {
     padding: 12px 10px;
   }
 }
-.sector-impact {
-  background: #fff;
+ .sector-impact .stat-card {
+  text-align: center;
 }
 
-.impact-card i {
-  font-size: 2.3rem;
-  color: var(--secondary-blue);
-}
-
-.impact-card .stat-number {
-  color: var(--primary-red);
-}
-/* ===============================
-   Sector Impact Enhancements
-================================ */
-
-.impact-card {
-  position: relative;
-  overflow: hidden;
-  transform: translateY(25px);
-  opacity: 0;
-  transition: all 0.6s ease;
-}
-
-.impact-card.show {
-  transform: translateY(0);
-  opacity: 1;
-}
-
-.impact-card i {
-  font-size: 2.4rem;
-  color: var(--secondary-blue);
+.sector-impact i {
+  font-size: 2.2rem;
   margin-bottom: 8px;
+  color: var(--secondary-blue);
 }
 
-.impact-card .stat-number {
-  font-size: 2.1rem;
+.sector-impact .stat-number {
+  font-size: 2rem;
   font-weight: 800;
   color: var(--primary-red);
 }
 
-.impact-percent {
-  display: inline-block;
+.sector-impact span {
+  display: block;
   margin-top: 6px;
-  font-size: 0.85rem;
   font-weight: 600;
-  color: var(--text-light);
 }
 
-/* ⭐ Total Impact Card */
+.impact-percent {
+  display: block;
+  font-size: 0.85rem;
+  color: #777;
+}
+
+/* Tooltip */
+.impact-card {
+  position: relative;
+}
+
+.impact-card::after {
+  content: attr(title);
+  position: absolute;
+  bottom: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #000;
+  color: #fff;
+  padding: 4px 10px;
+  font-size: 0.75rem;
+  border-radius: 12px;
+  opacity: 0;
+  transition: 0.3s;
+}
+
+.impact-card:hover::after {
+  opacity: 1;
+}
+
+/* Total Card */
 .total-impact {
-  background: linear-gradient(135deg, var(--secondary-blue), #163c5f);
+  background: linear-gradient(135deg, #1f4f7a, #0d2b46);
   color: #fff;
 }
 
 .total-impact i,
 .total-impact .stat-number {
   color: #fff;
-}
-
-/* 🧾 Tooltip */
-.impact-card::after {
-  content: attr(title);
-  position: absolute;
-  bottom: 15px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #111;
-  color: #fff;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  border-radius: 20px;
-  opacity: 0;
-  pointer-events: none;
-  transition: opacity 0.3s ease;
-}
-
-.impact-card:hover::after {
-  opacity: 1;
 }
 
 

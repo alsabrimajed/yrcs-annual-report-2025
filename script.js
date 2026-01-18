@@ -517,46 +517,33 @@ function renderSectorImpactChart(sectors) {
 
   container.innerHTML = "";
 
-  // 🔢 حساب الإجمالي
   const total = Object.values(sectors)
-    .reduce((sum, s) => sum + (s.beneficiaries || 0), 0);
+    .reduce((sum, s) => sum + s.beneficiaries, 0);
 
   // ⭐ بطاقة الإجمالي
   container.insertAdjacentHTML("beforeend", `
-    <div class="stat-card impact-card total-impact animate">
+    <div class="stat-card impact-card total-impact">
       <i class="fas fa-globe"></i>
       <div class="stat-number">${total.toLocaleString()}</div>
-      <span>${currentLang === "ar" ? "إجمالي الأثر" : "Total Impact"}</span>
+      <span>${currentLang === "ar" ? "الإجمالي الكلي" : "Total Impact"}</span>
     </div>
   `);
 
-  // 🧩 بطاقات القطاعات
+  // 🧩 القطاعات
   Object.values(sectors).forEach(sector => {
-    const percentage = ((sector.beneficiaries / total) * 100).toFixed(1);
+    const percent = ((sector.beneficiaries / total) * 100).toFixed(1);
 
     container.insertAdjacentHTML("beforeend", `
-      <div class="stat-card impact-card animate"
-           title="${percentage}%">
+      <div class="stat-card impact-card"
+           title="${percent}%">
         <i class="fas ${sector.icon}"></i>
-
         <div class="stat-number">
           ${sector.beneficiaries.toLocaleString()}
         </div>
-
         <span>${sector.label[currentLang]}</span>
-
-        <small class="impact-percent">
-          ${percentage}%
-        </small>
+        <small class="impact-percent">${percent}%</small>
       </div>
     `);
-  });
-
-  // 🎞️ تشغيل الأنيميشن
-  requestAnimationFrame(() => {
-    document.querySelectorAll(".impact-card").forEach(card => {
-      card.classList.add("show");
-    });
   });
 }
 
