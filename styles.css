@@ -864,4 +864,17 @@ html[dir="ltr"] .category-card {
     padding: 12px 10px;
   }
 }
+.sector-impact {
+  background: #fff;
+}
+
+.impact-card i {
+  font-size: 2.3rem;
+  color: var(--secondary-blue);
+}
+
+.impact-card .stat-number {
+  color: var(--primary-red);
+}
+
 
