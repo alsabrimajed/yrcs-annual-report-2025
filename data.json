@@ -879,4 +879,52 @@
 ]
 
 }
+,
+"sector_summary_2025": {
+  "disasters_and_crises": {
+    "label": {
+      "ar": "الكوارث والأزمات",
+      "en": "Disasters and Crises"
+    },
+    "beneficiaries": 882527
+  },
+  "organizational_development": {
+    "label": {
+      "ar": "دعم تطوير الجمعية",
+      "en": "Organizational Development Support"
+    },
+    "beneficiaries": 184151
+  },
+  "health_and_care": {
+    "label": {
+      "ar": "الصحة والرعاية",
+      "en": "Health and Care"
+    },
+    "beneficiaries": 2191423
+  },
+  "water_and_shelter": {
+    "label": {
+      "ar": "المياه والإسكان",
+      "en": "Water and Shelter"
+    },
+    "beneficiaries": 529810
+  },
+  "media_and_communication": {
+    "label": {
+      "ar": "الإعلام",
+      "en": "Media and Communication"
+    },
+    "direct_beneficiaries": 3460,
+    "indirect_beneficiaries": 57740,
+    "total_beneficiaries": 61200
+  },
+  "grand_total": {
+    "label": {
+      "ar": "الإجمالي",
+      "en": "Grand Total"
+    },
+    "beneficiaries": 3791371
+  }
+}
+
 }
