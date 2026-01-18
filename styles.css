@@ -893,38 +893,43 @@ html[dir="ltr"] .category-card {
 }
 
 /* Tooltip */
+ /* ================= SECTOR IMPACT ================= */
 .impact-card {
+  border-left: 6px solid var(--accent, #ccc);
   position: relative;
-}
-
-.impact-card::after {
-  content: attr(title);
-  position: absolute;
-  bottom: 12px;
-  left: 50%;
-  transform: translateX(-50%);
-  background: #000;
-  color: #fff;
-  padding: 4px 10px;
-  font-size: 0.75rem;
-  border-radius: 12px;
   opacity: 0;
-  transition: 0.3s;
+  transform: translateY(30px);
+  transition: 0.6s ease;
 }
 
-.impact-card:hover::after {
+.impact-card i {
+  font-size: 2rem;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+
+.impact-card small {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.impact-card.show {
   opacity: 1;
+  transform: translateY(0);
 }
 
-/* Total Card */
 .total-impact {
-  background: linear-gradient(135deg, #1f4f7a, #0d2b46);
+  background: linear-gradient(135deg, #b11226, #ff5a6f);
   color: #fff;
 }
 
 .total-impact i,
-.total-impact .stat-number {
+.total-impact small {
   color: #fff;
 }
 
+.doughnut-card {
+  max-width: 420px;
+  margin: 40px auto 0;
+}
 

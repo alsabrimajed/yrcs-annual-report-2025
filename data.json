@@ -920,5 +920,32 @@
   }
    
 }
+,
+"sector_impact": {
+  "health": {
+    "label": { "ar": "الصحة والرعاية", "en": "Health & Care" },
+    "beneficiaries": 2191423,
+    "icon": "fa-heartbeat",
+    "color": "#e74c3c"
+  },
+  "development": {
+    "label": { "ar": "دعم تطوير الجمعية", "en": "Organizational Development" },
+    "beneficiaries": 184151,
+    "icon": "fa-building",
+    "color": "#9b59b6"
+  },
+  "disasters": {
+    "label": { "ar": "الكوارث والأزمات", "en": "Disasters & Crises" },
+    "beneficiaries": 882527,
+    "icon": "fa-exclamation-triangle",
+    "color": "#f39c12"
+  },
+  "wash": {
+    "label": { "ar": "المياه والإسكان", "en": "Water & Shelter" },
+    "beneficiaries": 529810,
+    "icon": "fa-water",
+    "color": "#3498db"
+  }
+}
 
 }

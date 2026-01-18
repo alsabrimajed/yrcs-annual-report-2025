@@ -512,55 +512,91 @@ function renderSectorImpactChart(sectors) {
   );
 }
 function renderSectorImpactCards(sectors) {
-  const container = document.getElementById("sectorImpactGrid");
-  if (!container || !sectors) return;
+  const grid = document.getElementById("sectorImpactGrid");
+  const ctx = document.getElementById("sectorImpactChart");
+  if (!grid || !ctx) return;
 
-  container.innerHTML = "";
+  grid.innerHTML = "";
 
-  // 🔢 استخراج القيم الرقمية فقط
-  const sectorList = Object.values(sectors).map(s => ({
-    ...s,
-    beneficiaries: Number(s.beneficiaries) || 0
-  }));
+  const list = Object.values(sectors);
+  const total = list.reduce((s, x) => s + Number(x.beneficiaries), 0);
 
-  // ⭐ حساب الإجمالي
-  const total = sectorList.reduce(
-    (sum, s) => sum + s.beneficiaries,
-    0
-  );
-
-  /* ================= TOTAL CARD ================= */
-  container.insertAdjacentHTML("beforeend", `
-    <div class="stat-card impact-card total-impact">
+  /* ===== TOTAL CARD ===== */
+  grid.insertAdjacentHTML("beforeend", `
+    <div class="stat-card impact-card total-impact animate">
       <i class="fas fa-globe"></i>
       <div class="stat-number">${total.toLocaleString()}</div>
       <span>${currentLang === "ar" ? "الإجمالي الكلي" : "Total Impact"}</span>
     </div>
   `);
 
-  /* ================= SECTOR CARDS ================= */
-  sectorList.forEach(sector => {
-    const percent =
-      total > 0
-        ? ((sector.beneficiaries / total) * 100).toFixed(1)
-        : "0.0";
+  const labels = [];
+  const values = [];
+  const colors = [];
 
-    container.insertAdjacentHTML("beforeend", `
-      <div class="stat-card impact-card"
+  list.forEach(sec => {
+    const percent = ((sec.beneficiaries / total) * 100).toFixed(1);
+
+    labels.push(sec.label[currentLang]);
+    values.push(sec.beneficiaries);
+    colors.push(sec.color);
+
+    grid.insertAdjacentHTML("beforeend", `
+      <div class="stat-card impact-card animate"
+           style="--accent:${sec.color}"
            title="${percent}%">
-        <i class="fas ${sector.icon}"></i>
-
-        <div class="stat-number">
-          ${sector.beneficiaries.toLocaleString()}
-        </div>
-
-        <span>${sector.label[currentLang]}</span>
-
-        <small class="impact-percent">
-          ${percent}%
-        </small>
+        <i class="fas ${sec.icon}"></i>
+        <div class="stat-number">${sec.beneficiaries.toLocaleString()}</div>
+        <span>${sec.label[currentLang]}</span>
+        <small>${percent}%</small>
       </div>
     `);
   });
-}
 
+  /* ===== DOUGHNUT CHART ===== */
+  if (window.sectorChart) window.sectorChart.destroy();
+
+  window.sectorChart = new Chart(ctx, {
+    type: "doughnut",
+    data: {
+      labels,
+      datasets: [{
+        data: values,
+        backgroundColor: colors
+      }]
+    },
+    options: {
+      responsive: true,
+      cutout: "65%",
+      plugins: {
+        legend: { position: "bottom" },
+        tooltip: {
+          callbacks: {
+            label: ctx =>
+              `${ctx.label}: ${ctx.raw.toLocaleString()}`
+          }
+        }
+      }
+    }
+  });
+}
+const observer = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add("show");
+      observer.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.2 });
+
+document.querySelectorAll(".animate").forEach(el => observer.observe(el));
+
+document.querySelectorAll(".tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
+    btn.classList.add("active");
+    document.getElementById(btn.dataset.tab).classList.add("active");
+  });
+});
