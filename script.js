@@ -46,6 +46,8 @@ function renderAll() {
     renderSectorImpactTable(appData.sector_summary_2025);
       renderSectorImpactChart(appData.sector_summary_2025);
 
+        renderSectorImpactCards(appData.sector_summary_2025);
+
   renderGallery(appData.gallery);
 }
 
@@ -508,4 +510,22 @@ function renderSectorImpactChart(sectors) {
       }
     })
   );
+}
+function renderSectorImpactCards(sectors) {
+  const container = document.getElementById("sectorImpactGrid");
+  if (!container || !sectors) return;
+
+  container.innerHTML = "";
+
+  Object.values(sectors).forEach(sector => {
+    container.insertAdjacentHTML("beforeend", `
+      <div class="stat-card impact-card">
+        <i class="fas ${sector.icon}"></i>
+        <div class="stat-number">
+          ${sector.beneficiaries.toLocaleString()}
+        </div>
+        <span>${sector.label[currentLang]}</span>
+      </div>
+    `);
+  });
 }
