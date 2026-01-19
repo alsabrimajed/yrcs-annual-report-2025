@@ -410,6 +410,9 @@ window.addEventListener("scroll", revealOnScroll);
 window.addEventListener("load", revealOnScroll);
 /* ================= TABS LOGIC ================= */
 
+/* =========================
+   TABS LOGIC (FIXED – SINGLE SOURCE)
+========================= */
 document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
 
@@ -420,12 +423,19 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
       .forEach(c => c.classList.remove("active"));
 
     btn.classList.add("active");
-    document.getElementById(btn.dataset.tab)
-      .classList.add("active");
+    const tab = document.getElementById(btn.dataset.tab);
+    tab.classList.add("active");
 
     window.scrollTo({ top: 0, behavior: "smooth" });
+
+    // 🔥 Render sector impact ONLY when overview is visible
+    if (btn.dataset.tab === "tab-overview") {
+      renderSectorImpactCards(appData.sector_summary_2025);
+      renderSectorImpactChart(appData.sector_summary_2025);
+    }
   });
 });
+
 function renderSectorImpactTable(sectors) {
   const tbody = document.getElementById("sectorImpactBody");
   const totalCell = document.getElementById("sectorImpactTotal");
@@ -512,6 +522,7 @@ function renderSectorImpactChart(sectors) {
   );
 }
 function renderSectorImpactCards(sectors) {
+    if (!sectors) return;   // 👈 add this
   const grid = document.getElementById("sectorImpactGrid");
   const ctx = document.getElementById("sectorImpactChart");
   if (!grid || !ctx) return;
@@ -614,7 +625,7 @@ document.querySelectorAll('.tab-btn').forEach(btn => {
 
     // 🔥 FIX: redraw charts when visible
     if (btn.dataset.tab === "tab-overview") {
-      renderSectorImpactCards();
+      renderSectorImpactCards(appData.sector_summary_2025);
     }
   });
 });
