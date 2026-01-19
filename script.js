@@ -181,6 +181,18 @@ function renderCharts(charts) {
 }
 
 /* =========================
+   SECTOR HELPERS
+========================= */
+function getSectorBeneficiaries(x) {
+  if (!x) return 0;
+  if (x.beneficiaries !== undefined) return Number(x.beneficiaries) || 0;
+  if (x.total_beneficiaries !== undefined) return Number(x.total_beneficiaries) || 0;
+  const direct = Number(x.direct_beneficiaries) || 0;
+  const indirect = Number(x.indirect_beneficiaries) || 0;
+  return direct + indirect;
+}
+
+/* =========================
    CATEGORY CARDS
 ========================= */
 function renderCategoryCards(categories) {
@@ -447,14 +459,14 @@ function renderSectorImpactTable(sectors) {
   let index = 1;
 
   Object.values(sectors).forEach(sector => {
-    if (sector.beneficiaries !== undefined) {
-      const value = sector.beneficiaries;
+    const value = getSectorBeneficiaries(sector);
+    if (value > 0) {
       grandTotal += value;
 
       tbody.insertAdjacentHTML("beforeend", `
         <tr>
           <td>${index++}</td>
-          <td>${sector.label[currentLang]}</td>
+          <td>${sector.label?.[currentLang] || ''}</td>
           <td>${value.toLocaleString()}</td>
         </tr>
       `);
@@ -469,7 +481,7 @@ function renderSectorImpactChart(sectors) {
 
   const list = Object.values(sectors);
   const labels = list.map(s => (s.label && s.label[currentLang]) ? s.label[currentLang] : (s.label || ""));
-  const values = list.map(s => Number(s.beneficiaries) || 0);
+  const values = list.map(s => getSectorBeneficiaries(s));
   const colors = list.map(s => s.color || '#1f4e79');
 
   if (window.sectorBarChart) window.sectorBarChart.destroy();
@@ -514,7 +526,15 @@ function renderSectorImpactCards(sectors) {
   grid.innerHTML = "";
 
   const list = Object.values(sectors);
-  const total = list.reduce((s, x) => s + Number(x.beneficiaries), 0);
+  const getBeneficiaries = x => {
+    if (x.beneficiaries !== undefined) return Number(x.beneficiaries) || 0;
+    if (x.total_beneficiaries !== undefined) return Number(x.total_beneficiaries) || 0;
+    const direct = Number(x.direct_beneficiaries) || 0;
+    const indirect = Number(x.indirect_beneficiaries) || 0;
+    return direct + indirect;
+  };
+
+  const total = list.reduce((s, x) => s + getBeneficiaries(x), 0);
 
   /* ===== TOTAL CARD ===== */
   grid.insertAdjacentHTML("beforeend", `
@@ -530,19 +550,20 @@ function renderSectorImpactCards(sectors) {
   const colors = [];
 
   list.forEach(sec => {
-    const percent = ((sec.beneficiaries / total) * 100).toFixed(1);
+    const b = getBeneficiaries(sec);
+    const percent = total > 0 ? ((b / total) * 100).toFixed(1) : "0.0";
 
-    labels.push(sec.label[currentLang]);
-    values.push(sec.beneficiaries);
-    colors.push(sec.color);
+    labels.push(sec.label?.[currentLang] || "");
+    values.push(b);
+    colors.push(sec.color || '#1f4e79');
 
     grid.insertAdjacentHTML("beforeend", `
       <div class="stat-card impact-card animate"
            style="--accent:${sec.color}"
            title="${percent}%">
-        <i class="fas ${sec.icon}"></i>
-        <div class="stat-number">${sec.beneficiaries.toLocaleString()}</div>
-        <span>${sec.label[currentLang]}</span>
+        <i class="fas ${sec.icon || 'fa-layer-group'}"></i>
+        <div class="stat-number">${b.toLocaleString()}</div>
+        <span>${sec.label?.[currentLang] || ''}</span>
         <small>${percent}%</small>
       </div>
     `);
