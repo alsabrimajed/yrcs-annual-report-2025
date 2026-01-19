@@ -464,62 +464,70 @@ function renderSectorImpactTable(sectors) {
   totalCell.textContent = grandTotal.toLocaleString();
 }
 function renderSectorImpactChart(sectors) {
-  const ctx = document.getElementById("sectorImpactChart");
-  if (!ctx || !sectors) return;
-
-  const labels = [];
-  const values = [];
-
-  Object.values(sectors).forEach(sector => {
-    if (sector.beneficiaries !== undefined) {
-      labels.push(sector.label[currentLang]);
-      values.push(sector.beneficiaries);
-    }
-  });
-
-  chartsCache.push(
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels,
-        datasets: [{
-          label: currentLang === "ar"
-            ? "عدد المستفيدين"
-            : "Number of Beneficiaries",
-          data: values,
-          backgroundColor: [
-            "#1f4e79",
-            "#b11226",
-            "#2ecc71",
-            "#f39c12",
-            "#9b59b6"
-          ]
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx =>
-                ctx.raw.toLocaleString() +
-                (currentLang === "ar" ? " مستفيد" : " beneficiaries")
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              callback: value => value.toLocaleString()
-            }
-          }
+   state.charts.sectorImpact = new Chart(canvas, {
+  type: "bar",
+  data: {
+    labels,
+    datasets: [{
+      label: state.lang === "ar" ? "عدد المستفيدين" : "Beneficiaries",
+      data: values,
+      backgroundColor: [
+        "#1f4e79", // الكوارث والأزمات
+        "#b11226", // دعم تطوير الجمعية
+        "#2ecc71", // الصحة والرعاية
+        "#f39c12"  // المياه والإسكان
+      ],
+      borderRadius: 14,
+      barThickness: 70
+    }]
+  },
+  options: {
+    responsive: true,
+    maintainAspectRatio: false,
+    layout: {
+      padding: { top: 20, left: 10, right: 10 }
+    },
+    plugins: {
+      legend: { display: false },
+      tooltip: {
+        callbacks: {
+          label: ctx =>
+            ctx.raw.toLocaleString() + " " +
+            (state.lang === "ar" ? "مستفيد" : "beneficiaries")
         }
       }
-    })
-  );
+    },
+    scales: {
+      x: {
+        ticks: {
+          font: {
+            family: "Tajawal",
+            size: 14,
+            weight: "600"
+          }
+        },
+        grid: { display: false }
+      },
+      y: {
+        beginAtZero: true,
+        ticks: {
+          callback: value => value.toLocaleString(),
+          font: {
+            family: "Tajawal",
+            size: 13
+          }
+        },
+        grid: {
+          color: "rgba(0,0,0,0.08)"
+        }
+      }
+    },
+    animation: {
+      duration: 1200,
+      easing: "easeOutQuart"
+    }
+  }
+});
 }
 function renderSectorImpactCards(sectors) {
     if (!sectors) return;   // 👈 add this
