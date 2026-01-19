@@ -464,7 +464,7 @@ function renderSectorImpactTable(sectors) {
   totalCell.textContent = grandTotal.toLocaleString();
 }
 function renderSectorImpactChart(sectors) {
-  const ctx = document.getElementById("sectorImpactChart");
+  const ctx = document.getElementById("sectorImpactBarChart");
   if (!ctx || !sectors) return;
 
   const list = Object.values(sectors);
