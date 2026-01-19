@@ -23,16 +23,20 @@ async function loadData() {
   try {
     loadingOverlay.style.display = 'flex';
 
+    console.log("Starting to load data.json");
     const response = await fetch("data.json");
+    console.log("Fetch response:", response.status);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     appData = await response.json();
+    console.log("Data loaded successfully, projects:", appData.tables?.projects?.length);
 
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
     renderAll();
+    console.log("renderAll called");
     loadingOverlay.style.display = 'none';
   } catch (err) {
     console.error("Error loading data.json", err);
@@ -241,22 +245,32 @@ function renderCategoryCards(categories) {
    PROJECTS TABLE
 ========================= */
 function renderProjectsTable(projects) {
+  console.log("Rendering projects table with:", projects.length, "projects");
   const tbody = document.getElementById("projectsTableBody");
+  console.log("tbody found:", !!tbody);
+  if (!tbody) return;
   tbody.innerHTML = "";
 
   projects.forEach((p, i) => {
+    const name = p.name?.[currentLang] || p.name || '';
+    const category = p.category?.[currentLang] || p.category || '';
+    const location = p.location?.[currentLang] || p.location || '';
+    const period = p.period?.[currentLang] || p.period || '';
+    const donor = p.donor?.[currentLang] || p.donor || '';
+    const beneficiaries = p.beneficiaries ? p.beneficiaries.toLocaleString() : '';
     tbody.insertAdjacentHTML("beforeend", `
       <tr>
         <td>${i + 1}</td>
-        <td>${p.name?.[currentLang] || p.name}</td>
-        <td>${p.category?.[currentLang] || p.category}</td>
-        <td>${p.location?.[currentLang] || p.location}</td>
-        <td>${p.period?.[currentLang] || p.period}</td>
-        <td>${p.donor?.[currentLang] || p.donor}</td>
-        <td>${p.beneficiaries.toLocaleString()}</td>
+        <td>${name}</td>
+        <td>${category}</td>
+        <td>${location}</td>
+        <td>${period}</td>
+        <td>${donor}</td>
+        <td>${beneficiaries}</td>
       </tr>
     `);
   });
+  console.log("Table rendered with", tbody.children.length, "rows");
 }
 
 /* =========================
