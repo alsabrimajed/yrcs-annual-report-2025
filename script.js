@@ -32,10 +32,6 @@ function renderAll() {
    updateStaticTexts();
 
    // Prefer `sector_impact` (has icons/colors) and fall back to `sector_summary_2025`.
-const sectorSource = appData.sector_impact || appData.sector_summary_2025;
-renderSectorImpactTable(sectorSource);
-renderSectorImpactChart(sectorSource);
-renderSectorImpactCards(sectorSource);
   renderStats(appData.stats);
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
@@ -47,11 +43,11 @@ renderSectorImpactCards(sectorSource);
    renderMinesTable(appData.tables.mines_awareness);
   renderEventsTable(appData.tables.events);
   renderMediaTable(appData.tables.media);
+const sectorSource = appData.sector_impact || appData.sector_summary_2025;
+renderSectorImpactTable(sectorSource);
+renderSectorImpactChart(sectorSource);
+renderSectorImpactCards(sectorSource);
 
-    renderSectorImpactTable(appData.sector_summary_2025);
-      renderSectorImpactChart(appData.sector_summary_2025);
-
-        renderSectorImpactCards(appData.sector_summary_2025);
 
   renderGallery(appData.gallery);
 }
