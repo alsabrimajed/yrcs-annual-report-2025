@@ -242,7 +242,14 @@ function renderCategoryCards(categories) {
 ========================= */
 function renderProjectsTable(projects) {
   const tbody = document.getElementById("projectsTableBody");
-  if (!tbody) return;
+  if (!tbody) {
+    console.error("projectsTableBody not found");
+    return;
+  }
+  if (!projects || !Array.isArray(projects)) {
+    console.error("Invalid projects data:", projects);
+    return;
+  }
   tbody.innerHTML = "";
 
   projects.forEach((p, i) => {
