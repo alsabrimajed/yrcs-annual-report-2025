@@ -31,6 +31,11 @@ fetch("data.json")
 function renderAll() {
    updateStaticTexts();
 
+   // Prefer `sector_impact` (has icons/colors) and fall back to `sector_summary_2025`.
+const sectorSource = appData.sector_impact || appData.sector_summary_2025;
+renderSectorImpactTable(sectorSource);
+renderSectorImpactChart(sectorSource);
+renderSectorImpactCards(sectorSource);
   renderStats(appData.stats);
   renderCharts(appData.charts);
   renderCategoryCards(appData.categories_cards);
