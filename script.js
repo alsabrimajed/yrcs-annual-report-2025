@@ -443,8 +443,9 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
 
     // 🔥 Render sector impact ONLY when overview is visible
     if (btn.dataset.tab === "tab-overview") {
-      renderSectorImpactCards(appData.sector_summary_2025);
-      renderSectorImpactChart(appData.sector_summary_2025);
+      const sectorSource = appData.sector_impact || appData.sector_summary_2025;
+      renderSectorImpactCards(sectorSource);
+      renderSectorImpactChart(sectorSource);
     }
   });
 });
@@ -607,31 +608,3 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll(".animate").forEach(el => observer.observe(el));
-
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.tab).classList.add("active");
-  });
-});
-document.querySelectorAll('.tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.tab-btn')
-      .forEach(b => b.classList.remove('active'));
-
-    document.querySelectorAll('.tab-content')
-      .forEach(c => c.classList.remove('active'));
-
-    btn.classList.add('active');
-    const tab = document.getElementById(btn.dataset.tab);
-    tab.classList.add('active');
-
-    // 🔥 FIX: redraw charts when visible
-    if (btn.dataset.tab === "tab-overview") {
-      renderSectorImpactCards(appData.sector_summary_2025);
-    }
-  });
-});
