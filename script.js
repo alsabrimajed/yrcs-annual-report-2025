@@ -65,6 +65,7 @@ renderSectorImpactCards(sectorSource);
 
 
   renderGallery(appData.gallery);
+  window.galleryItems = appData.gallery; // Store for lightbox
 }
 
 /* =========================
@@ -79,6 +80,13 @@ function toggleLanguage() {
 
   clearCharts();
   renderAll();
+
+  // Update lightbox caption if open
+  if (document.getElementById("lightbox-modal").classList.contains("show")) {
+    const caption = document.getElementById("lightbox-caption");
+    const item = window.galleryItems[currentLightboxIndex];
+    caption.textContent = item.caption?.[currentLang] || item.caption;
+  }
 }
 
 /* =========================
@@ -354,30 +362,67 @@ function renderProjectsTable(projects) {
 ========================= */
 function renderGallery(items) {
   const grid = document.querySelector(".gallery-grid");
+  const pagination = document.querySelector("#gallery-pagination");
   if (!grid || !items) return;
 
-  grid.innerHTML = "";
+  const itemsPerPage = 12;
+  const totalPages = Math.ceil(items.length / itemsPerPage);
+  window.currentGalleryPage = window.currentGalleryPage || 1;
+  if (window.currentGalleryPage > totalPages) window.currentGalleryPage = 1;
 
-  items.forEach(item => {
-    const src = encodeURI(item.image);
-    const caption = item.caption?.[currentLang] || item.caption;
+  function renderPage(page) {
+    const start = (page - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageItems = items.slice(start, end);
 
-    grid.insertAdjacentHTML("beforeend", `
-      <div class="gallery-item">
-        <img
-          class="lazy-image"
-          src="Assets/placeholder.png"
-          data-src="${src}"
-          alt="${caption}"
-        >
-        <div class="gallery-overlay">
-          <span>${caption}</span>
+    grid.innerHTML = "";
+
+    pageItems.forEach((item, index) => {
+      const globalIndex = start + index;
+      const src = encodeURI(item.image);
+      const caption = item.caption?.[currentLang] || item.caption;
+
+      grid.insertAdjacentHTML("beforeend", `
+        <div class="gallery-item" data-index="${globalIndex}">
+          <img
+            class="lazy-image"
+            src="Assets/placeholder.png"
+            data-src="${src}"
+            alt="${caption}"
+          >
+          <div class="gallery-overlay">
+            <span>${caption}</span>
+          </div>
         </div>
-      </div>
-    `);
-  });
+      `);
+    });
 
-  initLazyLoading();
+    initLazyLoading();
+  }
+
+  function renderPagination() {
+    if (totalPages <= 1) {
+      pagination.innerHTML = "";
+      return;
+    }
+
+    let buttons = "";
+    for (let i = 1; i <= totalPages; i++) {
+      buttons += `<button class="${i === window.currentGalleryPage ? 'active' : ''}" data-page="${i}">${i}</button>`;
+    }
+    pagination.innerHTML = buttons;
+
+    pagination.querySelectorAll("button").forEach(btn => {
+      btn.addEventListener("click", () => {
+        window.currentGalleryPage = parseInt(btn.dataset.page);
+        renderPage(window.currentGalleryPage);
+        renderPagination();
+      });
+    });
+  }
+
+  renderPage(window.currentGalleryPage);
+  renderPagination();
 }
 
 /* =========================
@@ -623,3 +668,61 @@ const observer = new IntersectionObserver(entries => {
 }, { threshold: 0.2 });
 
 document.querySelectorAll(".animate").forEach(el => observer.observe(el));
+
+// Lightbox functionality
+let currentLightboxIndex = 0;
+
+function openLightbox(index) {
+  const modal = document.getElementById("lightbox-modal");
+  const img = document.getElementById("lightbox-image");
+  const caption = document.getElementById("lightbox-caption");
+  const item = window.galleryItems[index];
+  if (!item) return;
+
+  currentLightboxIndex = index;
+  img.src = encodeURI(item.image);
+  caption.textContent = item.caption?.[currentLang] || item.caption;
+  modal.classList.add("show");
+}
+
+function closeLightbox() {
+  document.getElementById("lightbox-modal").classList.remove("show");
+}
+
+function showPrev() {
+  currentLightboxIndex = (currentLightboxIndex - 1 + window.galleryItems.length) % window.galleryItems.length;
+  openLightbox(currentLightboxIndex);
+}
+
+function showNext() {
+  currentLightboxIndex = (currentLightboxIndex + 1) % window.galleryItems.length;
+  openLightbox(currentLightboxIndex);
+}
+
+// Event listeners
+document.addEventListener("DOMContentLoaded", () => {
+  document.querySelector(".gallery-grid").addEventListener("click", (e) => {
+    const item = e.target.closest(".gallery-item");
+    if (item) {
+      const index = parseInt(item.dataset.index);
+      openLightbox(index);
+    }
+  });
+
+  document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
+  document.getElementById("lightbox-prev").addEventListener("click", showPrev);
+  document.getElementById("lightbox-next").addEventListener("click", showNext);
+
+  // Close on click outside
+  document.getElementById("lightbox-modal").addEventListener("click", (e) => {
+    if (e.target === e.currentTarget) closeLightbox();
+  });
+
+  // Keyboard navigation
+  document.addEventListener("keydown", (e) => {
+    if (!document.getElementById("lightbox-modal").classList.contains("show")) return;
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") showPrev();
+    if (e.key === "ArrowRight") showNext();
+  });
+});
