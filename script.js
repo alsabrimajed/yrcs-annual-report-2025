@@ -508,6 +508,9 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
     console.log("Tab element:", tab);
     if (tab) {
       tab.classList.add("active");
+      if (btn.dataset.tab === 'tab-gallery' && appData && appData.gallery) {
+        renderGallery(appData.gallery);
+      }
     } else {
       console.error("Tab not found:", btn.dataset.tab);
     }
