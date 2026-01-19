@@ -23,20 +23,16 @@ async function loadData() {
   try {
     loadingOverlay.style.display = 'flex';
 
-    console.log("Starting to load data.json");
     const response = await fetch("data.json");
-    console.log("Fetch response:", response.status);
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`);
     }
     appData = await response.json();
-    console.log("Data loaded successfully, projects:", appData.tables?.projects?.length);
 
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
     renderAll();
-    console.log("renderAll called");
     loadingOverlay.style.display = 'none';
   } catch (err) {
     console.error("Error loading data.json", err);
@@ -245,9 +241,7 @@ function renderCategoryCards(categories) {
    PROJECTS TABLE
 ========================= */
 function renderProjectsTable(projects) {
-  console.log("Rendering projects table with:", projects.length, "projects");
   const tbody = document.getElementById("projectsTableBody");
-  console.log("tbody found:", !!tbody);
   if (!tbody) return;
   tbody.innerHTML = "";
 
@@ -270,7 +264,6 @@ function renderProjectsTable(projects) {
       </tr>
     `);
   });
-  console.log("Table rendered with", tbody.children.length, "rows");
 }
 
 /* =========================
