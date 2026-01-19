@@ -1,602 +1,316 @@
-/* =========================
-   GLOBAL LANGUAGE
-========================= */
-let currentLang = localStorage.getItem("lang") || "ar";
-let appData = null;
+/* =====================================================
+   GLOBAL STATE
+===================================================== */
+const state = {
+  lang: "ar",
+  data: null,
+  charts: {}
+};
 
-/* =========================
-   STATIC TEXTS
-========================= */
-function updateStaticTexts() {
-  document.querySelectorAll("[data-ar]").forEach(el => {
-    el.textContent = el.dataset[currentLang];
-  });
-}
-
-/* =========================
-   LOAD DATA
-========================= */
-fetch("data.json")
-  .then(res => res.json())
-  .then(data => {
-    appData = data;
-
-    document.documentElement.lang = currentLang;
-    document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-
-    renderAll();
-  })
-  .catch(err => console.error("Error loading data.json", err));
-
-function renderAll() {
-   updateStaticTexts();
-
-  renderStats(appData.stats);
-  renderCharts(appData.charts);
-  renderCategoryCards(appData.categories_cards);
-
-  renderProjectsTable(appData.tables.projects);
-  renderTrainingTable(appData.tables.training);
-
-  // 🔽 التعديل هنا
-   renderMinesTable(appData.tables.mines_awareness);
-  renderEventsTable(appData.tables.events);
-  renderMediaTable(appData.tables.media);
-
-    renderSectorImpactTable(appData.sector_summary_2025);
-      renderSectorImpactChart(appData.sector_summary_2025);
-
-        renderSectorImpactCards(appData.sector_summary_2025);
-
-  renderGallery(appData.gallery);
-}
-
-/* =========================
-   LANGUAGE TOGGLE
-========================= */
-function toggleLanguage() {
-  currentLang = currentLang === "ar" ? "en" : "ar";
-  localStorage.setItem("lang", currentLang);
-
-  document.documentElement.lang = currentLang;
-  document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
-
-  clearCharts();
+/* =====================================================
+   INIT
+===================================================== */
+document.addEventListener("DOMContentLoaded", async () => {
+  await loadData();
+  initTabs();
   renderAll();
+});
+
+/* =====================================================
+   DATA LOADING
+===================================================== */
+async function loadData() {
+  try {
+    const res = await fetch("data.json");
+    state.data = await res.json();
+  } catch (err) {
+    console.error("Failed to load data.json", err);
+  }
 }
 
-/* =========================
+/* =====================================================
+   MAIN RENDER
+===================================================== */
+function renderAll() {
+  renderStats();
+  renderSectorImpact();   // 👈 overview loads visible, safe
+  renderCategoryCards();
+  renderCharts();
+  renderProjectsTable();
+  renderTrainingTable();
+  renderMinesTable();
+  renderGallery();
+  applyLanguage();
+}
+
+/* =====================================================
    HERO STATS
-========================= */
-function renderStats(stats) {
+===================================================== */
+function renderStats() {
   document.querySelectorAll(".stat-number").forEach(el => {
     const key = el.dataset.key;
-    if (stats[key] !== undefined) {
-      animateCounter(el, stats[key]);
+    if (state.data?.stats?.[key] !== undefined) {
+      animateNumber(el, state.data.stats[key]);
     }
   });
 }
 
-function animateCounter(el, target) {
-  let count = 0;
-  const step = Math.ceil(target / 60);
-  const interval = setInterval(() => {
-    count += step;
-    if (count >= target) {
-      el.textContent = target.toLocaleString();
-      clearInterval(interval);
+function animateNumber(el, value) {
+  let current = 0;
+  const step = Math.ceil(value / 60);
+
+  const timer = setInterval(() => {
+    current += step;
+    if (current >= value) {
+      el.textContent = value.toLocaleString();
+      clearInterval(timer);
     } else {
-      el.textContent = count.toLocaleString();
+      el.textContent = current.toLocaleString();
     }
   }, 20);
 }
 
-/* =========================
-   CHARTS (FIXED & STABLE)
-========================= */
-let chartsCache = [];
+/* =====================================================
+   SECTOR IMPACT  ✅ PATCHED
+===================================================== */
+function renderSectorImpact() {
+  const grid = document.getElementById("sectorImpactGrid");
+  const canvas = document.getElementById("sectorImpactChart");
 
-function clearCharts() {
-  chartsCache.forEach(c => c.destroy());
-  chartsCache = [];
-}
-
-function renderCharts(charts) {
-  clearCharts();
-
-  const mapLabels = labels =>
-    labels.map(l => typeof l === "object" ? l[currentLang] : l);
-
-  const commonOptions = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: { legend: { position: "bottom" } }
-  };
-
-  chartsCache.push(
-    new Chart(document.getElementById("categoryChart"), {
-      type: "pie",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.categories.labels),
-        datasets: [{
-          data: charts.categories.values,
-          backgroundColor: [
-            "#e74c3c", "#3498db", "#27ae60",
-            "#9b59b6", "#f39c12", "#95a5a6"
-          ]
-        }]
-      }
-    })
-  );
-
-  chartsCache.push(
-    new Chart(document.getElementById("donorChart"), {
-      type: "bar",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.donors.labels),
-        datasets: [{
-          label: currentLang === "ar" ? "المستفيدون" : "Beneficiaries",
-          data: charts.donors.values,
-          backgroundColor: "#3498db"
-        }]
-      }
-    })
-  );
-
-  chartsCache.push(
-    new Chart(document.getElementById("activitiesChart"), {
-      type: "doughnut",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.activities.labels),
-        datasets: [{
-          data: charts.activities.values,
-          backgroundColor: [
-            "#e67e22", "#2ecc71",
-            "#e74c3c", "#3498db"
-          ]
-        }]
-      }
-    })
-  );
-
-  chartsCache.push(
-    new Chart(document.getElementById("ambulanceChart"), {
-      type: "line",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.ambulance_monthly.labels),
-        datasets: [{
-          label: currentLang === "ar" ? "حالات الإسعاف" : "Ambulance Cases",
-          data: charts.ambulance_monthly.values,
-          borderColor: "#e74c3c",
-          tension: 0.3,
-          fill: false
-        }]
-      }
-    })
-  );
-}
-
-/* =========================
-   CATEGORY CARDS
-========================= */
-function renderCategoryCards(categories) {
-  const container = document.querySelector(".category-cards");
-  container.innerHTML = "";
-
-  categories.forEach(cat => {
-    container.insertAdjacentHTML("beforeend", `
-      <div class="category-card">
-        <div class="category-icon"><i class="fas ${cat.icon}"></i></div>
-        <h4>${cat.title?.[currentLang] || cat.title}</h4>
-        <span>${cat.projects} ${currentLang === "ar" ? "مشاريع" : "Projects"}</span>
-        <span>${cat.beneficiaries.toLocaleString()}
-          ${currentLang === "ar" ? "مستفيد" : "Beneficiaries"}
-        </span>
-      </div>
-    `);
-  });
-}
-
-/* =========================
-   PROJECTS TABLE
-========================= */
-function renderProjectsTable(projects) {
-  const tbody = document.getElementById("projectsTableBody");
-  tbody.innerHTML = "";
-
-  projects.forEach((p, i) => {
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${p.name?.[currentLang] || p.name}</td>
-        <td>${p.category?.[currentLang] || p.category}</td>
-        <td>${p.location?.[currentLang] || p.location}</td>
-        <td>${p.period?.[currentLang] || p.period}</td>
-        <td>${p.donor?.[currentLang] || p.donor}</td>
-        <td>${p.beneficiaries.toLocaleString()}</td>
-      </tr>
-    `);
-  });
-}
-
-/* =========================
-   TRAINING TABLE
-========================= */
- function renderTrainingTable(training) {
-  
-
-  const tbody = document.getElementById("trainingTableBody");
-  if (!tbody || !training) return;
-
-  tbody.innerHTML = "";
-
-  training.forEach((t, i) => {
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${t.name?.[currentLang] || t.name}</td>
-        <td>${t.location?.[currentLang] || t.location}</td>
-        <td>${t.period?.[currentLang] || t.period}</td>
-        <td>${t.target?.[currentLang] || t.target}</td>
-        <td>${t.donor?.[currentLang] || t.donor}</td>
-        <td>${t.trainees}</td>
-      </tr>
-    `);
-  });
-}
- function renderMinesTable(items) {
-  
-
-  const tbody = document.getElementById("minesTableBody");
-  if (!tbody || !items) return;
-
-  tbody.innerHTML = "";
-
-  items.forEach((m, i) => {
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${m.month?.[currentLang] || m.month}</td>
-        <td>${m.location?.[currentLang] || m.location}</td>
-        <td>${m.male}</td>
-        <td>${m.female}</td>
-        <td>${m.total}</td>
-      </tr>
-    `);
-  });
-}
-
- function renderEventsTable(items) {
-  
-
-  const tbody = document.getElementById("eventsTableBody");
-  if (!tbody || !items) return;
-
-  tbody.innerHTML = "";
-
-  items.forEach((e, i) => {
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${e.name?.[currentLang] || e.name}</td>
-        <td>${e.category?.[currentLang] || e.category}</td>
-        <td>${e.location?.[currentLang] || e.location}</td>
-        <td>${e.date}</td>
-        <td>${e.donor?.[currentLang] || e.donor}</td>
-        <td>${e.volunteers}</td>
-      </tr>
-    `);
-  });
-}
-
- function renderMediaTable(items) {
- 
-
-  const tbody = document.getElementById("mediaTableBody");
-  if (!tbody || !items) return;
-
-  tbody.innerHTML = "";
-
-  items.forEach((m, i) => {
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${m.quarter?.[currentLang] || m.quarter}</td>
-        <td>${m.activity?.[currentLang] || m.activity}</td>
-        <td>${m.count}</td>
-        <td>${m.location?.[currentLang] || m.location}</td>
-        <td>${m.beneficiaries.toLocaleString()}</td>
-      </tr>
-    `);
-  });
-}
-
-/* =========================
-   GALLERY
-========================= */
- /* =========================
-   GALLERY – ADVANCED LAZY LOADING
-========================= */
- /* =========================
-   GALLERY – YRCS LAZY LOADING
-========================= */
-function renderGallery(items) {
-  const grid = document.querySelector(".gallery-grid");
-  if (!grid || !items) return;
+  if (!grid || !canvas || !state.data?.sector_summary_2025) return;
 
   grid.innerHTML = "";
 
-  items.forEach(item => {
-    const src = encodeURI(item.image);
-    const caption = item.caption?.[currentLang] || item.caption;
+  const labels = [];
+  const values = [];
 
-    grid.insertAdjacentHTML("beforeend", `
-      <div class="gallery-item">
-        <img
-          class="lazy-image"
-          src="Assets/placeholder.png"
-          data-src="${src}"
-          alt="${caption}"
-        >
-        <div class="gallery-overlay">
-          <span>${caption}</span>
-        </div>
-      </div>
-    `);
+  Object.values(state.data.sector_summary_2025).forEach(sector => {
+    const value =
+      sector.beneficiaries ??
+      sector.total_beneficiaries ??
+      0;
+
+    labels.push(sector.label[state.lang]);
+    values.push(value);
+
+    const card = document.createElement("div");
+    card.className = "stat-card impact-card";
+    card.innerHTML = `
+      <div class="stat-number">${value.toLocaleString()}</div>
+      <span>${sector.label[state.lang]}</span>
+    `;
+    grid.appendChild(card);
   });
 
-  initLazyLoading();
-}
-
-/* =========================
-   LAZY LOADING (IntersectionObserver)
-========================= */
-/* =========================
-========================= */
-function initLazyLoading() {
-  const images = document.querySelectorAll("img.lazy-image");
-
-  if (!("IntersectionObserver" in window)) {
-    images.forEach(img => {
-      img.src = img.dataset.src;
-      img.classList.add("loaded");
-    });
-    return;
+  // 🔥 Destroy & recreate chart safely
+  if (state.charts.sectorImpact) {
+    state.charts.sectorImpact.destroy();
   }
 
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.classList.add("loaded");
-        obs.unobserve(img);
-      }
-    });
-  }, {
-    rootMargin: "200px"
-  });
-
-  images.forEach(img => observer.observe(img));
-}
-
-/* ===============================
-   Reveal on Scroll
-================================ */
-
-const revealElements = document.querySelectorAll(".category-card");
-
-const revealOnScroll = () => {
-  revealElements.forEach((el, index) => {
-    const windowHeight = window.innerHeight;
-    const elementTop = el.getBoundingClientRect().top;
-    const revealPoint = 120;
-
-    if (elementTop < windowHeight - revealPoint) {
-      el.classList.add("active");
-      el.style.transitionDelay = `${index * 0.1}s`;
-    }
-  });
-};
-
-// Add reveal class initially
-revealElements.forEach(el => el.classList.add("reveal"));
-
-window.addEventListener("scroll", revealOnScroll);
-window.addEventListener("load", revealOnScroll);
-/* ================= TABS LOGIC ================= */
-
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-
-    document.querySelectorAll(".tab-btn")
-      .forEach(b => b.classList.remove("active"));
-
-    document.querySelectorAll(".tab-content")
-      .forEach(c => c.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.tab)
-      .classList.add("active");
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-  });
-});
-function renderSectorImpactTable(sectors) {
-  const tbody = document.getElementById("sectorImpactBody");
-  const totalCell = document.getElementById("sectorImpactTotal");
-
-  if (!tbody || !sectors) return;
-
-  tbody.innerHTML = "";
-  let grandTotal = 0;
-  let index = 1;
-
-  Object.values(sectors).forEach(sector => {
-    if (sector.beneficiaries !== undefined) {
-      const value = sector.beneficiaries;
-      grandTotal += value;
-
-      tbody.insertAdjacentHTML("beforeend", `
-        <tr>
-          <td>${index++}</td>
-          <td>${sector.label[currentLang]}</td>
-          <td>${value.toLocaleString()}</td>
-        </tr>
-      `);
-    }
-  });
-
-  totalCell.textContent = grandTotal.toLocaleString();
-}
-function renderSectorImpactChart(sectors) {
-  const ctx = document.getElementById("sectorImpactChart");
-  if (!ctx || !sectors) return;
-
-  const labels = [];
-  const values = [];
-
-  Object.values(sectors).forEach(sector => {
-    if (sector.beneficiaries !== undefined) {
-      labels.push(sector.label[currentLang]);
-      values.push(sector.beneficiaries);
-    }
-  });
-
-  chartsCache.push(
-    new Chart(ctx, {
-      type: "bar",
-      data: {
-        labels,
-        datasets: [{
-          label: currentLang === "ar"
-            ? "عدد المستفيدين"
-            : "Number of Beneficiaries",
-          data: values,
-          backgroundColor: [
-            "#1f4e79",
-            "#b11226",
-            "#2ecc71",
-            "#f39c12",
-            "#9b59b6"
-          ]
-        }]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-          legend: { display: false },
-          tooltip: {
-            callbacks: {
-              label: ctx =>
-                ctx.raw.toLocaleString() +
-                (currentLang === "ar" ? " مستفيد" : " beneficiaries")
-            }
-          }
-        },
-        scales: {
-          y: {
-            beginAtZero: true,
-            ticks: {
-              callback: value => value.toLocaleString()
-            }
-          }
-        }
-      }
-    })
-  );
-}
-function renderSectorImpactCards(sectors) {
-  const grid = document.getElementById("sectorImpactGrid");
-  const ctx = document.getElementById("sectorImpactChart");
-  if (!grid || !ctx) return;
-
-  grid.innerHTML = "";
-
-  const list = Object.values(sectors);
-  const total = list.reduce((s, x) => s + Number(x.beneficiaries), 0);
-
-  /* ===== TOTAL CARD ===== */
-  grid.insertAdjacentHTML("beforeend", `
-    <div class="stat-card impact-card total-impact animate">
-      <i class="fas fa-globe"></i>
-      <div class="stat-number">${total.toLocaleString()}</div>
-      <span>${currentLang === "ar" ? "الإجمالي الكلي" : "Total Impact"}</span>
-    </div>
-  `);
-
-  const labels = [];
-  const values = [];
-  const colors = [];
-
-  list.forEach(sec => {
-    const percent = ((sec.beneficiaries / total) * 100).toFixed(1);
-
-    labels.push(sec.label[currentLang]);
-    values.push(sec.beneficiaries);
-    colors.push(sec.color);
-
-    grid.insertAdjacentHTML("beforeend", `
-      <div class="stat-card impact-card animate"
-           style="--accent:${sec.color}"
-           title="${percent}%">
-        <i class="fas ${sec.icon}"></i>
-        <div class="stat-number">${sec.beneficiaries.toLocaleString()}</div>
-        <span>${sec.label[currentLang]}</span>
-        <small>${percent}%</small>
-      </div>
-    `);
-  });
-
-  /* ===== DOUGHNUT CHART ===== */
-  if (window.sectorChart) window.sectorChart.destroy();
-
-  window.sectorChart = new Chart(ctx, {
+  state.charts.sectorImpact = new Chart(canvas, {
     type: "doughnut",
     data: {
       labels,
       datasets: [{
         data: values,
-        backgroundColor: colors
+        backgroundColor: [
+          "#e63946", "#457b9d", "#2a9d8f",
+          "#f4a261", "#9b5de5"
+        ]
       }]
     },
     options: {
       responsive: true,
-      cutout: "65%",
-      plugins: {
-        legend: { position: "bottom" },
-        tooltip: {
-          callbacks: {
-            label: ctx =>
-              `${ctx.label}: ${ctx.raw.toLocaleString()}`
-          }
-        }
-      }
+      maintainAspectRatio: false,
+      plugins: { legend: { position: "bottom" } }
     }
   });
 }
-const observer = new IntersectionObserver(entries => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) {
-      entry.target.classList.add("show");
-      observer.unobserve(entry.target);
+
+/* =====================================================
+   CATEGORY CARDS
+===================================================== */
+function renderCategoryCards() {
+  const container = document.querySelector(".category-cards");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  state.data.categories_cards.forEach(cat => {
+    const div = document.createElement("div");
+    div.className = "category-card";
+    div.innerHTML = `
+      <div class="category-icon"><i class="fas ${cat.icon}"></i></div>
+      <h4>${cat.title[state.lang]}</h4>
+      <span>${cat.projects} ${state.lang === "ar" ? "مشاريع" : "Projects"}</span>
+      <span class="category-beneficiaries">${cat.beneficiaries.toLocaleString()}</span>
+    `;
+    container.appendChild(div);
+  });
+}
+
+/* =====================================================
+   CHARTS
+===================================================== */
+function renderCharts() {
+  const c = state.data.charts;
+
+  createChart("categoryChart", "pie",
+    c.categories.labels.map(l => l[state.lang]),
+    c.categories.values
+  );
+
+  createChart("donorChart", "bar",
+    c.donors.labels,
+    c.donors.values
+  );
+
+  createChart("activitiesChart", "bar",
+    c.activities.labels.map(l => l[state.lang]),
+    c.activities.values
+  );
+
+  createChart("ambulanceChart", "line",
+    c.ambulance_monthly.labels.map(l => l[state.lang]),
+    c.ambulance_monthly.values
+  );
+}
+
+function createChart(id, type, labels, data) {
+  const canvas = document.getElementById(id);
+  if (!canvas) return;
+
+  if (state.charts[id]) {
+    state.charts[id].destroy();
+  }
+
+  state.charts[id] = new Chart(canvas, {
+    type,
+    data: {
+      labels,
+      datasets: [{ data }]
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false
     }
   });
-}, { threshold: 0.2 });
+}
 
-document.querySelectorAll(".animate").forEach(el => observer.observe(el));
+/* =====================================================
+   TABLES
+===================================================== */
+function renderProjectsTable() {
+  const body = document.getElementById("projectsTableBody");
+  if (!body) return;
 
-document.querySelectorAll(".tab-btn").forEach(btn => {
-  btn.addEventListener("click", () => {
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
-    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
-
-    btn.classList.add("active");
-    document.getElementById(btn.dataset.tab).classList.add("active");
+  body.innerHTML = "";
+  state.data.tables.projects.forEach((p, i) => {
+    body.innerHTML += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${p.name[state.lang]}</td>
+        <td>${p.category[state.lang]}</td>
+        <td>${p.location[state.lang]}</td>
+        <td>${p.period[state.lang]}</td>
+        <td>${p.donor[state.lang]}</td>
+        <td>${p.beneficiaries}</td>
+      </tr>`;
   });
-});
+}
+
+function renderTrainingTable() {
+  const body = document.getElementById("trainingTableBody");
+  if (!body) return;
+
+  body.innerHTML = "";
+  state.data.tables.training.forEach((t, i) => {
+    body.innerHTML += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${t.name[state.lang]}</td>
+        <td>${t.location[state.lang]}</td>
+        <td>${t.period[state.lang]}</td>
+        <td>${t.target[state.lang]}</td>
+        <td>${t.donor[state.lang]}</td>
+        <td>${t.trainees}</td>
+      </tr>`;
+  });
+}
+
+function renderMinesTable() {
+  const body = document.getElementById("minesTableBody");
+  if (!body) return;
+
+  body.innerHTML = "";
+  state.data.mines_awareness.forEach((m, i) => {
+    body.innerHTML += `
+      <tr>
+        <td>${i + 1}</td>
+        <td>${m.month[state.lang]}</td>
+        <td>${m.location[state.lang]}</td>
+        <td>${m.male}</td>
+        <td>${m.female}</td>
+        <td>${m.total}</td>
+      </tr>`;
+  });
+}
+
+/* =====================================================
+   GALLERY
+===================================================== */
+function renderGallery() {
+  const grid = document.querySelector(".gallery-grid");
+  if (!grid) return;
+
+  grid.innerHTML = "";
+  state.data.gallery.forEach(img => {
+    grid.innerHTML += `
+      <div class="gallery-item">
+        <img src="${img.image}" loading="lazy">
+        <div class="gallery-overlay">
+          <p>${img.caption[state.lang]}</p>
+        </div>
+      </div>`;
+  });
+}
+
+/* =====================================================
+   LANGUAGE
+===================================================== */
+function toggleLanguage() {
+  state.lang = state.lang === "ar" ? "en" : "ar";
+  document.documentElement.lang = state.lang;
+  document.documentElement.dir = state.lang === "ar" ? "rtl" : "ltr";
+  renderAll();
+}
+
+function applyLanguage() {
+  document.querySelectorAll("[data-ar]").forEach(el => {
+    el.textContent = el.dataset[state.lang];
+  });
+}
+
+/* =====================================================
+   TABS  ✅ PATCHED
+===================================================== */
+function initTabs() {
+  const buttons = document.querySelectorAll(".tab-btn");
+  const contents = document.querySelectorAll(".tab-content");
+
+  buttons.forEach(btn => {
+    btn.addEventListener("click", () => {
+      buttons.forEach(b => b.classList.remove("active"));
+      contents.forEach(c => c.classList.remove("active"));
+
+      btn.classList.add("active");
+      const tab = document.getElementById(btn.dataset.tab);
+      tab.classList.add("active");
+
+      // 🔥 CRITICAL FIX: redraw charts when visible
+      if (btn.dataset.tab === "tab-overview") {
+        setTimeout(renderSectorImpact, 50);
+      }
+    });
+  });
+}
