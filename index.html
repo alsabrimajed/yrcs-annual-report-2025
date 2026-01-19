@@ -1,152 +1,114 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Annual Report 2025 – Yemen Red Crescent Society | Marib Branch</title>
-
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
-
-  <!-- Icons -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Styles -->
   <link rel="stylesheet" href="styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
   <!-- Charts -->
-  <script src="https://cdn.jsdelivr.net/npm/chart.js" defer></script>
-
-  <!-- Main Script -->
-  <script src="script.js" defer></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 
 <body>
 
 <!-- ================= HEADER ================= -->
 <header class="header">
-  <div class="container">
+  <div class="tabs-container">
+    <button class="tab-btn active" data-tab="tab-overview"
+      data-ar="نظرة عامة" data-en="Overview"></button>
 
-    <div class="header-content">
-      <img src="Assets/YRCS-logo.png" alt="YRCS Logo" class="logo">
+    <button class="tab-btn" data-tab="tab-charts"
+      data-ar="الرسوم البيانية" data-en="Charts"></button>
 
-      <div class="header-text">
-        <h1 data-ar="جمعية الهلال الأحمر اليمني"
-            data-en="Yemen Red Crescent Society"></h1>
+    <button class="tab-btn" data-tab="tab-projects"
+      data-ar="المشاريع" data-en="Projects"></button>
 
-        <p class="tagline"
-           data-ar="التقرير السنوي للمشاريع والأنشطة 2025"
-           data-en="Annual Projects & Activities Report 2025"></p>
-      </div>
+    <button class="tab-btn" data-tab="tab-training"
+      data-ar="التدريب" data-en="Training"></button>
+
+    <button class="tab-btn" data-tab="tab-activities"
+      data-ar="الأنشطة" data-en="Activities"></button>
+
+    <button class="tab-btn" data-tab="tab-gallery"
+      data-ar="المعرض" data-en="Gallery"></button>
+  </div>
+
+  <div class="header-content">
+    <img src="Assets/YRCS-logo.png" alt="YRCS Logo" class="logo">
+    <div class="header-text">
+      <h1 data-ar="جمعية الهلال الأحمر اليمني" data-en="Yemen Red Crescent Society"></h1>
+      <p class="tagline"
+        data-ar="التقرير السنوي للمشاريع والأنشطة 2025"
+        data-en="Annual Projects & Activities Report 2025"></p>
     </div>
+  </div>
 
-    <div class="header-actions">
-      <button class="btn btn-lang" onclick="toggleLanguage()">
-        🌐 AR / EN
-      </button>
-
-      <button class="btn btn-print" onclick="window.print()">
-        <i class="fas fa-print"></i>
-        <span data-ar="طباعة التقرير" data-en="Print Report"></span>
-      </button>
-    </div>
-
+  <div class="header-actions">
+    <button onclick="toggleLanguage()" class="btn btn-lang">🌐 AR / EN</button>
+    <button onclick="window.print()" class="btn btn-print">
+      <i class="fas fa-print"></i>
+      <span data-ar="طباعة التقرير" data-en="Print Report"></span>
+    </button>
   </div>
 </header>
 
-<!-- ================= MAIN TABS ================= -->
-<nav class="tabs-container" aria-label="Main navigation tabs">
-  <button class="tab-btn active" data-tab="overview"
-          data-ar="نظرة عامة" data-en="Overview"></button>
-
-  <button class="tab-btn" data-tab="charts"
-          data-ar="الرسوم البيانية" data-en="Charts"></button>
-
-  <button class="tab-btn" data-tab="projects"
-          data-ar="المشاريع" data-en="Projects"></button>
-
-  <button class="tab-btn" data-tab="training"
-          data-ar="التدريب" data-en="Training"></button>
-
-  <button class="tab-btn" data-tab="activities"
-          data-ar="الأنشطة" data-en="Activities"></button>
-
-  <button class="tab-btn" data-tab="gallery"
-          data-ar="المعرض" data-en="Gallery"></button>
-</nav>
-
-<main>
-
 <!-- ================= OVERVIEW ================= -->
-<section class="tab-content active" data-tab="overview">
+<section class="tab-content active" id="tab-overview">
 
   <!-- HERO STATS -->
   <section class="hero-stats">
     <div class="container">
       <div class="stats-grid">
-
-        <div class="stat-card">
-          <i class="fas fa-users"></i>
-          <div class="stat-number" data-key="total_beneficiaries">0</div>
-          <span data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-project-diagram"></i>
-          <div class="stat-number" data-key="projects">0</div>
-          <span data-ar="مشاريع الاستجابة" data-en="Response Projects"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-ambulance"></i>
-          <div class="stat-number" data-key="ambulance_cases">0</div>
-          <span data-ar="إحالات إسعافية" data-en="Ambulance Referrals"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-bomb"></i>
-          <div class="stat-number" data-key="mine_awareness">0</div>
-          <span data-ar="توعية بمخاطر الألغام" data-en="Mine Risk Awareness"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-graduation-cap"></i>
-          <div class="stat-number" data-key="trainees">0</div>
-          <span data-ar="المتدربون" data-en="Trainees"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-bullhorn"></i>
-          <div class="stat-number" data-key="movement_awareness">0</div>
-          <span data-ar="التعريف بالحركة" data-en="Movement Awareness"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-school"></i>
-          <div class="stat-number" data-key="classrooms">0</div>
-          <span data-ar="فصول دراسية" data-en="Classrooms"></span>
-        </div>
-
-        <div class="stat-card">
-          <i class="fas fa-handshake"></i>
-          <div class="stat-number" data-key="donors">0</div>
-          <span data-ar="الجهات المانحة" data-en="Donors"></span>
-        </div>
-
+        <div class="stat-card"><i class="fas fa-users"></i><div class="stat-number" data-key="total_beneficiaries">0</div><span data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></span></div>
+        <div class="stat-card"><i class="fas fa-project-diagram"></i><div class="stat-number" data-key="projects">0</div><span data-ar="مشاريع الاستجابة" data-en="Response Projects"></span></div>
+        <div class="stat-card"><i class="fas fa-ambulance"></i><div class="stat-number" data-key="ambulance_cases">0</div><span data-ar="إحالات إسعافية" data-en="Ambulance Referrals"></span></div>
+        <div class="stat-card"><i class="fas fa-bomb"></i><div class="stat-number" data-key="mine_awareness">0</div><span data-ar="توعية بمخاطر الألغام" data-en="Mine Risk Awareness"></span></div>
+        <div class="stat-card"><i class="fas fa-graduation-cap"></i><div class="stat-number" data-key="trainees">0</div><span data-ar="المتدربون" data-en="Trainees"></span></div>
+        <div class="stat-card"><i class="fas fa-bullhorn"></i><div class="stat-number" data-key="movement_awareness">0</div><span data-ar="التعريف بالحركة" data-en="Movement Awareness"></span></div>
+        <div class="stat-card"><i class="fas fa-school"></i><div class="stat-number" data-key="classrooms">0</div><span data-ar="فصول دراسية" data-en="Classrooms"></span></div>
+        <div class="stat-card"><i class="fas fa-handshake"></i><div class="stat-number" data-key="donors">0</div><span data-ar="الجهات المانحة" data-en="Donors"></span></div>
       </div>
     </div>
   </section>
 
   <!-- SECTOR IMPACT -->
+  <section class="hero-stats sector-impact">
+    <div class="container">
+      <h2 class="section-title" data-ar="الأثر القطاعي" data-en="Sector Impact"></h2>
+      <div class="stats-grid" id="sectorImpactGrid"></div>
+    </div>
+  </section>
+
+  <!-- SECTOR IMPACT TABLE -->
   <section class="table-section">
     <div class="container">
-      <h2 class="section-title"
-          data-ar="الأثر القطاعي"
-          data-en="Sector Impact"></h2>
+      <table class="projects-table sector-impact-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-ar="القطاع" data-en="Sector"></th>
+            <th data-ar="عدد المستفيدين" data-en="Beneficiaries"></th>
+          </tr>
+        </thead>
+        <tbody id="sectorImpactBody"></tbody>
+        <tfoot>
+          <tr>
+            <th colspan="2" data-ar="الإجمالي" data-en="Total"></th>
+            <th id="sectorImpactTotal"></th>
+          </tr>
+        </tfoot>
+      </table>
+    </div>
+  </section>
 
-      <div class="stats-grid impact-grid" id="sectorImpactGrid"></div>
-
+  <!-- SECTOR IMPACT CHART -->
+  <section class="charts-section">
+    <div class="container">
       <div class="chart-card">
         <canvas id="sectorImpactChart"></canvas>
       </div>
@@ -157,9 +119,8 @@
   <section class="category-section">
     <div class="container">
       <h2 class="section-title"
-          data-ar="مشاريع الاستجابة حسب الفئة"
-          data-en="Response Projects by Category"></h2>
-
+        data-ar="مشاريع الاستجابة حسب الفئة"
+        data-en="Response Projects by Category"></h2>
       <div class="category-cards"></div>
     </div>
   </section>
@@ -167,136 +128,99 @@
 </section>
 
 <!-- ================= CHARTS ================= -->
-<section class="tab-content" data-tab="charts">
+<section class="tab-content" id="tab-charts">
   <section class="charts-section">
     <div class="container">
-
-      <h2 class="section-title"
-          data-ar="الإحصائيات البيانية"
-          data-en="Statistical Overview"></h2>
-
       <div class="charts-grid">
         <div class="chart-card"><canvas id="categoryChart"></canvas></div>
         <div class="chart-card"><canvas id="donorChart"></canvas></div>
         <div class="chart-card"><canvas id="activitiesChart"></canvas></div>
         <div class="chart-card"><canvas id="ambulanceChart"></canvas></div>
       </div>
-
     </div>
   </section>
 </section>
 
 <!-- ================= PROJECTS ================= -->
-<section class="tab-content" data-tab="projects">
+<section class="tab-content" id="tab-projects">
   <section class="table-section">
     <div class="container">
-
-      <h2 class="section-title"
-          data-ar="جدول مشاريع الاستجابة"
-          data-en="Response Projects Table"></h2>
-
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="اسم المشروع" data-en="Project Name"></th>
-              <th data-ar="الفئة" data-en="Category"></th>
-              <th data-ar="الموقع" data-en="Location"></th>
-              <th data-ar="الفترة" data-en="Period"></th>
-              <th data-ar="الجهة الممولة" data-en="Donor"></th>
-              <th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-            </tr>
-          </thead>
-          <tbody id="projectsTableBody"></tbody>
-        </table>
-      </div>
-
+      <table class="projects-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-ar="اسم المشروع" data-en="Project Name"></th>
+            <th data-ar="الفئة" data-en="Category"></th>
+            <th data-ar="الموقع" data-en="Location"></th>
+            <th data-ar="الفترة" data-en="Period"></th>
+            <th data-ar="الجهة الممولة" data-en="Donor"></th>
+            <th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+          </tr>
+        </thead>
+        <tbody id="projectsTableBody"></tbody>
+      </table>
     </div>
   </section>
 </section>
 
 <!-- ================= TRAINING ================= -->
-<section class="tab-content" data-tab="training">
+<section class="tab-content" id="tab-training">
   <section class="table-section">
     <div class="container">
-
-      <h2 class="section-title"
-          data-ar="التدريب وبناء القدرات"
-          data-en="Training & Capacity Building"></h2>
-
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="اسم الدورة" data-en="Training Title"></th>
-              <th data-ar="مكان التنفيذ" data-en="Location"></th>
-              <th data-ar="الفترة" data-en="Period"></th>
-              <th data-ar="الفئة المستهدفة" data-en="Target Group"></th>
-              <th data-ar="الجهة الممولة" data-en="Donor"></th>
-              <th data-ar="عدد المتدربين" data-en="Trainees"></th>
-            </tr>
-          </thead>
-          <tbody id="trainingTableBody"></tbody>
-        </table>
-      </div>
-
+      <table class="projects-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-ar="اسم الدورة" data-en="Training Title"></th>
+            <th data-ar="مكان التنفيذ" data-en="Location"></th>
+            <th data-ar="الفترة" data-en="Period"></th>
+            <th data-ar="الفئة المستهدفة" data-en="Target Group"></th>
+            <th data-ar="الجهة الممولة" data-en="Donor"></th>
+            <th data-ar="عدد المتدربين" data-en="Trainees"></th>
+          </tr>
+        </thead>
+        <tbody id="trainingTableBody"></tbody>
+      </table>
     </div>
   </section>
 </section>
 
 <!-- ================= ACTIVITIES ================= -->
-<section class="tab-content" data-tab="activities">
-
+<section class="tab-content" id="tab-activities">
   <section class="table-section">
     <div class="container">
-      <h2 class="section-title"
-          data-ar="التوعية بمخاطر الألغام"
-          data-en="Mine Risk Awareness"></h2>
-
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="الشهر" data-en="Month"></th>
-              <th data-ar="الموقع" data-en="Location"></th>
-              <th data-ar="ذكور" data-en="Male"></th>
-              <th data-ar="إناث" data-en="Female"></th>
-              <th data-ar="الإجمالي" data-en="Total"></th>
-            </tr>
-          </thead>
-          <tbody id="minesTableBody"></tbody>
-        </table>
-      </div>
+      <table class="projects-table">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th data-ar="الشهر" data-en="Month"></th>
+            <th data-ar="الموقع" data-en="Location"></th>
+            <th data-ar="ذكور" data-en="Male"></th>
+            <th data-ar="إناث" data-en="Female"></th>
+            <th data-ar="الإجمالي" data-en="Total"></th>
+          </tr>
+        </thead>
+        <tbody id="minesTableBody"></tbody>
+      </table>
     </div>
   </section>
-
 </section>
 
 <!-- ================= GALLERY ================= -->
-<section class="tab-content" data-tab="gallery">
+<section class="tab-content" id="tab-gallery">
   <section class="gallery-section">
     <div class="container">
-
-      <h2 class="section-title"
-          data-ar="معرض الصور"
-          data-en="Photo Gallery"></h2>
-
       <div class="gallery-grid"></div>
-
     </div>
   </section>
 </section>
 
-</main>
-
-<!-- ================= FOOTER ================= -->
 <footer class="footer">
   <p data-ar="© 2025 جمعية الهلال الأحمر اليمني"
      data-en="© 2025 Yemen Red Crescent Society"></p>
 </footer>
+
+<script src="script.js"></script>
 
 </body>
 </html>
