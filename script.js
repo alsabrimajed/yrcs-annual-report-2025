@@ -606,7 +606,7 @@ function renderSectorImpactCards(sectors) {
 
   /* ===== TOTAL CARD ===== */
   grid.insertAdjacentHTML("beforeend", `
-    <div class="stat-card impact-card total-impact animate">
+    <div class="stat-card impact-card total-impact animate show">
       <i class="fas fa-globe"></i>
       <div class="stat-number">${total.toLocaleString()}</div>
       <span>${currentLang === "ar" ? "الإجمالي الكلي" : "Total Impact"}</span>
@@ -626,7 +626,7 @@ function renderSectorImpactCards(sectors) {
     colors.push(sec.color || '#1f4e79');
 
     grid.insertAdjacentHTML("beforeend", `
-      <div class="stat-card impact-card animate"
+      <div class="stat-card impact-card animate show"
            style="--accent:${sec.color}"
            title="${percent}%">
         <i class="fas ${sec.icon || 'fa-layer-group'}"></i>
@@ -636,6 +636,9 @@ function renderSectorImpactCards(sectors) {
       </div>
     `);
   });
+
+  // Observe the new animate elements
+  grid.querySelectorAll(".animate").forEach(el => window.observer.observe(el));
 
   /* ===== DOUGHNUT CHART ===== */
   if (window.sectorChart) window.sectorChart.destroy();
@@ -664,16 +667,16 @@ function renderSectorImpactCards(sectors) {
     }
   });
 }
-const observer = new IntersectionObserver(entries => {
+window.observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
       entry.target.classList.add("show");
-      observer.unobserve(entry.target);
+      window.observer.unobserve(entry.target);
     }
   });
 }, { threshold: 0.2 });
 
-document.querySelectorAll(".animate").forEach(el => observer.observe(el));
+document.querySelectorAll(".animate").forEach(el => window.observer.observe(el));
 
 // Lightbox functionality
 let currentLightboxIndex = 0;
