@@ -399,9 +399,7 @@ function renderGallery(items) {
       grid.insertAdjacentHTML("beforeend", `
         <div class="gallery-item" data-index="${globalIndex}">
           <img
-            class="lazy-image"
-            src="Assets/placeholder.png"
-            data-src="${src}"
+            src="${src}"
             alt="${caption}"
           >
           <div class="gallery-overlay">
