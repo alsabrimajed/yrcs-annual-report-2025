@@ -16,17 +16,32 @@ function updateStaticTexts() {
 /* =========================
    LOAD DATA
 ========================= */
-fetch("data.json")
-  .then(res => res.json())
-  .then(data => {
-    appData = data;
+async function loadData() {
+  const loadingOverlay = document.getElementById('loading-overlay');
+  const errorMessage = document.getElementById('error-message');
+
+  try {
+    loadingOverlay.style.display = 'flex';
+
+    const response = await fetch("data.json");
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    appData = await response.json();
 
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
     renderAll();
-  })
-  .catch(err => console.error("Error loading data.json", err));
+    loadingOverlay.style.display = 'none';
+  } catch (err) {
+    console.error("Error loading data.json", err);
+    loadingOverlay.style.display = 'none';
+    errorMessage.style.display = 'block';
+  }
+}
+
+loadData();
 
 function renderAll() {
    updateStaticTexts();
