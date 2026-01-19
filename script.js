@@ -502,24 +502,16 @@ window.addEventListener("load", revealOnScroll);
 ========================= */
 document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-
-    document.querySelectorAll(".tab-btn")
-      .forEach(b => b.classList.remove("active"));
-
-    document.querySelectorAll(".tab-content")
-      .forEach(c => c.classList.remove("active"));
-
+    console.log("Tab clicked:", btn.dataset.tab);
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
     btn.classList.add("active");
     const tab = document.getElementById(btn.dataset.tab);
-    tab.classList.add("active");
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-
-    // 🔥 Render sector impact ONLY when overview is visible
-    if (btn.dataset.tab === "tab-overview") {
-      const sectorSource = appData.sector_impact || appData.sector_summary_2025;
-      renderSectorImpactCards(sectorSource);
-      renderSectorImpactChart(sectorSource);
+    console.log("Tab element:", tab);
+    if (tab) {
+      tab.classList.add("active");
+    } else {
+      console.error("Tab not found:", btn.dataset.tab);
     }
   });
 });
@@ -714,29 +706,38 @@ function showNext() {
 }
 
 // Event listeners
-document.addEventListener("DOMContentLoaded", () => {
-  document.querySelector(".gallery-grid").addEventListener("click", (e) => {
+const galleryGrid = document.querySelector(".gallery-grid");
+if (galleryGrid) {
+  galleryGrid.addEventListener("click", (e) => {
     const item = e.target.closest(".gallery-item");
     if (item) {
       const index = parseInt(item.dataset.index);
       openLightbox(index);
     }
   });
+}
 
-  document.getElementById("lightbox-close").addEventListener("click", closeLightbox);
-  document.getElementById("lightbox-prev").addEventListener("click", showPrev);
-  document.getElementById("lightbox-next").addEventListener("click", showNext);
+const lightboxClose = document.getElementById("lightbox-close");
+if (lightboxClose) lightboxClose.addEventListener("click", closeLightbox);
 
-  // Close on click outside
-  document.getElementById("lightbox-modal").addEventListener("click", (e) => {
+const lightboxPrev = document.getElementById("lightbox-prev");
+if (lightboxPrev) lightboxPrev.addEventListener("click", showPrev);
+
+const lightboxNext = document.getElementById("lightbox-next");
+if (lightboxNext) lightboxNext.addEventListener("click", showNext);
+
+// Close on click outside
+const lightboxModal = document.getElementById("lightbox-modal");
+if (lightboxModal) {
+  lightboxModal.addEventListener("click", (e) => {
     if (e.target === e.currentTarget) closeLightbox();
   });
+}
 
-  // Keyboard navigation
-  document.addEventListener("keydown", (e) => {
-    if (!document.getElementById("lightbox-modal").classList.contains("show")) return;
-    if (e.key === "Escape") closeLightbox();
-    if (e.key === "ArrowLeft") showPrev();
-    if (e.key === "ArrowRight") showNext();
-  });
+// Keyboard navigation
+document.addEventListener("keydown", (e) => {
+  if (!lightboxModal || !lightboxModal.classList.contains("show")) return;
+  if (e.key === "Escape") closeLightbox();
+  if (e.key === "ArrowLeft") showPrev();
+  if (e.key === "ArrowRight") showNext();
 });
