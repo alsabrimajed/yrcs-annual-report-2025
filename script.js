@@ -748,6 +748,20 @@ function renderFloodResponse() {
     `;
     tbody.appendChild(tr);
   });
+
+  // Color the map
+  const svg = document.getElementById('yemenMapSvg');
+  if (svg) {
+    const maxBenef = Math.max(...appData.flood_response.data.map(d => d.shelter_beneficiaries));
+    appData.flood_response.data.forEach(row => {
+      const govEn = row.governorate.en.toLowerCase().replace(/\s+/g, '');
+      const path = svg.querySelector(`#${govEn}`);
+      if (path) {
+        const intensity = row.shelter_beneficiaries / maxBenef;
+        path.style.fill = `rgba(231, 76, 60, ${Math.max(0.1, intensity)})`;
+      }
+    });
+  }
 }
 
 window.observer = new IntersectionObserver(entries => {

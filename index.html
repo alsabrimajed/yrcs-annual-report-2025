@@ -204,6 +204,27 @@
 <tbody id="floodTableBody"></tbody>
 </table>
 </div>
+
+<!-- Yemen Map Visualization -->
+<div class="yemen-map-container">
+<h3 data-ar="خريطة الاستجابة للسيول في اليمن" data-en="Yemen Flood Response Map"></h3>
+<div class="yemen-map">
+<svg viewBox="0 0 1000 800" id="yemenMapSvg">
+<!-- Yemen Governorates Paths - Placeholder -->
+<path id="ibb" d="M500 300 L520 320 L510 340 L490 330 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<path id="abyan" d="M450 400 L470 420 L460 440 L440 430 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<!-- Add more paths for all governorates -->
+<text x="505" y="320" text-anchor="middle" font-size="12" fill="#000">إب</text>
+<text x="455" y="420" text-anchor="middle" font-size="12" fill="#000">أبين</text>
+<!-- Add text labels for all -->
+</svg>
+</div>
+<div class="map-legend">
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.2);"></span><span data-ar="منخفض" data-en="Low"></span></div>
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.5);"></span><span data-ar="متوسط" data-en="Medium"></span></div>
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.8);"></span><span data-ar="عالي" data-en="High"></span></div>
+</div>
+</div>
 </div>
 </section>
 </div>
