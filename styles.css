@@ -1488,6 +1488,35 @@ html[dir="ltr"] .category-card {
 }
 
 /* ===============================
+   Health Services Section
+================================ */
+.health-services-section {
+  padding: 40px 0;
+  background: var(--light-gray);
+}
+
+.health-services-section .container {
+  max-width: 1200px;
+}
+
+.health-services-section h3 {
+  font-size: 1.4rem;
+  color: var(--primary-red);
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.health-services-section p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.health-table {
+  margin-bottom: 20px;
+}
+
+/* ===============================
    Disaster Sub-Tabs
 ================================ */
 .disaster-sub-tabs {
