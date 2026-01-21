@@ -1371,4 +1371,31 @@
   ]
 }
 
+,
+"rockslides": {
+  "data": [
+    {
+      "governorate": { "ar": "حجة", "en": "Hajjah" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_materials": 3,
+      "shelter_beneficiaries": 21
+    },
+    {
+      "governorate": { "ar": "المحويت", "en": "Al Mahwit" },
+      "food_baskets": 27,
+      "food_beneficiaries": 27,
+      "shelter_materials": 27,
+      "shelter_beneficiaries": 27
+    },
+    {
+      "governorate": { "ar": "ذمار", "en": "Dhamar" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_materials": 3,
+      "shelter_beneficiaries": 21
+    }
+  ]
+}
+
 }
