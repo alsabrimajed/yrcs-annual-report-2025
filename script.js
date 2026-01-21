@@ -77,6 +77,8 @@ renderFireResponse();
 
 renderRockslides();
 
+renderAidDistribution();
+
   renderGallery(appData.gallery);
   window.galleryItems = appData.gallery; // Store for lightbox
 }
@@ -871,6 +873,22 @@ function renderRockslides() {
       <td>${row.food_baskets}</td>
       <td>${row.food_beneficiaries.toLocaleString()}</td>
       <td>${row.shelter_materials}</td>
+      <td>${row.shelter_beneficiaries.toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  });
+}
+
+function renderAidDistribution() {
+  const tbody = document.getElementById('aidDistributionTableBody');
+  tbody.innerHTML = '';
+  appData.aid_distribution.data.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row.governorate[currentLang]}</td>
+      <td>${row.food_baskets}</td>
+      <td>${row.food_beneficiaries.toLocaleString()}</td>
+      <td>${row.shelter_kits}</td>
       <td>${row.shelter_beneficiaries.toLocaleString()}</td>
     `;
     tbody.appendChild(tr);

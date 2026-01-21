@@ -1398,4 +1398,101 @@
   ]
 }
 
+,
+"aid_distribution": {
+  "data": [
+    {
+      "governorate": { "ar": "أبين", "en": "Abyan" },
+      "food_baskets": 200,
+      "food_beneficiaries": 1400,
+      "shelter_kits": 0,
+      "shelter_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "البيضاء", "en": "Al Bayda" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_kits": 3,
+      "shelter_beneficiaries": 21
+    },
+    {
+      "governorate": { "ar": "الجوف", "en": "Al Jawf" },
+      "food_baskets": 2,
+      "food_beneficiaries": 14,
+      "shelter_kits": 57,
+      "shelter_beneficiaries": 399
+    },
+    {
+      "governorate": { "ar": "الضالع", "en": "Al Dhale" },
+      "food_baskets": 400,
+      "food_beneficiaries": 2800,
+      "shelter_kits": 0,
+      "shelter_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "المحويت", "en": "Al Mahwit" },
+      "food_baskets": 8,
+      "food_beneficiaries": 56,
+      "shelter_kits": 8,
+      "shelter_beneficiaries": 56
+    },
+    {
+      "governorate": { "ar": "المهرة", "en": "Al Mahrah" },
+      "food_baskets": 1500,
+      "food_beneficiaries": 10500,
+      "shelter_kits": 0,
+      "shelter_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "أمانة العاصمة", "en": "Amanat Al Asimah" },
+      "food_baskets": 18,
+      "food_beneficiaries": 126,
+      "shelter_kits": 0,
+      "shelter_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "حجة", "en": "Hajjah" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_kits": 1,
+      "shelter_beneficiaries": 7
+    },
+    {
+      "governorate": { "ar": "حضرموت", "en": "Hadramaut" },
+      "food_baskets": 453,
+      "food_beneficiaries": 1400,
+      "shelter_kits": 0,
+      "shelter_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "ذمار", "en": "Dhamar" },
+      "food_baskets": 8,
+      "food_beneficiaries": 56,
+      "shelter_kits": 1,
+      "shelter_beneficiaries": 7
+    },
+    {
+      "governorate": { "ar": "عدن", "en": "Aden" },
+      "food_baskets": 140,
+      "food_beneficiaries": 980,
+      "shelter_kits": 10,
+      "shelter_beneficiaries": 70
+    },
+    {
+      "governorate": { "ar": "لحج", "en": "Lahj" },
+      "food_baskets": 1313,
+      "food_beneficiaries": 9191,
+      "shelter_kits": 0,
+      "shelter_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "محافظة صنعاء", "en": "Sanaa Governorate" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_kits": 9,
+      "shelter_beneficiaries": 63
+    }
+  ]
+}
+
 }

@@ -1414,6 +1414,30 @@ html[dir="ltr"] .category-card {
 }
 
 /* ===============================
+   Aid Distribution Section
+================================ */
+.aid-distribution-section {
+  padding: 40px 0;
+  background: var(--light-gray);
+}
+
+.aid-distribution-section .container {
+  max-width: 1200px;
+}
+
+.aid-distribution-section h3 {
+  font-size: 1.4rem;
+  color: var(--primary-red);
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.aid-distribution-table {
+  margin-bottom: 30px;
+}
+
+/* ===============================
    Disaster Sub-Tabs
 ================================ */
 .disaster-sub-tabs {
