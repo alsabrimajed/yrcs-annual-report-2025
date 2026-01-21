@@ -1253,4 +1253,122 @@
   ]
 }
 
+,
+"fire_response": {
+  "data": [
+    {
+      "governorate": { "ar": "إب", "en": "Ibb" },
+      "food_baskets": 1,
+      "food_beneficiaries": 7,
+      "shelter_materials": 5,
+      "shelter_beneficiaries": 35
+    },
+    {
+      "governorate": { "ar": "أبين", "en": "Abyan" },
+      "food_baskets": 5,
+      "food_beneficiaries": 35,
+      "shelter_materials": 5,
+      "shelter_beneficiaries": 35
+    },
+    {
+      "governorate": { "ar": "البيضاء", "en": "Al Bayda" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_materials": 6,
+      "shelter_beneficiaries": 42
+    },
+    {
+      "governorate": { "ar": "الحديدة", "en": "Al Hudaydah" },
+      "food_baskets": 17,
+      "food_beneficiaries": 119,
+      "shelter_materials": 17,
+      "shelter_beneficiaries": 119
+    },
+    {
+      "governorate": { "ar": "الضالع", "en": "Al Dhale" },
+      "food_baskets": 11,
+      "food_beneficiaries": 77,
+      "shelter_materials": 11,
+      "shelter_beneficiaries": 77
+    },
+    {
+      "governorate": { "ar": "المحويت", "en": "Al Mahwit" },
+      "food_baskets": 3,
+      "food_beneficiaries": 14,
+      "shelter_materials": 5,
+      "shelter_beneficiaries": 21
+    },
+    {
+      "governorate": { "ar": "المهرة", "en": "Al Mahrah" },
+      "food_baskets": 2,
+      "food_beneficiaries": 14,
+      "shelter_materials": 2,
+      "shelter_beneficiaries": 14
+    },
+    {
+      "governorate": { "ar": "أمانة العاصمة", "en": "Amanat Al Asimah" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 3,
+      "shelter_beneficiaries": 21
+    },
+    {
+      "governorate": { "ar": "تعز", "en": "Taiz" },
+      "food_baskets": 23,
+      "food_beneficiaries": 161,
+      "shelter_materials": 23,
+      "shelter_beneficiaries": 161
+    },
+    {
+      "governorate": { "ar": "حجة", "en": "Hajjah" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 16,
+      "shelter_beneficiaries": 112
+    },
+    {
+      "governorate": { "ar": "حضرموت", "en": "Hadramaut" },
+      "food_baskets": 1,
+      "food_beneficiaries": 7,
+      "shelter_materials": 1,
+      "shelter_beneficiaries": 7
+    },
+    {
+      "governorate": { "ar": "ذمار", "en": "Dhamar" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_materials": 6,
+      "shelter_beneficiaries": 42
+    },
+    {
+      "governorate": { "ar": "صعدة", "en": "Saada" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 2,
+      "shelter_beneficiaries": 14
+    },
+    {
+      "governorate": { "ar": "عمران", "en": "Amran" },
+      "food_baskets": 3,
+      "food_beneficiaries": 21,
+      "shelter_materials": 10,
+      "shelter_beneficiaries": 70
+    },
+    {
+      "governorate": { "ar": "مأرب", "en": "Marib" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 1,
+      "shelter_beneficiaries": 7
+    },
+    {
+      "governorate": { "ar": "محافظة صنعاء", "en": "Sanaa Governorate" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 1,
+      "shelter_beneficiaries": 7
+    }
+  ]
+}
+
 }
