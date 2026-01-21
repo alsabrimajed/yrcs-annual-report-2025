@@ -568,6 +568,19 @@ document.querySelectorAll(".disaster-sub-tab-btn").forEach(btn => {
   });
 });
 
+// Health Sub-Tabs Logic
+document.querySelectorAll(".health-sub-tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".health-sub-tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".health-tab-content").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    const healthTab = document.getElementById(btn.dataset.healthTab);
+    if (healthTab) {
+      healthTab.classList.add("active");
+    }
+  });
+});
+
 // Set initial indicator position
 setTimeout(() => {
   const activeSubTab = document.querySelector('.sub-tab-btn.active');
