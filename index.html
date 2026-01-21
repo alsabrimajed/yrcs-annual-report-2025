@@ -64,33 +64,687 @@
 
 <!-- ================= OVERVIEW ================= -->
 <section class="tab-content active" id="tab-overview">
+<div class="sub-tabs-container">
+  <div class="sub-tab-indicator"></div>
+  <button class="sub-tab-btn active" data-sub-tab="sub-overview" data-ar="نظرة عامة" data-en="Overview">
+    <img src="Icons/IFRC-icons-colour_Map.png" alt="Overview" class="sub-tab-icon">
+    <span data-ar="نظرة عامة" data-en="Overview"></span>
+  </button>
+  <button class="sub-tab-btn" data-sub-tab="sub-health" data-ar="الصحة والرعاية" data-en="Health & Care">
+    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health & Care" class="sub-tab-icon">
+    <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
+  </button>
+  <button class="sub-tab-btn" data-sub-tab="sub-development" data-ar="دعم تطوير الجمعية" data-en="Organizational Development">
+    <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Organizational Development" class="sub-tab-icon">
+    <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
+  </button>
+  <button class="sub-tab-btn" data-sub-tab="sub-disasters" data-ar="الكوارث والأزمات" data-en="Disasters & Crises">
+    <img src="Icons/IFRC-icons-colour_Extreme-weather.png" alt="Disasters & Crises" class="sub-tab-icon">
+    <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
+  </button>
+  <button class="sub-tab-btn" data-sub-tab="sub-wash" data-ar="المياه والإسكان" data-en="Water & Shelter">
+    <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water & Shelter" class="sub-tab-icon">
+    <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
+  </button>
+</div>
+<div class="sub-tab-content active" id="sub-overview">
+  <!-- ================= SECTOR IMPACT ================= -->
+<section class="hero-stats sector-impact">
+  <div class="container">
 
-  <!-- HERO STATS -->
-  <section class="hero-stats">
+    <h2 class="section-title"
+        data-ar="الأثر القطاعي"
+        data-en="Sector Impact">
+    </h2>
+
+    <!-- Cards -->
+    <div class="stats-grid impact-grid" id="sectorImpactGrid">
+      <!-- Injected by JS -->
+    </div>
+
+    <!-- Chart -->
+    <div class="chart-card sector-impact-chart">
+      <canvas id="sectorImpactChart"></canvas>
+    </div>
+
+  </div>
+</section>
+
+  <!-- SECTOR IMPACT TABLE -->
+  <section class="table-section">
     <div class="container">
-      <div class="stats-grid">
-        <div class="stat-card"><i class="fas fa-users"></i><div class="stat-number" data-key="total_beneficiaries">0</div><span data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></span></div>
-        <div class="stat-card"><i class="fas fa-project-diagram"></i><div class="stat-number" data-key="projects">0</div><span data-ar="مشاريع الاستجابة" data-en="Response Projects"></span></div>
-        <div class="stat-card"><i class="fas fa-ambulance"></i><div class="stat-number" data-key="ambulance_cases">0</div><span data-ar="إحالات إسعافية" data-en="Ambulance Referrals"></span></div>
-        <div class="stat-card"><i class="fas fa-bomb"></i><div class="stat-number" data-key="mine_awareness">0</div><span data-ar="توعية بمخاطر الألغام" data-en="Mine Risk Awareness"></span></div>
-        <div class="stat-card"><i class="fas fa-graduation-cap"></i><div class="stat-number" data-key="trainees">0</div><span data-ar="المتدربون" data-en="Trainees"></span></div>
-        <div class="stat-card"><i class="fas fa-bullhorn"></i><div class="stat-number" data-key="movement_awareness">0</div><span data-ar="التعريف بالحركة" data-en="Movement Awareness"></span></div>
-        <div class="stat-card"><i class="fas fa-school"></i><div class="stat-number" data-key="classrooms">0</div><span data-ar="فصول دراسية" data-en="Classrooms"></span></div>
-        <div class="stat-card"><i class="fas fa-handshake"></i><div class="stat-number" data-key="donors">0</div><span data-ar="الجهات المانحة" data-en="Donors"></span></div>
+      <div class="table-wrapper">
+        <table class="projects-table sector-impact-table">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th data-ar="القطاع" data-en="Sector"></th>
+              <th data-ar="عدد المستفيدين" data-en="Beneficiaries"></th>
+            </tr>
+          </thead>
+          <tbody id="sectorImpactBody"></tbody>
+          <tfoot>
+            <tr>
+              <th colspan="2" data-ar="الإجمالي" data-en="Total"></th>
+              <th id="sectorImpactTotal"></th>
+            </tr>
+          </tfoot>
+        </table>
       </div>
     </div>
   </section>
 
-  <!-- CATEGORY CARDS -->
-  <section class="category-section">
+  <!-- SECTOR IMPACT CHART -->
+  <section class="charts-section">
     <div class="container">
-      <h2 class="section-title"
-        data-ar="مشاريع الاستجابة حسب الفئة"
-        data-en="Response Projects by Category"></h2>
-      <div class="category-cards"></div>
+      <div class="chart-card">
+        <canvas id="sectorImpactBarChart"></canvas>
+      </div>
     </div>
   </section>
+</div>
+<div class="sub-tab-content" id="sub-health">
+<section class="hero-stats sector-impact">
+<div class="container">
+<h2 class="section-title" data-ar="الصحة والرعاية" data-en="Health & Care"></h2>
+<div class="stats-grid impact-grid" id="sectorHealthGrid">
+</div>
+</div>
 </section>
+
+<!-- Health Sub-Tabs -->
+<div class="health-sub-tabs">
+  <button class="health-sub-tab-btn active" data-health-tab="health-overview" data-ar="نظرة عامة" data-en="Overview">
+    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Overview" class="health-tab-icon">
+    <span data-ar="نظرة عامة" data-en="Overview"></span>
+  </button>
+  <button class="health-sub-tab-btn" data-health-tab="health-centers" data-ar="المراكز الصحية" data-en="Health Centers">
+    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health Centers" class="health-tab-icon">
+    <span data-ar="المراكز الصحية" data-en="Health Centers"></span>
+  </button>
+  <button class="health-sub-tab-btn" data-health-tab="primary-care" data-ar="الرعاية الأولية" data-en="Primary Care">
+    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Primary Care" class="health-tab-icon">
+    <span data-ar="الرعاية الأولية" data-en="Primary Care"></span>
+  </button>
+  <button class="health-sub-tab-btn" data-health-tab="health-strengthening" data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care">
+    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Strengthening Health Care" class="health-tab-icon">
+    <span data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></span>
+  </button>
+</div>
+
+<!-- Health Overview Sub-Tab Content -->
+<div class="health-tab-content active" id="health-overview">
+<section class="health-services-section">
+<div class="container">
+<h3 data-ar="خدمات المراكز الصحية" data-en="Health Center Services"></h3>
+<p>يقدم الهلال الأحمر اليمني خدماته الصحية في عدد من المحافظات اليمنية المختلفة عبر مراكزه الصحية او من خلال دعم وتشغيل مراكز صحية حكومية والتي تزايدت احتياجاتها بسبب الوضع الراهن للبلاد. تقدم هذه المراكز خدمات الرعاية الصحية الوقائية والعلاجية.</p>
+</div>
+</section>
+</div>
+
+<!-- Health Centers Sub-Tab Content -->
+<div class="health-tab-content" id="health-centers">
+<section class="health-centers-section">
+<div class="container">
+<h3 data-ar="المستفيدون من المراكز الصحية" data-en="Health Center Beneficiaries"></h3>
+<p>حيث بلغ اجمالي عدد المستفيدين من خدمات المراكز الصحية 702,183 مستفيد في 17 محافظة يمنية.</p>
+<div class="table-wrapper">
+<table class="projects-table health-table">
+<thead>
+<tr>
+<th>المركز الصحي</th>
+<th>عدد المستفيدين</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>إب سمارة</td><td>5,496</td></tr>
+<tr><td>أبين</td><td>30,639</td></tr>
+<tr><td>حجة مبين</td><td>9,218</td></tr>
+<tr><td>شبوة</td><td>23,061</td></tr>
+<tr><td>حجة كحلان عفار</td><td>19,626</td></tr>
+<tr><td>لحج</td><td>17,875</td></tr>
+<tr><td>عمران المأخذ</td><td>27,709</td></tr>
+<tr><td>صنعاء صرف</td><td>14,251</td></tr>
+<tr><td>مأرب</td><td>90,850</td></tr>
+<tr><td>حجة عبس</td><td>34,986</td></tr>
+<tr><td>المحويت</td><td>21,543</td></tr>
+<tr><td>عدن</td><td>27,239</td></tr>
+<tr><td>صنعاء الأمانة</td><td>16,352</td></tr>
+<tr><td>إب المركز الصحي</td><td>29,294</td></tr>
+<tr><td>سيئون</td><td>7,713</td></tr>
+<tr><td>عمران المركز الاسعافي</td><td>44,750</td></tr>
+<tr><td>تعز البرح</td><td>26,013</td></tr>
+<tr><td>حجة المركز الاسعافي</td><td>81,318</td></tr>
+<tr><td>ذمار</td><td>88,439</td></tr>
+<tr><td>عمران الأمومة</td><td>56,417</td></tr>
+<tr><td>صعدة الرقة</td><td>14,421</td></tr>
+<tr><td>صنعاء المحافظة</td><td>14,973</td></tr>
+<tr><td>الإجمالي</td><td>702,183</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Primary Care Sub-Tab Content -->
+<div class="health-tab-content" id="primary-care">
+<section class="primary-care-section">
+<div class="container">
+<h3 data-ar="خدمات الرعاية الصحية الأولية" data-en="Primary Health Care Services"></h3>
+<p>ولا تقتصر الخدمات التي تقدمها المراكز الصحية على الرعاية الصحية الأولية، بل تتعداها إلى الرعاية الصحية الثانوية والعمليات الجراحية. حيث كان إجمالي عدد الخدمات 1,284,780 خدمة.</p>
+<div class="table-wrapper">
+<table class="projects-table health-table">
+<thead>
+<tr>
+<th>الخدمة</th>
+<th>عدد الخدمات</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>الطبيب العام</td><td>188,338</td></tr>
+<tr><td>عيادة النسائية</td><td>76,749</td></tr>
+<tr><td>عيادة الأطفال</td><td>12,518</td></tr>
+<tr><td>عيادة الجراحة العامة</td><td>705</td></tr>
+<tr><td>عيادة أنف أذن وحنجرة</td><td>3,318</td></tr>
+<tr><td>عيادة الأسنان</td><td>3,605</td></tr>
+<tr><td>عيادة طبيب الباطنية</td><td>15,763</td></tr>
+<tr><td>قسم الحضانة</td><td>6,707</td></tr>
+<tr><td>الرقود</td><td>2,291</td></tr>
+<tr><td>الأدوية</td><td>260,883</td></tr>
+<tr><td>الأشعة العادية</td><td>14,952</td></tr>
+<tr><td>أشعة التلفزيون</td><td>62,958</td></tr>
+<tr><td>جهاز دوبلر</td><td>5,578</td></tr>
+<tr><td>تخطيط القلب</td><td>3,189</td></tr>
+<tr><td>أجهزة أخرى</td><td>2,380</td></tr>
+<tr><td>المجارحة وضرب الأبر</td><td>213,513</td></tr>
+<tr><td>المختبر</td><td>150,206</td></tr>
+<tr><td><strong>الإجمالي</strong></td><td><strong>1,023,653</strong></td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>الخدمات التخصصية:</h4>
+<div class="table-wrapper">
+<table class="projects-table health-table">
+<thead>
+<tr>
+<th>العمليات القيصرية أولى</th>
+<th>العمليات القيصرية مكررة</th>
+<th>الولادة المنزلية</th>
+<th>الولادة داخل المركز</th>
+<th>إجراءات أخرى أثناء القيصرية</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>535</td><td>872</td><td>665</td><td>4239</td><td>228</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>الطوارئ التوليدية:</h4>
+<ul>
+<li>خدمات أخرى تقدمها المراكز الصحية:</li>
+</ul>
+<div class="table-wrapper">
+<table class="projects-table health-table">
+<thead>
+<tr>
+<th>الخدمة</th>
+<th>العدد</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>التثقيف الصحي</td><td>74914</td></tr>
+<tr><td>استقبال حالات الأمراض المعدية</td><td>133798</td></tr>
+<tr><td>استقبال حالات الأمراض غير المعدية</td><td>70829</td></tr>
+<tr><td>استقبال حالات الحوادث(طرقات)</td><td>2922</td></tr>
+<tr><td>حوادث أخرى</td><td>9354</td></tr>
+<tr><td>الرعاية التكاملية</td><td>11112</td></tr>
+<tr><td>الدعم النفسي</td><td>9815</td></tr>
+<tr><td>التغذية</td><td>50062</td></tr>
+<tr><td>التحصين الموسع</td><td>37649</td></tr>
+<tr><td>الصحة الانجابية</td><td>44538</td></tr>
+<tr><td>تنظيم الاسرة</td><td>21894</td></tr>
+</tbody>
+</table>
+</div>
+
+<h4>ثالثاً: الرعاية الصحية الثانوية:</h4>
+<ul>
+<li>العمليات والحالات الجراحية:</li>
+</ul>
+<div class="table-wrapper">
+<table class="projects-table health-table">
+<thead>
+<tr>
+<th>المركز الصحي</th>
+<th>العمليات</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>حجة، ذمار</td><td>605</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- Strengthening Health Care Sub-Tab Content -->
+<div class="health-tab-content" id="health-strengthening">
+<section class="strengthening-section">
+<div class="container">
+<h3 data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></h3>
+<h4>1- المستشفى الميداني والعيادات المتنقلة</h4>
+<p>يهدف المستشفى الميداني لتقديم الخدمات الطبيبة الضرورية للمجتمعات الفقيرة والتي تخفف من معاناة المواطنين وتعزز التوعية الصحة لديهم لعدم تواجد الخدمات الصحية في تلك المناطق وكان المستفيدين من الخدمات بحسب الجدول الآتي:</p>
+<div class="table-wrapper">
+<table class="projects-table health-table">
+<thead>
+<tr>
+<th>العيادة المتنقلة</th>
+<th>عدد المستفيدين</th>
+<th>عدد الخدمات</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>شبوة</td><td>11,791</td><td>23,940</td></tr>
+<tr><td>أمانة العاصمة</td><td>8,271</td><td>8,627</td></tr>
+<tr><td>تعز- البرح</td><td>30,995</td><td>54,206</td></tr>
+<tr><td>المحويت</td><td>3,116</td><td>7,342</td></tr>
+<tr><td>حجة</td><td>7,787</td><td>14,106</td></tr>
+<tr><td>الحديدة</td><td>4,209</td><td>8,194</td></tr>
+<tr><td>الإجمالي</td><td>66,169</td><td>116,415</td></tr>
+</tbody>
+</table>
+</div>
+<p>تشارك العيادات المتنقلة في تقديم الخدمات الطبية في المناسبات الجماهيرية حيث تقدم الاستشارات الطبية والعلاجات وعمل الفحوصات الضرورية والأساسية للمرضى.</p>
+<h4>2- دعم المستشفيات والمراكز الصحية بالمعدات / الأجهزة/ المستلزمات الطبية والأدوية:</h4>
+<ul>
+<li>إهداء الادوية والمستلزمات الطبية للجهات التالية: مركز الصماد، مستشفى 48 النموذجي، مستشفى ضلاع همدان، مركز كحلان عفار الاسعافي، مركز صعدة، الخدمات الطبية العسكرية، مصلحة الدفاع المدني، مركز سمارة الإسعافي، مستشفى فلسطين، السجن الحربي ويقدر عدد المستفيدين: 16,377 مستفيد</li>
+</ul>
+</div>
+</section>
+</div></div>
+<div class="sub-tab-content" id="sub-development">
+<section class="hero-stats sector-impact">
+<div class="container">
+<h2 class="section-title" data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></h2>
+<div class="stats-grid impact-grid" id="sectorDevelopmentGrid">
+</div>
+</div>
+</section>
+</div>
+<div class="sub-tab-content" id="sub-disasters">
+<section class="hero-stats sector-impact">
+<div class="container">
+<h2 class="section-title" data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></h2>
+<div class="stats-grid impact-grid" id="sectorDisastersGrid">
+</div>
+</div>
+</section>
+
+<!-- Disaster Response Sub-Tabs -->
+<div class="disaster-sub-tabs">
+  <button class="disaster-sub-tab-btn active" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods">
+    <img src="Icons/IFRC-icons-colour_Floods.png" alt="Floods" class="disaster-tab-icon">
+    <span data-ar="السيول" data-en="Floods"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing">
+    <img src="Icons/IFRC-icons-colour_Conflict.png" alt="Aerial Bombing" class="disaster-tab-icon">
+    <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning">
+    <img src="Icons/IFRC-icons-colour_Storm.png" alt="Lightning" class="disaster-tab-icon">
+    <span data-ar="الصواعق" data-en="Lightning"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="fire-response" data-ar="الحرائق" data-en="Fire Response">
+    <img src="Icons/IFRC-icons-colour_Wildfire.png" alt="Fire Response" class="disaster-tab-icon">
+    <span data-ar="الحرائق" data-en="Fire Response"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="rockslides" data-ar="الانهيارات الصخرية" data-en="Rockslides">
+    <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" alt="Rockslides" class="disaster-tab-icon">
+    <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="aid-distribution" data-ar="الأشد فقرا" data-en="Most Poor">
+    <img src="Icons/IFRC-icons-colour_Food.png" alt="Aid Distribution" class="disaster-tab-icon">
+    <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="economic-security" data-ar="الأمن الاقتصادي" data-en="Economic Security">
+    <img src="Icons/IFRC-icons-colour_Food.png" alt="Economic Security" class="disaster-tab-icon">
+    <span data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security & Livelihoods"></span>
+  </button>
+</div>
+
+<!-- Flood Response Sub-Tab Content -->
+<div class="disaster-tab-content active" id="flood-response">
+<section class="flood-response-section">
+<div class="container">
+<p class="flood-description"></p>
+<div class="table-wrapper">
+<table class="projects-table flood-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
+<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="floodTableBody"></tbody>
+</table>
+</div>
+
+<!-- Yemen Map Visualization -->
+<div class="yemen-map-container">
+<h3 data-ar="خريطة الاستجابة للسيول في اليمن" data-en="Yemen Flood Response Map"></h3>
+<div class="yemen-map">
+<svg viewBox="0 0 1000 800" id="yemenMapSvg">
+<!-- Yemen Governorates Paths - Placeholder -->
+<path id="ibb" d="M500 300 L520 320 L510 340 L490 330 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<path id="abyan" d="M450 400 L470 420 L460 440 L440 430 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<!-- Add more paths for all governorates -->
+<text x="505" y="320" text-anchor="middle" font-size="12" fill="#000">إب</text>
+<text x="455" y="420" text-anchor="middle" font-size="12" fill="#000">أبين</text>
+<!-- Add text labels for all -->
+</svg>
+</div>
+<div class="map-legend">
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.2);"></span><span data-ar="منخفض" data-en="Low"></span></div>
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.5);"></span><span data-ar="متوسط" data-en="Medium"></span></div>
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.8);"></span><span data-ar="عالي" data-en="High"></span></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Aerial Bombing Sub-Tab Content -->
+<div class="disaster-tab-content" id="aerial-bombing">
+<section class="aerial-bombing-section">
+<div class="container">
+<p class="aerial-description"></p>
+<div class="table-wrapper">
+<table class="projects-table aerial-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
+<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="aerialTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Lightning Sub-Tab Content -->
+<div class="disaster-tab-content" id="lightning">
+<section class="lightning-response-section">
+<div class="container">
+<p class="lightning-description"></p>
+
+<h3 data-ar="المساعدات المقدمة" data-en="Aid Provided"></h3>
+<div class="table-wrapper">
+<table class="projects-table lightning-aid-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="lightningAidTableBody"></tbody>
+</table>
+</div>
+
+<h3 data-ar="الإصابات والوفيات" data-en="Casualties and Deaths"></h3>
+<div class="table-wrapper">
+<table class="projects-table lightning-casualty-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="الوفيات" data-en="Deaths"></th>
+<th data-ar="الإصابات" data-en="Injuries"></th>
+</tr>
+</thead>
+<tbody id="lightningCasualtyTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Fire Response Sub-Tab Content -->
+<div class="disaster-tab-content" id="fire-response">
+<section class="fire-response-section">
+<div class="container">
+<h3 data-ar="الاستجابة للحرائق" data-en="Fire Response"></h3>
+<div class="table-wrapper">
+<table class="projects-table fire-response-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="مواد إيواء" data-en="Shelter Materials"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="fireResponseTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Rockslides Sub-Tab Content -->
+<div class="disaster-tab-content" id="rockslides">
+<section class="rockslides-section">
+<div class="container">
+<h3 data-ar="الانهيارات الصخرية" data-en="Rockslides"></h3>
+<div class="table-wrapper">
+<table class="projects-table rockslides-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="rockslidesTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Aid Distribution Sub-Tab Content -->
+<div class="disaster-tab-content" id="aid-distribution">
+<section class="aid-distribution-section">
+<div class="container">
+<h3 data-ar="توزيع السلال الغذائية والمواد غير الغذائية" data-en="Distribution of Food Baskets and Non-Food Items"></h3>
+<div class="table-wrapper">
+<table class="projects-table aid-distribution-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="حصة إيوائية" data-en="Shelter Kits"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="aidDistributionTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- Economic Security Sub-Tab Content -->
+<div class="disaster-tab-content" id="economic-security">
+<section class="economic-security-section">
+<div class="container">
+<h3 data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security and Livelihoods"></h3>
+<p>الأمن الاقتصادي وسبل العيش:
+- يمكن أن تتسبب الكوارث والأزمات بخسائر فادحة بالأمن الغذائي للناس وسبل عيشهم. وتزيد من ضعف الناس الاجتماعي والاقتصادي، وتؤثر على قدرتهم على التعافي والتعامل مع الصدمات والضغوط المستقبلية. لذلك يعمل الهلال الأحمر على محاولة التخفيف من وطأة ذلك على الاسر وذلك من خلال تقديم عدد من المشاريع:</p>
+<h4>1- تم دعم مشاريع تمكين سبل العيش لحوالي 40,095 أسرة 280,665 مستفيد.</h4>
+<h5>أ‌- أنشطة زراعية</h5>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>النشاط</th>
+<th>المنطقة</th>
+<th>عدد الأسر المستهدفة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>تربية النحل</td><td>تعز-لحج - الضالع - أبين - البيضاء - حجة - عمران- الحديدة</td><td>6430</td></tr>
+<tr><td>توزيع شتلات البن</td><td>تعز- إب</td><td>990</td></tr>
+<tr><td>توزيع بذور الطماطم</td><td>مارب</td><td>200</td></tr>
+<tr><td>توزيع بذور القمح</td><td>مارب</td><td>250</td></tr>
+<tr><td>توزيع درنات البطاط</td><td>مارب</td><td>200</td></tr>
+<tr><td>توزيع شتلات التين</td><td>البيضاء</td><td>50</td></tr>
+<tr><td>توزيع شتلات الوردة الحمراء</td><td>تعز</td><td>1512</td></tr>
+<tr><td>توزيع أشجار مثمرة</td><td>أبين</td><td>50</td></tr>
+<tr><td>توزيع الأدوات والقسائم الإلكترونية لمزارعي البن</td><td>تعز</td><td>200</td></tr>
+<tr><td>الإجمالي</td><td></td><td>9,882</td></tr>
+</tbody>
+</table>
+</div>
+<h5>ب‌- مساعدات نقدية</h5>
+<h6>- تعزيز سبل العيش</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>تعز</td><td>16,090</td></tr>
+<tr><td>لحج</td><td>5,000</td></tr>
+<tr><td>صعدة</td><td>3,005</td></tr>
+<tr><td>الحديدة</td><td>2,100</td></tr>
+<tr><td>حجة</td><td>1,363</td></tr>
+<tr><td>عدن</td><td>1,504</td></tr>
+<tr><td>الإجمالي</td><td>29,062</td></tr>
+</tbody>
+</table>
+</div>
+<h6>- النقد مقابل العمل</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>محافظة الضالع– دمت</td><td>463</td></tr>
+</tbody>
+</table>
+</div>
+<h5>ج - مشاريع اقتصادية صغيرة</h5>
+<p>قدم الهلال الأحمر مساعدات للمشاريع الاقتصادية في المجتمعات المحلية استفاد منها 614 أسرة.</p>
+<h6>- (مشاريع مدرة للدخل)</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المشروع</th>
+<th>المحافظة</th>
+<th>عدد الاسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>مشاريع صغيرة</td><td>لحج</td><td>50</td></tr>
+<tr><td>مشروع الحدائق المنزلية</td><td>لحج</td><td>63</td></tr>
+<tr><td>مشاريع صغيرة</td><td>البيضاء</td><td>51</td></tr>
+<tr><td>توزيع 24 قارب صيد</td><td>حضرموت</td><td>220</td></tr>
+<tr><td></td><td>الحديدة</td><td>120</td></tr>
+<tr><td>الإجمالي</td><td></td><td>504</td></tr>
+</tbody>
+</table>
+</div>
+<h6>- التمكين الاقتصادي</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المشروع</th>
+<th>المحافظة</th>
+<th>عدد الاسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>مشروع الخياطة</td><td>عمران</td><td>110</td></tr>
+</tbody>
+</table>
+</div>
+<h5>د- بناء القدرات</h5>
+<p>قدم الهلال الأحمر تدريبات حول التمكين الاقتصادي وفي مجال الإغاثة الإنسانية لعدد 74 أسرة</p>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>النشاط</th>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>تدريب حول التمكين الاقتصادي- المشاريع الصغيرة</td><td>لحج</td><td>59</td></tr>
+<tr><td>تدريب في مجال الإغاثة الإنسانية وتوزيع المساعدات</td><td>لحج</td><td>15</td></tr>
+<tr><td>الإجمالي</td><td></td><td>74</td></tr>
+</tbody>
+</table>
+</div>
+<h4>2- توزيع السلال الغذائية:</h4>
+<p>ضمن مشروع الأمن الاقتصادي تم توزيع 14,620 سلة غذائية استفاد منها ما يقارب 102,340 شخص.</p>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>البيضاء</td><td>1,048</td></tr>
+<tr><td>تعز</td><td>2,000</td></tr>
+<tr><td>المهرة</td><td>1,500</td></tr>
+<tr><td>ريمة</td><td>1,500</td></tr>
+<tr><td>لحج</td><td>2,038</td></tr>
+<tr><td>الحديدة</td><td>3,000</td></tr>
+<tr><td>عدن</td><td>1,300</td></tr>
+<tr><td>أبين</td><td>322</td></tr>
+<tr><td>الضالع</td><td>1,612</td></tr>
+<tr><td>أمانة العاصمة</td><td>100</td></tr>
+<tr><td>حضرموت</td><td>200</td></tr>
+<tr><td>الإجمالي</td><td>14,620</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</div>
+</section>
+</div>
 
 <!-- ================= SECTOR IMPACT ================= -->
 <section class="tab-content" id="tab-sector-impact">
