@@ -985,3 +985,18 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") showPrev();
   if (e.key === "ArrowRight") showNext();
 });
+
+// Health Sub-Tabs
+document.querySelectorAll('.health-sub-tab-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    // Remove active from all buttons
+    document.querySelectorAll('.health-sub-tab-btn').forEach(b => b.classList.remove('active'));
+    // Add active to clicked
+    btn.classList.add('active');
+    // Hide all content
+    document.querySelectorAll('.health-tab-content').forEach(c => c.classList.remove('active'));
+    // Show the corresponding content
+    const tab = btn.dataset.healthTab;
+    document.getElementById(tab).classList.add('active');
+  });
+});
