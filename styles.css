@@ -1029,10 +1029,10 @@ html[dir="ltr"] .category-card {
 .sub-tab-btn {
   background: transparent;
   border: none;
-  padding: 12px 24px;
+  padding: 12px 20px;
   margin: 0 4px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   border-radius: 8px;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -1041,6 +1041,30 @@ html[dir="ltr"] .category-card {
   overflow: hidden;
   text-transform: uppercase;
   letter-spacing: 0.5px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  min-height: 60px;
+  justify-content: center;
+}
+
+.sub-tab-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  opacity: 0.7;
+  transition: opacity 0.3s ease;
+}
+
+.sub-tab-btn:hover .sub-tab-icon,
+.sub-tab-btn.active .sub-tab-icon {
+  opacity: 1;
+}
+
+.sub-tab-btn span {
+  text-align: center;
+  line-height: 1.2;
 }
 
 .sub-tab-btn::before {
@@ -1246,10 +1270,12 @@ html[dir="ltr"] .category-card {
   transition: 0.6s ease;
 }
 
-.impact-card i {
-  font-size: 2rem;
-  color: var(--accent);
+.sector-icon {
+  width: 48px;
+  height: 48px;
+  object-fit: contain;
   margin-bottom: 10px;
+  filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
 
 .impact-card small {
@@ -1267,7 +1293,7 @@ html[dir="ltr"] .category-card {
   color: #fff;
 }
 
-.total-impact i,
+.total-impact .sector-icon,
 .total-impact small {
   color: #fff;
 }
@@ -1399,16 +1425,31 @@ html[dir="ltr"] .category-card {
 }
 
 .disaster-sub-tab-btn {
-  padding: 12px 24px;
+  padding: 12px 20px;
   background: #f5f6f7;
   border: 2px solid #e0e0e0;
   border-radius: 25px;
   color: var(--text-dark);
-  font-size: 1rem;
+  font-size: 0.9rem;
   font-weight: 500;
   cursor: pointer;
   transition: all 0.3s ease;
   font-family: 'Tajawal', sans-serif;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 50px;
+}
+
+.disaster-tab-icon {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+.disaster-sub-tab-btn span {
+  white-space: nowrap;
 }
 
 .disaster-sub-tab-btn:hover {

@@ -740,7 +740,7 @@ function renderSectorCard(sectorKey, gridId) {
   grid.innerHTML = `<div class="stat-card impact-card animate show"
        style="--accent:${data.color}"
        title="${data.beneficiaries.toLocaleString()}">
-    <i class="fas ${data.icon}"></i>
+    <img src="${data.icon}" alt="${data.label[currentLang]}" class="sector-icon">
     <div class="stat-number">${data.beneficiaries.toLocaleString()}</div>
     <span>${data.label[currentLang]}</span>
   </div>`;
