@@ -533,8 +533,32 @@ document.querySelectorAll(".sub-tab-btn").forEach(btn => {
     if (subTab) {
       subTab.classList.add("active");
     }
+    // Move indicator
+    const indicator = document.querySelector('.sub-tab-indicator');
+    const container = document.querySelector('.sub-tabs-container');
+    const containerRect = container.getBoundingClientRect();
+    const btnRect = btn.getBoundingClientRect();
+    const indicatorWidth = 60; // approximate width
+    indicator.style.left = (btnRect.left - containerRect.left + btnRect.width / 2 - indicatorWidth / 2) + 'px';
+    indicator.style.width = indicatorWidth + 'px';
   });
 });
+
+// Set initial indicator position
+setTimeout(() => {
+  const activeSubTab = document.querySelector('.sub-tab-btn.active');
+  if (activeSubTab) {
+    const indicator = document.querySelector('.sub-tab-indicator');
+    const container = document.querySelector('.sub-tabs-container');
+    if (container && indicator) {
+      const containerRect = container.getBoundingClientRect();
+      const btnRect = activeSubTab.getBoundingClientRect();
+      const indicatorWidth = 60;
+      indicator.style.left = (btnRect.left - containerRect.left + btnRect.width / 2 - indicatorWidth / 2) + 'px';
+      indicator.style.width = indicatorWidth + 'px';
+    }
+  }
+}, 100);
 
 function renderSectorImpactTable(sectors) {
   const tbody = document.getElementById("sectorImpactBody");
