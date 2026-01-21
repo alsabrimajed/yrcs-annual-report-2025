@@ -1438,6 +1438,56 @@ html[dir="ltr"] .category-card {
 }
 
 /* ===============================
+   Economic Security Section
+================================ */
+.economic-security-section {
+  padding: 40px 0;
+  background: var(--light-gray);
+}
+
+.economic-security-section .container {
+  max-width: 1200px;
+}
+
+.economic-security-section h3 {
+  font-size: 1.4rem;
+  color: var(--primary-red);
+  margin: 0 0 20px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.economic-security-section h4 {
+  font-size: 1.2rem;
+  color: var(--primary-red);
+  margin: 20px 0 10px 0;
+  font-weight: 600;
+}
+
+.economic-security-section h5 {
+  font-size: 1.1rem;
+  color: var(--dark-blue);
+  margin: 15px 0 10px 0;
+  font-weight: 600;
+}
+
+.economic-security-section h6 {
+  font-size: 1rem;
+  color: var(--dark-blue);
+  margin: 10px 0 5px 0;
+  font-weight: 600;
+}
+
+.economic-security-section p {
+  margin: 10px 0;
+  line-height: 1.6;
+}
+
+.economic-table {
+  margin-bottom: 20px;
+}
+
+/* ===============================
    Disaster Sub-Tabs
 ================================ */
 .disaster-sub-tabs {
