@@ -71,6 +71,8 @@ renderFloodResponse();
 
 renderAerialBombingResponse();
 
+renderLightningResponse();
+
   renderGallery(appData.gallery);
   window.galleryItems = appData.gallery; // Store for lightbox
 }
@@ -786,6 +788,43 @@ function renderAerialBombingResponse() {
       <td>${row.food_beneficiaries.toLocaleString()}</td>
     `;
     tbody.appendChild(tr);
+  });
+}
+
+function renderLightningResponse() {
+  const desc = document.querySelector('.lightning-description');
+  if (desc) {
+    desc.dataset.ar = appData.lightning_response.description.ar;
+    desc.dataset.en = appData.lightning_response.description.en;
+    desc.textContent = appData.lightning_response.description[currentLang];
+  }
+
+  // Render aid data table
+  const aidTbody = document.getElementById('lightningAidTableBody');
+  aidTbody.innerHTML = '';
+  appData.lightning_response.aid_data.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row.governorate[currentLang]}</td>
+      <td>${row.shelter_materials}</td>
+      <td>${row.shelter_beneficiaries.toLocaleString()}</td>
+      <td>${row.food_baskets}</td>
+      <td>${row.food_beneficiaries.toLocaleString()}</td>
+    `;
+    aidTbody.appendChild(tr);
+  });
+
+  // Render casualty data table
+  const casualtyTbody = document.getElementById('lightningCasualtyTableBody');
+  casualtyTbody.innerHTML = '';
+  appData.lightning_response.casualty_data.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row.governorate[currentLang]}</td>
+      <td>${row.deaths}</td>
+      <td>${row.injuries}</td>
+    `;
+    casualtyTbody.appendChild(tr);
   });
 }
 

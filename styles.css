@@ -1339,3 +1339,38 @@ html[dir="ltr"] .category-card {
   border-radius: 4px;
 }
 
+/* ===============================
+   Lightning Response Section
+================================ */
+.lightning-response-section {
+  padding: 40px 0;
+  background: var(--light-gray);
+}
+
+.lightning-response-section .container {
+  max-width: 1200px;
+}
+
+.lightning-description {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  color: var(--text-dark);
+  text-align: center;
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.lightning-response-section h3 {
+  font-size: 1.4rem;
+  color: var(--primary-red);
+  margin: 40px 0 20px 0;
+  text-align: center;
+  font-weight: 600;
+}
+
+.lightning-aid-table,
+.lightning-casualty-table {
+  margin-bottom: 30px;
+}
+

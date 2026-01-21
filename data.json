@@ -1152,4 +1152,105 @@
   ]
 }
 
+,
+"lightning_response": {
+  "description": {
+    "ar": "أدت الصواعق الرعدية إلى وفاة 83شخص وجرح 103 آخرين، وقد قدم الهلال الأحمر للمتضررين 31 حقائب إيواء و13 سلة غذائية كما في الجدول التالي:",
+    "en": "Thunder lightning caused the death of 83 people and injured 103 others, and the Red Crescent provided the affected people with 31 shelter kits and 13 food baskets as shown in the following table:"
+  },
+  "aid_data": [
+    {
+      "governorate": { "ar": "الجوف", "en": "Al Jawf" },
+      "shelter_materials": 1,
+      "shelter_beneficiaries": 7,
+      "food_baskets": 1,
+      "food_beneficiaries": 7
+    },
+    {
+      "governorate": { "ar": "المحويت", "en": "Al Mahwit" },
+      "shelter_materials": 15,
+      "shelter_beneficiaries": 14,
+      "food_baskets": 15,
+      "food_beneficiaries": 14
+    },
+    {
+      "governorate": { "ar": "حجة", "en": "Hajjah" },
+      "shelter_materials": 17,
+      "shelter_beneficiaries": 119,
+      "food_baskets": 3,
+      "food_beneficiaries": 21
+    },
+    {
+      "governorate": { "ar": "ذمار", "en": "Dhamar" },
+      "shelter_materials": 2,
+      "shelter_beneficiaries": 14,
+      "food_baskets": 2,
+      "food_beneficiaries": 14
+    },
+    {
+      "governorate": { "ar": "شبوة", "en": "Shabwah" },
+      "shelter_materials": 2,
+      "shelter_beneficiaries": 14,
+      "food_baskets": 0,
+      "food_beneficiaries": 0
+    },
+    {
+      "governorate": { "ar": "صعدة", "en": "Saada" },
+      "shelter_materials": 5,
+      "shelter_beneficiaries": 35,
+      "food_baskets": 5,
+      "food_beneficiaries": 35
+    },
+    {
+      "governorate": { "ar": "محافظة صنعاء", "en": "Sanaa Governorate" },
+      "shelter_materials": 2,
+      "shelter_beneficiaries": 14,
+      "food_baskets": 0,
+      "food_beneficiaries": 0
+    }
+  ],
+  "casualty_data": [
+    {
+      "governorate": { "ar": "إب", "en": "Ibb" },
+      "deaths": 3,
+      "injuries": 2
+    },
+    {
+      "governorate": { "ar": "الحديدة", "en": "Al Hudaydah" },
+      "deaths": 12,
+      "injuries": 4
+    },
+    {
+      "governorate": { "ar": "الضالع", "en": "Al Dhale" },
+      "deaths": 4,
+      "injuries": 4
+    },
+    {
+      "governorate": { "ar": "المحويت", "en": "Al Mahwit" },
+      "deaths": 6,
+      "injuries": 5
+    },
+    {
+      "governorate": { "ar": "حجة", "en": "Hajjah" },
+      "deaths": 19,
+      "injuries": 11
+    },
+    {
+      "governorate": { "ar": "صعدة", "en": "Saada" },
+      "deaths": 9,
+      "injuries": 20
+    },
+    {
+      "governorate": { "ar": "عمران", "en": "Amran" },
+      "deaths": 20,
+      "injuries": 55
+    },
+    {
+      "governorate": { "ar": "محافظة صنعاء", "en": "Sanaa Governorate" },
+      "deaths": 10,
+      "injuries": 2
+    }
+  ]
+}
+
 }
