@@ -549,6 +549,19 @@ document.querySelectorAll(".sub-tab-btn").forEach(btn => {
   });
 });
 
+// Disaster Sub-Tabs Logic
+document.querySelectorAll(".disaster-sub-tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".disaster-sub-tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".disaster-tab-content").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    const disasterTab = document.getElementById(btn.dataset.disasterTab);
+    if (disasterTab) {
+      disasterTab.classList.add("active");
+    }
+  });
+});
+
 // Set initial indicator position
 setTimeout(() => {
   const activeSubTab = document.querySelector('.sub-tab-btn.active');

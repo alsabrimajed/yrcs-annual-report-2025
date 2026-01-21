@@ -185,7 +185,15 @@
 </div>
 </section>
 
-<!-- Flood Response Section -->
+<!-- Disaster Response Sub-Tabs -->
+<div class="disaster-sub-tabs">
+  <button class="disaster-sub-tab-btn active" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods"></button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing"></button>
+  <button class="disaster-sub-tab-btn" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning"></button>
+</div>
+
+<!-- Flood Response Sub-Tab Content -->
+<div class="disaster-tab-content active" id="flood-response">
 <section class="flood-response-section">
 <div class="container">
 <p class="flood-description"></p>
@@ -225,8 +233,12 @@
 <div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.8);"></span><span data-ar="عالي" data-en="High"></span></div>
 </div>
 </div>
+</div>
+</section>
+</div>
 
-<!-- Aerial Bombing Response Section -->
+<!-- Aerial Bombing Sub-Tab Content -->
+<div class="disaster-tab-content" id="aerial-bombing">
 <section class="aerial-bombing-section">
 <div class="container">
 <p class="aerial-description"></p>
@@ -247,8 +259,10 @@
 </div>
 </div>
 </section>
+</div>
 
-<!-- Lightning Response Section -->
+<!-- Lightning Sub-Tab Content -->
+<div class="disaster-tab-content" id="lightning">
 <section class="lightning-response-section">
 <div class="container">
 <p class="lightning-description"></p>
@@ -284,6 +298,7 @@
 </div>
 </div>
 </section>
+</div>
 </div>
 </section>
 </div>
