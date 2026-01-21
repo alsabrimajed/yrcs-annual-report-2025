@@ -948,4 +948,166 @@
   }
 }
 
+,
+"flood_response": {
+  "description": {
+    "ar": "الاستجابة للسيول و الفيضانات : أدت الأمطار الغزيرة التي هطلت على العديد من المحافظات إلى حدوث السيول وفيضان مجاري السيول الأمر الذي أدى إلى خسائر بشرية ومادية كبيرة. وتمت الاستجابة للمتضررين عبر الهلال الأحمر حيث تم تقديم سلل غذائية لعدد 18,270مستفيد ومواد إيوائية وحقائب نظافة لعدد 103,845مستفيد.",
+    "en": "Flood and Flood Response: Heavy rains that fell on many governorates caused floods and overflow of wadis, leading to significant human and material losses. The Red Crescent responded to the affected people by providing food baskets to 18,270 beneficiaries and shelter materials and hygiene kits to 103,845 beneficiaries."
+  },
+  "data": [
+    {
+      "governorate": { "ar": "إب", "en": "Ibb" },
+      "food_baskets": 40,
+      "food_beneficiaries": 280,
+      "shelter_materials": 114,
+      "hygiene_kits": 114,
+      "shelter_beneficiaries": 798
+    },
+    {
+      "governorate": { "ar": "أبين", "en": "Abyan" },
+      "food_baskets": 145,
+      "food_beneficiaries": 1015,
+      "shelter_materials": 145,
+      "hygiene_kits": 145,
+      "shelter_beneficiaries": 1015
+    },
+    {
+      "governorate": { "ar": "البيضاء", "en": "Al Bayda" },
+      "food_baskets": 54,
+      "food_beneficiaries": 378,
+      "shelter_materials": 69,
+      "hygiene_kits": 69,
+      "shelter_beneficiaries": 483
+    },
+    {
+      "governorate": { "ar": "الجوف", "en": "Al Jawf" },
+      "food_baskets": 150,
+      "food_beneficiaries": 1085,
+      "shelter_materials": 190,
+      "hygiene_kits": 190,
+      "shelter_beneficiaries": 161
+    },
+    {
+      "governorate": { "ar": "الحديدة", "en": "Al Hudaydah" },
+      "food_baskets": 302,
+      "food_beneficiaries": 2114,
+      "shelter_materials": 302,
+      "hygiene_kits": 302,
+      "shelter_beneficiaries": 2114
+    },
+    {
+      "governorate": { "ar": "الضالع", "en": "Al Dhale" },
+      "food_baskets": 468,
+      "food_beneficiaries": 3276,
+      "shelter_materials": 690,
+      "hygiene_kits": 690,
+      "shelter_beneficiaries": 4830
+    },
+    {
+      "governorate": { "ar": "المحويت", "en": "Al Mahwit" },
+      "food_baskets": 331,
+      "food_beneficiaries": 882,
+      "shelter_materials": 521,
+      "hygiene_kits": 521,
+      "shelter_beneficiaries": 3311
+    },
+    {
+      "governorate": { "ar": "أمانة العاصمة", "en": "Amanat Al Asimah" },
+      "food_baskets": 6,
+      "food_beneficiaries": 42,
+      "shelter_materials": 106,
+      "hygiene_kits": 106,
+      "shelter_beneficiaries": 742
+    },
+    {
+      "governorate": { "ar": "تعز", "en": "Taiz" },
+      "food_baskets": 153,
+      "food_beneficiaries": 1071,
+      "shelter_materials": 740,
+      "hygiene_kits": 740,
+      "shelter_beneficiaries": 5180
+    },
+    {
+      "governorate": { "ar": "حجة", "en": "Hajjah" },
+      "food_baskets": 15,
+      "food_beneficiaries": 105,
+      "shelter_materials": 2017,
+      "hygiene_kits": 2017,
+      "shelter_beneficiaries": 14119
+    },
+    {
+      "governorate": { "ar": "حضرموت", "en": "Hadramaut" },
+      "food_baskets": 268,
+      "food_beneficiaries": 1876,
+      "shelter_materials": 370,
+      "hygiene_kits": 370,
+      "shelter_beneficiaries": 2590
+    },
+    {
+      "governorate": { "ar": "ذمار", "en": "Dhamar" },
+      "food_baskets": 38,
+      "food_beneficiaries": 266,
+      "shelter_materials": 187,
+      "hygiene_kits": 187,
+      "shelter_beneficiaries": 1309
+    },
+    {
+      "governorate": { "ar": "شبوة", "en": "Shabwah" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 130,
+      "hygiene_kits": 130,
+      "shelter_beneficiaries": 910
+    },
+    {
+      "governorate": { "ar": "صعدة", "en": "Saada" },
+      "food_baskets": 300,
+      "food_beneficiaries": 2100,
+      "shelter_materials": 280,
+      "hygiene_kits": 280,
+      "shelter_beneficiaries": 1960
+    },
+    {
+      "governorate": { "ar": "عدن", "en": "Aden" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 3000,
+      "hygiene_kits": 3000,
+      "shelter_beneficiaries": 21000
+    },
+    {
+      "governorate": { "ar": "عمران", "en": "Amran" },
+      "food_baskets": 267,
+      "food_beneficiaries": 1869,
+      "shelter_materials": 1026,
+      "hygiene_kits": 1026,
+      "shelter_beneficiaries": 7182
+    },
+    {
+      "governorate": { "ar": "لحج", "en": "Lahj" },
+      "food_baskets": 250,
+      "food_beneficiaries": 1750,
+      "shelter_materials": 1440,
+      "hygiene_kits": 1440,
+      "shelter_beneficiaries": 10080
+    },
+    {
+      "governorate": { "ar": "مأرب", "en": "Marib" },
+      "food_baskets": 0,
+      "food_beneficiaries": 0,
+      "shelter_materials": 3100,
+      "hygiene_kits": 3100,
+      "shelter_beneficiaries": 21700
+    },
+    {
+      "governorate": { "ar": "محافظة صنعاء", "en": "Sanaa Governorate" },
+      "food_baskets": 23,
+      "food_beneficiaries": 161,
+      "shelter_materials": 623,
+      "hygiene_kits": 623,
+      "shelter_beneficiaries": 4361
+    }
+  ]
+}
+
 }

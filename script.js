@@ -67,6 +67,7 @@ renderSectorCard('health', 'sectorHealthGrid');
 renderSectorCard('development', 'sectorDevelopmentGrid');
 renderSectorCard('disasters', 'sectorDisastersGrid');
 renderSectorCard('wash', 'sectorWashGrid');
+renderFloodResponse();
 
   renderGallery(appData.gallery);
   window.galleryItems = appData.gallery; // Store for lightbox
@@ -724,6 +725,29 @@ function renderSectorCard(sectorKey, gridId) {
   </div>`;
   // Observe
   grid.querySelectorAll(".animate").forEach(el => window.observer.observe(el));
+}
+
+function renderFloodResponse() {
+  const desc = document.querySelector('.flood-description');
+  if (desc) {
+    desc.dataset.ar = appData.flood_response.description.ar;
+    desc.dataset.en = appData.flood_response.description.en;
+    desc.textContent = appData.flood_response.description[currentLang];
+  }
+  const tbody = document.getElementById('floodTableBody');
+  tbody.innerHTML = '';
+  appData.flood_response.data.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row.governorate[currentLang]}</td>
+      <td>${row.food_baskets}</td>
+      <td>${row.food_beneficiaries.toLocaleString()}</td>
+      <td>${row.shelter_materials}</td>
+      <td>${row.hygiene_kits}</td>
+      <td>${row.shelter_beneficiaries.toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
 window.observer = new IntersectionObserver(entries => {
