@@ -1110,4 +1110,46 @@
   ]
 }
 
+,
+"aerial_bombing_response": {
+  "description": {
+    "ar": "نفّذ فريق الاستجابة تدخلات ميدانية عاجلة عقب الغارات الجوية التي استهدفت محافظات صنعاء، الجوف، عمران، والحديدة، حيث كان فريق الهلال الأحمر اليمني أول المستجيبين في مواقع القصف. تم توزيع 223 من المواد غير الغذائية (NFIs) وحقائب النظافة، بالإضافة إلى 220 سلة غذائية على الأسر المتضررة من الغارات الجوية.",
+    "en": "The response team implemented urgent field interventions following the aerial bombardments that targeted the governorates of Sanaa, Al Jawf, Amran, and Al Hudaydah, where the Yemen Red Crescent team was the first responders at the bombing sites. 223 non-food items (NFIs) and hygiene kits were distributed, in addition to 220 food baskets to families affected by the aerial bombardments."
+  },
+  "data": [
+    {
+      "governorate": { "ar": "صنعاء", "en": "Sanaa" },
+      "shelter_materials": 210,
+      "hygiene_kits": 210,
+      "shelter_beneficiaries": 1470,
+      "food_baskets": 210,
+      "food_beneficiaries": 1470
+    },
+    {
+      "governorate": { "ar": "الحديدة", "en": "Al Hudaydah" },
+      "shelter_materials": 8,
+      "hygiene_kits": 8,
+      "shelter_beneficiaries": 56,
+      "food_baskets": 8,
+      "food_beneficiaries": 56
+    },
+    {
+      "governorate": { "ar": "صعدة", "en": "Saada" },
+      "shelter_materials": 5,
+      "hygiene_kits": 5,
+      "shelter_beneficiaries": 35,
+      "food_baskets": 2,
+      "food_beneficiaries": 14
+    },
+    {
+      "governorate": { "ar": "الجوف", "en": "Al Jawf" },
+      "shelter_materials": 300,
+      "hygiene_kits": 0,
+      "shelter_beneficiaries": 0,
+      "food_baskets": 150,
+      "food_beneficiaries": 0
+    }
+  ]
+}
+
 }

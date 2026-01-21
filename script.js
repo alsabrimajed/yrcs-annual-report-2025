@@ -69,6 +69,8 @@ renderSectorCard('disasters', 'sectorDisastersGrid');
 renderSectorCard('wash', 'sectorWashGrid');
 renderFloodResponse();
 
+renderAerialBombingResponse();
+
   renderGallery(appData.gallery);
   window.galleryItems = appData.gallery; // Store for lightbox
 }
@@ -762,6 +764,29 @@ function renderFloodResponse() {
       }
     });
   }
+}
+
+function renderAerialBombingResponse() {
+  const desc = document.querySelector('.aerial-description');
+  if (desc) {
+    desc.dataset.ar = appData.aerial_bombing_response.description.ar;
+    desc.dataset.en = appData.aerial_bombing_response.description.en;
+    desc.textContent = appData.aerial_bombing_response.description[currentLang];
+  }
+  const tbody = document.getElementById('aerialTableBody');
+  tbody.innerHTML = '';
+  appData.aerial_bombing_response.data.forEach(row => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `
+      <td>${row.governorate[currentLang]}</td>
+      <td>${row.shelter_materials}</td>
+      <td>${row.hygiene_kits}</td>
+      <td>${row.shelter_beneficiaries.toLocaleString()}</td>
+      <td>${row.food_baskets}</td>
+      <td>${row.food_beneficiaries.toLocaleString()}</td>
+    `;
+    tbody.appendChild(tr);
+  });
 }
 
 window.observer = new IntersectionObserver(entries => {
