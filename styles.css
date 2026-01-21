@@ -998,6 +998,45 @@ html[dir="ltr"] .category-card {
   display: block;
 }
 
+/* ================= SUB TABS ================= */
+
+.sub-tabs-container {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.sub-tab-btn {
+  background: #f8f9fa;
+  border: 1px solid #dee2e6;
+  padding: 8px 16px;
+  margin: 0 2px;
+  cursor: pointer;
+  font-size: 14px;
+  border-radius: 4px;
+  transition: all 0.3s ease;
+  color: #495057;
+}
+
+.sub-tab-btn.active {
+  background: #e74c3c;
+  color: white;
+  border-color: #e74c3c;
+}
+
+.sub-tab-btn:hover {
+  background: #e9ecef;
+}
+
+.sub-tab-content {
+  display: none;
+}
+
+.sub-tab-content.active {
+  display: block;
+}
+
 @keyframes fadeUp {
   from {
     opacity: 0;

@@ -63,6 +63,10 @@ renderSectorImpactTable(sectorSource);
 renderSectorImpactChart(sectorSource);
 renderSectorImpactCards(sectorSource);
 
+renderSectorCard('health', 'sectorHealthGrid');
+renderSectorCard('development', 'sectorDevelopmentGrid');
+renderSectorCard('disasters', 'sectorDisastersGrid');
+renderSectorCard('wash', 'sectorWashGrid');
 
   renderGallery(appData.gallery);
   window.galleryItems = appData.gallery; // Store for lightbox
@@ -517,6 +521,21 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
   });
 });
 
+/* =========================
+   SUB TABS LOGIC
+========================= */
+document.querySelectorAll(".sub-tab-btn").forEach(btn => {
+  btn.addEventListener("click", () => {
+    document.querySelectorAll(".sub-tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".sub-tab-content").forEach(c => c.classList.remove("active"));
+    btn.classList.add("active");
+    const subTab = document.getElementById(btn.dataset.subTab);
+    if (subTab) {
+      subTab.classList.add("active");
+    }
+  });
+});
+
 function renderSectorImpactTable(sectors) {
   const tbody = document.getElementById("sectorImpactBody");
   const totalCell = document.getElementById("sectorImpactTotal");
@@ -668,6 +687,21 @@ function renderSectorImpactCards(sectors) {
     }
   });
 }
+
+function renderSectorCard(sectorKey, gridId) {
+  const grid = document.getElementById(gridId);
+  const data = appData.sector_impact[sectorKey];
+  grid.innerHTML = `<div class="stat-card impact-card animate show"
+       style="--accent:${data.color}"
+       title="${data.beneficiaries.toLocaleString()}">
+    <i class="fas ${data.icon}"></i>
+    <div class="stat-number">${data.beneficiaries.toLocaleString()}</div>
+    <span>${data.label[currentLang]}</span>
+  </div>`;
+  // Observe
+  grid.querySelectorAll(".animate").forEach(el => window.observer.observe(el));
+}
+
 window.observer = new IntersectionObserver(entries => {
   entries.forEach(entry => {
     if (entry.isIntersecting) {
