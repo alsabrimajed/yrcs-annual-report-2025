@@ -1015,3 +1015,71 @@ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
 // Add marker
 L.marker([15.577, 44.021]).addTo(map)
   .bindPopup('مدرسة النور - سيئون<br>2000 طالب/طالبة');
+// ——— Animate Progress Bars on Scroll ———
+function animatePPPBars() {
+  const bars = document.querySelectorAll('#wash-ppp .progress-bar');
+  bars.forEach(bar => {
+    const target = +bar.getAttribute('data-target');
+    let count = 0;
+    const step = Math.ceil(target / 120);
+
+    const update = () => {
+      count += step;
+      if (count > target) count = target;
+      bar.style.width = `${(count / target) * 100}%`;
+      bar.textContent = count.toLocaleString();
+      if (count < target) {
+        requestAnimationFrame(update);
+      }
+    };
+    update();
+  });
+}
+
+let pppObserver = new IntersectionObserver(entries => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      animatePPPBars();
+      pppObserver.disconnect();
+    }
+  });
+}, { threshold: 0.4 });
+
+const pppSection = document.getElementById('wash-ppp');
+if (pppSection) pppObserver.observe(pppSection);
+
+// ——— Leaflet Map ———
+function initPPPMap() {
+  if (!document.getElementById("ppp-map")) return;
+
+  const map = L.map("ppp-map").setView([15.35, 44.21], 6);
+  // Global map reference
+window.pppMap = L.map("ppp-map").setView([15.35, 44.21], 6);
+
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: '&copy; OpenStreetMap contributors',
+  }).addTo(map);
+
+  // Markers
+  const locations = [
+    { coords: [15.99, 46.32], title: "Suhail Water Project - Sayun" },
+    { coords: [14.57, 44.04], title: "Haran Water Tank - Dhamar" },
+    { coords: [15.36, 44.21], title: "Solar System - Al‑Munaqib (Sana'a)" },
+    { coords: [16.21, 49.12], title: "School WASH - Sayun" }
+  ];
+
+  locations.forEach(loc => {
+    L.marker(loc.coords).addTo(map).bindPopup(loc.title);
+  });
+}
+
+document.addEventListener("DOMContentLoaded", initPPPMap);
+// Force Leaflet to resize map when the tab is shown
+document.getElementById('wash-ppp-btn').addEventListener('click', function () {
+  setTimeout(() => {
+    if (window.pppMap) {
+      window.pppMap.invalidateSize();
+    }
+  }, 300); // Delay allows tab to become visible
+});
