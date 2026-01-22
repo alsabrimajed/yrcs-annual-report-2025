@@ -1044,11 +1044,11 @@
   </section>
 
   <!-- Sub-tab Buttons -->
-  <div class="health-sub-tabs" role="tablist">
-    <button class="health-sub-tab-btn active" id="wash-overview-btn" role="tab"
+  <div class="wash-sub-tabs" role="tablist">
+    <button class="wash-sub-tab-btn active" id="wash-overview-btn" role="tab"
       aria-controls="wash-overview" aria-selected="true" tabindex="0"
       data-health-tab="wash-overview" data-ar="نظرة عامة" data-en="Overview">
-      <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water Overview" class="health-tab-icon">
+      <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water Overview" class="wash-tab-icon">
       <span data-ar="نظرة عامة" data-en="Overview"></span>
     </button>
     <button class="health-sub-tab-btn" id="wash-projects-btn" role="tab"
@@ -1057,11 +1057,17 @@
   <img src="Icons/IFRC-icons-colour_Emergency-response.png" alt="WASH Projects" class="health-tab-icon">
   <span data-ar="المشاريع" data-en="Projects"></span>
 </button>
+<button class="health-sub-tab-btn" id="wash-koica-btn" role="tab"
+  aria-controls="wash-koica" aria-selected="false" tabindex="-1"
+  data-health-tab="wash-koica" data-ar="مشروع المياه من أجل السلام" data-en="Water for Peace Project">
+  <img src="Icons/IFRC-icons-colour_Peace-and-Conflict.png" alt="KOICA Project Icon" class="health-tab-icon">
+  <span data-ar="مشروع المياه من أجل السلام" data-en="Water for Peace Project"></span>
+</button>
 
   </div>
 
   <!-- Sub-tab Content -->
-  <div class="health-tab-content active" id="wash-overview" role="tabpanel" aria-labelledby="wash-overview-btn">
+  <div class="wash-tab-content active" id="wash-overview" role="tabpanel" aria-labelledby="wash-overview-btn">
     <section class="wash-overview-section">
       <div class="container">
         <h3 data-ar="نظرة عامة على أزمة المياه" data-en="Water Crisis Overview"></h3>
@@ -1085,7 +1091,7 @@
     </section>
   </div>
 <!-- WASH Projects Sub-Tab -->
-<div class="health-tab-content" id="wash-projects" role="tabpanel" aria-labelledby="wash-projects-btn">
+<div class="wash-tab-content" id="wash-projects" role="tabpanel" aria-labelledby="wash-projects-btn">
   <section class="wash-projects-section">
     <div class="container">
       <h3 data-ar="المشاريع" data-en="Projects"></h3>
@@ -1150,6 +1156,34 @@
   <li data-ar="جلسات توعية ميدانية - حزم الجوف (بدأت بتدريب متطوعين ثم 40 مستفيد بالتدريب المجتمعي)." data-en="Field awareness activities in Al-Hazm, Al-Jawf, starting with volunteer training then community sessions (40 beneficiaries)."></li>
 </ul>
 
+    </div>
+  </section>
+</div>
+<div class="wash-tab-content" id="wash-koica" role="tabpanel" aria-labelledby="wash-koica-btn">
+  <section class="wash-koica-section">
+    <div class="container">
+      <h3 data-ar="مشروع المياه من أجل السلام والحد من التوترات الناشئة من نقص المياه (KOICA)" 
+          data-en="Water for Peace and Conflict Reduction Project (KOICA)">
+      </h3>
+
+      <p data-ar="يُنفذ هذا المشروع بالشراكة مع الاتحاد الدولي لجمعيات الصليب الأحمر والهلال الأحمر (IFRC)، ويهدف إلى تعزيز الصمود المجتمعي في اليمن عبر التدخل في مجالات إدارة المياه والحد من التوترات الناشئة من نقص المياه وأيضا الحد من مخاطر الكوارث، والتأهب والاستجابة للأوبئة، والمشاركة المجتمعية. ويركز على تمكين المجتمعات والأطراف الفاعلة المحلية من حل المشكلات المتعلقة بالمياه والتنبؤ بالأزمات والتأهب لها والاستجابة والتعافي منها بفاعلية." 
+         data-en="This project, in partnership with the IFRC, aims to enhance community resilience in Yemen by addressing water management, conflict mitigation related to water scarcity, disaster risk reduction, epidemic preparedness and response, and community engagement. It focuses on enabling communities and local actors to resolve water-related issues, forecast crises, and respond and recover effectively.">
+      </p>
+
+      <ul>
+        <li data-ar="تأهيل واستبدال شبكة المياه في أحياء صنعاء القديمة (الطواشي، المدرسة، عقيل، الشهيدين) ومشروع توريد وتركيب واختبار مولد كهربائي ديزل بقدرة 320 كيلو وات لبئر M6R في خزانات مسيك -شعوب حيث يستفيد من هذا النشاط حوالي 152,000 مستفيد." 
+            data-en="Rehabilitation and replacement of water networks in Old Sana’a neighborhoods (Al-Tawashi, Al-Madrasa, Aqil, Al-Shahidain) and supply, install, and test a 320kW diesel generator for well M6R at Musayk tanks - Sha'oub. Approximately 152,000 people benefit from this activity.">
+        </li>
+        <li data-ar="استبدال وتأهيل شبكة المياه في جولة سنان وتركيب المنظومة الشمسية لبئر الجشاش في تعز ويستفيد من هذا النشاط ما يقارب 37,000 شخص." 
+            data-en="Rehabilitation and replacement of the water network in Joulat Sinan and installation of a solar system for Al-Jashash well in Taiz, benefiting about 37,000 people.">
+        </li>
+        <li data-ar="توريد أجهزة اختبار لمعامل مختبر المياه بالمؤسسة المحلية للمياه والصرف الصحي في تعز." 
+            data-en="Supply of testing equipment to the local water and sanitation laboratory in Taiz.">
+        </li>
+        <li data-ar="تشكيل لجان مجتمعية للمياه في صنعاء القديمة وتعز بمشاركة 20 شخص من المجتمع المحلي." 
+            data-en="Formation of community water committees in Old Sana’a and Taiz with 20 local community participants.">
+        </li>
+      </ul>
     </div>
   </section>
 </div>
