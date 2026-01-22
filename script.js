@@ -516,9 +516,15 @@ window.addEventListener("load", revealOnScroll);
 document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
     console.log("Tab clicked:", btn.dataset.tab);
-    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".tab-btn").forEach(b => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+      b.setAttribute("tabindex", "-1");
+    });
     document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
     btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
+    btn.setAttribute("tabindex", "0");
     const tab = document.getElementById(btn.dataset.tab);
     console.log("Tab element:", tab);
     if (tab) {
@@ -537,9 +543,15 @@ document.querySelectorAll(".tab-btn").forEach(btn => {
 ========================= */
 document.querySelectorAll(".sub-tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".sub-tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".sub-tab-btn").forEach(b => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+      b.setAttribute("tabindex", "-1");
+    });
     document.querySelectorAll(".sub-tab-content").forEach(c => c.classList.remove("active"));
     btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
+    btn.setAttribute("tabindex", "0");
     const subTab = document.getElementById(btn.dataset.subTab);
     if (subTab) {
       subTab.classList.add("active");
@@ -558,9 +570,15 @@ document.querySelectorAll(".sub-tab-btn").forEach(btn => {
 // Disaster Sub-Tabs Logic
 document.querySelectorAll(".disaster-sub-tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".disaster-sub-tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".disaster-sub-tab-btn").forEach(b => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+      b.setAttribute("tabindex", "-1");
+    });
     document.querySelectorAll(".disaster-tab-content").forEach(c => c.classList.remove("active"));
     btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
+    btn.setAttribute("tabindex", "0");
     const disasterTab = document.getElementById(btn.dataset.disasterTab);
     if (disasterTab) {
       disasterTab.classList.add("active");
@@ -571,9 +589,15 @@ document.querySelectorAll(".disaster-sub-tab-btn").forEach(btn => {
 // Health Sub-Tabs Logic
 document.querySelectorAll(".health-sub-tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".health-sub-tab-btn").forEach(b => b.classList.remove("active"));
+    document.querySelectorAll(".health-sub-tab-btn").forEach(b => {
+      b.classList.remove("active");
+      b.setAttribute("aria-selected", "false");
+      b.setAttribute("tabindex", "-1");
+    });
     document.querySelectorAll(".health-tab-content").forEach(c => c.classList.remove("active"));
     btn.classList.add("active");
+    btn.setAttribute("aria-selected", "true");
+    btn.setAttribute("tabindex", "0");
     const healthTab = document.getElementById(btn.dataset.healthTab);
     if (healthTab) {
       healthTab.classList.add("active");
@@ -984,19 +1008,4 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "Escape") closeLightbox();
   if (e.key === "ArrowLeft") showPrev();
   if (e.key === "ArrowRight") showNext();
-});
-
-// Health Sub-Tabs
-document.querySelectorAll('.health-sub-tab-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    // Remove active from all buttons
-    document.querySelectorAll('.health-sub-tab-btn').forEach(b => b.classList.remove('active'));
-    // Add active to clicked
-    btn.classList.add('active');
-    // Hide all content
-    document.querySelectorAll('.health-tab-content').forEach(c => c.classList.remove('active'));
-    // Show the corresponding content
-    const tab = btn.dataset.healthTab;
-    document.getElementById(tab).classList.add('active');
-  });
 });

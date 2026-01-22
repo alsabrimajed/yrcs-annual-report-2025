@@ -95,6 +95,11 @@ body {
   margin-left: 8px;
 }
 
+button:focus-visible {
+  outline: 3px solid var(--secondary-blue);
+  outline-offset: 3px;
+}
+
 /* ===============================
    Hero Stats
 ================================ */
@@ -1679,4 +1684,3 @@ html[dir="ltr"] .category-card {
   margin: 10px 0;
   line-height: 1.6;
 }
-

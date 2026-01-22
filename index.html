@@ -23,33 +23,33 @@
 </div>
 
 <!-- Error Message -->
-<div id="error-message" class="error-message" style="display: none;">
-  <p data-ar="البيانات غير متوفرة—يرجى إعادة التحديث." data-en="Data unavailable—please refresh."></p>
+<div id="error-message" class="error-message" role="alert" aria-live="polite" style="display: none;">
+  <p data-ar="البيانات غير متوفرة—يرجى إعادة التحديث." data-en="Data unavailable—please refresh.">البيانات غير متوفرة—يرجى إعادة التحديث.</p>
   <button onclick="location.reload()" data-ar="إعادة التحميل" data-en="Reload">إعادة التحميل</button>
 </div>
 
 <!-- ================= HEADER ================= -->
 <header class="header">
-  <div class="tabs-container">
-    <button class="tab-btn active" data-tab="tab-overview"
+  <div class="tabs-container" role="tablist">
+    <button class="tab-btn active" id="tab-overview-btn" role="tab" aria-controls="tab-overview" aria-selected="true" tabindex="0" data-tab="tab-overview"
       data-ar="نظرة عامة" data-en="Overview"></button>
 
-    <button class="tab-btn" data-tab="tab-sector-impact"
+    <button class="tab-btn" id="tab-sector-impact-btn" role="tab" aria-controls="tab-sector-impact" aria-selected="false" tabindex="-1" data-tab="tab-sector-impact"
       data-ar="الأثر القطاعي" data-en="Sector Impact"></button>
 
-    <button class="tab-btn" data-tab="tab-charts"
+    <button class="tab-btn" id="tab-charts-btn" role="tab" aria-controls="tab-charts" aria-selected="false" tabindex="-1" data-tab="tab-charts"
       data-ar="الرسوم البيانية" data-en="Charts"></button>
 
-    <button class="tab-btn" data-tab="tab-projects"
+    <button class="tab-btn" id="tab-projects-btn" role="tab" aria-controls="tab-projects" aria-selected="false" tabindex="-1" data-tab="tab-projects"
       data-ar="المشاريع" data-en="Projects"></button>
 
-    <button class="tab-btn" data-tab="tab-training"
+    <button class="tab-btn" id="tab-training-btn" role="tab" aria-controls="tab-training" aria-selected="false" tabindex="-1" data-tab="tab-training"
       data-ar="التدريب" data-en="Training"></button>
 
-    <button class="tab-btn" data-tab="tab-activities"
+    <button class="tab-btn" id="tab-activities-btn" role="tab" aria-controls="tab-activities" aria-selected="false" tabindex="-1" data-tab="tab-activities"
       data-ar="الأنشطة" data-en="Activities"></button>
 
-    <button class="tab-btn" data-tab="tab-gallery"
+    <button class="tab-btn" id="tab-gallery-btn" role="tab" aria-controls="tab-gallery" aria-selected="false" tabindex="-1" data-tab="tab-gallery"
       data-ar="المعرض" data-en="Gallery"></button>
   </div>
 
@@ -63,7 +63,7 @@
 </header>
 
 <!-- ================= OVERVIEW ================= -->
-<section class="tab-content active" id="tab-overview">
+<section class="tab-content active" id="tab-overview" role="tabpanel" aria-labelledby="tab-overview-btn">
 
   <!-- HERO STATS -->
   <section class="hero-stats">
@@ -93,31 +93,31 @@
 </section>
 
 <!-- ================= SECTOR IMPACT ================= -->
-<section class="tab-content" id="tab-sector-impact">
-<div class="sub-tabs-container">
+<section class="tab-content" id="tab-sector-impact" role="tabpanel" aria-labelledby="tab-sector-impact-btn">
+<div class="sub-tabs-container" role="tablist">
   <div class="sub-tab-indicator"></div>
-  <button class="sub-tab-btn active" data-sub-tab="sub-overview" data-ar="نظرة عامة" data-en="Overview">
+  <button class="sub-tab-btn active" id="sub-overview-btn" role="tab" aria-controls="sub-overview" aria-selected="true" tabindex="0" data-sub-tab="sub-overview" data-ar="نظرة عامة" data-en="Overview">
     <img src="Icons/IFRC-icons-colour_Map.png" alt="Overview" class="sub-tab-icon">
     <span data-ar="نظرة عامة" data-en="Overview"></span>
   </button>
-  <button class="sub-tab-btn" data-sub-tab="sub-health" data-ar="الصحة والرعاية" data-en="Health & Care">
+  <button class="sub-tab-btn" id="sub-health-btn" role="tab" aria-controls="sub-health" aria-selected="false" tabindex="-1" data-sub-tab="sub-health" data-ar="الصحة والرعاية" data-en="Health & Care">
     <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health & Care" class="sub-tab-icon">
     <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
   </button>
-  <button class="sub-tab-btn" data-sub-tab="sub-development" data-ar="دعم تطوير الجمعية" data-en="Organizational Development">
+  <button class="sub-tab-btn" id="sub-development-btn" role="tab" aria-controls="sub-development" aria-selected="false" tabindex="-1" data-sub-tab="sub-development" data-ar="دعم تطوير الجمعية" data-en="Organizational Development">
     <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Organizational Development" class="sub-tab-icon">
     <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
   </button>
-  <button class="sub-tab-btn" data-sub-tab="sub-disasters" data-ar="الكوارث والأزمات" data-en="Disasters & Crises">
+  <button class="sub-tab-btn" id="sub-disasters-btn" role="tab" aria-controls="sub-disasters" aria-selected="false" tabindex="-1" data-sub-tab="sub-disasters" data-ar="الكوارث والأزمات" data-en="Disasters & Crises">
     <img src="Icons/IFRC-icons-colour_Extreme-weather.png" alt="Disasters & Crises" class="sub-tab-icon">
     <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
   </button>
-  <button class="sub-tab-btn" data-sub-tab="sub-wash" data-ar="المياه والإسكان" data-en="Water & Shelter">
+  <button class="sub-tab-btn" id="sub-wash-btn" role="tab" aria-controls="sub-wash" aria-selected="false" tabindex="-1" data-sub-tab="sub-wash" data-ar="المياه والإسكان" data-en="Water & Shelter">
     <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water & Shelter" class="sub-tab-icon">
     <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
   </button>
 </div>
-<div class="sub-tab-content active" id="sub-overview">
+<div class="sub-tab-content active" id="sub-overview" role="tabpanel" aria-labelledby="sub-overview-btn">
   <!-- ================= SECTOR IMPACT ================= -->
 <section class="hero-stats sector-impact">
   <div class="container">
@@ -173,7 +173,7 @@
     </div>
   </section>
 </div>
-<div class="sub-tab-content" id="sub-health">
+<div class="sub-tab-content" id="sub-health" role="tabpanel" aria-labelledby="sub-health-btn">
 <section class="hero-stats sector-impact">
 <div class="container">
 <h2 class="section-title" data-ar="الصحة والرعاية" data-en="Health & Care"></h2>
@@ -183,27 +183,27 @@
 </section>
 
 <!-- Health Sub-Tabs -->
-<div class="health-sub-tabs">
-  <button class="health-sub-tab-btn active" data-health-tab="health-overview" data-ar="نظرة عامة" data-en="Overview">
+<div class="health-sub-tabs" role="tablist">
+  <button class="health-sub-tab-btn active" id="health-overview-btn" role="tab" aria-controls="health-overview" aria-selected="true" tabindex="0" data-health-tab="health-overview" data-ar="نظرة عامة" data-en="Overview">
     <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Overview" class="health-tab-icon">
     <span data-ar="نظرة عامة" data-en="Overview"></span>
   </button>
-  <button class="health-sub-tab-btn" data-health-tab="health-centers" data-ar="المراكز الصحية" data-en="Health Centers">
+  <button class="health-sub-tab-btn" id="health-centers-btn" role="tab" aria-controls="health-centers" aria-selected="false" tabindex="-1" data-health-tab="health-centers" data-ar="المراكز الصحية" data-en="Health Centers">
     <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health Centers" class="health-tab-icon">
     <span data-ar="المراكز الصحية" data-en="Health Centers"></span>
   </button>
-  <button class="health-sub-tab-btn" data-health-tab="primary-care" data-ar="الرعاية الأولية" data-en="Primary Care">
+  <button class="health-sub-tab-btn" id="primary-care-btn" role="tab" aria-controls="primary-care" aria-selected="false" tabindex="-1" data-health-tab="primary-care" data-ar="الرعاية الأولية" data-en="Primary Care">
     <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Primary Care" class="health-tab-icon">
     <span data-ar="الرعاية الأولية" data-en="Primary Care"></span>
   </button>
-  <button class="health-sub-tab-btn" data-health-tab="health-strengthening" data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care">
+  <button class="health-sub-tab-btn" id="health-strengthening-btn" role="tab" aria-controls="health-strengthening" aria-selected="false" tabindex="-1" data-health-tab="health-strengthening" data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care">
     <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Strengthening Health Care" class="health-tab-icon">
     <span data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></span>
   </button>
 </div>
 
 <!-- Health Overview Sub-Tab Content -->
-<div class="health-tab-content active" id="health-overview">
+<div class="health-tab-content active" id="health-overview" role="tabpanel" aria-labelledby="health-overview-btn">
 <section class="health-services-section">
 <div class="container">
 <h3 data-ar="خدمات المراكز الصحية" data-en="Health Center Services"></h3>
@@ -213,7 +213,7 @@
 </div>
 
 <!-- Health Centers Sub-Tab Content -->
-<div class="health-tab-content" id="health-centers">
+<div class="health-tab-content" id="health-centers" role="tabpanel" aria-labelledby="health-centers-btn">
 <section class="health-centers-section">
 <div class="container">
 <h3 data-ar="المستفيدون من المراكز الصحية" data-en="Health Center Beneficiaries"></h3>
@@ -258,7 +258,7 @@
 </div>
 
 <!-- Primary Care Sub-Tab Content -->
-<div class="health-tab-content" id="primary-care">
+<div class="health-tab-content" id="primary-care" role="tabpanel" aria-labelledby="primary-care-btn">
 <section class="primary-care-section">
 <div class="container">
 <h3 data-ar="خدمات الرعاية الصحية الأولية" data-en="Primary Health Care Services"></h3>
@@ -361,7 +361,7 @@
 </section>
 </div>
 <!-- Strengthening Health Care Sub-Tab Content -->
-<div class="health-tab-content" id="health-strengthening">
+<div class="health-tab-content" id="health-strengthening" role="tabpanel" aria-labelledby="health-strengthening-btn">
 <section class="strengthening-section">
 <div class="container">
 <h3 data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></h3>
@@ -395,7 +395,7 @@
 </div>
 </section>
 </div></div>
-<div class="sub-tab-content" id="sub-development">
+<div class="sub-tab-content" id="sub-development" role="tabpanel" aria-labelledby="sub-development-btn">
 <section class="hero-stats sector-impact">
 <div class="container">
 <h2 class="section-title" data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></h2>
@@ -404,7 +404,7 @@
 </div>
 </section>
 </div>
-<div class="sub-tab-content" id="sub-disasters">
+<div class="sub-tab-content" id="sub-disasters" role="tabpanel" aria-labelledby="sub-disasters-btn">
 <section class="hero-stats sector-impact">
 <div class="container">
 <h2 class="section-title" data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></h2>
@@ -414,39 +414,39 @@
 </section>
 
 <!-- Disaster Response Sub-Tabs -->
-<div class="disaster-sub-tabs">
-  <button class="disaster-sub-tab-btn active" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods">
+<div class="disaster-sub-tabs" role="tablist">
+  <button class="disaster-sub-tab-btn active" id="flood-response-btn" role="tab" aria-controls="flood-response" aria-selected="true" tabindex="0" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods">
     <img src="Icons/IFRC-icons-colour_Floods.png" alt="Floods" class="disaster-tab-icon">
     <span data-ar="السيول" data-en="Floods"></span>
   </button>
-  <button class="disaster-sub-tab-btn" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing">
+  <button class="disaster-sub-tab-btn" id="aerial-bombing-btn" role="tab" aria-controls="aerial-bombing" aria-selected="false" tabindex="-1" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing">
     <img src="Icons/IFRC-icons-colour_Conflict.png" alt="Aerial Bombing" class="disaster-tab-icon">
     <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
   </button>
-  <button class="disaster-sub-tab-btn" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning">
+  <button class="disaster-sub-tab-btn" id="lightning-btn" role="tab" aria-controls="lightning" aria-selected="false" tabindex="-1" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning">
     <img src="Icons/IFRC-icons-colour_Storm.png" alt="Lightning" class="disaster-tab-icon">
     <span data-ar="الصواعق" data-en="Lightning"></span>
   </button>
-  <button class="disaster-sub-tab-btn" data-disaster-tab="fire-response" data-ar="الحرائق" data-en="Fire Response">
+  <button class="disaster-sub-tab-btn" id="fire-response-btn" role="tab" aria-controls="fire-response" aria-selected="false" tabindex="-1" data-disaster-tab="fire-response" data-ar="الحرائق" data-en="Fire Response">
     <img src="Icons/IFRC-icons-colour_Wildfire.png" alt="Fire Response" class="disaster-tab-icon">
     <span data-ar="الحرائق" data-en="Fire Response"></span>
   </button>
-  <button class="disaster-sub-tab-btn" data-disaster-tab="rockslides" data-ar="الانهيارات الصخرية" data-en="Rockslides">
+  <button class="disaster-sub-tab-btn" id="rockslides-btn" role="tab" aria-controls="rockslides" aria-selected="false" tabindex="-1" data-disaster-tab="rockslides" data-ar="الانهيارات الصخرية" data-en="Rockslides">
     <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" alt="Rockslides" class="disaster-tab-icon">
     <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
   </button>
-  <button class="disaster-sub-tab-btn" data-disaster-tab="aid-distribution" data-ar="الأشد فقرا" data-en="Most Poor">
+  <button class="disaster-sub-tab-btn" id="aid-distribution-btn" role="tab" aria-controls="aid-distribution" aria-selected="false" tabindex="-1" data-disaster-tab="aid-distribution" data-ar="الأشد فقرا" data-en="Most Poor">
     <img src="Icons/IFRC-icons-colour_Food.png" alt="Aid Distribution" class="disaster-tab-icon">
     <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
   </button>
-  <button class="disaster-sub-tab-btn" data-disaster-tab="economic-security" data-ar="الأمن الاقتصادي" data-en="Economic Security">
+  <button class="disaster-sub-tab-btn" id="economic-security-btn" role="tab" aria-controls="economic-security" aria-selected="false" tabindex="-1" data-disaster-tab="economic-security" data-ar="الأمن الاقتصادي" data-en="Economic Security">
     <img src="Icons/IFRC-icons-colour_Food.png" alt="Economic Security" class="disaster-tab-icon">
     <span data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security & Livelihoods"></span>
   </button>
 </div>
 
 <!-- Flood Response Sub-Tab Content -->
-<div class="disaster-tab-content active" id="flood-response">
+<div class="disaster-tab-content active" id="flood-response" role="tabpanel" aria-labelledby="flood-response-btn">
 <section class="flood-response-section">
 <div class="container">
 <p class="flood-description"></p>
@@ -491,7 +491,7 @@
 </div>
 
 <!-- Aerial Bombing Sub-Tab Content -->
-<div class="disaster-tab-content" id="aerial-bombing">
+<div class="disaster-tab-content" id="aerial-bombing" role="tabpanel" aria-labelledby="aerial-bombing-btn">
 <section class="aerial-bombing-section">
 <div class="container">
 <p class="aerial-description"></p>
@@ -515,7 +515,7 @@
 </div>
 
 <!-- Lightning Sub-Tab Content -->
-<div class="disaster-tab-content" id="lightning">
+<div class="disaster-tab-content" id="lightning" role="tabpanel" aria-labelledby="lightning-btn">
 <section class="lightning-response-section">
 <div class="container">
 <p class="lightning-description"></p>
@@ -554,7 +554,7 @@
 </div>
 
 <!-- Fire Response Sub-Tab Content -->
-<div class="disaster-tab-content" id="fire-response">
+<div class="disaster-tab-content" id="fire-response" role="tabpanel" aria-labelledby="fire-response-btn">
 <section class="fire-response-section">
 <div class="container">
 <h3 data-ar="الاستجابة للحرائق" data-en="Fire Response"></h3>
@@ -577,7 +577,7 @@
 </div>
 
 <!-- Rockslides Sub-Tab Content -->
-<div class="disaster-tab-content" id="rockslides">
+<div class="disaster-tab-content" id="rockslides" role="tabpanel" aria-labelledby="rockslides-btn">
 <section class="rockslides-section">
 <div class="container">
 <h3 data-ar="الانهيارات الصخرية" data-en="Rockslides"></h3>
@@ -600,7 +600,7 @@
 </div>
 
 <!-- Aid Distribution Sub-Tab Content -->
-<div class="disaster-tab-content" id="aid-distribution">
+<div class="disaster-tab-content" id="aid-distribution" role="tabpanel" aria-labelledby="aid-distribution-btn">
 <section class="aid-distribution-section">
 <div class="container">
 <h3 data-ar="توزيع السلال الغذائية والمواد غير الغذائية" data-en="Distribution of Food Baskets and Non-Food Items"></h3>
@@ -622,7 +622,7 @@
 </section>
 </div>
 <!-- Economic Security Sub-Tab Content -->
-<div class="disaster-tab-content" id="economic-security">
+<div class="disaster-tab-content" id="economic-security" role="tabpanel" aria-labelledby="economic-security-btn">
 <section class="economic-security-section">
 <div class="container">
 <h3 data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security and Livelihoods"></h3>
@@ -775,7 +775,7 @@
 </div>
 </section>
 </div>
-<div class="sub-tab-content" id="sub-wash">
+<div class="sub-tab-content" id="sub-wash" role="tabpanel" aria-labelledby="sub-wash-btn">
 <section class="hero-stats sector-impact">
 <div class="container">
 <h2 class="section-title" data-ar="المياه والإسكان" data-en="Water & Shelter"></h2>
@@ -787,7 +787,7 @@
 </section>
 
 <!-- ================= CHARTS ================= -->
-<section class="tab-content" id="tab-charts">
+<section class="tab-content" id="tab-charts" role="tabpanel" aria-labelledby="tab-charts-btn">
   <section class="charts-section">
     <div class="container">
       <div class="charts-grid">
@@ -801,7 +801,7 @@
 </section>
 
 <!-- ================= PROJECTS ================= -->
-<section class="tab-content" id="tab-projects">
+<section class="tab-content" id="tab-projects" role="tabpanel" aria-labelledby="tab-projects-btn">
   <section class="table-section">
     <div class="container">
       <div class="table-wrapper">
@@ -825,7 +825,7 @@
 </section>
 
 <!-- ================= TRAINING ================= -->
-<section class="tab-content" id="tab-training">
+<section class="tab-content" id="tab-training" role="tabpanel" aria-labelledby="tab-training-btn">
   <section class="table-section">
     <div class="container">
       <div class="table-wrapper">
@@ -849,7 +849,7 @@
 </section>
 
 <!-- ================= ACTIVITIES ================= -->
-<section class="tab-content" id="tab-activities">
+<section class="tab-content" id="tab-activities" role="tabpanel" aria-labelledby="tab-activities-btn">
   <section class="table-section">
     <div class="container">
       <div class="table-wrapper">
@@ -872,7 +872,7 @@
 </section>
 
 <!-- ================= GALLERY ================= -->
-<section class="tab-content" id="tab-gallery">
+<section class="tab-content" id="tab-gallery" role="tabpanel" aria-labelledby="tab-gallery-btn">
   <section class="gallery-section">
     <div class="container">
       <div class="gallery-grid"></div>
