@@ -12,6 +12,9 @@
 
   <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+
 </head>
 
 <body>
@@ -1063,8 +1066,21 @@
   <img src="Icons/IFRC-icons-colour_Peace-and-Conflict.png" alt="KOICA Project Icon" class="health-tab-icon">
   <span data-ar="مشروع المياه من أجل السلام" data-en="Water for Peace Project"></span>
 </button>
+<button class="wash-sub-tab-btn" id="wash-ppp-btn" role="tab"
+  aria-controls="wash-ppp" aria-selected="false" tabindex="-1"
+  data-health-tab="wash-ppp" data-ar="مشروع الشراكة البرامجية" data-en="PPP Project">
+  <img src="Icons/IFRC-icons-colour_Partnership.png" alt="PPP Icon" class="health-tab-icon">
+  <span data-ar="مشروع الشراكة البرامجية" data-en="PPP Project"></span>
+</button>
 
   </div>
+<div class="progress-stat">
+  <label data-ar="عدد المستفيدين" data-en="Beneficiaries"></label>
+  <div class="progress-bar-container">
+    <div class="progress-bar" style="width: 75%;">37,000</div>
+  </div>
+</div>
+<div id="school-map" style="height: 400px;"></div>
 
   <!-- Sub-tab Content -->
   <div class="health-tab-content active" id="wash-overview" role="tabpanel" aria-labelledby="wash-overview-btn">
@@ -1186,6 +1202,48 @@
       </ul>
     </div>
   </section>
+</div>
+<!-- PPP Project Sub-Tab -->
+<div class="health-tab-content" id="wash-ppp" role="tabpanel" aria-labelledby="wash-ppp-btn">
+
+<section class="wash-ppp-section">
+  <div class="container">
+
+    <h3 data-ar="مشروع الشراكة البرامجية التجريبية (PPP)" data-en="Programmatic Partnership Pilot Project (PPP)"></h3>
+
+    <p data-ar="يهدف مشروع الشراكة البرامجية التجريبية ECHO PPP إلى الاستجابة للمخاطر..." 
+       data-en="The ECHO PPP pilot project aims to respond to humanitarian and health risks..."></p>
+
+    <!-- Progressive Stats -->
+    <div class="ppp-stats">
+      <div class="stat">
+        <label data-ar="مشروع مياه السحيل - سيئون" data-en="Suhail Water Project - Sayun"></label>
+        <div class="progress-bar-container"><div class="progress-bar" data-target="37000">0</div></div>
+      </div>
+
+      <div class="stat">
+        <label data-ar="خزان ومياه هران - ذمار" data-en="Haran Water Tank - Dhamar"></label>
+        <div class="progress-bar-container"><div class="progress-bar" data-target="21500">0</div></div>
+      </div>
+
+      <div class="stat">
+        <label data-ar="منظومة طاقة شمسية - المنقب" data-en="Solar System - Al‑Munaqib"></label>
+        <div class="progress-bar-container"><div class="progress-bar" data-target="5000">0</div></div>
+      </div>
+
+      <div class="stat">
+        <label data-ar="تأهيل مرافق المياه - مدارس" data-en="Rehabilitated School WASH"></label>
+        <div class="progress-bar-container"><div class="progress-bar" data-target="4500">0</div></div>
+      </div>
+    </div>
+
+    <!-- Interactive Map -->
+    <h4 data-ar="خريطة المواقع" data-en="Project Location Map"></h4>
+    <div id="ppp-map" style="height: 350px;"></div>
+
+  </div>
+</section>
+
 </div>
 
 </div>

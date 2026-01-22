@@ -1009,3 +1009,9 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") showPrev();
   if (e.key === "ArrowRight") showNext();
 });
+var map = L.map('school-map').setView([15.3694, 44.1910], 6);
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+
+// Add marker
+L.marker([15.577, 44.021]).addTo(map)
+  .bindPopup('مدرسة النور - سيئون<br>2000 طالب/طالبة');

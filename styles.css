@@ -1684,3 +1684,18 @@ html[dir="ltr"] .category-card {
   margin: 10px 0;
   line-height: 1.6;
 }
+.progress-bar-container {
+  background: #f0f0f0;
+  border-radius: 8px;
+  height: 20px;
+  width: 100%;
+  overflow: hidden;
+}
+.progress-bar {
+  background: #e2001a;
+  color: #fff;
+  padding: 0 10px;
+  height: 100%;
+  line-height: 20px;
+  transition: width 1s ease-in-out;
+}
