@@ -116,6 +116,27 @@
     <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water & Shelter" class="sub-tab-icon">
     <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
   </button>
+  <!-- Water & Shelter Overview Sub-Tab Content -->
+<div class="health-tab-content active" id="wash-overview" role="tabpanel" aria-labelledby="wash-overview-btn">
+  <section class="wash-overview-section">
+    <div class="container">
+      <h3 data-ar="نظرة عامة على أزمة المياه" data-en="Water Crisis Overview"></h3>
+      <p>
+        تُمثل أزمة المياه في اليمن أحد التحديات الإنسانية والإنمائية الأكثر إلحاحاً، حيث تفاقمت حدتها نتيجة عوامل مركبة تشمل النمو السكاني المتسارع، وتدهور البنية التحتية، وسوء إدارة الموارد المائية، والتأثيرات المتزايدة للتغير المناخي.
+      </p>
+      <p>
+        وقد أدى الصراع المستمر إلى تفاقم الأزمة من خلال إلحاق أضرار جسيمة بشبكات المياه، وتعطيل أنظمة التوزيع، وتقييد الوصول إلى المصادر الآمنة.
+      </p>
+      <p>
+        وساهم نقص خدمات المياه والإصحاح البيئي في انتشار الأمراض المنقولة بالمياه، مما عمّق من الحالة الإنسانية الحرجة.
+      </p>
+      <p>
+        لذا، تتطلب المعالجة الفاعلة تبني استراتيجيات متكاملة تجمع بين تعزيز البنية التحتية، وترشيد الإدارة، وبناء القدرة على الصمود في وجه التحديات المناخية.
+      </p>
+    </div>
+  </section>
+</div>
+
 </div>
 <div class="sub-tab-content active" id="sub-overview" role="tabpanel" aria-labelledby="sub-overview-btn">
   <!-- ================= SECTOR IMPACT ================= -->
@@ -1038,6 +1059,13 @@
 <div class="container">
 <h2 class="section-title" data-ar="المياه والإسكان" data-en="Water & Shelter"></h2>
 <div class="stats-grid impact-grid" id="sectorWashGrid">
+  <button class="health-sub-tab-btn active" id="wash-overview-btn" role="tab"
+  aria-controls="wash-overview" aria-selected="true" tabindex="0"
+  data-health-tab="wash-overview" data-ar="نظرة عامة" data-en="Overview">
+  <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water Overview" class="health-tab-icon">
+  <span data-ar="نظرة عامة" data-en="Overview"></span>
+</button>
+
 </div>
 </div>
 </section>
