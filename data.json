@@ -807,28 +807,28 @@
 
    "gallery": [
   {
-    "image": "Assets/gallery/shelter_kit_distribution_1600_february.jpg.jpg",
+    "image": "Assets/gallery/shelter_kit_distribution_1600_february.jpg",
     "caption": {
       "ar": "توزيع مواد إيوائية",
       "en": "Distribution of Shelter Materials"
     }
   },
   {
-    "image": "Assets/gallery/flood_damage_initial_assessment.jpg.jpg",
+    "image": "Assets/gallery/flood_damage_initial_assessment.jpg",
     "caption": {
       "ar": "التقييم الأولي لأضرار الأمطار والسيول",
       "en": "Initial Assessment of Flood and Rain Damage"
     }
   },
   {
-    "image": "Assets/gallery/mine_risk_awareness_01.jpeg.jpeg",
+    "image": "Assets/gallery/mine_risk_awareness_01.jpeg",
     "caption": {
       "ar": "التوعية بمخاطر الألغام",
       "en": "Mine Risk Awareness"
     }
   },
   {
-    "image": "Assets/gallery/classroom_construction_3_units.jpeg.jpeg",
+    "image": "Assets/gallery/classroom_construction_3_units.jpeg",
     "caption": {
       "ar": "مبادرة بناء فصول دراسية",
       "en": "Classroom Construction Initiative"
@@ -842,35 +842,35 @@
     }
   },
   {
-    "image": "Assets/gallery/shelter_kit_project_500_december.jpeg.jpeg",
+    "image": "Assets/gallery/shelter_kit_project_500_december.jpeg",
     "caption": {
       "ar": "توزيع حقائب إيواء",
       "en": "Distribution of Shelter Kits"
     }
   },
   {
-    "image": "Assets/gallery/ambulance_commissioning_alateer_harib.jpeg.jpeg",
+    "image": "Assets/gallery/ambulance_commissioning_alateer_harib.jpeg",
     "caption": {
       "ar": "إدخال سيارة إسعاف إلى الخدمة",
       "en": "Ambulance Put into Service"
     }
   },
   {
-    "image": "Assets/gallery/potato_seed_distribution.jpeg.jpeg",
+    "image": "Assets/gallery/potato_seed_distribution.jpeg",
     "caption": {
       "ar": "توزيع درنات البطاطس",
       "en": "Distribution of Potato Tubers"
     }
   },
   {
-    "image": "Assets/gallery/international_day_of_missing.jpeg.jpeg",
+    "image": "Assets/gallery/international_day_of_missing.jpeg",
     "caption": {
       "ar": "اليوم العالمي للمفقودين",
       "en": "International Day of the Missing"
     }
   },
   {
-    "image": "Assets/gallery/ambulance_referrals.jpeg.jpeg",
+    "image": "Assets/gallery/ambulance_referrals.jpeg",
     "caption": {
       "ar": "نقل الحالات الإسعافية",
       "en": "Emergency Medical Referrals"
