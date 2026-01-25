@@ -1684,3 +1684,11 @@ html[dir="ltr"] .category-card {
   margin: 10px 0;
   line-height: 1.6;
 }
+/* ===== Chart Containers Fix ===== */
+.chart-box,
+.chart-card,
+.chart-wrapper {
+  position: relative;
+  height: 320px;   /* 👈 REQUIRED */
+  width: 100%;
+}

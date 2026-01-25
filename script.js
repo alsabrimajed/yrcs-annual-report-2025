@@ -593,7 +593,15 @@ document.querySelectorAll(".sub-tab-btn").forEach(btn => {
     const btnRect = btn.getBoundingClientRect();
     const indicatorWidth = 60; // approximate width
     indicator.style.left = (btnRect.left - containerRect.left + btnRect.width / 2 - indicatorWidth / 2) + 'px';
+  
     indicator.style.width = indicatorWidth + 'px';
+
+    if (btn.dataset.tab === "tab-charts") {
+setTimeout(() => {
+clearCharts();
+renderCharts(appData.charts);
+}, 200);
+}
   });
 });
 
