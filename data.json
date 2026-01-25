@@ -21,7 +21,8 @@
       { "ar": "مساعدات نقدية", "en": "Cash Assistance" }
     ],
     "values": [5, 3, 4, 3, 3, 1]
-  },
+  }
+},
 
   "donors": {
     "labels": ["ICRC", "IFRC", "NRCS", "GRC"],
@@ -55,7 +56,7 @@
     ],
     "values": [57, 48, 52, 51, 55, 55, 60, 65, 69, 78, 77, 80]
   }
-}
+
 ,
 
   "categories_cards": [
