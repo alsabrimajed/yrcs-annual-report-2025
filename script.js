@@ -1031,12 +1031,21 @@ document.addEventListener("keydown", (e) => {
   if (e.key === "ArrowLeft") showPrev();
   if (e.key === "ArrowRight") showNext();
 });
-var map = L.map('school-map').setView([15.3694, 44.1910], 6);
-L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(map);
+ function initSchoolMap() {
+  const el = document.getElementById("school-map");
+  if (!el) return;               // ✅ prevent crash
+  if (el._leaflet_id) return;    // ✅ prevent double init
 
-// Add marker
-L.marker([15.577, 44.021]).addTo(map)
-  .bindPopup('مدرسة النور - سيئون<br>2000 طالب/طالبة');
+  const map = L.map(el).setView([15.3694, 44.1910], 6);
+
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© OpenStreetMap"
+  }).addTo(map);
+
+  L.marker([15.577, 44.021])
+    .addTo(map)
+    .bindPopup("مدرسة النور - سيئون<br>2000 طالب/طالبة");
+}
 // ——— Animate Progress Bars on Scroll ———
 function animatePPPBars() {
   const bars = document.querySelectorAll('#wash-ppp .progress-bar');
@@ -1071,28 +1080,26 @@ const pppSection = document.getElementById('wash-ppp');
 if (pppSection) pppObserver.observe(pppSection);
 
 // ——— Leaflet Map ———
-function initPPPMap() {
-  if (!document.getElementById("ppp-map")) return;
+ function initPPPMap() {
+  const el = document.getElementById("ppp-map");
+  if (!el) return;
+  if (el._leaflet_id) return;
 
-  const map = L.map("ppp-map").setView([15.35, 44.21], 6);
-  // Global map reference
-window.pppMap = L.map("ppp-map").setView([15.35, 44.21], 6);
-
+  window.pppMap = L.map(el).setView([15.35, 44.21], 6);
 
   L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
-    attribution: '&copy; OpenStreetMap contributors',
-  }).addTo(map);
+    attribution: "&copy; OpenStreetMap contributors"
+  }).addTo(window.pppMap);
 
-  // Markers
   const locations = [
     { coords: [15.99, 46.32], title: "Suhail Water Project - Sayun" },
     { coords: [14.57, 44.04], title: "Haran Water Tank - Dhamar" },
-    { coords: [15.36, 44.21], title: "Solar System - Al‑Munaqib (Sana'a)" },
+    { coords: [15.36, 44.21], title: "Solar System - Al-Munaqib (Sana'a)" },
     { coords: [16.21, 49.12], title: "School WASH - Sayun" }
   ];
 
   locations.forEach(loc => {
-    L.marker(loc.coords).addTo(map).bindPopup(loc.title);
+    L.marker(loc.coords).addTo(window.pppMap).bindPopup(loc.title);
   });
 }
 
