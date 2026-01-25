@@ -78,6 +78,7 @@ renderFireResponse();
 renderRockslides();
 
 renderAidDistribution();
+renderCommunityInitiatives(appData.community_initiatives);
 
   renderGallery(appData.gallery);
   window.galleryItems = appData.gallery; // Store for lightbox
@@ -1083,3 +1084,23 @@ document.getElementById('wash-ppp-btn').addEventListener('click', function () {
     }
   }, 300); // Delay allows tab to become visible
 });
+ function renderCommunityInitiatives(data) {
+  const tbody = document.getElementById("communityInitiativesBody");
+  if (!tbody || !Array.isArray(data)) return;
+
+  tbody.innerHTML = "";
+
+  data.forEach((item, index) => {
+    const name = item.name?.[currentLang] || item.name;
+    const branch = item.branch?.[currentLang] || item.branch || "-";
+
+    tbody.insertAdjacentHTML("beforeend", `
+      <tr>
+        <td>${index + 1}</td>
+        <td>${name}</td>
+        <td>${branch}</td>
+        <td>${item.beneficiaries.toLocaleString()}</td>
+      </tr>
+    `);
+  });
+}

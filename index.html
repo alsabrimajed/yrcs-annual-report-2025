@@ -697,7 +697,13 @@
     <img src="Icons/IFRC-icons-colour_Infrastructure.png" alt="Infrastructure Icon" class="health-tab-icon">
     <span data-ar="الأعمال التطويرية" data-en="Development Works"></span>
   </button>
-
+<button class="sub-tab-btn" id="sub-community-btn" role="tab"
+  aria-controls="sub-community" aria-selected="false" tabindex="-1"
+  data-sub-tab="sub-community"
+  data-ar="المبادرات المجتمعية" data-en="Community Initiatives">
+  <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Community" class="sub-tab-icon">
+  <span data-ar="المبادرات المجتمعية" data-en="Community Initiatives"></span>
+</button>
 </div>
 <div class="health-tab-content" id="orgdev-infrastructure" role="tabpanel" aria-labelledby="orgdev-infrastructure-btn">
   <section class="orgdev-infrastructure-section">
@@ -719,6 +725,26 @@
       </ul>
     </div>
 
+</div>
+<div class="sub-tab-content" id="sub-community" role="tabpanel" aria-labelledby="sub-community-btn">
+  <section class="table-section">
+    <div class="container">
+      <h2 class="section-title" data-ar="المبادرات المجتمعية" data-en="Community Initiatives"></h2>
+      <div class="table-wrapper">
+        <table class="projects-table">
+          <thead>
+            <tr>
+              <th data-ar="الرقم" data-en="No."></th>
+              <th data-ar="المبادرة" data-en="Initiative"></th>
+              <th data-ar="الفرع" data-en="Branch"></th>
+              <th data-ar="عدد المستفيدين" data-en="Beneficiaries"></th>
+            </tr>
+          </thead>
+          <tbody id="communityInitiativesBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
 </div>
 </section>
 </div>

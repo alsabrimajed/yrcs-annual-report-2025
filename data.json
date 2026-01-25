@@ -1496,3 +1496,291 @@
 }
 
 }
+"community_initiatives": [
+  {
+    "beneficiaries": 1433,
+    "name": {
+      "ar": "بناء مبني طوارئ توليدي في منطقة الشيخ سالم",
+      "en": "Construction of a Maternity Emergency Building in Sheikh Salem Area"
+    },
+    "branch": {
+      "ar": "أبين",
+      "en": "Abyan"
+    }
+  },
+  {
+    "beneficiaries": 966,
+    "name": {
+      "ar": "عمل خط ناقل للمياه لسكان العبيده مديرية خنفر-محافظة أبين طول 2 كيلو ونصف",
+      "en": "Construction of a 2.5 km Water Pipeline for Al‑Ubaidah Residents, Khanfar District, Abyan"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 2000,
+    "name": {
+      "ar": "بقاله بجانب المركز الصحي",
+      "en": "Grocery Store Next to the Health Center"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 3209,
+    "name": {
+      "ar": "انشاء منظومة شمسية لمدرسة الفجر الجديد- عدن",
+      "en": "Installation of Solar System for Al‑Fajr Al‑Jadeed School – Aden"
+    },
+    "branch": {
+      "ar": "عدن",
+      "en": "Aden"
+    }
+  },
+  {
+    "beneficiaries": 3205,
+    "name": {
+      "ar": "تركيب منظومة طاقة شمسية لمدرستي الفجر-عمر بن الخطاب",
+      "en": "Solar Power System Installation for Al‑Fajr & Omar bin Al‑Khattab Schools"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 2336,
+    "name": {
+      "ar": "تركيب منظومة شمسية لمدرسة نور الدين قاسم",
+      "en": "Solar System Installation for Noor Al‑Din Qasim School"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 5632,
+    "name": {
+      "ar": "ترميم مدرسة الاشبال والتعاون",
+      "en": "Renovation of Al‑Ashbal & Al‑Taawon School"
+    },
+    "branch": {
+      "ar": "عمران",
+      "en": "Amran"
+    }
+  },
+  {
+    "beneficiaries": 6000,
+    "name": {
+      "ar": "إنشاء وحده صحية في مديرية عمد",
+      "en": "Establishment of a Health Unit in Amad District"
+    },
+    "branch": {
+      "ar": "ذمار",
+      "en": "Dhamar"
+    }
+  },
+  {
+    "beneficiaries": 6000,
+    "name": {
+      "ar": "استكمال مشروع جسر التعاون حوشب للمشاة والمترات مديرية الحشاء عزلة حيقي عليا منطقة حوشب",
+      "en": "Completion of Al‑Taawon Houshab Pedestrian Bridge Project – Al‑Hasha District"
+    },
+    "branch": {
+      "ar": "الضالع/دمت",
+      "en": "Al‑Dhale’e/Damt"
+    }
+  },
+  {
+    "beneficiaries": 3589,
+    "name": {
+      "ar": "شراء وتركيب 10 أبواب حديد للفصول الدراسية وقمريات النوافذ وشبك حماية للنوافذ، والقمريات لمدرستي قتيبة وخولة ومدرسة شهداء الوحدة",
+      "en": "Purchase & Installation of 10 Steel Classroom Doors, Window Frames & Protective Meshes"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 60,
+    "name": {
+      "ar": "تأهيل فصليين بمدرسة المصنعة بمديرية الأزارق",
+      "en": "Rehabilitation of Two Classrooms at Al‑Masna’a School – Al‑Azariq District"
+    },
+    "branch": {
+      "ar": "الضالع",
+      "en": "Al‑Dhale’e"
+    }
+  },
+  {
+    "beneficiaries": 600,
+    "name": {
+      "ar": "انشاء شبكة أنترنت في محيط مبنى الجمعية",
+      "en": "Installation of Internet Network Around the Association Building"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 1423,
+    "name": {
+      "ar": "مشروع تأهيل وتشغيل مشروع مياه المرقعة",
+      "en": "Rehabilitation & Operation Project for Al‑Marqa’a Water System"
+    },
+    "branch": {
+      "ar": "الجوف",
+      "en": "Al‑Jawf"
+    }
+  },
+  {
+    "beneficiaries": 3000,
+    "name": {
+      "ar": "مشروع سقيا المياه الاهلي بروج",
+      "en": "Community Water Supply Project in Roj"
+    },
+    "branch": {
+      "ar": "حضرموت",
+      "en": "Hadramaut"
+    }
+  },
+  {
+    "beneficiaries": 150,
+    "name": {
+      "ar": "مبادرة بناء الأمل: بناء 3 فصول دراسية لمدرسة المشيش في مديرية باجل",
+      "en": "Hope Building Initiative: 3 Classrooms at Al‑Mshish School – Bajel District"
+    },
+    "branch": {
+      "ar": "الحديده",
+      "en": "Al‑Hudaydah"
+    }
+  },
+  {
+    "beneficiaries": 30000,
+    "name": {
+      "ar": "تنظيف السوائل والعبارات في محافظة اب (مديرية الظهار & المشنة)",
+      "en": "Cleaning of Drains & Culverts in Ibb Governorate"
+    },
+    "branch": {
+      "ar": "إب",
+      "en": "Ibb"
+    }
+  },
+  {
+    "beneficiaries": 3000,
+    "name": {
+      "ar": "شراء موتور للفرع",
+      "en": "Purchase of a Motor for the Branch"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 60000,
+    "name": {
+      "ar": "عمل حاجز أمنى للسلامة المرورية اثناء السيول الناتجة عن هطول الامطار",
+      "en": "Construction of Traffic Safety Barrier During Rain‑Induced Floods"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 856,
+    "name": {
+      "ar": "ترميم وبناء فصلين دراسيين مدرسة الوحدة طور الباحة",
+      "en": "Renovation & Construction of Two Classrooms at Al‑Wahda School – Tur Al‑Bahah"
+    },
+    "branch": {
+      "ar": "لحج",
+      "en": "Lahij"
+    }
+  },
+  {
+    "beneficiaries": 511,
+    "name": {
+      "ar": "بناء 4 حمامات لمدرسة الوحدة م/كرش",
+      "en": "Construction of 4 Toilets for Al‑Wahda School – M/Cresh"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  },
+  {
+    "beneficiaries": 5075,
+    "name": {
+      "ar": "رصف طريق بطول 645 متر في منطقه المعازيب",
+      "en": "Paving a 645m Road in Al‑Maa’izib Area"
+    },
+    "branch": {
+      "ar": "المحويت",
+      "en": "Al‑Mahwit"
+    }
+  },
+  {
+    "beneficiaries": 1500,
+    "name": {
+      "ar": "بناء فصول آمنة ومستدامة للطلاب النازحين في مخيم السويداء",
+      "en": "Building Safe & Sustainable Classrooms for Displaced Students at Al‑Suwayda Camp"
+    },
+    "branch": {
+      "ar": "مارب",
+      "en": "Marib"
+    }
+  },
+  {
+    "beneficiaries": 3500,
+    "name": {
+      "ar": "ترميم كريف بادية خلال مديرية الغيضة م/ المهرة",
+      "en": "Renovation of Bariaf in Al‑Ghaydah – Al‑Mahrah"
+    },
+    "branch": {
+      "ar": "المهرة",
+      "en": "Al‑Mahrah"
+    }
+  },
+  {
+    "beneficiaries": 7512,
+    "name": {
+      "ar": "إنشاء فصل دراسي وتشطيب 5 فصول لمدرسة شرشور",
+      "en": "Construction of Classroom & Finishing 5 at Sharshour School"
+    },
+    "branch": {
+      "ar": "شبوة",
+      "en": "Shabwah"
+    }
+  },
+  {
+    "beneficiaries": 5502,
+    "name": {
+      "ar": "رصف طريق المبهاء من نجد الاشعاب العليا الى عقبة السويدة",
+      "en": "Paving Al‑Mabha’a Road – From High Najd Al‑Ash’aab to Al‑Suwayda Pass"
+    },
+    "branch": {
+      "ar": "تعز",
+      "en": "Taiz"
+    }
+  },
+  {
+    "beneficiaries": 2000,
+    "name": {
+      "ar": "صب خرسانة اسمنتية لساحة مجمع طيبة التربوي للبنات",
+      "en": "Concrete Pouring for the Yard of Tiba Educational Complex for Girls"
+    },
+    "branch": {
+      "ar": "",
+      "en": ""
+    }
+  }
+]
