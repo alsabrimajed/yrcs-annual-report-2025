@@ -1075,15 +1075,15 @@ window.pppMap = L.map("ppp-map").setView([15.35, 44.21], 6);
   });
 }
 
-document.addEventListener("DOMContentLoaded", initPPPMap);
+//document.addEventListener("DOMContentLoaded", initPPPMap);
 // Force Leaflet to resize map when the tab is shown
-document.getElementById('wash-ppp-btn').addEventListener('click', function () {
-  setTimeout(() => {
-    if (window.pppMap) {
-      window.pppMap.invalidateSize();
-    }
-  }, 300); // Delay allows tab to become visible
-});
+//document.getElementById('wash-ppp-btn').addEventListener('click', function () {
+  //setTimeout(() => {
+    //if (window.pppMap) {
+     // window.pppMap.invalidateSize();
+   // }
+ // }, 300); // Delay allows tab to become visible
+//});
  function renderCommunityInitiatives(data) {
   const tbody = document.getElementById("communityInitiativesBody");
   if (!tbody || !Array.isArray(data)) return;
