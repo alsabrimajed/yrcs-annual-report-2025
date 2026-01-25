@@ -141,8 +141,9 @@ function clearCharts() {
   chartsCache = [];
 }
 
-function renderCharts(charts) {
+ function renderCharts(charts) {
   clearCharts();
+  if (!charts) return;
 
   const mapLabels = labels =>
     labels.map(l => typeof l === "object" ? l[currentLang] : l);
@@ -153,71 +154,91 @@ function renderCharts(charts) {
     plugins: { legend: { position: "bottom" } }
   };
 
-  chartsCache.push(
-    new Chart(document.getElementById("categoryChart"), {
-      type: "pie",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.categories.labels),
-        datasets: [{
-          data: charts.categories.values,
-          backgroundColor: [
-            "#e74c3c", "#3498db", "#27ae60",
-            "#9b59b6", "#f39c12", "#95a5a6"
-          ]
-        }]
-      }
-    })
-  );
+  // =====================
+  // Category Chart
+  // =====================
+  if (charts.categories?.labels && charts.categories?.values) {
+    chartsCache.push(
+      new Chart(document.getElementById("categoryChart"), {
+        type: "pie",
+        options: commonOptions,
+        data: {
+          labels: mapLabels(charts.categories.labels),
+          datasets: [{
+            data: charts.categories.values,
+            backgroundColor: [
+              "#e74c3c", "#3498db", "#27ae60",
+              "#9b59b6", "#f39c12", "#95a5a6"
+            ]
+          }]
+        }
+      })
+    );
+  }
 
-  chartsCache.push(
-    new Chart(document.getElementById("donorChart"), {
-      type: "bar",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.donors.labels),
-        datasets: [{
-          label: currentLang === "ar" ? "المستفيدون" : "Beneficiaries",
-          data: charts.donors.values,
-          backgroundColor: "#3498db"
-        }]
-      }
-    })
-  );
+  // =====================
+  // Donor Chart (FIX HERE)
+  // =====================
+  if (charts.donors?.labels && charts.donors?.values) {
+    chartsCache.push(
+      new Chart(document.getElementById("donorChart"), {
+        type: "bar",
+        options: commonOptions,
+        data: {
+          labels: mapLabels(charts.donors.labels),
+          datasets: [{
+            label: currentLang === "ar" ? "المستفيدون" : "Beneficiaries",
+            data: charts.donors.values,
+            backgroundColor: "#3498db"
+          }]
+        }
+      })
+    );
+  }
 
-  chartsCache.push(
-    new Chart(document.getElementById("activitiesChart"), {
-      type: "doughnut",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.activities.labels),
-        datasets: [{
-          data: charts.activities.values,
-          backgroundColor: [
-            "#e67e22", "#2ecc71",
-            "#e74c3c", "#3498db"
-          ]
-        }]
-      }
-    })
-  );
+  // =====================
+  // Activities Chart
+  // =====================
+  if (charts.activities?.labels && charts.activities?.values) {
+    chartsCache.push(
+      new Chart(document.getElementById("activitiesChart"), {
+        type: "doughnut",
+        options: commonOptions,
+        data: {
+          labels: mapLabels(charts.activities.labels),
+          datasets: [{
+            data: charts.activities.values,
+            backgroundColor: [
+              "#e67e22", "#2ecc71",
+              "#e74c3c", "#3498db"
+            ]
+          }]
+        }
+      })
+    );
+  }
 
-  chartsCache.push(
-    new Chart(document.getElementById("ambulanceChart"), {
-      type: "line",
-      options: commonOptions,
-      data: {
-        labels: mapLabels(charts.ambulance_monthly.labels),
-        datasets: [{
-          label: currentLang === "ar" ? "حالات الإسعاف" : "Ambulance Cases",
-          data: charts.ambulance_monthly.values,
-          borderColor: "#e74c3c",
-          tension: 0.3,
-          fill: false
-        }]
-      }
-    })
-  );
+  // =====================
+  // Ambulance Monthly Chart
+  // =====================
+  if (charts.ambulance_monthly?.labels && charts.ambulance_monthly?.values) {
+    chartsCache.push(
+      new Chart(document.getElementById("ambulanceChart"), {
+        type: "line",
+        options: commonOptions,
+        data: {
+          labels: mapLabels(charts.ambulance_monthly.labels),
+          datasets: [{
+            label: currentLang === "ar" ? "حالات الإسعاف" : "Ambulance Cases",
+            data: charts.ambulance_monthly.values,
+            borderColor: "#e74c3c",
+            tension: 0.3,
+            fill: false
+          }]
+        }
+      })
+    );
+  }
 }
 
 /* =========================
