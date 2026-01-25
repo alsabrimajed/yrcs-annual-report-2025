@@ -16,74 +16,83 @@ function updateStaticTexts() {
 /* =========================
    LOAD DATA
 ========================= */
-async function loadData() {
-  const loadingOverlay = document.getElementById('loading-overlay');
-  const errorMessage = document.getElementById('error-message');
+ async function loadData() {
+  const loadingOverlay = document.getElementById("loading-overlay");
+  const errorMessage = document.getElementById("error-message");
 
   try {
-    loadingOverlay.style.display = 'flex';
+    loadingOverlay?.style && (loadingOverlay.style.display = "flex");
 
-    const response = await fetch("data.json");
-    if (!response.ok) {
-      throw new Error(`HTTP error! status: ${response.status}`);
-    }
+    const response = await fetch("./data.json");
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+
     appData = await response.json();
 
     document.documentElement.lang = currentLang;
     document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
     renderAll();
-    loadingOverlay.style.display = 'none';
   } catch (err) {
     console.error("Error loading data.json", err);
-    loadingOverlay.style.display = 'none';
-    errorMessage.style.display = 'block';
+    errorMessage?.style && (errorMessage.style.display = "block");
+  } finally {
+    loadingOverlay?.style && (loadingOverlay.style.display = "none");
   }
 }
 
 loadData();
 
 function renderAll() {
-   updateStaticTexts();
+  if (!appData) return;
 
-   // Prefer `sector_impact` (has icons/colors) and fall back to `sector_summary_2025`.
-  renderStats(appData.stats);
-  renderCharts(appData.charts);
-  renderCategoryCards(appData.categories_cards);
+  updateStaticTexts();
 
-  renderProjectsTable(appData.tables.projects);
-  renderTrainingTable(appData.tables.training);
+  // ===== Stats & Charts =====
+  appData.stats && renderStats(appData.stats);
+  appData.charts && renderCharts(appData.charts);
+  appData.categories_cards && renderCategoryCards(appData.categories_cards);
 
-  // 🔽 التعديل هنا
-   renderMinesTable(appData.tables.mines_awareness);
-  renderEventsTable(appData.tables.events);
-  renderMediaTable(appData.tables.media);
-const sectorSource = appData.sector_impact || appData.sector_summary_2025;
-renderSectorImpactTable(sectorSource);
-renderSectorImpactChart(sectorSource);
-renderSectorImpactCards(sectorSource);
+  // ===== Tables =====
+  const tables = appData.tables || {};
+  tables.projects && renderProjectsTable(tables.projects);
+  tables.training && renderTrainingTable(tables.training);
+  tables.mines_awareness && renderMinesTable(tables.mines_awareness);
+  tables.events && renderEventsTable(tables.events);
+  tables.media && renderMediaTable(tables.media);
 
-renderSectorCard('health', 'sectorHealthGrid');
-renderSectorCard('development', 'sectorDevelopmentGrid');
-renderSectorCard('disasters', 'sectorDisastersGrid');
-renderSectorCard('wash', 'sectorWashGrid');
-renderFloodResponse();
+  // ===== Sector Impact =====
+  const sectorSource = appData.sector_impact || appData.sector_summary_2025;
+  if (sectorSource) {
+    renderSectorImpactTable(sectorSource);
+    renderSectorImpactChart(sectorSource);
+    renderSectorImpactCards(sectorSource);
+  }
 
-renderAerialBombingResponse();
+  // ===== Sector Cards =====
+  appData.sector_impact && (
+    renderSectorCard("health", "sectorHealthGrid"),
+    renderSectorCard("development", "sectorDevelopmentGrid"),
+    renderSectorCard("disasters", "sectorDisastersGrid"),
+    renderSectorCard("wash", "sectorWashGrid")
+  );
 
-renderLightningResponse();
+  // ===== Responses =====
+  appData.flood_response && renderFloodResponse();
+  appData.aerial_bombing_response && renderAerialBombingResponse();
+  appData.lightning_response && renderLightningResponse();
+  appData.fire_response && renderFireResponse();
+  appData.rockslides && renderRockslides();
+  appData.aid_distribution && renderAidDistribution();
 
-renderFireResponse();
+  // ===== Community =====
+  appData.community_initiatives && renderCommunityInitiatives(appData.community_initiatives);
 
-renderRockslides();
-
-renderAidDistribution();
-renderCommunityInitiatives(appData.community_initiatives);
-
-  renderGallery(appData.gallery);
-  window.galleryItems = appData.gallery; // Store for lightbox
+  // ===== Gallery =====
+  if (appData.gallery) {
+    renderGallery(appData.gallery);
+    window.galleryItems = appData.gallery;
+  }
 }
-
 /* =========================
    LANGUAGE TOGGLE
 ========================= */
@@ -535,30 +544,29 @@ window.addEventListener("load", revealOnScroll);
 /* =========================
    TABS LOGIC (FIXED – SINGLE SOURCE)
 ========================= */
-document.querySelectorAll(".tab-btn").forEach(btn => {
+ document.querySelectorAll(".tab-btn").forEach(btn => {
   btn.addEventListener("click", () => {
-    console.log("Tab clicked:", btn.dataset.tab);
-    document.querySelectorAll(".tab-btn").forEach(b => {
-      b.classList.remove("active");
-      b.setAttribute("aria-selected", "false");
-      b.setAttribute("tabindex", "-1");
-    });
+    document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
     document.querySelectorAll(".tab-content").forEach(c => c.classList.remove("active"));
+
     btn.classList.add("active");
-    btn.setAttribute("aria-selected", "true");
-    btn.setAttribute("tabindex", "0");
     const tab = document.getElementById(btn.dataset.tab);
-    console.log("Tab element:", tab);
-    if (tab) {
-      tab.classList.add("active");
-      if (btn.dataset.tab === 'tab-gallery' && appData && appData.gallery) {
-        renderGallery(appData.gallery);
-      }
-    } else {
-      console.error("Tab not found:", btn.dataset.tab);
+    tab && tab.classList.add("active");
+
+    // 🔥 MAP INIT ONLY WHEN VISIBLE
+    if (btn.dataset.tab === "tab-sector-impact") {
+      setTimeout(() => {
+        initSchoolMap();
+        initPPPMap();
+      }, 300);
+    }
+
+    if (btn.dataset.tab === "tab-gallery" && appData?.gallery) {
+      renderGallery(appData.gallery);
     }
   });
 });
+
 
 /* =========================
    SUB TABS LOGIC
@@ -1103,15 +1111,7 @@ if (pppSection) pppObserver.observe(pppSection);
   });
 }
 
-//document.addEventListener("DOMContentLoaded", initPPPMap);
-// Force Leaflet to resize map when the tab is shown
-//document.getElementById('wash-ppp-btn').addEventListener('click', function () {
-  //setTimeout(() => {
-    //if (window.pppMap) {
-     // window.pppMap.invalidateSize();
-   // }
- // }, 300); // Delay allows tab to become visible
-//});
+
  function renderCommunityInitiatives(data) {
   const tbody = document.getElementById("communityInitiativesBody");
   if (!tbody || !Array.isArray(data)) return;
