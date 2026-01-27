@@ -212,46 +212,109 @@
 <section class="tab-content" id="tab-health"></section>
 <section class="tab-content" id="tab-development"></section>
 <section class="tab-content" id="tab-disasters">
-<div class="sub-tab-content" id="sub-disasters" role="tabpanel" aria-labelledby="sub-disasters-btn">
-<section class="hero-stats sector-impact">
-<div class="container">
-<h2 class="section-title" data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></h2>
-<div class="stats-grid impact-grid" id="sectorDisastersGrid">
-</div>
-</div>
-</section>
+ <section class="tab-content" id="tab-disasters" role="tabpanel" aria-labelledby="tab-disasters-btn">
 
-<!-- Disaster Response Sub-Tabs -->
-<div class="disaster-sub-tabs" role="tablist">
-  <button class="disaster-sub-tab-btn active" id="flood-response-btn" role="tab" aria-controls="flood-response" aria-selected="true" tabindex="0" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods">
-    <img src="Icons/IFRC-icons-colour_Floods.png" alt="Floods" class="disaster-tab-icon">
-    <span data-ar="السيول" data-en="Floods"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="aerial-bombing-btn" role="tab" aria-controls="aerial-bombing" aria-selected="false" tabindex="-1" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing">
-    <img src="Icons/IFRC-icons-colour_Conflict.png" alt="Aerial Bombing" class="disaster-tab-icon">
-    <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="lightning-btn" role="tab" aria-controls="lightning" aria-selected="false" tabindex="-1" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning">
-    <img src="Icons/IFRC-icons-colour_Storm.png" alt="Lightning" class="disaster-tab-icon">
-    <span data-ar="الصواعق" data-en="Lightning"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="fire-response-btn" role="tab" aria-controls="fire-response" aria-selected="false" tabindex="-1" data-disaster-tab="fire-response" data-ar="الحرائق" data-en="Fire Response">
-    <img src="Icons/IFRC-icons-colour_Wildfire.png" alt="Fire Response" class="disaster-tab-icon">
-    <span data-ar="الحرائق" data-en="Fire Response"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="rockslides-btn" role="tab" aria-controls="rockslides" aria-selected="false" tabindex="-1" data-disaster-tab="rockslides" data-ar="الانهيارات الصخرية" data-en="Rockslides">
-    <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" alt="Rockslides" class="disaster-tab-icon">
-    <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="aid-distribution-btn" role="tab" aria-controls="aid-distribution" aria-selected="false" tabindex="-1" data-disaster-tab="aid-distribution" data-ar="الأشد فقرا" data-en="Most Poor">
-    <img src="Icons/IFRC-icons-colour_Food.png" alt="Aid Distribution" class="disaster-tab-icon">
-    <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="economic-security-btn" role="tab" aria-controls="economic-security" aria-selected="false" tabindex="-1" data-disaster-tab="economic-security" data-ar="الأمن الاقتصادي" data-en="Economic Security">
-    <img src="Icons/IFRC-icons-colour_Food.png" alt="Economic Security" class="disaster-tab-icon">
-    <span data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security & Livelihoods"></span>
-  </button>
-</div>
+  <!-- ================= DISASTERS HEADER ================= -->
+  <section class="hero-stats sector-impact">
+    <div class="container">
+      <h2 class="section-title"
+          data-ar="الكوارث والأزمات"
+          data-en="Disasters & Crises"></h2>
+
+      <div class="stats-grid impact-grid" id="sectorDisastersGrid"></div>
+    </div>
+  </section>
+
+  <!-- ================= DISASTER SUB TABS ================= -->
+  <div class="disaster-sub-tabs" role="tablist" aria-label="Disaster Response Tabs">
+
+    <button class="disaster-sub-tab-btn active"
+            id="flood-response-btn"
+            role="tab"
+            aria-controls="flood-response"
+            aria-selected="true"
+            tabindex="0"
+            data-disaster-tab="flood-response">
+      <img src="Icons/IFRC-icons-colour_Floods.png" class="disaster-tab-icon" alt="">
+      <span data-ar="السيول" data-en="Floods"></span>
+    </button>
+
+    <button class="disaster-sub-tab-btn"
+            id="aerial-bombing-btn"
+            role="tab"
+            aria-controls="aerial-bombing"
+            aria-selected="false"
+            tabindex="-1"
+            data-disaster-tab="aerial-bombing">
+      <img src="Icons/IFRC-icons-colour_Conflict.png" class="disaster-tab-icon" alt="">
+      <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
+    </button>
+
+    <button class="disaster-sub-tab-btn"
+            id="lightning-btn"
+            role="tab"
+            aria-controls="lightning"
+            aria-selected="false"
+            tabindex="-1"
+            data-disaster-tab="lightning">
+      <img src="Icons/IFRC-icons-colour_Storm.png" class="disaster-tab-icon" alt="">
+      <span data-ar="الصواعق" data-en="Lightning"></span>
+    </button>
+
+    <button class="disaster-sub-tab-btn"
+            id="fire-response-btn"
+            role="tab"
+            aria-controls="fire-response"
+            aria-selected="false"
+            tabindex="-1"
+            data-disaster-tab="fire-response">
+      <img src="Icons/IFRC-icons-colour_Wildfire.png" class="disaster-tab-icon" alt="">
+      <span data-ar="الحرائق" data-en="Fire Response"></span>
+    </button>
+
+    <button class="disaster-sub-tab-btn"
+            id="rockslides-btn"
+            role="tab"
+            aria-controls="rockslides"
+            aria-selected="false"
+            tabindex="-1"
+            data-disaster-tab="rockslides">
+      <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" class="disaster-tab-icon" alt="">
+      <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
+    </button>
+
+    <button class="disaster-sub-tab-btn"
+            id="aid-distribution-btn"
+            role="tab"
+            aria-controls="aid-distribution"
+            aria-selected="false"
+            tabindex="-1"
+            data-disaster-tab="aid-distribution">
+      <img src="Icons/IFRC-icons-colour_Food.png" class="disaster-tab-icon" alt="">
+      <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
+    </button>
+
+    <button class="disaster-sub-tab-btn"
+            id="economic-security-btn"
+            role="tab"
+            aria-controls="economic-security"
+            aria-selected="false"
+            tabindex="-1"
+            data-disaster-tab="economic-security">
+      <img src="Icons/IFRC-icons-colour_Food.png" class="disaster-tab-icon" alt="">
+      <span data-ar="الأمن الاقتصادي وسبل العيش"
+            data-en="Economic Security & Livelihoods"></span>
+    </button>
+
+  </div>
+
+  <!-- ================= DISASTER TAB CONTENT ================= -->
+  <!-- KEEP ALL YOUR EXISTING disaster-tab-content blocks BELOW -->
+  <!-- flood-response, aerial-bombing, lightning, fire-response, etc. -->
+  <!-- NO structural change needed inside them -->
+
+
+
 
 <!-- Flood Response Sub-Tab Content -->
 <div class="disaster-tab-content active" id="flood-response" role="tabpanel" aria-labelledby="flood-response-btn">
@@ -583,7 +646,7 @@
 </div>
 </section>
 </div>
-
+</section>
 </section>
 <section class="tab-content" id="tab-wash"></section>
 <div class="sub-tab-content active" id="sub-overview" role="tabpanel" aria-labelledby="sub-overview-btn">
