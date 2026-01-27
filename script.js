@@ -802,15 +802,24 @@ function renderSectorCard(sectorKey, gridId) {
 }
 
 function renderFloodResponse() {
+  const response = appData.flood_response;
+  if (!response || !Array.isArray(response.data)) return;
+
+  /* ================= DESCRIPTION ================= */
   const desc = document.querySelector('.flood-description');
   if (desc) {
-    desc.dataset.ar = appData.flood_response.description.ar;
-    desc.dataset.en = appData.flood_response.description.en;
-    desc.textContent = appData.flood_response.description[currentLang];
+    desc.dataset.ar = response.description.ar;
+    desc.dataset.en = response.description.en;
+    desc.textContent = response.description[currentLang];
   }
+
+  /* ================= TABLE ================= */
   const tbody = document.getElementById('floodTableBody');
+  if (!tbody) return;
+
   tbody.innerHTML = '';
-  appData.flood_response.data.forEach(row => {
+
+  response.data.forEach(row => {
     const tr = document.createElement('tr');
     tr.innerHTML = `
       <td>${row.governorate[currentLang]}</td>
@@ -823,20 +832,51 @@ function renderFloodResponse() {
     tbody.appendChild(tr);
   });
 
-  // Color the map
+  /* ================= MAP ================= */
   const svg = document.getElementById('yemenMapSvg');
-  if (svg) {
-    const maxBenef = Math.max(...appData.flood_response.data.map(d => d.shelter_beneficiaries));
-    appData.flood_response.data.forEach(row => {
-      const govEn = row.governorate.en.toLowerCase().replace(/\s+/g, '');
-      const path = svg.querySelector(`#${govEn}`);
-      if (path) {
-        const intensity = row.shelter_beneficiaries / maxBenef;
-        path.style.fill = `rgba(231, 76, 60, ${Math.max(0.1, intensity)})`;
-      }
-    });
-  }
+  if (!svg) return;
+
+  const values = response.data.map(d => d.shelter_beneficiaries);
+  const maxBenef = Math.max(...values);
+
+  // mapping table to guarantee correct IDs
+  const GOV_ID_MAP = {
+    "Aden": "aden",
+    "Abyan": "abyan",
+    "Ibb": "ibb",
+    "Taiz": "taiz",
+    "Hajjah": "hajjah",
+    "Saada": "saada",
+    "Dhamar": "dhamar",
+    "Al Hudaydah": "al-hudaydah",
+    "Al Mahwit": "al-mahwit",
+    "Al Dhale": "al-dhale",
+    "Al Jawf": "al-jawf",
+    "Hadramaut": "hadramaut",
+    "Shabwah": "shabwah",
+    "Marib": "marib",
+    "Lahj": "lahj",
+    "Amran": "amran",
+    "Amanat Al Asimah": "amanatalasimah",
+    "Sanaa Governorate": "sanaa"
+  };
+
+  response.data.forEach(row => {
+    const id = GOV_ID_MAP[row.governorate.en];
+    if (!id) return;
+
+    const path = svg.querySelector(`#${id}`);
+    if (!path) return;
+
+    const intensity = maxBenef > 0
+      ? row.shelter_beneficiaries / maxBenef
+      : 0;
+
+    path.style.fill = `rgba(231, 76, 60, ${Math.max(0.15, intensity)})`;
+  });
 }
+
+
 
 function renderAerialBombingResponse() {
   const desc = document.querySelector('.aerial-description');
