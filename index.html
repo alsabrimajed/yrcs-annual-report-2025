@@ -1,1591 +1,886 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Annual Report 2025 – Yemen Red Crescent Society  </title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Annual Report 2025 – Yemen Red Crescent Society</title>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="tajawal.css">
-  <link rel="stylesheet" href="styles.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="tajawal.css" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 
   <!-- Charts -->
   <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
-<script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
-
 </head>
 
 <body>
 
-<!-- Loading Overlay -->
-<div id="loading-overlay" class="loading-overlay">
-  <div class="spinner"></div>
-  <p data-ar="جاري التحميل..." data-en="Loading...">جاري التحميل...</p>
-</div>
-
-<!-- Error Message -->
-<div id="error-message" class="error-message" role="alert" aria-live="polite" style="display: none;">
-  <p data-ar="البيانات غير متوفرة—يرجى إعادة التحديث." data-en="Data unavailable—please refresh.">البيانات غير متوفرة—يرجى إعادة التحديث.</p>
-  <button onclick="location.reload()" data-ar="إعادة التحميل" data-en="Reload">إعادة التحميل</button>
-</div>
-
-<!-- ================= HEADER ================= -->
- <header class="header">
-
-  <div class="tabs-container" role="tablist">
-
-    <!-- Overview -->
-    <button class="tab-btn active"
-            id="tab-overview-btn"
-            role="tab"
-            aria-controls="tab-overview"
-            aria-selected="true"
-            tabindex="0"
-            data-tab="tab-overview"
-            data-ar="نظرة عامة"
-            data-en="Overview">
-    </button>
-
-    <!-- Health -->
-    <button class="tab-btn"
-            id="tab-health-btn"
-            role="tab"
-            aria-controls="tab-health"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-health">
-      <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" class="tab-icon" alt="">
-      <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
-    </button>
-
-    <!-- Development -->
-    <button class="tab-btn"
-            id="tab-development-btn"
-            role="tab"
-            aria-controls="tab-development"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-development">
-      <img src="Icons/IFRC-icons-colour_Community-engagement.png" class="tab-icon" alt="">
-      <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
-    </button>
-
-    <!-- Disasters -->
-    <button class="tab-btn"
-            id="tab-disasters-btn"
-            role="tab"
-            aria-controls="tab-disasters"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-disasters">
-      <img src="Icons/IFRC-icons-colour_Extreme-weather.png" class="tab-icon" alt="">
-      <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
-    </button>
-
-    <!-- WASH -->
-    <button class="tab-btn"
-            id="tab-wash-btn"
-            role="tab"
-            aria-controls="tab-wash"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-wash">
-      <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" class="tab-icon" alt="">
-      <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
-    </button>
-
-    <!-- Charts -->
-    <button class="tab-btn"
-            id="tab-charts-btn"
-            role="tab"
-            aria-controls="tab-charts"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-charts"
-            data-ar="الرسوم البيانية"
-            data-en="Charts">
-    </button>
-
-    <!-- Training -->
-    <button class="tab-btn"
-            id="tab-training-btn"
-            role="tab"
-            aria-controls="tab-training"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-training"
-            data-ar="التدريب"
-            data-en="Training">
-    </button>
-
-    <!-- Activities -->
-    <button class="tab-btn"
-            id="tab-activities-btn"
-            role="tab"
-            aria-controls="tab-activities"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-activities"
-            data-ar="الأنشطة"
-            data-en="Activities">
-    </button>
-
-    <!-- Gallery -->
-    <button class="tab-btn"
-            id="tab-gallery-btn"
-            role="tab"
-            aria-controls="tab-gallery"
-            aria-selected="false"
-            tabindex="-1"
-            data-tab="tab-gallery"
-            data-ar="المعرض"
-            data-en="Gallery">
-    </button>
-
+  <!-- Loading Overlay -->
+  <div id="loading-overlay" class="loading-overlay" aria-hidden="true">
+    <div class="spinner" aria-hidden="true"></div>
+    <p data-ar="جاري التحميل..." data-en="Loading...">جاري التحميل...</p>
   </div>
 
-  <div class="header-actions">
-    <button onclick="toggleLanguage()" class="btn btn-lang">🌐 AR / EN</button>
-    <button onclick="window.print()" class="btn btn-print">
-      <i class="fas fa-print"></i>
-      <span data-ar="طباعة التقرير" data-en="Print Report"></span>
-    </button>
+  <!-- Error Message -->
+  <div id="error-message" class="error-message" role="alert" aria-live="polite" style="display:none;">
+    <p data-ar="البيانات غير متوفرة—يرجى إعادة التحديث." data-en="Data unavailable—please refresh.">
+      البيانات غير متوفرة—يرجى إعادة التحديث.
+    </p>
+    <button type="button" onclick="location.reload()" data-ar="إعادة التحميل" data-en="Reload">إعادة التحميل</button>
   </div>
 
-</header>
-<!-- ================= OVERVIEW ================= -->
-<section class="tab-content active" id="tab-overview" role="tabpanel" aria-labelledby="tab-overview-btn">
+  <!-- ================= HEADER ================= -->
+  <header class="header">
+    <div class="tabs-container" role="tablist" aria-label="Main Tabs">
+      <!-- Overview -->
+      <button
+        class="tab-btn active"
+        id="tab-overview-btn"
+        role="tab"
+        aria-controls="tab-overview"
+        aria-selected="true"
+        tabindex="0"
+        data-tab="tab-overview">
+        <span data-ar="نظرة عامة" data-en="Overview"></span>
+      </button>
 
-  <!-- HERO STATS -->
-  <section class="hero-stats">
-    <div class="container">
-      <div class="stats-grid">
-        <div class="stat-card"><i class="fas fa-users"></i><div class="stat-number" data-key="total_beneficiaries">0</div><span data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></span></div>
-        <div class="stat-card"><i class="fas fa-ambulance"></i><div class="stat-number" data-key="ambulance_cases">0</div><span data-ar="إحالات إسعافية" data-en="Ambulance Referrals"></span></div>
-        <div class="stat-card"><i class="fas fa-bomb"></i><div class="stat-number" data-key="mine_awareness">0</div><span data-ar="توعية بمخاطر الألغام" data-en="Mine Risk Awareness"></span></div>
-        <div class="stat-card"><i class="fas fa-graduation-cap"></i><div class="stat-number" data-key="trainees">0</div><span data-ar="المتدربون" data-en="Trainees"></span></div>
-        <div class="stat-card"><i class="fas fa-bullhorn"></i><div class="stat-number" data-key="movement_awareness">0</div><span data-ar="التعريف بالحركة" data-en="Movement Awareness"></span></div>
-        <div class="stat-card"><i class="fas fa-school"></i><div class="stat-number" data-key="classrooms">0</div><span data-ar="فصول دراسية" data-en="Classrooms"></span></div>
-        <div class="stat-card"><i class="fas fa-handshake"></i><div class="stat-number" data-key="donors">0</div><span data-ar="الجهات المانحة" data-en="Donors"></span></div>
-      </div>
-    </div>
-  </section>
+      <!-- Health -->
+      <button
+        class="tab-btn"
+        id="tab-health-btn"
+        role="tab"
+        aria-controls="tab-health"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-health">
+        <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" class="tab-icon" alt="" />
+        <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
+      </button>
 
-  <!-- CATEGORY CARDS -->
-  <section class="category-section">
-    <div class="container">
-      <h2 class="section-title"
-        data-ar="مشاريع الاستجابة حسب الفئة"
-        data-en="Response Projects by Category"></h2>
-      <div class="category-cards"></div>
-    </div>
-  </section>
-</section>
+      <!-- Development -->
+      <button
+        class="tab-btn"
+        id="tab-development-btn"
+        role="tab"
+        aria-controls="tab-development"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-development">
+        <img src="Icons/IFRC-icons-colour_Community-engagement.png" class="tab-icon" alt="" />
+        <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
+      </button>
 
-<!-- ================= SECTOR IMPACT ================= -->
-<section class="tab-content" id="tab-sector-impact" role="tabpanel" aria-labelledby="tab-sector-impact-btn">
-<div class="sub-tabs-container" role="tablist">
-  <div class="sub-tab-indicator"></div>
-  <button class="sub-tab-btn active" id="sub-overview-btn" role="tab" aria-controls="sub-overview" aria-selected="true" tabindex="0" data-sub-tab="sub-overview" data-ar="نظرة عامة" data-en="Overview">
-    <img src="Icons/IFRC-icons-colour_Map.png" alt="Overview" class="sub-tab-icon">
-    <span data-ar="نظرة عامة" data-en="Overview"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-health-btn" role="tab" aria-controls="sub-health" aria-selected="false" tabindex="-1" data-sub-tab="sub-health" data-ar="الصحة والرعاية" data-en="Health & Care">
-    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health & Care" class="sub-tab-icon">
-    <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-development-btn" role="tab" aria-controls="sub-development" aria-selected="false" tabindex="-1" data-sub-tab="sub-development" data-ar="دعم تطوير الجمعية" data-en="Organizational Development">
-    <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Organizational Development" class="sub-tab-icon">
-    <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-disasters-btn" role="tab" aria-controls="sub-disasters" aria-selected="false" tabindex="-1" data-sub-tab="sub-disasters" data-ar="الكوارث والأزمات" data-en="Disasters & Crises">
-    <img src="Icons/IFRC-icons-colour_Extreme-weather.png" alt="Disasters & Crises" class="sub-tab-icon">
-    <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-wash-btn" role="tab" aria-controls="sub-wash" aria-selected="false" tabindex="-1" data-sub-tab="sub-wash" data-ar="المياه والإسكان" data-en="Water & Shelter">
-    <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water & Shelter" class="sub-tab-icon">
-    <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
-  </button>
-</div>
-<section class="tab-content" id="tab-health"></section>
-<section class="tab-content" id="tab-development"></section>
-<section class="tab-content" id="tab-disasters">
- <section class="tab-content" id="tab-disasters" role="tabpanel" aria-labelledby="tab-disasters-btn">
+      <!-- Disasters -->
+      <button
+        class="tab-btn"
+        id="tab-disasters-btn"
+        role="tab"
+        aria-controls="tab-disasters"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-disasters">
+        <img src="Icons/IFRC-icons-colour_Extreme-weather.png" class="tab-icon" alt="" />
+        <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
+      </button>
 
-  <!-- ================= DISASTERS HEADER ================= -->
-  <section class="hero-stats sector-impact">
-    <div class="container">
-      <h2 class="section-title"
-          data-ar="الكوارث والأزمات"
-          data-en="Disasters & Crises"></h2>
+      <!-- WASH -->
+      <button
+        class="tab-btn"
+        id="tab-wash-btn"
+        role="tab"
+        aria-controls="tab-wash"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-wash">
+        <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" class="tab-icon" alt="" />
+        <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
+      </button>
 
-      <div class="stats-grid impact-grid" id="sectorDisastersGrid"></div>
-    </div>
-  </section>
-
-  <!-- ================= DISASTER SUB TABS ================= -->
-  <div class="disaster-sub-tabs" role="tablist" aria-label="Disaster Response Tabs">
-
-    <button class="disaster-sub-tab-btn active"
-            id="flood-response-btn"
-            role="tab"
-            aria-controls="flood-response"
-            aria-selected="true"
-            tabindex="0"
-            data-disaster-tab="flood-response">
-      <img src="Icons/IFRC-icons-colour_Floods.png" class="disaster-tab-icon" alt="">
-      <span data-ar="السيول" data-en="Floods"></span>
-    </button>
-
-    <button class="disaster-sub-tab-btn"
-            id="aerial-bombing-btn"
-            role="tab"
-            aria-controls="aerial-bombing"
-            aria-selected="false"
-            tabindex="-1"
-            data-disaster-tab="aerial-bombing">
-      <img src="Icons/IFRC-icons-colour_Conflict.png" class="disaster-tab-icon" alt="">
-      <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
-    </button>
-
-    <button class="disaster-sub-tab-btn"
-            id="lightning-btn"
-            role="tab"
-            aria-controls="lightning"
-            aria-selected="false"
-            tabindex="-1"
-            data-disaster-tab="lightning">
-      <img src="Icons/IFRC-icons-colour_Storm.png" class="disaster-tab-icon" alt="">
-      <span data-ar="الصواعق" data-en="Lightning"></span>
-    </button>
-
-    <button class="disaster-sub-tab-btn"
-            id="fire-response-btn"
-            role="tab"
-            aria-controls="fire-response"
-            aria-selected="false"
-            tabindex="-1"
-            data-disaster-tab="fire-response">
-      <img src="Icons/IFRC-icons-colour_Wildfire.png" class="disaster-tab-icon" alt="">
-      <span data-ar="الحرائق" data-en="Fire Response"></span>
-    </button>
-
-    <button class="disaster-sub-tab-btn"
-            id="rockslides-btn"
-            role="tab"
-            aria-controls="rockslides"
-            aria-selected="false"
-            tabindex="-1"
-            data-disaster-tab="rockslides">
-      <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" class="disaster-tab-icon" alt="">
-      <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
-    </button>
-
-    <button class="disaster-sub-tab-btn"
-            id="aid-distribution-btn"
-            role="tab"
-            aria-controls="aid-distribution"
-            aria-selected="false"
-            tabindex="-1"
-            data-disaster-tab="aid-distribution">
-      <img src="Icons/IFRC-icons-colour_Food.png" class="disaster-tab-icon" alt="">
-      <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
-    </button>
-
-    <button class="disaster-sub-tab-btn"
-            id="economic-security-btn"
-            role="tab"
-            aria-controls="economic-security"
-            aria-selected="false"
-            tabindex="-1"
-            data-disaster-tab="economic-security">
-      <img src="Icons/IFRC-icons-colour_Food.png" class="disaster-tab-icon" alt="">
-      <span data-ar="الأمن الاقتصادي وسبل العيش"
-            data-en="Economic Security & Livelihoods"></span>
-    </button>
-
-  </div>
-
-  <!-- ================= DISASTER TAB CONTENT ================= -->
-  <!-- KEEP ALL YOUR EXISTING disaster-tab-content blocks BELOW -->
-  <!-- flood-response, aerial-bombing, lightning, fire-response, etc. -->
-  <!-- NO structural change needed inside them -->
-
-
-
-
-<!-- Flood Response Sub-Tab Content -->
-<div class="disaster-tab-content active" id="flood-response" role="tabpanel" aria-labelledby="flood-response-btn">
-<section class="flood-response-section">
-<div class="container">
-<p class="flood-description"></p>
-<div class="table-wrapper">
-<table class="projects-table flood-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
-<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="floodTableBody"></tbody>
-</table>
-</div>
-
-<!-- Yemen Map Visualization -->
-<div class="yemen-map-container">
-<h3 data-ar="خريطة الاستجابة للسيول في اليمن" data-en="Yemen Flood Response Map"></h3>
-<div class="yemen-map">
-<svg viewBox="0 0 1000 800" id="yemenMapSvg">
-<!-- Yemen Governorates Paths - Placeholder -->
-<path id="ibb" d="M500 300 L520 320 L510 340 L490 330 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-<path id="abyan" d="M450 400 L470 420 L460 440 L440 430 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-<!-- Add more paths for all governorates -->
-<text x="505" y="320" text-anchor="middle" font-size="12" fill="#000">إب</text>
-<text x="455" y="420" text-anchor="middle" font-size="12" fill="#000">أبين</text>
-<!-- Add text labels for all -->
-</svg>
-</div>
-<div class="map-legend">
-<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.2);"></span><span data-ar="منخفض" data-en="Low"></span></div>
-<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.5);"></span><span data-ar="متوسط" data-en="Medium"></span></div>
-<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.8);"></span><span data-ar="عالي" data-en="High"></span></div>
-</div>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Aerial Bombing Sub-Tab Content -->
-<div class="disaster-tab-content" id="aerial-bombing" role="tabpanel" aria-labelledby="aerial-bombing-btn">
-<section class="aerial-bombing-section">
-<div class="container">
-<p class="aerial-description"></p>
-<div class="table-wrapper">
-<table class="projects-table aerial-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
-<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="aerialTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Lightning Sub-Tab Content -->
-<div class="disaster-tab-content" id="lightning" role="tabpanel" aria-labelledby="lightning-btn">
-<section class="lightning-response-section">
-<div class="container">
-<p class="lightning-description"></p>
-
-<h3 data-ar="المساعدات المقدمة" data-en="Aid Provided"></h3>
-<div class="table-wrapper">
-<table class="projects-table lightning-aid-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="lightningAidTableBody"></tbody>
-</table>
-</div>
-
-<h3 data-ar="الإصابات والوفيات" data-en="Casualties and Deaths"></h3>
-<div class="table-wrapper">
-<table class="projects-table lightning-casualty-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="الوفيات" data-en="Deaths"></th>
-<th data-ar="الإصابات" data-en="Injuries"></th>
-</tr>
-</thead>
-<tbody id="lightningCasualtyTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Fire Response Sub-Tab Content -->
-<div class="disaster-tab-content" id="fire-response" role="tabpanel" aria-labelledby="fire-response-btn">
-<section class="fire-response-section">
-<div class="container">
-<h3 data-ar="الاستجابة للحرائق" data-en="Fire Response"></h3>
-<div class="table-wrapper">
-<table class="projects-table fire-response-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="مواد إيواء" data-en="Shelter Materials"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="fireResponseTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Rockslides Sub-Tab Content -->
-<div class="disaster-tab-content" id="rockslides" role="tabpanel" aria-labelledby="rockslides-btn">
-<section class="rockslides-section">
-<div class="container">
-<h3 data-ar="الانهيارات الصخرية" data-en="Rockslides"></h3>
-<div class="table-wrapper">
-<table class="projects-table rockslides-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="rockslidesTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Aid Distribution Sub-Tab Content -->
-<div class="disaster-tab-content" id="aid-distribution" role="tabpanel" aria-labelledby="aid-distribution-btn">
-<section class="aid-distribution-section">
-<div class="container">
-<h3 data-ar="توزيع السلال الغذائية والمواد غير الغذائية" data-en="Distribution of Food Baskets and Non-Food Items"></h3>
-<div class="table-wrapper">
-<table class="projects-table aid-distribution-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="حصة إيوائية" data-en="Shelter Kits"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="aidDistributionTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-<!-- Economic Security Sub-Tab Content -->
-<div class="disaster-tab-content" id="economic-security" role="tabpanel" aria-labelledby="economic-security-btn">
-<section class="economic-security-section">
-<div class="container">
-<h3 data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security and Livelihoods"></h3>
-<p>الأمن الاقتصادي وسبل العيش:
-- يمكن أن تتسبب الكوارث والأزمات بخسائر فادحة بالأمن الغذائي للناس وسبل عيشهم. وتزيد من ضعف الناس الاجتماعي والاقتصادي، وتؤثر على قدرتهم على التعافي والتعامل مع الصدمات والضغوط المستقبلية. لذلك يعمل الهلال الأحمر على محاولة التخفيف من وطأة ذلك على الاسر وذلك من خلال تقديم عدد من المشاريع:</p>
-<h4>1- تم دعم مشاريع تمكين سبل العيش لحوالي 40,095 أسرة 280,665 مستفيد.</h4>
-<h5>أ‌- أنشطة زراعية</h5>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>النشاط</th>
-<th>المنطقة</th>
-<th>عدد الأسر المستهدفة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>تربية النحل</td><td>تعز-لحج - الضالع - أبين - البيضاء - حجة - عمران- الحديدة</td><td>6430</td></tr>
-<tr><td>توزيع شتلات البن</td><td>تعز- إب</td><td>990</td></tr>
-<tr><td>توزيع بذور الطماطم</td><td>مارب</td><td>200</td></tr>
-<tr><td>توزيع بذور القمح</td><td>مارب</td><td>250</td></tr>
-<tr><td>توزيع درنات البطاط</td><td>مارب</td><td>200</td></tr>
-<tr><td>توزيع شتلات التين</td><td>البيضاء</td><td>50</td></tr>
-<tr><td>توزيع شتلات الوردة الحمراء</td><td>تعز</td><td>1512</td></tr>
-<tr><td>توزيع أشجار مثمرة</td><td>أبين</td><td>50</td></tr>
-<tr><td>توزيع الأدوات والقسائم الإلكترونية لمزارعي البن</td><td>تعز</td><td>200</td></tr>
-<tr><td>الإجمالي</td><td></td><td>9,882</td></tr>
-</tbody>
-</table>
-</div>
-<h5>ب‌- مساعدات نقدية</h5>
-<h6>- تعزيز سبل العيش</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>تعز</td><td>16,090</td></tr>
-<tr><td>لحج</td><td>5,000</td></tr>
-<tr><td>صعدة</td><td>3,005</td></tr>
-<tr><td>الحديدة</td><td>2,100</td></tr>
-<tr><td>حجة</td><td>1,363</td></tr>
-<tr><td>عدن</td><td>1,504</td></tr>
-<tr><td>الإجمالي</td><td>29,062</td></tr>
-</tbody>
-</table>
-</div>
-<h6>- النقد مقابل العمل</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>محافظة الضالع– دمت</td><td>463</td></tr>
-</tbody>
-</table>
-</div>
-<h5>ج - مشاريع اقتصادية صغيرة</h5>
-<p>قدم الهلال الأحمر مساعدات للمشاريع الاقتصادية في المجتمعات المحلية استفاد منها 614 أسرة.</p>
-<h6>- (مشاريع مدرة للدخل)</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المشروع</th>
-<th>المحافظة</th>
-<th>عدد الاسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>مشاريع صغيرة</td><td>لحج</td><td>50</td></tr>
-<tr><td>مشروع الحدائق المنزلية</td><td>لحج</td><td>63</td></tr>
-<tr><td>مشاريع صغيرة</td><td>البيضاء</td><td>51</td></tr>
-<tr><td>توزيع 24 قارب صيد</td><td>حضرموت</td><td>220</td></tr>
-<tr><td></td><td>الحديدة</td><td>120</td></tr>
-<tr><td>الإجمالي</td><td></td><td>504</td></tr>
-</tbody>
-</table>
-</div>
-<h6>- التمكين الاقتصادي</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المشروع</th>
-<th>المحافظة</th>
-<th>عدد الاسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>مشروع الخياطة</td><td>عمران</td><td>110</td></tr>
-</tbody>
-</table>
-</div>
-<h5>د- بناء القدرات</h5>
-<p>قدم الهلال الأحمر تدريبات حول التمكين الاقتصادي وفي مجال الإغاثة الإنسانية لعدد 74 أسرة</p>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>النشاط</th>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>تدريب حول التمكين الاقتصادي- المشاريع الصغيرة</td><td>لحج</td><td>59</td></tr>
-<tr><td>تدريب في مجال الإغاثة الإنسانية وتوزيع المساعدات</td><td>لحج</td><td>15</td></tr>
-<tr><td>الإجمالي</td><td></td><td>74</td></tr>
-</tbody>
-</table>
-</div>
-<h4>2- توزيع السلال الغذائية:</h4>
-<p>ضمن مشروع الأمن الاقتصادي تم توزيع 14,620 سلة غذائية استفاد منها ما يقارب 102,340 شخص.</p>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>البيضاء</td><td>1,048</td></tr>
-<tr><td>تعز</td><td>2,000</td></tr>
-<tr><td>المهرة</td><td>1,500</td></tr>
-<tr><td>ريمة</td><td>1,500</td></tr>
-<tr><td>لحج</td><td>2,038</td></tr>
-<tr><td>الحديدة</td><td>3,000</td></tr>
-<tr><td>عدن</td><td>1,300</td></tr>
-<tr><td>أبين</td><td>322</td></tr>
-<tr><td>الضالع</td><td>1,612</td></tr>
-<tr><td>أمانة العاصمة</td><td>100</td></tr>
-<tr><td>حضرموت</td><td>200</td></tr>
-<tr><td>الإجمالي</td><td>14,620</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-</div>
-</section>
-</div>
-</section>
-</section>
-<section class="tab-content" id="tab-wash"></section>
-<div class="sub-tab-content active" id="sub-overview" role="tabpanel" aria-labelledby="sub-overview-btn">
-  <!-- ================= SECTOR IMPACT ================= -->
-<section class="hero-stats sector-impact">
-  <div class="container">
-
-    <h2 class="section-title"
-        data-ar="الأثر القطاعي"
-        data-en="Sector Impact">
-    </h2>
-
-    <!-- Cards -->
-    <div class="stats-grid impact-grid" id="sectorImpactGrid">
-      <!-- Injected by JS -->
-    </div>
-
-    <!-- Chart -->
-    <div class="chart-card sector-impact-chart">
-      <canvas id="sectorImpactChart"></canvas>
-    </div>
-
-  </div>
-</section>
- <section class="charts-section">
-  <div class="container charts-grid">
-
-    <!-- Category Chart -->
-    <div class="chart-card">
-      <canvas id="categoryChart"></canvas>
-    </div>
-
-    <!-- Donor Chart -->
-    <div class="chart-card">
-      <canvas id="donorChart"></canvas>
-    </div>
-
-    <!-- Activities Chart -->
-    <div class="chart-card">
-      <canvas id="activitiesChart"></canvas>
-    </div>
-
-    <!-- Ambulance Monthly Chart -->
-    <div class="chart-card">
-      <canvas id="ambulanceChart"></canvas>
-    </div>
-
-  </div>
-</section>
-
-  <!-- SECTOR IMPACT TABLE -->
-  <section class="table-section">
-    <div class="container">
-      <div class="table-wrapper">
-        <table class="projects-table sector-impact-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="القطاع" data-en="Sector"></th>
-              <th data-ar="عدد المستفيدين" data-en="Beneficiaries"></th>
-            </tr>
-          </thead>
-          <tbody id="sectorImpactBody"></tbody>
-          <tfoot>
-            <tr>
-              <th colspan="2" data-ar="الإجمالي" data-en="Total"></th>
-              <th id="sectorImpactTotal"></th>
-            </tr>
-          </tfoot>
-        </table>
-      </div>
-    </div>
-  </section>
-
-  <!-- SECTOR IMPACT CHART -->
-  <section class="charts-section">
-    <div class="container">
-      <div class="chart-card">
-        <canvas id="sectorImpactBarChart"></canvas>
-      </div>
-    </div>
-  </section>
-</div>
-<div class="sub-tab-content" id="sub-health" role="tabpanel" aria-labelledby="sub-health-btn">
-<section class="hero-stats sector-impact">
-<div class="container">
-<h2 class="section-title" data-ar="الصحة والرعاية" data-en="Health & Care"></h2>
-<div class="stats-grid impact-grid" id="sectorHealthGrid">
-</div>
-</div>
-</section>
-
-<!-- Health Sub-Tabs -->
-<div class="health-sub-tabs" role="tablist">
-  <button class="health-sub-tab-btn active" id="health-overview-btn" role="tab" aria-controls="health-overview" aria-selected="true" tabindex="0" data-health-tab="health-overview" data-ar="نظرة عامة" data-en="Overview">
-    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Overview" class="health-tab-icon">
-    <span data-ar="نظرة عامة" data-en="Overview"></span>
-  </button>
-  <button class="health-sub-tab-btn" id="health-centers-btn" role="tab" aria-controls="health-centers" aria-selected="false" tabindex="-1" data-health-tab="health-centers" data-ar="المراكز الصحية" data-en="Health Centers">
-    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health Centers" class="health-tab-icon">
-    <span data-ar="المراكز الصحية" data-en="Health Centers"></span>
-  </button>
-  <button class="health-sub-tab-btn" id="primary-care-btn" role="tab" aria-controls="primary-care" aria-selected="false" tabindex="-1" data-health-tab="primary-care" data-ar="الرعاية الأولية" data-en="Primary Care">
-    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Primary Care" class="health-tab-icon">
-    <span data-ar="الرعاية الأولية" data-en="Primary Care"></span>
-  </button>
-  <button class="health-sub-tab-btn" id="health-strengthening-btn" role="tab" aria-controls="health-strengthening" aria-selected="false" tabindex="-1" data-health-tab="health-strengthening" data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care">
-    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Strengthening Health Care" class="health-tab-icon">
-    <span data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></span>
-  </button>
-  <button class="health-sub-tab-btn" id="first-aid-referral-btn" role="tab"
-  aria-controls="first-aid-referral" aria-selected="false" tabindex="-1"
-  data-health-tab="first-aid-referral" data-ar="برنامج الإسعافات الأولية والإحالة" data-en="First Aid & Referral Program">
-  <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="First Aid & Referral" class="health-tab-icon">
-  <span data-ar="برنامج الإسعافات الأولية والإحالة" data-en="First Aid & Referral Program"></span>
-</button>
-<button class="health-sub-tab-btn" id="first-aid-training-btn" role="tab"
-  aria-controls="first-aid-training" aria-selected="false" tabindex="-1"
-  data-health-tab="first-aid-training" data-ar="تدريبات الإسعافات الأولية" data-en="First Aid Trainings">
-  <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="First Aid Training" class="health-tab-icon">
-  <span data-ar="تدريبات الإسعافات الأولية" data-en="First Aid Trainings"></span>
-</button>
-<button class="health-sub-tab-btn" id="cbhfa-program-btn" role="tab"
-  aria-controls="cbhfa-program" aria-selected="false" tabindex="-1"
-  data-health-tab="cbhfa-program" data-ar="CBHFA والصحة المجتمعية" data-en="CBHFA & Community Health">
-  <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="CBHFA Program" class="health-tab-icon">
-  <span data-ar="CBHFA والصحة المجتمعية" data-en="CBHFA & Community Health"></span>
-</button>
-<button class="health-sub-tab-btn" id="reach-program-btn" role="tab"
-  aria-controls="reach-program" aria-selected="false" tabindex="-1"
-  data-health-tab="reach-program" data-ar="برنامج REACH وBRC وMHPSS" data-en="REACH, BRC & MHPSS">
-  <img src="Icons/IFRC-icons-colour_Health.png" alt="REACH Program" class="health-tab-icon">
-  <span data-ar="برنامج REACH وBRC وMHPSS" data-en="REACH, BRC & MHPSS"></span>
-</button>
-
-</div>
-
-<!-- Health Overview Sub-Tab Content -->
-<div class="health-tab-content active" id="health-overview" role="tabpanel" aria-labelledby="health-overview-btn">
-<section class="health-services-section">
-<div class="container">
-<h3 data-ar="خدمات المراكز الصحية" data-en="Health Center Services"></h3>
-<p>يقدم الهلال الأحمر اليمني خدماته الصحية في عدد من المحافظات اليمنية المختلفة عبر مراكزه الصحية او من خلال دعم وتشغيل مراكز صحية حكومية والتي تزايدت احتياجاتها بسبب الوضع الراهن للبلاد. تقدم هذه المراكز خدمات الرعاية الصحية الوقائية والعلاجية.</p>
-</div>
-</section>
-</div>
-
-<!-- Health Centers Sub-Tab Content -->
-<div class="health-tab-content" id="health-centers" role="tabpanel" aria-labelledby="health-centers-btn">
-<section class="health-centers-section">
-<div class="container">
-<h3 data-ar="المستفيدون من المراكز الصحية" data-en="Health Center Beneficiaries"></h3>
-<p>حيث بلغ اجمالي عدد المستفيدين من خدمات المراكز الصحية 702,183 مستفيد في 17 محافظة يمنية.</p>
-<div class="table-wrapper">
-<table class="projects-table health-table">
-<thead>
-<tr>
-<th>المركز الصحي</th>
-<th>عدد المستفيدين</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>إب سمارة</td><td>5,496</td></tr>
-<tr><td>أبين</td><td>30,639</td></tr>
-<tr><td>حجة مبين</td><td>9,218</td></tr>
-<tr><td>شبوة</td><td>23,061</td></tr>
-<tr><td>حجة كحلان عفار</td><td>19,626</td></tr>
-<tr><td>لحج</td><td>17,875</td></tr>
-<tr><td>عمران المأخذ</td><td>27,709</td></tr>
-<tr><td>صنعاء صرف</td><td>14,251</td></tr>
-<tr><td>مأرب</td><td>90,850</td></tr>
-<tr><td>حجة عبس</td><td>34,986</td></tr>
-<tr><td>المحويت</td><td>21,543</td></tr>
-<tr><td>عدن</td><td>27,239</td></tr>
-<tr><td>صنعاء الأمانة</td><td>16,352</td></tr>
-<tr><td>إب المركز الصحي</td><td>29,294</td></tr>
-<tr><td>سيئون</td><td>7,713</td></tr>
-<tr><td>عمران المركز الاسعافي</td><td>44,750</td></tr>
-<tr><td>تعز البرح</td><td>26,013</td></tr>
-<tr><td>حجة المركز الاسعافي</td><td>81,318</td></tr>
-<tr><td>ذمار</td><td>88,439</td></tr>
-<tr><td>عمران الأمومة</td><td>56,417</td></tr>
-<tr><td>صعدة الرقة</td><td>14,421</td></tr>
-<tr><td>صنعاء المحافظة</td><td>14,973</td></tr>
-<tr><td>الإجمالي</td><td>702,183</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Primary Care Sub-Tab Content -->
-<div class="health-tab-content" id="primary-care" role="tabpanel" aria-labelledby="primary-care-btn">
-<section class="primary-care-section">
-<div class="container">
-<h3 data-ar="خدمات الرعاية الصحية الأولية" data-en="Primary Health Care Services"></h3>
-<p>ولا تقتصر الخدمات التي تقدمها المراكز الصحية على الرعاية الصحية الأولية، بل تتعداها إلى الرعاية الصحية الثانوية والعمليات الجراحية. حيث كان إجمالي عدد الخدمات 1,284,780 خدمة.</p>
-<div class="table-wrapper">
-<table class="projects-table health-table">
-<thead>
-<tr>
-<th>الخدمة</th>
-<th>عدد الخدمات</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>الطبيب العام</td><td>188,338</td></tr>
-<tr><td>عيادة النسائية</td><td>76,749</td></tr>
-<tr><td>عيادة الأطفال</td><td>12,518</td></tr>
-<tr><td>عيادة الجراحة العامة</td><td>705</td></tr>
-<tr><td>عيادة أنف أذن وحنجرة</td><td>3,318</td></tr>
-<tr><td>عيادة الأسنان</td><td>3,605</td></tr>
-<tr><td>عيادة طبيب الباطنية</td><td>15,763</td></tr>
-<tr><td>قسم الحضانة</td><td>6,707</td></tr>
-<tr><td>الرقود</td><td>2,291</td></tr>
-<tr><td>الأدوية</td><td>260,883</td></tr>
-<tr><td>الأشعة العادية</td><td>14,952</td></tr>
-<tr><td>أشعة التلفزيون</td><td>62,958</td></tr>
-<tr><td>جهاز دوبلر</td><td>5,578</td></tr>
-<tr><td>تخطيط القلب</td><td>3,189</td></tr>
-<tr><td>أجهزة أخرى</td><td>2,380</td></tr>
-<tr><td>المجارحة وضرب الأبر</td><td>213,513</td></tr>
-<tr><td>المختبر</td><td>150,206</td></tr>
-<tr><td><strong>الإجمالي</strong></td><td><strong>1,023,653</strong></td></tr>
-</tbody>
-</table>
-</div>
-
-<h4>الخدمات التخصصية:</h4>
-<div class="table-wrapper">
-<table class="projects-table health-table">
-<thead>
-<tr>
-<th>العمليات القيصرية أولى</th>
-<th>العمليات القيصرية مكررة</th>
-<th>الولادة المنزلية</th>
-<th>الولادة داخل المركز</th>
-<th>إجراءات أخرى أثناء القيصرية</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>535</td><td>872</td><td>665</td><td>4239</td><td>228</td></tr>
-</tbody>
-</table>
-</div>
-
-<h4>الطوارئ التوليدية:</h4>
-<ul>
-<li>خدمات أخرى تقدمها المراكز الصحية:</li>
-</ul>
-<div class="table-wrapper">
-<table class="projects-table health-table">
-<thead>
-<tr>
-<th>الخدمة</th>
-<th>العدد</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>التثقيف الصحي</td><td>74914</td></tr>
-<tr><td>استقبال حالات الأمراض المعدية</td><td>133798</td></tr>
-<tr><td>استقبال حالات الأمراض غير المعدية</td><td>70829</td></tr>
-<tr><td>استقبال حالات الحوادث(طرقات)</td><td>2922</td></tr>
-<tr><td>حوادث أخرى</td><td>9354</td></tr>
-<tr><td>الرعاية التكاملية</td><td>11112</td></tr>
-<tr><td>الدعم النفسي</td><td>9815</td></tr>
-<tr><td>التغذية</td><td>50062</td></tr>
-<tr><td>التحصين الموسع</td><td>37649</td></tr>
-<tr><td>الصحة الانجابية</td><td>44538</td></tr>
-<tr><td>تنظيم الاسرة</td><td>21894</td></tr>
-</tbody>
-</table>
-</div>
-
-<h4>ثالثاً: الرعاية الصحية الثانوية:</h4>
-<ul>
-<li>العمليات والحالات الجراحية:</li>
-</ul>
-<div class="table-wrapper">
-<table class="projects-table health-table">
-<thead>
-<tr>
-<th>المركز الصحي</th>
-<th>العمليات</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>حجة، ذمار</td><td>605</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-<!-- Strengthening Health Care Sub-Tab Content -->
-<div class="health-tab-content" id="health-strengthening" role="tabpanel" aria-labelledby="health-strengthening-btn">
-<section class="strengthening-section">
-<div class="container">
-<h3 data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></h3>
-<h4>1- المستشفى الميداني والعيادات المتنقلة</h4>
-<p>يهدف المستشفى الميداني لتقديم الخدمات الطبيبة الضرورية للمجتمعات الفقيرة والتي تخفف من معاناة المواطنين وتعزز التوعية الصحة لديهم لعدم تواجد الخدمات الصحية في تلك المناطق وكان المستفيدين من الخدمات بحسب الجدول الآتي:</p>
-<div class="table-wrapper">
-<table class="projects-table health-table">
-<thead>
-<tr>
-<th>العيادة المتنقلة</th>
-<th>عدد المستفيدين</th>
-<th>عدد الخدمات</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>شبوة</td><td>11,791</td><td>23,940</td></tr>
-<tr><td>أمانة العاصمة</td><td>8,271</td><td>8,627</td></tr>
-<tr><td>تعز- البرح</td><td>30,995</td><td>54,206</td></tr>
-<tr><td>المحويت</td><td>3,116</td><td>7,342</td></tr>
-<tr><td>حجة</td><td>7,787</td><td>14,106</td></tr>
-<tr><td>الحديدة</td><td>4,209</td><td>8,194</td></tr>
-<tr><td>الإجمالي</td><td>66,169</td><td>116,415</td></tr>
-</tbody>
-</table>
-</div>
-<p>تشارك العيادات المتنقلة في تقديم الخدمات الطبية في المناسبات الجماهيرية حيث تقدم الاستشارات الطبية والعلاجات وعمل الفحوصات الضرورية والأساسية للمرضى.</p>
-<h4>2- دعم المستشفيات والمراكز الصحية بالمعدات / الأجهزة/ المستلزمات الطبية والأدوية:</h4>
-<ul>
-<li>إهداء الادوية والمستلزمات الطبية للجهات التالية: مركز الصماد، مستشفى 48 النموذجي، مستشفى ضلاع همدان، مركز كحلان عفار الاسعافي، مركز صعدة، الخدمات الطبية العسكرية، مصلحة الدفاع المدني، مركز سمارة الإسعافي، مستشفى فلسطين، السجن الحربي ويقدر عدد المستفيدين: 16,377 مستفيد</li>
-</ul>
-</div>
-</section>
-</div></div>
-<!-- First Aid & Referral Sub-Tab Content -->
- <!-- First Aid & Referral Sub-Tab Content -->
-<div class="health-tab-content" id="first-aid-referral" role="tabpanel" aria-labelledby="first-aid-referral-btn">
-  <section class="first-aid-referral-section">
-    <div class="container">
-      <h3 data-ar="برنامج الإسعافات الأولية والإحالة" data-en="First Aid & Referral Program"></h3>
-      <p>
-        يعد برنامج الإسعافات الأولية من البرامج الأساسية والمهمة التي ينفذها الهلال الأحمر اليمني حيث يسعى لتأهيل المجتمع لتقديم الإسعاف الاولي الميداني خصوصاً في أوقات الحروب والنزاعات المسلحة واثناء الكوارث الطبيعية.
-      </p>
-      <p>
-        نفذ البرنامج عددًا من الدورات التدريبية لتأهيل المتطوعين، والموظفين وكذلك المجتمع المحلي، كما يعمل على إحالة المرضى والجرحى إلى المستشفيات.
-      </p>
-
-      <h4>نظام الإحالة:</h4>
-      <p>عملت 88 سيارة إسعاف في الفروع على إحالة المرضى والجرحى إلى المستشفيات حيث كان عدد المستفيدين من هذه الخدمة 5,136 مستفيد، كما هو موضح أدناه:</p>
-
-      <div class="table-wrapper">
-        <table class="projects-table health-table">
-          <thead>
-            <tr>
-              <th>الفرع</th>
-              <th>عدد المستفيدين</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>صنعاء الأمانة</td><td>109</td></tr>
-            <tr><td>تعز</td><td>301</td></tr>
-            <tr><td>عمران</td><td>187</td></tr>
-            <tr><td>البيضاء</td><td>111</td></tr>
-            <tr><td>مأرب</td><td>747</td></tr>
-            <tr><td>ذمار</td><td>190</td></tr>
-            <tr><td>الجوف</td><td>53</td></tr>
-            <tr><td>لحج</td><td>31</td></tr>
-            <tr><td>حجه</td><td>1034</td></tr>
-            <tr><td>شبوه</td><td>82</td></tr>
-            <tr><td>ابين</td><td>101</td></tr>
-            <tr><td>الضالع</td><td>180</td></tr>
-            <tr><td>إب</td><td>566</td></tr>
-            <tr><td>صعده</td><td>437</td></tr>
-            <tr><td>الحديدة</td><td>851</td></tr>
-            <tr><td>صنعاء المحافظة</td><td>109</td></tr>
-            <tr><td>صرف</td><td>47</td></tr>
-            <tr><td><strong>الإجمالي</strong></td><td><strong>5,136</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <p>
-        كما تم تنفيذ الاستجابة بنظام الإحالة الطبية لحالات الإسهالات المائية بالتنسيق مع اللجنة الدولية للصليب الأحمر في محافظة صعدة – لعدد 69 حالة.
-      </p>
-    </div>
-  </section>
-</div>
-<!-- First Aid Training Sub-Tab Content -->
-<div class="health-tab-content" id="first-aid-training" role="tabpanel" aria-labelledby="first-aid-training-btn">
-  <section class="first-aid-training-section">
-    <div class="container">
-      <h3 data-ar="تدريبات الإسعافات الأولية" data-en="First Aid Trainings"></h3>
-
-      <h4>تدريب المجتمعات المحلية:</h4>
-      <p>تم تدريب 5,286 مشارك / مشاركة من المجتمعات المحلية المختلفة في عدد من المحافظات على الإسعافات الأولية:</p>
-
-      <div class="table-wrapper">
-        <table class="projects-table health-table">
-          <thead>
-            <tr><th>الفرع</th><th>عدد المستفيدين</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>أبين</td><td>100</td></tr>
-            <tr><td>الحديدة</td><td>109</td></tr>
-            <tr><td>عدن</td><td>125</td></tr>
-            <tr><td>حجة</td><td>433</td></tr>
-            <tr><td>لحج</td><td>100</td></tr>
-            <tr><td>أمانة العاصمة</td><td>2125</td></tr>
-            <tr><td>المهرة</td><td>220</td></tr>
-            <tr><td>ذمار</td><td>362</td></tr>
-            <tr><td>عمران</td><td>122</td></tr>
-            <tr><td>سيئون</td><td>100</td></tr>
-            <tr><td>تعز</td><td>75</td></tr>
-            <tr><td>شبوة</td><td>245</td></tr>
-            <tr><td>مأرب</td><td>100</td></tr>
-            <tr><td>الضالع</td><td>100</td></tr>
-            <tr><td>صعدة</td><td>200</td></tr>
-            <tr><td>صنعاء المحافظة</td><td>619</td></tr>
-            <tr><td>إب</td><td>140</td></tr>
-            <tr><td><strong>الإجمالي</strong></td><td><strong>5,286</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>تدريب المتطوعين:</h4>
-      <p>تم تدريب 126 متطوع من الفروع التالية:</p>
-
-      <div class="table-wrapper">
-        <table class="projects-table health-table">
-          <thead>
-            <tr><th>الفرع</th><th>عدد المستفيدين</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>الحديدة</td><td>106</td></tr>
-            <tr><td>صعدة</td><td>20</td></tr>
-            <tr><td><strong>الإجمالي</strong></td><td><strong>126</strong></td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <h4>توزيع كتيبات الإسعافات الأولية:</h4>
-      <p>تم توزيع 1,600 كتيب للإسعافات الأولية على 13 فرعًا.</p>
-
-      <h4>توزيع حقائب الإسعافات الأولية:</h4>
-      <div class="table-wrapper">
-        <table class="projects-table health-table">
-          <thead>
-            <tr><th>النوع</th><th>الجهات</th></tr>
-          </thead>
-          <tbody>
-            <tr><td>4,220 حقيبة إسعافية أولية</td><td>16 فرع من فروع الهلال الأحمر اليمني</td></tr>
-            <tr><td>384 حقيبة إسعافية أولية</td><td>جهات حكومية مختلفة</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-</div>
-
-<!-- CBHFA Program Sub-Tab Content -->
-<div class="health-tab-content" id="cbhfa-program" role="tabpanel" aria-labelledby="cbhfa-program-btn">
-  <section class="cbhfa-section">
-    <div class="container">
-      <h3 data-ar="برنامج الصحة المجتمعية والإسعاف الأولي المجتمعي" data-en="CBHFA Program"></h3>
-
-      <!-- CBHFA Activities -->
-      <h4>أنشطة برنامج الصحة المجتمعية والإسعاف الأولي المجتمعي:</h4>
-      <div class="table-wrapper">
-        <table class="projects-table health-table">
-          <thead>
-            <tr>
-              <th>النشاط</th>
-              <th>المحافظة</th>
-              <th>عدد المستفيدين</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>تنفيذ تدريب CBHFA لمتطوعي فرع الجوف</td><td>الجوف</td><td>20</td></tr>
-            <tr><td>جلسات ترويج صحي للطلاب</td><td>الجوف</td><td>29,000</td></tr>
-            <tr><td>جلسات ترويج صحي للمجتمعات والمخيمات والمدارس</td><td>تعز - المدينة</td><td>10,957</td></tr>
-            <tr><td>حملة الترويج للتبرع بالدم</td><td>تعز - المدينة</td><td>15,349</td></tr>
-            <tr><td>حملة اليوم العالمي للأوبئة (سوشيال ميديا)</td><td>—</td><td>10,000</td></tr>
-            <tr><td>نشاط الترصد المجتمعي (CBS)</td><td>لحج</td><td>10,343</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-      <!-- HCID Activities -->
-      <h4>برنامج الرعاية الصحية في خطر (HCID):</h4>
-      <ul>
-        <li>ورشة عمل تنشيطية لـ 10 مدربين من عدة فروع.</li>
-        <li>ورشة عن بُعد لتقييم الأمن والسلامة بمشاركة 17 شخصًا لـ 8 مراكز صحية.</li>
-        <li>تدريب 161 عامل صحي في 7 محافظات على إدارة التوتر ومنع العنف في مؤسسات الرعاية الصحية.</li>
-      </ul>
-
-      <!-- Epidemics and Health Emergency -->
-      <h4>أنشطة الاستجابة للأوبئة والطوارئ الصحية:</h4>
-      <div class="table-wrapper">
-        <table class="projects-table health-table">
-          <thead>
-            <tr>
-              <th>النشاط</th>
-              <th>المحافظة</th>
-              <th>عدد المستفيدين</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td>مكافحة حمى الضنك والملاريا (الرش الضبابي)</td><td>الحديدة</td><td>500,000</td></tr>
-            <tr><td>الحد من انتشار وباء الكوليرا</td><td>حضرموت</td><td>600,566</td></tr>
-            <tr><td>الحد من الكوليرا</td><td>الضالع</td><td>13,000</td></tr>
-            <tr><td>الحد من الكوليرا</td><td>صعدة</td><td>9,000</td></tr>
-          </tbody>
-        </table>
-      </div>
-
-    </div>
-  </section>
-</div>
-<!-- REACH Program Sub-Tab Content -->
-<div class="health-tab-content" id="reach-program" role="tabpanel" aria-labelledby="reach-program-btn">
-  <section class="reach-section">
-    <div class="container">
-      <h3 data-ar="برنامج REACH و BRC و MHPSS" data-en="REACH, BRC & MHPSS Programs"></h3>
-
-      <!-- REACH -->
-      <h4>برنامج REACH – الرعاية الصحية المجتمعية المرنة والمتساوية:</h4>
-      <p>بدأ تنفيذ البرنامج في يناير 2022 ويستمر حتى 2026، بهدف تحسين وصول الأشخاص والمجتمعات الضعيفة إلى خدمات الرعاية الصحية والدعم النفسي من خلال تعزيز قدرات الجمعية.</p>
-      <ul>
-        <li>تنفيذ ولادات طبيعية مدعومة: 20 حالة في عدن + 12 في إب.</li>
-        <li>دعم المركز الصحي في عدن بالأدوية (بالتنسيق مع اللجنة الدولية).</li>
-        <li>توزيع 14 تابلت على فروع صنعاء، عدن، إب.</li>
-        <li>تنفيذ نظام الشكاوى والمساءلة المجتمعية في 3 فروع.</li>
-        <li>جلسات توعية في مدارس إب: <strong>21,134 مستفيد</strong> (11,416 ذكور – 9718 إناث).</li>
-        <li>زيارة ميدانية لفروع إب وعدن لمتابعة التقييم والاستدامة.</li>
-      </ul>
-
-      <!-- BRC -->
-      <h4>مشروع BRC – بناء الرعاية الصحية المجتمعية المرنة:</h4>
-      <ul>
-        <li>دعم المركز الصحي في حضرموت بالأدوية (وفق معايير اللجنة الدولية).</li>
-        <li>توزيع تابلتات على فروع حضرموت والمحويت.</li>
-        <li>تنفيذ نظام الشكاوى والمساءلة في حضرموت والمحويت.</li>
-        <li>زيارات ميدانية لفروع حضرموت والمحويت لمتابعة وتقييم الخطط.</li>
-      </ul>
-
-      <!-- MHPSS -->
-      <h4>برنامج الصحة النفسية والدعم النفسي الاجتماعي (MHPSS):</h4>
-      <p>من الركائز الأساسية لتخفيف التحديات النفسية والإنسانية التي فرضتها الأزمات. يشمل البرنامج:</p>
-      <ul>
-        <li>تدريب 50 متطوع بالحديدة على مفاهيم الإسعافات النفسية.</li>
-        <li>تدريب 214 عامل صحي على إدارة الضغط في 6 محافظات (شبوة، حجة، إب، ذمار، صنعاء، لحج).</li>
-        <li>ويبينار الاحتراق الوظيفي للمنطقة العربية: 103 مشارك.</li>
-        <li>ويبينار الإسعاف النفسي الأولي للحالات المعقدة: 202 مشارك.</li>
-        <li>ويبينار تطوير الذات لموظفي ومتطوعي الهلال بالتعاون مع البحرين: 74 مشارك.</li>
-      </ul>
+      <!-- Charts -->
+      <button
+        class="tab-btn"
+        id="tab-charts-btn"
+        role="tab"
+        aria-controls="tab-charts"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-charts">
+        <span data-ar="الرسوم البيانية" data-en="Charts"></span>
+      </button>
 
       <!-- Training -->
-      <h4>دورات تدريبية متخصصة:</h4>
-      <ul>
-        <li>ورشة حول معايير الإدارة الطبية ومتابعة المراكز: 16 مشارك.</li>
-        <li>ورشة حول نظام الإمبريست لتعزيز متابعة الأدوية: 8 مشاركين.</li>
-        <li>تدريب MCIM لإدارة الحوادث الجماعية – 118 مشارك في أمانة العاصمة والحديدة.</li>
-      </ul>
-    </div>
-  </section>
-</div>
+      <button
+        class="tab-btn"
+        id="tab-training-btn"
+        role="tab"
+        aria-controls="tab-training"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-training">
+        <span data-ar="التدريب" data-en="Training"></span>
+      </button>
 
-<div class="sub-tab-content" id="sub-development" role="tabpanel" aria-labelledby="sub-development-btn">
-<section class="hero-stats sector-impact">
-<div class="container">
-<h2 class="section-title" data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></h2>
-<div class="stats-grid impact-grid" id="sectorDevelopmentGrid">
-</div>
-</div>
-  </section>
-  <div class="health-sub-tabs" role="tablist">
-  <!-- أزرار تبويبات أخرى هنا -->
-  <button class="health-sub-tab-btn" id="orgdev-infrastructure-btn" role="tab"
-    aria-controls="orgdev-infrastructure" aria-selected="false" tabindex="-1"
-    data-health-tab="orgdev-infrastructure" data-ar="الأعمال التطويرية" data-en="Development Works">
-    <img src="Icons/IFRC-icons-colour_Infrastructure.png" alt="Infrastructure Icon" class="health-tab-icon">
-    <span data-ar="الأعمال التطويرية" data-en="Development Works"></span>
-  </button>
-<button class="sub-tab-btn" id="sub-community-btn" role="tab"
-  aria-controls="sub-community" aria-selected="false" tabindex="-1"
-  data-sub-tab="sub-community"
-  data-ar="المبادرات المجتمعية" data-en="Community Initiatives">
-  <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Community" class="sub-tab-icon">
-  <span data-ar="المبادرات المجتمعية" data-en="Community Initiatives"></span>
-</button>
-</div>
-<div class="health-tab-content" id="orgdev-infrastructure" role="tabpanel" aria-labelledby="orgdev-infrastructure-btn">
-  <section class="orgdev-infrastructure-section">
-    <div class="container">
-      <h3 data-ar="الأعمال التطويرية للمركز الرئيسي والفروع" data-en="Developmental Works for HQ and Branches"></h3>
-      <ul>
-        <li data-ar="تجهيز 5 قاعات تدريبية نموذجية..." data-en="Equipped 5 modern training halls..."></li>
-        <li data-ar="تغطية شاملة لـ 22 فرع..." data-en="Comprehensive coverage of 22 branches..."></li>
-        <li data-ar="تمتلك الجمعية 15 مقراً..." data-en="15 owned premises ensuring institutional sustainability..."></li>
-        <li data-ar="تشغيل وتطوير 28 مركزاً..." data-en="Operation and development of 28 primary healthcare centers..."></li>
-        <li data-ar="اسطول مكون من 90 سيارة..." data-en="Fleet of 90 ambulances for rapid response..."></li>
-        <li data-ar="امتلاك 5 مخازن استراتيجية..." data-en="5 strategic warehouses and 4 operational stores..."></li>
-        <li data-ar="تركيب وتفعيل 17 منظومة..." data-en="17 solar systems installed to reduce operational costs..."></li>
-        <li data-ar="إنشاء إدارة متكاملة للوجيستك." data-en="Established a dedicated logistics management unit."></li>
-        <li data-ar="تعزيز الهوية البصرية..." data-en="Enhanced visual identity on premises and vehicles..."></li>
-        <li data-ar="تدريب مدربين لمكافحة الفساد..." data-en="54 staff trained on anti-corruption and transparency..."></li>
-        <li data-ar="تطبيق نظام ERP..." data-en="ERP implemented for finance/admin ops in 7 branches."></li>
-        <li data-ar="الانتهاء من الهيكل التنظيمي..." data-en="Completed org structure, job descriptions, evaluations."></li>
-      </ul>
+      <!-- Activities -->
+      <button
+        class="tab-btn"
+        id="tab-activities-btn"
+        role="tab"
+        aria-controls="tab-activities"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-activities">
+        <span data-ar="الأنشطة" data-en="Activities"></span>
+      </button>
+
+      <!-- Gallery -->
+      <button
+        class="tab-btn"
+        id="tab-gallery-btn"
+        role="tab"
+        aria-controls="tab-gallery"
+        aria-selected="false"
+        tabindex="-1"
+        data-tab="tab-gallery">
+        <span data-ar="المعرض" data-en="Gallery"></span>
+      </button>
     </div>
 
-</div>
-<div class="sub-tab-content" id="sub-community" role="tabpanel" aria-labelledby="sub-community-btn">
-  <section class="table-section">
-    <div class="container">
-      <h2 class="section-title" data-ar="المبادرات المجتمعية" data-en="Community Initiatives"></h2>
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th data-ar="الرقم" data-en="No."></th>
-              <th data-ar="المبادرة" data-en="Initiative"></th>
-              <th data-ar="الفرع" data-en="Branch"></th>
-              <th data-ar="عدد المستفيدين" data-en="Beneficiaries"></th>
-            </tr>
-          </thead>
-          <tbody id="communityInitiativesBody"></tbody>
-        </table>
+    <div class="header-actions">
+      <button type="button" onclick="toggleLanguage()" class="btn btn-lang" aria-label="Toggle language">
+        🌐 <span data-ar="AR / EN" data-en="AR / EN">AR / EN</span>
+      </button>
+
+      <button type="button" onclick="window.print()" class="btn btn-print">
+        <i class="fas fa-print" aria-hidden="true"></i>
+        <span data-ar="طباعة التقرير" data-en="Print Report"></span>
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <!-- ================= OVERVIEW ================= -->
+    <section class="tab-content active" id="tab-overview" role="tabpanel" aria-labelledby="tab-overview-btn">
+      <!-- HERO STATS -->
+      <section class="hero-stats">
+        <div class="container">
+          <div class="stats-grid">
+            <div class="stat-card">
+              <i class="fas fa-users" aria-hidden="true"></i>
+              <div class="stat-number" data-key="total_beneficiaries">0</div>
+              <span data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></span>
+            </div>
+
+            <div class="stat-card">
+              <i class="fas fa-ambulance" aria-hidden="true"></i>
+              <div class="stat-number" data-key="ambulance_cases">0</div>
+              <span data-ar="إحالات إسعافية" data-en="Ambulance Referrals"></span>
+            </div>
+
+            <div class="stat-card">
+              <i class="fas fa-bomb" aria-hidden="true"></i>
+              <div class="stat-number" data-key="mine_awareness">0</div>
+              <span data-ar="توعية بمخاطر الألغام" data-en="Mine Risk Awareness"></span>
+            </div>
+
+            <div class="stat-card">
+              <i class="fas fa-graduation-cap" aria-hidden="true"></i>
+              <div class="stat-number" data-key="trainees">0</div>
+              <span data-ar="المتدربون" data-en="Trainees"></span>
+            </div>
+
+            <div class="stat-card">
+              <i class="fas fa-bullhorn" aria-hidden="true"></i>
+              <div class="stat-number" data-key="movement_awareness">0</div>
+              <span data-ar="التعريف بالحركة" data-en="Movement Awareness"></span>
+            </div>
+
+            <div class="stat-card">
+              <i class="fas fa-school" aria-hidden="true"></i>
+              <div class="stat-number" data-key="classrooms">0</div>
+              <span data-ar="فصول دراسية" data-en="Classrooms"></span>
+            </div>
+
+            <div class="stat-card">
+              <i class="fas fa-handshake" aria-hidden="true"></i>
+              <div class="stat-number" data-key="donors">0</div>
+              <span data-ar="الجهات المانحة" data-en="Donors"></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CATEGORY CARDS -->
+      <section class="category-section">
+        <div class="container">
+          <h2 class="section-title" data-ar="مشاريع الاستجابة حسب الفئة" data-en="Response Projects by Category"></h2>
+          <div class="category-cards" aria-live="polite"></div>
+        </div>
+      </section>
+    </section>
+
+    <!-- ================= HEALTH ================= -->
+    <section class="tab-content" id="tab-health" role="tabpanel" aria-labelledby="tab-health-btn" hidden>
+      <section class="hero-stats sector-impact">
+        <div class="container">
+          <h2 class="section-title" data-ar="الصحة والرعاية" data-en="Health & Care"></h2>
+          <div class="stats-grid impact-grid" id="sectorHealthGrid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <!-- Health Sub-Tabs -->
+      <div class="health-sub-tabs" role="tablist" aria-label="Health Tabs">
+        <button
+          class="health-sub-tab-btn active"
+          id="health-overview-btn"
+          role="tab"
+          aria-controls="health-overview"
+          aria-selected="true"
+          tabindex="0"
+          data-health-tab="health-overview">
+          <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="" class="health-tab-icon" />
+          <span data-ar="نظرة عامة" data-en="Overview"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="health-centers-btn"
+          role="tab"
+          aria-controls="health-centers"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="health-centers">
+          <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="" class="health-tab-icon" />
+          <span data-ar="المراكز الصحية" data-en="Health Centers"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="primary-care-btn"
+          role="tab"
+          aria-controls="primary-care"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="primary-care">
+          <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="" class="health-tab-icon" />
+          <span data-ar="الرعاية الأولية" data-en="Primary Care"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="health-strengthening-btn"
+          role="tab"
+          aria-controls="health-strengthening"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="health-strengthening">
+          <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="" class="health-tab-icon" />
+          <span data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="first-aid-referral-btn"
+          role="tab"
+          aria-controls="first-aid-referral"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="first-aid-referral">
+          <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="" class="health-tab-icon" />
+          <span data-ar="برنامج الإسعافات الأولية والإحالة" data-en="First Aid & Referral Program"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="first-aid-training-btn"
+          role="tab"
+          aria-controls="first-aid-training"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="first-aid-training">
+          <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="" class="health-tab-icon" />
+          <span data-ar="تدريبات الإسعافات الأولية" data-en="First Aid Trainings"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="cbhfa-program-btn"
+          role="tab"
+          aria-controls="cbhfa-program"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="cbhfa-program">
+          <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="" class="health-tab-icon" />
+          <span data-ar="CBHFA والصحة المجتمعية" data-en="CBHFA & Community Health"></span>
+        </button>
+
+        <button
+          class="health-sub-tab-btn"
+          id="reach-program-btn"
+          role="tab"
+          aria-controls="reach-program"
+          aria-selected="false"
+          tabindex="-1"
+          data-health-tab="reach-program">
+          <img src="Icons/IFRC-icons-colour_Health.png" alt="" class="health-tab-icon" />
+          <span data-ar="برنامج REACH وBRC وMHPSS" data-en="REACH, BRC & MHPSS"></span>
+        </button>
       </div>
-    </div>
-  </section>
-</div>
-</section>
-</div>
 
- <div class="sub-tab-content" id="sub-wash" role="tabpanel" aria-labelledby="sub-wash-btn">
+      <!-- Health Overview -->
+      <div class="health-tab-content active" id="health-overview" role="tabpanel" aria-labelledby="health-overview-btn">
+        <section class="health-services-section">
+          <div class="container">
+            <h3 data-ar="خدمات المراكز الصحية" data-en="Health Center Services"></h3>
+            <p>
+              يقدم الهلال الأحمر اليمني خدماته الصحية في عدد من المحافظات اليمنية المختلفة عبر مراكزه الصحية
+              او من خلال دعم وتشغيل مراكز صحية حكومية والتي تزايدت احتياجاتها بسبب الوضع الراهن للبلاد.
+              تقدم هذه المراكز خدمات الرعاية الصحية الوقائية والعلاجية.
+            </p>
+          </div>
+        </section>
+      </div>
 
-  <!-- Section Title -->
-  <section class="hero-stats sector-impact">
-    <div class="container">
-      <h2 class="section-title" data-ar="المياه والإسكان" data-en="Water & Shelter"></h2>
-      <div class="stats-grid impact-grid" id="sectorWashGrid"></div>
-    </div>
-  </section>
+      <!-- Health Centers -->
+      <div class="health-tab-content" id="health-centers" role="tabpanel" aria-labelledby="health-centers-btn" hidden>
+        <section class="health-centers-section">
+          <div class="container">
+            <h3 data-ar="المستفيدون من المراكز الصحية" data-en="Health Center Beneficiaries"></h3>
+            <p>حيث بلغ اجمالي عدد المستفيدين من خدمات المراكز الصحية 702,183 مستفيد في 17 محافظة يمنية.</p>
 
-  <!-- Sub-tab Buttons -->
-  <div class="health-sub-tabs" role="tablist">
-    <button class="health-sub-tab-btn active" id="wash-overview-btn" role="tab"
-      aria-controls="wash-overview" aria-selected="true" tabindex="0"
-      data-health-tab="wash-overview" data-ar="نظرة عامة" data-en="Overview">
-      <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water Overview" class="wash-tab-icon">
-      <span data-ar="نظرة عامة" data-en="Overview"></span>
-    </button>
-    <button class="health-sub-tab-btn" id="wash-projects-btn" role="tab"
-  aria-controls="wash-projects" aria-selected="false" tabindex="-1"
-  data-health-tab="wash-projects" data-ar="المشاريع" data-en="Projects">
-  <img src="Icons/IFRC-icons-colour_Emergency-response.png" alt="WASH Projects" class="health-tab-icon">
-  <span data-ar="المشاريع" data-en="Projects"></span>
-</button>
-<button class="health-sub-tab-btn" id="wash-koica-btn" role="tab"
-  aria-controls="wash-koica" aria-selected="false" tabindex="-1"
-  data-health-tab="wash-koica" data-ar="مشروع المياه من أجل السلام" data-en="Water for Peace Project">
-  <img src="Icons/IFRC-icons-colour_Peace-and-Conflict.png" alt="KOICA Project Icon" class="health-tab-icon">
-  <span data-ar="مشروع المياه من أجل السلام" data-en="Water for Peace Project"></span>
-</button>
-<button class="health-sub-tab-btn" id="wash-ppp-btn" role="tab"
-  aria-controls="wash-ppp" aria-selected="false" tabindex="-1"
-  data-health-tab="wash-ppp" data-ar="مشروع الشراكة البرامجية" data-en="PPP Project">
-  <img src="Icons/IFRC-icons-colour_Partnership.png" alt="PPP Icon" class="health-tab-icon">
-  <span data-ar="مشروع الشراكة البرامجية" data-en="PPP Project"></span>
-</button>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead>
+                  <tr><th>المركز الصحي</th><th>عدد المستفيدين</th></tr>
+                </thead>
+                <tbody>
+                  <tr><td>إب سمارة</td><td>5,496</td></tr>
+                  <tr><td>أبين</td><td>30,639</td></tr>
+                  <tr><td>حجة مبين</td><td>9,218</td></tr>
+                  <tr><td>شبوة</td><td>23,061</td></tr>
+                  <tr><td>حجة كحلان عفار</td><td>19,626</td></tr>
+                  <tr><td>لحج</td><td>17,875</td></tr>
+                  <tr><td>عمران المأخذ</td><td>27,709</td></tr>
+                  <tr><td>صنعاء صرف</td><td>14,251</td></tr>
+                  <tr><td>مأرب</td><td>90,850</td></tr>
+                  <tr><td>حجة عبس</td><td>34,986</td></tr>
+                  <tr><td>المحويت</td><td>21,543</td></tr>
+                  <tr><td>عدن</td><td>27,239</td></tr>
+                  <tr><td>صنعاء الأمانة</td><td>16,352</td></tr>
+                  <tr><td>إب المركز الصحي</td><td>29,294</td></tr>
+                  <tr><td>سيئون</td><td>7,713</td></tr>
+                  <tr><td>عمران المركز الاسعافي</td><td>44,750</td></tr>
+                  <tr><td>تعز البرح</td><td>26,013</td></tr>
+                  <tr><td>حجة المركز الاسعافي</td><td>81,318</td></tr>
+                  <tr><td>ذمار</td><td>88,439</td></tr>
+                  <tr><td>عمران الأمومة</td><td>56,417</td></tr>
+                  <tr><td>صعدة الرقة</td><td>14,421</td></tr>
+                  <tr><td>صنعاء المحافظة</td><td>14,973</td></tr>
+                  <tr><td><strong>الإجمالي</strong></td><td><strong>702,183</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
 
-  </div>
- 
+      <!-- Primary Care -->
+      <div class="health-tab-content" id="primary-care" role="tabpanel" aria-labelledby="primary-care-btn" hidden>
+        <section class="primary-care-section">
+          <div class="container">
+            <h3 data-ar="خدمات الرعاية الصحية الأولية" data-en="Primary Health Care Services"></h3>
+            <p>
+              ولا تقتصر الخدمات التي تقدمها المراكز الصحية على الرعاية الصحية الأولية، بل تتعداها إلى الرعاية الصحية الثانوية والعمليات الجراحية.
+              حيث كان إجمالي عدد الخدمات 1,284,780 خدمة.
+            </p>
 
-  <!-- Sub-tab Content -->
-  <div class="health-tab-content active" id="wash-overview" role="tabpanel" aria-labelledby="wash-overview-btn">
-    <section class="wash-overview-section">
-      <div class="container">
-        <h3 data-ar="نظرة عامة على أزمة المياه" data-en="Water Crisis Overview"></h3>
-         <p data-ar="تُمثل أزمة المياه في اليمن أحد التحديات الإنسانية والإنمائية الأكثر إلحاحاً، حيث تفاقمت حدتها نتيجة عوامل مركبة تشمل النمو السكاني المتسارع، وتدهور البنية التحتية، وسوء إدارة الموارد المائية، والتأثيرات المتزايدة للتغير المناخي." 
-   data-en="The water crisis in Yemen is one of the most pressing humanitarian and development challenges, intensified by a combination of factors including rapid population growth, deteriorating infrastructure, poor water resource management, and the increasing impact of climate change.">
-</p>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>الخدمة</th><th>عدد الخدمات</th></tr></thead>
+                <tbody>
+                  <tr><td>الطبيب العام</td><td>188,338</td></tr>
+                  <tr><td>عيادة النسائية</td><td>76,749</td></tr>
+                  <tr><td>عيادة الأطفال</td><td>12,518</td></tr>
+                  <tr><td>عيادة الجراحة العامة</td><td>705</td></tr>
+                  <tr><td>عيادة أنف أذن وحنجرة</td><td>3,318</td></tr>
+                  <tr><td>عيادة الأسنان</td><td>3,605</td></tr>
+                  <tr><td>عيادة طبيب الباطنية</td><td>15,763</td></tr>
+                  <tr><td>قسم الحضانة</td><td>6,707</td></tr>
+                  <tr><td>الرقود</td><td>2,291</td></tr>
+                  <tr><td>الأدوية</td><td>260,883</td></tr>
+                  <tr><td>الأشعة العادية</td><td>14,952</td></tr>
+                  <tr><td>أشعة التلفزيون</td><td>62,958</td></tr>
+                  <tr><td>جهاز دوبلر</td><td>5,578</td></tr>
+                  <tr><td>تخطيط القلب</td><td>3,189</td></tr>
+                  <tr><td>أجهزة أخرى</td><td>2,380</td></tr>
+                  <tr><td>المجارحة وضرب الأبر</td><td>213,513</td></tr>
+                  <tr><td>المختبر</td><td>150,206</td></tr>
+                  <tr><td><strong>الإجمالي</strong></td><td><strong>1,023,653</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
 
-<p data-ar="وقد أدى الصراع المستمر إلى تفاقم الأزمة من خلال إلحاق أضرار جسيمة بشبكات المياه، وتعطيل أنظمة التوزيع، وتقييد الوصول إلى المصادر الآمنة." 
-   data-en="The ongoing conflict has worsened the crisis by causing severe damage to water networks, disrupting distribution systems, and limiting access to safe water sources.">
-</p>
+            <h4>الخدمات التخصصية:</h4>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead>
+                  <tr>
+                    <th>العمليات القيصرية أولى</th>
+                    <th>العمليات القيصرية مكررة</th>
+                    <th>الولادة المنزلية</th>
+                    <th>الولادة داخل المركز</th>
+                    <th>إجراءات أخرى أثناء القيصرية</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td>535</td><td>872</td><td>665</td><td>4239</td><td>228</td></tr>
+                </tbody>
+              </table>
+            </div>
 
-<p data-ar="وساهم نقص خدمات المياه والإصحاح البيئي في انتشار الأمراض المنقولة بالمياه، مما عمّق من الحالة الإنسانية الحرجة." 
-   data-en="The lack of water and sanitation services has contributed to the spread of waterborne diseases, deepening the humanitarian crisis.">
-</p>
+            <h4>الطوارئ التوليدية:</h4>
+            <ul><li>خدمات أخرى تقدمها المراكز الصحية:</li></ul>
 
-<p data-ar="لذا، تتطلب المعالجة الفاعلة تبني استراتيجيات متكاملة تجمع بين تعزيز البنية التحتية، وترشيد الإدارة، وبناء القدرة على الصمود في وجه التحديات المناخية." 
-   data-en="Effective solutions require integrated strategies that combine infrastructure enhancement, efficient management, and resilience building against climate challenges.">
-</p>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>الخدمة</th><th>العدد</th></tr></thead>
+                <tbody>
+                  <tr><td>التثقيف الصحي</td><td>74914</td></tr>
+                  <tr><td>استقبال حالات الأمراض المعدية</td><td>133798</td></tr>
+                  <tr><td>استقبال حالات الأمراض غير المعدية</td><td>70829</td></tr>
+                  <tr><td>استقبال حالات الحوادث(طرقات)</td><td>2922</td></tr>
+                  <tr><td>حوادث أخرى</td><td>9354</td></tr>
+                  <tr><td>الرعاية التكاملية</td><td>11112</td></tr>
+                  <tr><td>الدعم النفسي</td><td>9815</td></tr>
+                  <tr><td>التغذية</td><td>50062</td></tr>
+                  <tr><td>التحصين الموسع</td><td>37649</td></tr>
+                  <tr><td>الصحة الانجابية</td><td>44538</td></tr>
+                  <tr><td>تنظيم الاسرة</td><td>21894</td></tr>
+                </tbody>
+              </table>
+            </div>
 
+            <h4>ثالثاً: الرعاية الصحية الثانوية:</h4>
+            <ul><li>العمليات والحالات الجراحية:</li></ul>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>المركز الصحي</th><th>العمليات</th></tr></thead>
+                <tbody><tr><td>حجة، ذمار</td><td>605</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- Strengthening Health Care -->
+      <div class="health-tab-content" id="health-strengthening" role="tabpanel" aria-labelledby="health-strengthening-btn" hidden>
+        <section class="strengthening-section">
+          <div class="container">
+            <h3 data-ar="تعزيز الرعاية الصحية" data-en="Strengthening Health Care"></h3>
+
+            <h4>1- المستشفى الميداني والعيادات المتنقلة</h4>
+            <p>
+              يهدف المستشفى الميداني لتقديم الخدمات الطبيبة الضرورية للمجتمعات الفقيرة والتي تخفف من معاناة المواطنين وتعزز التوعية الصحة لديهم
+              لعدم تواجد الخدمات الصحية في تلك المناطق وكان المستفيدين من الخدمات بحسب الجدول الآتي:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>العيادة المتنقلة</th><th>عدد المستفيدين</th><th>عدد الخدمات</th></tr></thead>
+                <tbody>
+                  <tr><td>شبوة</td><td>11,791</td><td>23,940</td></tr>
+                  <tr><td>أمانة العاصمة</td><td>8,271</td><td>8,627</td></tr>
+                  <tr><td>تعز- البرح</td><td>30,995</td><td>54,206</td></tr>
+                  <tr><td>المحويت</td><td>3,116</td><td>7,342</td></tr>
+                  <tr><td>حجة</td><td>7,787</td><td>14,106</td></tr>
+                  <tr><td>الحديدة</td><td>4,209</td><td>8,194</td></tr>
+                  <tr><td><strong>الإجمالي</strong></td><td><strong>66,169</strong></td><td><strong>116,415</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              تشارك العيادات المتنقلة في تقديم الخدمات الطبية في المناسبات الجماهيرية حيث تقدم الاستشارات الطبية والعلاجات وعمل الفحوصات الضرورية والأساسية للمرضى.
+            </p>
+
+            <h4>2- دعم المستشفيات والمراكز الصحية بالمعدات / الأجهزة/ المستلزمات الطبية والأدوية:</h4>
+            <ul>
+              <li>
+                إهداء الادوية والمستلزمات الطبية للجهات التالية: مركز الصماد، مستشفى 48 النموذجي، مستشفى ضلاع همدان، مركز كحلان عفار الاسعافي، مركز صعدة،
+                الخدمات الطبية العسكرية، مصلحة الدفاع المدني، مركز سمارة الإسعافي، مستشفى فلسطين، السجن الحربي ويقدر عدد المستفيدين: 16,377 مستفيد
+              </li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- First Aid & Referral -->
+      <div class="health-tab-content" id="first-aid-referral" role="tabpanel" aria-labelledby="first-aid-referral-btn" hidden>
+        <section class="first-aid-referral-section">
+          <div class="container">
+            <h3 data-ar="برنامج الإسعافات الأولية والإحالة" data-en="First Aid & Referral Program"></h3>
+            <p>
+              يعد برنامج الإسعافات الأولية من البرامج الأساسية والمهمة التي ينفذها الهلال الأحمر اليمني حيث يسعى لتأهيل المجتمع لتقديم الإسعاف الاولي الميداني
+              خصوصاً في أوقات الحروب والنزاعات المسلحة واثناء الكوارث الطبيعية.
+            </p>
+            <p>
+              نفذ البرنامج عددًا من الدورات التدريبية لتأهيل المتطوعين، والموظفين وكذلك المجتمع المحلي، كما يعمل على إحالة المرضى والجرحى إلى المستشفيات.
+            </p>
+
+            <h4>نظام الإحالة:</h4>
+            <p>
+              عملت 88 سيارة إسعاف في الفروع على إحالة المرضى والجرحى إلى المستشفيات حيث كان عدد المستفيدين من هذه الخدمة 5,136 مستفيد، كما هو موضح أدناه:
+            </p>
+
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>الفرع</th><th>عدد المستفيدين</th></tr></thead>
+                <tbody>
+                  <tr><td>صنعاء الأمانة</td><td>109</td></tr>
+                  <tr><td>تعز</td><td>301</td></tr>
+                  <tr><td>عمران</td><td>187</td></tr>
+                  <tr><td>البيضاء</td><td>111</td></tr>
+                  <tr><td>مأرب</td><td>747</td></tr>
+                  <tr><td>ذمار</td><td>190</td></tr>
+                  <tr><td>الجوف</td><td>53</td></tr>
+                  <tr><td>لحج</td><td>31</td></tr>
+                  <tr><td>حجه</td><td>1034</td></tr>
+                  <tr><td>شبوه</td><td>82</td></tr>
+                  <tr><td>ابين</td><td>101</td></tr>
+                  <tr><td>الضالع</td><td>180</td></tr>
+                  <tr><td>إب</td><td>566</td></tr>
+                  <tr><td>صعده</td><td>437</td></tr>
+                  <tr><td>الحديدة</td><td>851</td></tr>
+                  <tr><td>صنعاء المحافظة</td><td>109</td></tr>
+                  <tr><td>صرف</td><td>47</td></tr>
+                  <tr><td><strong>الإجمالي</strong></td><td><strong>5,136</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <p>
+              كما تم تنفيذ الاستجابة بنظام الإحالة الطبية لحالات الإسهالات المائية بالتنسيق مع اللجنة الدولية للصليب الأحمر في محافظة صعدة – لعدد 69 حالة.
+            </p>
+          </div>
+        </section>
+      </div>
+
+      <!-- First Aid Training -->
+      <div class="health-tab-content" id="first-aid-training" role="tabpanel" aria-labelledby="first-aid-training-btn" hidden>
+        <section class="first-aid-training-section">
+          <div class="container">
+            <h3 data-ar="تدريبات الإسعافات الأولية" data-en="First Aid Trainings"></h3>
+
+            <h4>تدريب المجتمعات المحلية:</h4>
+            <p>تم تدريب 5,286 مشارك / مشاركة من المجتمعات المحلية المختلفة في عدد من المحافظات على الإسعافات الأولية:</p>
+
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>الفرع</th><th>عدد المستفيدين</th></tr></thead>
+                <tbody>
+                  <tr><td>أبين</td><td>100</td></tr>
+                  <tr><td>الحديدة</td><td>109</td></tr>
+                  <tr><td>عدن</td><td>125</td></tr>
+                  <tr><td>حجة</td><td>433</td></tr>
+                  <tr><td>لحج</td><td>100</td></tr>
+                  <tr><td>أمانة العاصمة</td><td>2125</td></tr>
+                  <tr><td>المهرة</td><td>220</td></tr>
+                  <tr><td>ذمار</td><td>362</td></tr>
+                  <tr><td>عمران</td><td>122</td></tr>
+                  <tr><td>سيئون</td><td>100</td></tr>
+                  <tr><td>تعز</td><td>75</td></tr>
+                  <tr><td>شبوة</td><td>245</td></tr>
+                  <tr><td>مأرب</td><td>100</td></tr>
+                  <tr><td>الضالع</td><td>100</td></tr>
+                  <tr><td>صعدة</td><td>200</td></tr>
+                  <tr><td>صنعاء المحافظة</td><td>619</td></tr>
+                  <tr><td>إب</td><td>140</td></tr>
+                  <tr><td><strong>الإجمالي</strong></td><td><strong>5,286</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>تدريب المتطوعين:</h4>
+            <p>تم تدريب 126 متطوع من الفروع التالية:</p>
+
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>الفرع</th><th>عدد المستفيدين</th></tr></thead>
+                <tbody>
+                  <tr><td>الحديدة</td><td>106</td></tr>
+                  <tr><td>صعدة</td><td>20</td></tr>
+                  <tr><td><strong>الإجمالي</strong></td><td><strong>126</strong></td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>توزيع كتيبات الإسعافات الأولية:</h4>
+            <p>تم توزيع 1,600 كتيب للإسعافات الأولية على 13 فرعًا.</p>
+
+            <h4>توزيع حقائب الإسعافات الأولية:</h4>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>النوع</th><th>الجهات</th></tr></thead>
+                <tbody>
+                  <tr><td>4,220 حقيبة إسعافية أولية</td><td>16 فرع من فروع الهلال الأحمر اليمني</td></tr>
+                  <tr><td>384 حقيبة إسعافية أولية</td><td>جهات حكومية مختلفة</td></tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <!-- CBHFA Program -->
+      <div class="health-tab-content" id="cbhfa-program" role="tabpanel" aria-labelledby="cbhfa-program-btn" hidden>
+        <section class="cbhfa-section">
+          <div class="container">
+            <h3 data-ar="برنامج الصحة المجتمعية والإسعاف الأولي المجتمعي" data-en="CBHFA Program"></h3>
+
+            <h4>أنشطة برنامج الصحة المجتمعية والإسعاف الأولي المجتمعي:</h4>
+            <div class="table-wrapper">
+              <table class="projects-table health-table">
+                <thead><tr><th>النشاط</th><th>المحافظة</th><th>عدد المستفيدين</th></tr></thead>
+                <tbody>
+                  <tr><td>تنفيذ تدريب CBHFA لمتطوعي فرع الجوف</td><td>الجوف</td><td>20</td></tr>
+                  <tr><td>جلسات ترويج صحي للطلاب</td><td>الجوف</td><td>29,000</td></tr>
+                  <tr><td>جلسات ترويج صحي للمجتمعات والمخيمات والمدارس</td><td>تعز - المدينة</td><td>10,957</td></tr>
+                  <tr><td>حملة الترويج للتبرع بالدم</td><td>تعز - المدينة</td><td>15,349</td></tr>
+                  <tr><td>حملة اليوم العالمي للأوبئة (سوشيال ميديا)</td><td>—</td><td>10,000</td></tr>
+                  <tr><td>نشاط الترصد المجتمعي (CBS)</td><td>لحج</td><td>10,343</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <h4>برنامج الرعاية الصحية في خطر (HCID):</h4>
+            <ul>
+              <li>ورشة عمل تنشيطية لـ 10 مدربين من عدة فروع.</li>
+              <li>ورشة عن بُعد.</li>
+            </ul>
+          </div>
+        </section>
+      </div>
+
+      <!-- REACH Program -->
+      <div class="health-tab-content" id="reach-program" role="tabpanel" aria-labelledby="reach-program-btn" hidden>
+        <section class="reach-section">
+          <div class="container">
+            <h3 data-ar="برنامج REACH وBRC وMHPSS" data-en="REACH, BRC & MHPSS"></h3>
+            <p data-ar="سيتم إضافة تفاصيل هذا القسم هنا." data-en="Details for this section will be added here.">
+              سيتم إضافة تفاصيل هذا القسم هنا.
+            </p>
+          </div>
+        </section>
       </div>
     </section>
-  </div>
-<!-- WASH Projects Sub-Tab -->
-<div class="health-tab-content" id="wash-projects" role="tabpanel" aria-labelledby="wash-projects-btn">
-  <section class="wash-projects-section">
+
+    <!-- ================= DEVELOPMENT ================= -->
+    <section class="tab-content" id="tab-development" role="tabpanel" aria-labelledby="tab-development-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></h2>
+        <div class="content-card">
+          <p data-ar="سيتم إضافة محتوى هذا القسم هنا." data-en="Content for this section will be added here.">
+            سيتم إضافة محتوى هذا القسم هنا.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= DISASTERS ================= -->
+    <section class="tab-content" id="tab-disasters" role="tabpanel" aria-labelledby="tab-disasters-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></h2>
+        <div class="content-card">
+          <p data-ar="سيتم إضافة محتوى هذا القسم هنا." data-en="Content for this section will be added here.">
+            سيتم إضافة محتوى هذا القسم هنا.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= WASH ================= -->
+    <section class="tab-content" id="tab-wash" role="tabpanel" aria-labelledby="tab-wash-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="المياه والإسكان" data-en="Water & Shelter"></h2>
+        <div class="content-card">
+          <p data-ar="سيتم إضافة محتوى هذا القسم هنا." data-en="Content for this section will be added here.">
+            سيتم إضافة محتوى هذا القسم هنا.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= CHARTS ================= -->
+    <section class="tab-content" id="tab-charts" role="tabpanel" aria-labelledby="tab-charts-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="الرسوم البيانية" data-en="Charts"></h2>
+
+        <div class="charts-grid">
+          <div class="chart-card">
+            <h3 data-ar="مثال رسم بياني" data-en="Sample Chart"></h3>
+            <canvas id="mainChart" height="120" aria-label="Main chart" role="img"></canvas>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= TRAINING ================= -->
+    <section class="tab-content" id="tab-training" role="tabpanel" aria-labelledby="tab-training-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="التدريب" data-en="Training"></h2>
+        <div class="content-card">
+          <p data-ar="سيتم إضافة محتوى هذا القسم هنا." data-en="Content for this section will be added here.">
+            سيتم إضافة محتوى هذا القسم هنا.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ACTIVITIES ================= -->
+    <section class="tab-content" id="tab-activities" role="tabpanel" aria-labelledby="tab-activities-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="الأنشطة" data-en="Activities"></h2>
+        <div class="content-card">
+          <p data-ar="سيتم إضافة محتوى هذا القسم هنا." data-en="Content for this section will be added here.">
+            سيتم إضافة محتوى هذا القسم هنا.
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= GALLERY ================= -->
+    <section class="tab-content" id="tab-gallery" role="tabpanel" aria-labelledby="tab-gallery-btn" hidden>
+      <div class="container">
+        <h2 class="section-title" data-ar="المعرض" data-en="Gallery"></h2>
+
+        <div class="gallery-grid" aria-live="polite">
+          <!-- Populate with images/cards via JS if needed -->
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
     <div class="container">
-      <h3 data-ar="المشاريع" data-en="Projects"></h3>
-
-       <h4><span data-ar="أولاً: إنشاء وتأهيل مواقع البنية التحتية لمقر جمعية الهلال الأحمر اليمني وفروعها" data-en="1. Construction and Rehabilitation of YRCS HQ and Branch Infrastructure"></span></h4>
-<ul>
-  <li data-ar="تركيب منظومات طاقة شمسية للمركز الرئيسي." data-en="Installation of solar systems at the main headquarters."></li>
-  <li data-ar="تركيب منظومات طاقة شمسية لفروع الجوف وصعدة." data-en="Installation of solar systems for Al-Jawf and Sa'dah branches."></li>
-  <li data-ar="منظومة طاقة شمسية لفرع الأمانة (32,160 مستفيد)." data-en="Solar system for the Amanat Al-Asimah branch (32,160 beneficiaries)."></li>
-  <li data-ar="مشروع المنظومة الشمسية لمخزن فرع حجة." data-en="Solar project for the storage facility of Hajjah branch."></li>
-  <li data-ar="منظومة طاقة شمسية لمركز صحي في شبوة (25,000 مستفيد)." data-en="Solar system for a health center in Shabwa (25,000 beneficiaries)."></li>
-  <li data-ar="بناء الدور الثاني + طاقة شمسية لمركز مبين (25,000 مستفيد)." data-en="Second floor construction + solar for Mabin center (25,000 beneficiaries)."></li>
-  <li data-ar="تأهيل مركز صحي عبس (12,000 مستفيد)." data-en="Rehabilitation of Abs health center (12,000 beneficiaries)."></li>
-  <li data-ar="تأهيل مركز سمارة- إب (20,000 مستفيد)." data-en="Rehabilitation of Samara Health Center in Ibb (20,000 beneficiaries)."></li>
-  <li data-ar="ترميم المركز الرئيسي للهلال الأحمر." data-en="Renovation of the main Red Crescent HQ."></li>
-  <li data-ar="قاعة تدريب بالدور الثاني في فرع أبين." data-en="Training hall built on second floor of Abyan branch."></li>
-</ul>
-
-<h4><span data-ar="ثانياً: دعم البنية التحتية الحكومية" data-en="2. Government Infrastructure Support"></span></h4>
-
-<h5><span data-ar="‌أ- مشاريع المياه والإصحاح البيئي" data-en="A- Water and Sanitation Projects"></span></h5>
-<ul>
-  <li data-ar="تأهيل منظومة طاقة شمسية لمياه الرجم - المحويت (35,000 مستفيد)." data-en="Solar system for Rajm Water Project in Al-Mahwit (35,000 beneficiaries)."></li>
-  <li data-ar="مشروع مياه الحضارم - تعز (4,500 مستفيد)." data-en="Al-Hadhram Water Project in Taiz (4,500 beneficiaries)."></li>
-  <li data-ar="تأهيل 4 آبار في المعافر - تعز (8,050 مستفيد)." data-en="Rehabilitation of 4 wells in Al-Ma'afar, Taiz (8,050 beneficiaries)."></li>
-  <li data-ar="مشروع وادي عرفات - تعز (5,000 مستفيد)." data-en="Wadi Arafat Water Project in Taiz (5,000 beneficiaries)."></li>
-  <li data-ar="نقاط توزيع مياه لبئر الكومية والحياد - حجة (8,400 مستفيد)." data-en="Water distribution points for Al-Kumiya and Al-Hayyad wells in Hajjah (8,400 beneficiaries)."></li>
-  <li data-ar="شبكة مياه عزلة القيلة بنجرة - حجة (6,420 مستفيد)." data-en="Water network for Al-Qeila isolation in Hajjah (6,420 beneficiaries)."></li>
-  <li data-ar="تأهيل بئر المجدر والرحبة - تعز (3,000 مستفيد)." data-en="Rehabilitation of Al-Majdar and Al-Rahbah wells in Taiz (3,000 beneficiaries)."></li>
-  <li data-ar="توزيع مياه جليبيب وعريوج - حجة (2,220 مستفيد)." data-en="Water distribution for Jalibib and Aroyouj in Hajjah (2,220 beneficiaries)."></li>
-</ul>
-
-<h5><span data-ar="‌ب- المشاريع الداعمة والبنية التحتية العامة" data-en="B- Support Projects & Public Infrastructure"></span></h5>
-<ul>
-  <li data-ar="مشروع تقليل الفيضانات في صنعاء وذمار (40,000 مستفيد)." data-en="Flood risk mitigation project in Sana'a and Dhamar (40,000 beneficiaries)."></li>
-  <li data-ar="بناء 500 وحدة مأوى للمتضررين من الفيضانات - حجة والحديدة (3,500 مستفيد)." data-en="500 shelter units for flood victims in Hajjah and Hodeidah (3,500 beneficiaries)."></li>
-  <li data-ar="مبادرة رصف طريق المبهاء - تعز (5,000 مستفيد)." data-en="Road paving initiative in Al-Mabahaa, Taiz (5,000 beneficiaries)."></li>
-  <li data-ar="جدران ساندة للطريق في الشراقي - حجة (15,000 مستفيد)." data-en="Retaining walls for Al-Shuraqi road in Hajjah (15,000 beneficiaries)."></li>
-  <li data-ar="تركيب حاوية عمليات مشتركة - صنعاء." data-en="Installation of joint operations container in Sana'a."></li>
-</ul>
-
-<h5><span data-ar="‌ج- بناء وتأهيل المرافق التعليمية" data-en="C- Construction & Rehabilitation of Educational Facilities"></span></h5>
-<ul>
-  <li data-ar="تأهيل مدرسة الشهيد محمود شبور - مبين، حجة (2,500 طالب/طالبة)." data-en="Rehabilitation of Al-Shaheed Mahmoud Shabour School in Mabyan, Hajjah (2,500 students)."></li>
-  <li data-ar="تأهيل مرافق المياه والصرف الصحي - مدرسة فاطمة الزهراء - صنعاء (2,000 طالب/طالبة)." data-en="Rehabilitation of WASH facilities at Fatima Al-Zahraa School in Sana'a (2,000 students)."></li>
-  <li data-ar="إضافة فصلين - مدرسة 11 فبراير - الشمايتين، تعز (200 طالب/طالبة)." data-en="Added 2 classrooms at 11 February School in Al-Shamayatayn, Taiz (200 students)."></li>
-  <li data-ar="إضافة فصلين - مدرسة 26 سبتمبر - الشمايتين، تعز (150 طالب/طالبة)." data-en="Added 2 classrooms at 26 September School in Al-Shamayatayn, Taiz (150 students)."></li>
-  <li data-ar="فصل + تشطيب 5 فصول - مدرسة شرشور، شبوة (5,130 طالب/طالبة)." data-en="Built 1 classroom and finished 5 at Sharshour School, Shabwa (5,130 students)."></li>
-</ul>
-
-<h5><span data-ar="‌د- مشاريع اللجنة الدولية التي يشرف عليها الهلال الأحمر" data-en="D- ICRC-Supported Projects Supervised by YRCS"></span></h5>
-<ul>
-  <li data-ar="متابعة خطوط الصرف الصحي - تعز." data-en="Supervision of sewer pipeline projects in Taiz."></li>
-  <li data-ar="تأهيل وحدة الفكيكة الصحية - مقبنة، تعز (5,000 مستفيد)." data-en="Rehabilitation of Al-Fakeeka Health Unit in Maqbana, Taiz (5,000 beneficiaries)."></li>
-  <li data-ar="حفر 3 آبار ارتوازية - مشروع مياه حيس، الحديدة (45,000 مستفيد)." data-en="Drilling of 3 artesian wells for Hays water project, Al-Hudaydah (45,000 beneficiaries)."></li>
-  <li data-ar="مشروع مركز الحزمه الصحي - مأرب." data-en="Al-Hazmah Health Center Project – Marib."></li>
-</ul>
-
-<h5><span data-ar="‌ه- أنشطة التدريب والتوعية" data-en="E- Training & Awareness Activities"></span></h5>
-<ul>
-  <li data-ar="دورات تدريبية WASH لمتطوعي فرعي حجة والتربة - تعز (20 مستفيد)." data-en="WASH training sessions for Hajjah & Al-Turba (Taiz) volunteers (20 participants)."></li>
-  <li data-ar="جلسات توعية ميدانية - حزم الجوف (بدأت بتدريب متطوعين ثم 40 مستفيد بالتدريب المجتمعي)." data-en="Field awareness activities in Al-Hazm, Al-Jawf, starting with volunteer training then community sessions (40 beneficiaries)."></li>
-</ul>
-
-    </div>
-  </section>
-</div>
-<div class="health-tab-content" id="wash-koica" role="tabpanel" aria-labelledby="wash-koica-btn">
-  <section class="wash-koica-section">
-    <div class="container">
-      <h3 data-ar="مشروع المياه من أجل السلام والحد من التوترات الناشئة من نقص المياه (KOICA)" 
-          data-en="Water for Peace and Conflict Reduction Project (KOICA)">
-      </h3>
-
-      <p data-ar="يُنفذ هذا المشروع بالشراكة مع الاتحاد الدولي لجمعيات الصليب الأحمر والهلال الأحمر (IFRC)، ويهدف إلى تعزيز الصمود المجتمعي في اليمن عبر التدخل في مجالات إدارة المياه والحد من التوترات الناشئة من نقص المياه وأيضا الحد من مخاطر الكوارث، والتأهب والاستجابة للأوبئة، والمشاركة المجتمعية. ويركز على تمكين المجتمعات والأطراف الفاعلة المحلية من حل المشكلات المتعلقة بالمياه والتنبؤ بالأزمات والتأهب لها والاستجابة والتعافي منها بفاعلية." 
-         data-en="This project, in partnership with the IFRC, aims to enhance community resilience in Yemen by addressing water management, conflict mitigation related to water scarcity, disaster risk reduction, epidemic preparedness and response, and community engagement. It focuses on enabling communities and local actors to resolve water-related issues, forecast crises, and respond and recover effectively.">
+      <p>
+        <span data-ar="© 2025 جمعية الهلال الأحمر اليمني" data-en="© 2025 Yemen Red Crescent Society"></span>
       </p>
-
-      <ul>
-        <li data-ar="تأهيل واستبدال شبكة المياه في أحياء صنعاء القديمة (الطواشي، المدرسة، عقيل، الشهيدين) ومشروع توريد وتركيب واختبار مولد كهربائي ديزل بقدرة 320 كيلو وات لبئر M6R في خزانات مسيك -شعوب حيث يستفيد من هذا النشاط حوالي 152,000 مستفيد." 
-            data-en="Rehabilitation and replacement of water networks in Old Sana’a neighborhoods (Al-Tawashi, Al-Madrasa, Aqil, Al-Shahidain) and supply, install, and test a 320kW diesel generator for well M6R at Musayk tanks - Sha'oub. Approximately 152,000 people benefit from this activity.">
-        </li>
-        <li data-ar="استبدال وتأهيل شبكة المياه في جولة سنان وتركيب المنظومة الشمسية لبئر الجشاش في تعز ويستفيد من هذا النشاط ما يقارب 37,000 شخص." 
-            data-en="Rehabilitation and replacement of the water network in Joulat Sinan and installation of a solar system for Al-Jashash well in Taiz, benefiting about 37,000 people.">
-        </li>
-        <li data-ar="توريد أجهزة اختبار لمعامل مختبر المياه بالمؤسسة المحلية للمياه والصرف الصحي في تعز." 
-            data-en="Supply of testing equipment to the local water and sanitation laboratory in Taiz.">
-        </li>
-        <li data-ar="تشكيل لجان مجتمعية للمياه في صنعاء القديمة وتعز بمشاركة 20 شخص من المجتمع المحلي." 
-            data-en="Formation of community water committees in Old Sana’a and Taiz with 20 local community participants.">
-        </li>
-      </ul>
     </div>
-  </section>
-</div>
-<!-- PPP Project Sub-Tab -->
-<div class="health-tab-content" id="wash-ppp" role="tabpanel" aria-labelledby="wash-ppp-btn">
+  </footer>
 
- <div class="wash-tab-content" id="wash-ppp" role="tabpanel" aria-labelledby="wash-ppp-btn">
-  <section class="wash-ppp-section">
-    <div class="container">
-      <h3 data-ar="مشروع الشراكة البرامجية التجريبية (PPP)" data-en="Pilot Programmatic Partnership Project (PPP)"></h3>
-      
-      <p data-ar="يهدف مشروع الشراكة البرامجية التجريبية ECHO PPP إلى الاستجابة للمخاطر والأزمات الإنسانية والصحية. حيث يتم تنفيذه في مجتمعات صنعاء وذمار وحضرموت ويركز المشروع على التدخلات في إدارة مخاطر الكوارث والتأهب للأوبئة والجوائح والاستجابة لها والتواصل بشأن المخاطر والمشاركة المجتمعية والمساءلة، كما يسعى المشروع على تعزيز دور المجتمعات والأفراد المعرضون للمخاطر، والجهات الفاعلة المحلية، من خلال اتخاذ إجراءات واستراتيجيات مبتكرة ومتكاملة، للتنبؤ بالأزمات الإنسانية والصحية والتأهب لها والاستجابة لها والتعافي منها." 
-         data-en="The ECHO PPP project aims to respond to humanitarian and health crises. Implemented in the communities of Sana'a, Dhamar, and Hadramout, it focuses on disaster risk management, epidemic preparedness and response, risk communication, community engagement, and accountability. The project empowers at-risk communities and local actors to adopt innovative and integrated strategies for crisis prediction, preparedness, response, and recovery.">
-      </p>
+  <!-- ================= SCRIPTS ================= -->
+  <script>
+    // Language toggle (AR/EN)
+    let currentLang = "ar";
 
-      <p data-ar="خلال هذا العام نفذ المشروع الأنشطة التالية:" data-en="During this year, the project implemented the following activities:"></p>
+    function toggleLanguage() {
+      currentLang = currentLang === "ar" ? "en" : "ar";
+      document.documentElement.lang = currentLang;
 
-      <h4 data-ar="مشاريع المياه:" data-en="Water Projects:"></h4>
-      <ul>
-        <li data-ar="1. تنفيذ مشروع مياه السحيل بمدينة سيئون، يستفيد منه 37,000 شخص." data-en="1. Implementation of the Al-Sahil water project in Sayun, benefiting 37,000 people."></li>
-        <li data-ar="2. تنفيذ مشروع خزان ومياه هران بذمار، يستفيد منه 21,500 شخص." data-en="2. Construction of Horan water tank and system in Dhamar, benefiting 21,500 people."></li>
-        <li data-ar="3. إنشاء منظومة طاقة شمسية لمشروع مياه منطقة المنقب بأمانة العاصمة صنعاء، يستفيد منه 5,000 شخص." data-en="3. Installation of a solar system for the Al-Munqib water project in the Capital Municipality, benefiting 5,000 people."></li>
-        <li data-ar="4. تأهيل مرافق المياه والصرف الصحي بمدرسة النور في سيئون، لخدمة 2,000 طالب وطالبة." data-en="4. Rehabilitation of water and sanitation facilities at Al-Noor School in Sayun, serving 2,000 students."></li>
-        <li data-ar="5. تأهيل مرافق المياه والصرف الصحي بمدرسة عمر بن عبد العزيز في ذمار، لخدمة 2,500 طالب وطالبة." data-en="5. Rehabilitation of water and sanitation facilities at Omar Bin Abdulaziz School in Dhamar, serving 2,500 students."></li>
-        <li data-ar="6. تنفيذ برامج تدريبية وتوعوية في ثلاث مدارس بمحافظات صنعاء وسيئون وذمار، ضمن إطار مشاريع الشراكة بين القطاعين العام والخاص شارك فيها ما يقارب 6000 طالب وطالبة." 
-            data-en="6. Implementation of training and awareness programs in three schools across Sana'a, Sayun, and Dhamar as part of public-private partnership projects, with participation of around 6,000 students.">
-        </li>
-      </ul>
-    </div>
-  </section>
-</div>
+      // Keep RTL for Arabic, LTR for English
+      document.documentElement.dir = currentLang === "ar" ? "rtl" : "ltr";
 
+      // Swap text based on data-ar / data-en
+      document.querySelectorAll("[data-ar][data-en]").forEach((el) => {
+        el.textContent = el.getAttribute(currentLang === "ar" ? "data-ar" : "data-en");
+      });
+    }
 
-</div>
+    // Main tabs
+    const tabButtons = Array.from(document.querySelectorAll(".tab-btn"));
+    const tabPanels = Array.from(document.querySelectorAll(".tab-content"));
 
+    function activateTab(tabId) {
+      tabButtons.forEach((btn) => {
+        const isActive = btn.dataset.tab === tabId;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", String(isActive));
+        btn.tabIndex = isActive ? 0 : -1;
+      });
 
-</div>
+      tabPanels.forEach((panel) => {
+        const isActive = panel.id === tabId;
+        panel.classList.toggle("active", isActive);
+        panel.hidden = !isActive;
+      });
+    }
 
+    tabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => activateTab(btn.dataset.tab));
+      btn.addEventListener("keydown", (e) => {
+        const idx = tabButtons.indexOf(btn);
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          const dir = (e.key === "ArrowLeft") ? -1 : 1;
+          const next = (idx + dir + tabButtons.length) % tabButtons.length;
+          tabButtons[next].focus();
+          activateTab(tabButtons[next].dataset.tab);
+        }
+      });
+    });
 
-<!-- ================= CHARTS ================= -->
-<section class="tab-content" id="tab-charts" role="tabpanel" aria-labelledby="tab-charts-btn">
-  <section class="charts-section">
-    <div class="container">
-      <div class="charts-grid">
-        <div class="chart-card"><canvas id="categoryChart"></canvas></div>
-        <div class="chart-card"><canvas id="donorChart"></canvas></div>
-        <div class="chart-card"><canvas id="activitiesChart"></canvas></div>
-        <div class="chart-card"><canvas id="ambulanceChart"></canvas></div>
-      </div>
-    </div>
-  </section>
-</section>
+    // Health sub-tabs
+    const healthTabButtons = Array.from(document.querySelectorAll(".health-sub-tab-btn"));
+    const healthTabPanels = Array.from(document.querySelectorAll(".health-tab-content"));
 
-<!-- ================= PROJECTS ================= -->
-<section class="tab-content" id="tab-projects" role="tabpanel" aria-labelledby="tab-projects-btn">
-  <section class="table-section">
-    <div class="container">
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="اسم المشروع" data-en="Project Name"></th>
-              <th data-ar="الفئة" data-en="Category"></th>
-              <th data-ar="الموقع" data-en="Location"></th>
-              <th data-ar="الفترة" data-en="Period"></th>
-              <th data-ar="الجهة الممولة" data-en="Donor"></th>
-              <th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-            </tr>
-          </thead>
-          <tbody id="projectsTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-  
-</section>
+    function activateHealthTab(tabId) {
+      healthTabButtons.forEach((btn) => {
+        const isActive = btn.dataset.healthTab === tabId;
+        btn.classList.toggle("active", isActive);
+        btn.setAttribute("aria-selected", String(isActive));
+        btn.tabIndex = isActive ? 0 : -1;
+      });
 
-<!-- ================= TRAINING ================= -->
-<section class="tab-content" id="tab-training" role="tabpanel" aria-labelledby="tab-training-btn">
-  <section class="table-section">
-    <div class="container">
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="اسم الدورة" data-en="Training Title"></th>
-              <th data-ar="مكان التنفيذ" data-en="Location"></th>
-              <th data-ar="الفترة" data-en="Period"></th>
-              <th data-ar="الفئة المستهدفة" data-en="Target Group"></th>
-              <th data-ar="الجهة الممولة" data-en="Donor"></th>
-              <th data-ar="عدد المتدربين" data-en="Trainees"></th>
-            </tr>
-          </thead>
-          <tbody id="trainingTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-</section>
+      healthTabPanels.forEach((panel) => {
+        const isActive = panel.id === tabId;
+        panel.classList.toggle("active", isActive);
+        panel.hidden = !isActive;
+      });
+    }
 
-<!-- ================= ACTIVITIES ================= -->
-<section class="tab-content" id="tab-activities" role="tabpanel" aria-labelledby="tab-activities-btn">
-  <section class="table-section">
-    <div class="container">
-      <div class="table-wrapper">
-        <table class="projects-table">
-          <thead>
-            <tr>
-              <th>#</th>
-              <th data-ar="الشهر" data-en="Month"></th>
-              <th data-ar="الموقع" data-en="Location"></th>
-              <th data-ar="ذكور" data-en="Male"></th>
-              <th data-ar="إناث" data-en="Female"></th>
-              <th data-ar="الإجمالي" data-en="Total"></th>
-            </tr>
-          </thead>
-          <tbody id="minesTableBody"></tbody>
-        </table>
-      </div>
-    </div>
-  </section>
-</section>
- 
-<!-- ================= GALLERY ================= -->
-<section class="tab-content" id="tab-gallery" role="tabpanel" aria-labelledby="tab-gallery-btn">
-  <section class="gallery-section">
-    <div class="container">
-      <div class="gallery-grid"></div>
-      <div class="gallery-pagination" id="gallery-pagination"></div>
-    </div>
-  </section>
-</section>
+    healthTabButtons.forEach((btn) => {
+      btn.addEventListener("click", () => activateHealthTab(btn.dataset.healthTab));
+      btn.addEventListener("keydown", (e) => {
+        const idx = healthTabButtons.indexOf(btn);
+        if (e.key === "ArrowLeft" || e.key === "ArrowRight") {
+          e.preventDefault();
+          const dir = (e.key === "ArrowLeft") ? -1 : 1;
+          const next = (idx + dir + healthTabButtons.length) % healthTabButtons.length;
+          healthTabButtons[next].focus();
+          activateHealthTab(healthTabButtons[next].dataset.healthTab);
+        }
+      });
+    });
 
-<!-- Lightbox Modal -->
-<div id="lightbox-modal" class="lightbox-modal">
-  <span class="lightbox-close" id="lightbox-close">&times;</span>
-  <img class="lightbox-image" id="lightbox-image" src="" alt="">
-  <div class="lightbox-caption" id="lightbox-caption"></div>
-  <a class="lightbox-prev" id="lightbox-prev">&#10094;</a>
-  <a class="lightbox-next" id="lightbox-next">&#10095;</a>
-</div>
+    // Initial text + state
+    toggleLanguage(); // sets based on currentLang (starts ar, but ensures spans are filled)
+    toggleLanguage(); // toggle twice to return to AR while ensuring all labels are filled cleanly
 
-<footer class="footer">
-  <p data-ar="© 2025 جمعية الهلال الأحمر اليمني"
-     data-en="© 2025 Yemen Red Crescent Society"></p>
-</footer>
+    // Ensure initial visible panels are correct
+    tabPanels.forEach((p) => (p.hidden = !p.classList.contains("active")));
+    healthTabPanels.forEach((p) => (p.hidden = !p.classList.contains("active")));
 
-<script src="script.js"></script>
+    // Optional: basic chart example (only if canvas exists and tab is used)
+    (function initChart() {
+      const ctx = document.getElementById("mainChart");
+      if (!ctx || !window.Chart) return;
+      new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: ["A", "B", "C", "D"],
+          datasets: [{
+            label: "2025",
+            data: [12, 19, 8, 15],
+            borderWidth: 1
+          }]
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false
+        }
+      });
+    })();
+  </script>
 
 </body>
 </html>
