@@ -47,20 +47,12 @@ function renderAll() {
 
   updateStaticTexts();
 
-  // ===== Stats & Charts =====
+  // ===== Global Stats & Charts =====
   appData.stats && renderStats(appData.stats);
   appData.charts && renderCharts(appData.charts);
   appData.categories_cards && renderCategoryCards(appData.categories_cards);
 
-  // ===== Tables =====
-  const tables = appData.tables || {};
-  tables.projects && renderProjectsTable(tables.projects);
-  tables.training && renderTrainingTable(tables.training);
-  tables.mines_awareness && renderMinesTable(tables.mines_awareness);
-  tables.events && renderEventsTable(tables.events);
-  tables.media && renderMediaTable(tables.media);
-
-  // ===== Sector Impact =====
+  // ===== Sector Impact (Overview only) =====
   const sectorSource = appData.sector_impact || appData.sector_summary_2025;
   if (sectorSource) {
     renderSectorImpactTable(sectorSource);
@@ -68,29 +60,56 @@ function renderAll() {
     renderSectorImpactCards(sectorSource);
   }
 
-  // ===== Sector Cards =====
-  appData.sector_impact && (
-    renderSectorCard("health", "sectorHealthGrid"),
-    renderSectorCard("development", "sectorDevelopmentGrid"),
-    renderSectorCard("disasters", "sectorDisastersGrid"),
-    renderSectorCard("wash", "sectorWashGrid")
-  );
-
-  // ===== Responses =====
-  appData.flood_response && renderFloodResponse();
-  appData.aerial_bombing_response && renderAerialBombingResponse();
-  appData.lightning_response && renderLightningResponse();
-  appData.fire_response && renderFireResponse();
-  appData.rockslides && renderRockslides();
-  appData.aid_distribution && renderAidDistribution();
-
-  // ===== Community =====
-  appData.community_initiatives && renderCommunityInitiatives(appData.community_initiatives);
-
   // ===== Gallery =====
   if (appData.gallery) {
     renderGallery(appData.gallery);
     window.galleryItems = appData.gallery;
+  }
+}
+function activateTab(tabId) {
+  document.querySelectorAll(".tab-btn").forEach(btn => {
+    btn.classList.remove("active");
+    btn.setAttribute("aria-selected", "false");
+    btn.tabIndex = -1;
+  });
+
+  document.querySelectorAll(".tab-content").forEach(tab => {
+    tab.classList.remove("active");
+  });
+
+  const btn = document.querySelector(`[data-tab="${tabId}"]`);
+  const tab = document.getElementById(tabId);
+
+  if (!btn || !tab) return;
+
+  btn.classList.add("active");
+  btn.setAttribute("aria-selected", "true");
+  btn.tabIndex = 0;
+  tab.classList.add("active");
+
+  // 👇 Render content ONLY when tab is opened
+  renderTabContent(tabId);
+}
+function renderTabContent(tabId) {
+  const tables = appData.tables || {};
+
+  switch (tabId) {
+    case "tab-projects":
+      tables.projects && renderProjectsTable(tables.projects);
+      break;
+
+    case "tab-training":
+      tables.training && renderTrainingTable(tables.training);
+      break;
+
+    case "tab-activities":
+      tables.mines_awareness && renderMinesTable(tables.mines_awareness);
+      tables.events && renderEventsTable(tables.events);
+      tables.media && renderMediaTable(tables.media);
+      break;
+
+    default:
+      break;
   }
 }
 /* =========================
