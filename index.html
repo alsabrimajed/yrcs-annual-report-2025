@@ -32,41 +32,118 @@
 </div>
 
 <!-- ================= HEADER ================= -->
-<header class="header">
+ <header class="header">
+
   <div class="tabs-container" role="tablist">
-    <button class="tab-btn active" id="tab-overview-btn" role="tab" aria-controls="tab-overview" aria-selected="true" tabindex="0" data-tab="tab-overview"
-      data-ar="نظرة عامة" data-en="Overview"></button>
 
-    <button class="tab-btn" id="tab-sector-impact-btn" role="tab" aria-controls="tab-sector-impact" aria-selected="false" tabindex="-1" data-tab="tab-sector-impact"
-      data-ar="الأثر القطاعي" data-en="Sector Impact"></button>
-    <button class="sub-tab-btn" id="sub-health-btn" role="tab" aria-controls="sub-health" aria-selected="false" tabindex="-1" data-sub-tab="sub-health" data-ar="الصحة والرعاية" data-en="Health & Care">
-    <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" alt="Health & Care" class="sub-tab-icon">
-    <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-development-btn" role="tab" aria-controls="sub-development" aria-selected="false" tabindex="-1" data-sub-tab="sub-development" data-ar="دعم تطوير الجمعية" data-en="Organizational Development">
-    <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Organizational Development" class="sub-tab-icon">
-    <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-disasters-btn" role="tab" aria-controls="sub-disasters" aria-selected="false" tabindex="-1" data-sub-tab="sub-disasters" data-ar="الكوارث والأزمات" data-en="Disasters & Crises">
-    <img src="Icons/IFRC-icons-colour_Extreme-weather.png" alt="Disasters & Crises" class="sub-tab-icon">
-    <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
-  </button>
-  <button class="sub-tab-btn" id="sub-wash-btn" role="tab" aria-controls="sub-wash" aria-selected="false" tabindex="-1" data-sub-tab="sub-wash" data-ar="المياه والإسكان" data-en="Water & Shelter">
-    <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" alt="Water & Shelter" class="sub-tab-icon">
-    <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
-  </button>
+    <!-- Overview -->
+    <button class="tab-btn active"
+            id="tab-overview-btn"
+            role="tab"
+            aria-controls="tab-overview"
+            aria-selected="true"
+            tabindex="0"
+            data-tab="tab-overview"
+            data-ar="نظرة عامة"
+            data-en="Overview">
+    </button>
 
-    <button class="tab-btn" id="tab-charts-btn" role="tab" aria-controls="tab-charts" aria-selected="false" tabindex="-1" data-tab="tab-charts"
-      data-ar="الرسوم البيانية" data-en="Charts"></button>
+    <!-- Health -->
+    <button class="tab-btn"
+            id="tab-health-btn"
+            role="tab"
+            aria-controls="tab-health"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-health">
+      <img src="Icons/IFRC-icons-colour_Emergency-health-stethoscope.png" class="tab-icon" alt="">
+      <span data-ar="الصحة والرعاية" data-en="Health & Care"></span>
+    </button>
 
-    <button class="tab-btn" id="tab-training-btn" role="tab" aria-controls="tab-training" aria-selected="false" tabindex="-1" data-tab="tab-training"
-      data-ar="التدريب" data-en="Training"></button>
+    <!-- Development -->
+    <button class="tab-btn"
+            id="tab-development-btn"
+            role="tab"
+            aria-controls="tab-development"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-development">
+      <img src="Icons/IFRC-icons-colour_Community-engagement.png" class="tab-icon" alt="">
+      <span data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></span>
+    </button>
 
-    <button class="tab-btn" id="tab-activities-btn" role="tab" aria-controls="tab-activities" aria-selected="false" tabindex="-1" data-tab="tab-activities"
-      data-ar="الأنشطة" data-en="Activities"></button>
+    <!-- Disasters -->
+    <button class="tab-btn"
+            id="tab-disasters-btn"
+            role="tab"
+            aria-controls="tab-disasters"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-disasters">
+      <img src="Icons/IFRC-icons-colour_Extreme-weather.png" class="tab-icon" alt="">
+      <span data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></span>
+    </button>
 
-    <button class="tab-btn" id="tab-gallery-btn" role="tab" aria-controls="tab-gallery" aria-selected="false" tabindex="-1" data-tab="tab-gallery"
-      data-ar="المعرض" data-en="Gallery"></button>
+    <!-- WASH -->
+    <button class="tab-btn"
+            id="tab-wash-btn"
+            role="tab"
+            aria-controls="tab-wash"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-wash">
+      <img src="Icons/IFRC-icons-colour_Water-and-sanitation-WASH.png" class="tab-icon" alt="">
+      <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
+    </button>
+
+    <!-- Charts -->
+    <button class="tab-btn"
+            id="tab-charts-btn"
+            role="tab"
+            aria-controls="tab-charts"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-charts"
+            data-ar="الرسوم البيانية"
+            data-en="Charts">
+    </button>
+
+    <!-- Training -->
+    <button class="tab-btn"
+            id="tab-training-btn"
+            role="tab"
+            aria-controls="tab-training"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-training"
+            data-ar="التدريب"
+            data-en="Training">
+    </button>
+
+    <!-- Activities -->
+    <button class="tab-btn"
+            id="tab-activities-btn"
+            role="tab"
+            aria-controls="tab-activities"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-activities"
+            data-ar="الأنشطة"
+            data-en="Activities">
+    </button>
+
+    <!-- Gallery -->
+    <button class="tab-btn"
+            id="tab-gallery-btn"
+            role="tab"
+            aria-controls="tab-gallery"
+            aria-selected="false"
+            tabindex="-1"
+            data-tab="tab-gallery"
+            data-ar="المعرض"
+            data-en="Gallery">
+    </button>
+
   </div>
 
   <div class="header-actions">
@@ -76,8 +153,8 @@
       <span data-ar="طباعة التقرير" data-en="Print Report"></span>
     </button>
   </div>
-</header>
 
+</header>
 <!-- ================= OVERVIEW ================= -->
 <section class="tab-content active" id="tab-overview" role="tabpanel" aria-labelledby="tab-overview-btn">
 
@@ -132,6 +209,10 @@
     <span data-ar="المياه والإسكان" data-en="Water & Shelter"></span>
   </button>
 </div>
+<section class="tab-content" id="tab-health"></section>
+<section class="tab-content" id="tab-development"></section>
+<section class="tab-content" id="tab-disasters"></section>
+<section class="tab-content" id="tab-wash"></section>
 <div class="sub-tab-content active" id="sub-overview" role="tabpanel" aria-labelledby="sub-overview-btn">
   <!-- ================= SECTOR IMPACT ================= -->
 <section class="hero-stats sector-impact">

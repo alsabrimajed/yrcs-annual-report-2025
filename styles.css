@@ -1674,3 +1674,13 @@ html[dir="ltr"] .category-card {
   width: 100% !important;
   height: 100% !important;
 }
+.tab-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.tab-icon {
+  width: 20px;
+  height: 20px;
+}
