@@ -90,27 +90,22 @@ function activateTab(tabId) {
   // 👇 Render content ONLY when tab is opened
   renderTabContent(tabId);
 }
+ const renderedTabs = new Set();
+
 function renderTabContent(tabId) {
+  if (renderedTabs.has(tabId)) return;
+
   const tables = appData.tables || {};
 
-  switch (tabId) {
-    case "tab-projects":
-      tables.projects && renderProjectsTable(tables.projects);
-      break;
-
-    case "tab-training":
-      tables.training && renderTrainingTable(tables.training);
-      break;
-
-    case "tab-activities":
-      tables.mines_awareness && renderMinesTable(tables.mines_awareness);
-      tables.events && renderEventsTable(tables.events);
-      tables.media && renderMediaTable(tables.media);
-      break;
-
-    default:
-      break;
+  if (tabId === "tab-projects" && tables.projects) {
+    renderProjectsTable(tables.projects);
   }
+
+  if (tabId === "tab-training" && tables.training) {
+    renderTrainingTable(tables.training);
+  }
+
+  renderedTabs.add(tabId);
 }
 /* =========================
    LANGUAGE TOGGLE
