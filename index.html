@@ -211,7 +211,380 @@
 </div>
 <section class="tab-content" id="tab-health"></section>
 <section class="tab-content" id="tab-development"></section>
-<section class="tab-content" id="tab-disasters"></section>
+<section class="tab-content" id="tab-disasters">
+<div class="sub-tab-content" id="sub-disasters" role="tabpanel" aria-labelledby="sub-disasters-btn">
+<section class="hero-stats sector-impact">
+<div class="container">
+<h2 class="section-title" data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></h2>
+<div class="stats-grid impact-grid" id="sectorDisastersGrid">
+</div>
+</div>
+</section>
+
+<!-- Disaster Response Sub-Tabs -->
+<div class="disaster-sub-tabs" role="tablist">
+  <button class="disaster-sub-tab-btn active" id="flood-response-btn" role="tab" aria-controls="flood-response" aria-selected="true" tabindex="0" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods">
+    <img src="Icons/IFRC-icons-colour_Floods.png" alt="Floods" class="disaster-tab-icon">
+    <span data-ar="السيول" data-en="Floods"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" id="aerial-bombing-btn" role="tab" aria-controls="aerial-bombing" aria-selected="false" tabindex="-1" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing">
+    <img src="Icons/IFRC-icons-colour_Conflict.png" alt="Aerial Bombing" class="disaster-tab-icon">
+    <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" id="lightning-btn" role="tab" aria-controls="lightning" aria-selected="false" tabindex="-1" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning">
+    <img src="Icons/IFRC-icons-colour_Storm.png" alt="Lightning" class="disaster-tab-icon">
+    <span data-ar="الصواعق" data-en="Lightning"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" id="fire-response-btn" role="tab" aria-controls="fire-response" aria-selected="false" tabindex="-1" data-disaster-tab="fire-response" data-ar="الحرائق" data-en="Fire Response">
+    <img src="Icons/IFRC-icons-colour_Wildfire.png" alt="Fire Response" class="disaster-tab-icon">
+    <span data-ar="الحرائق" data-en="Fire Response"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" id="rockslides-btn" role="tab" aria-controls="rockslides" aria-selected="false" tabindex="-1" data-disaster-tab="rockslides" data-ar="الانهيارات الصخرية" data-en="Rockslides">
+    <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" alt="Rockslides" class="disaster-tab-icon">
+    <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" id="aid-distribution-btn" role="tab" aria-controls="aid-distribution" aria-selected="false" tabindex="-1" data-disaster-tab="aid-distribution" data-ar="الأشد فقرا" data-en="Most Poor">
+    <img src="Icons/IFRC-icons-colour_Food.png" alt="Aid Distribution" class="disaster-tab-icon">
+    <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
+  </button>
+  <button class="disaster-sub-tab-btn" id="economic-security-btn" role="tab" aria-controls="economic-security" aria-selected="false" tabindex="-1" data-disaster-tab="economic-security" data-ar="الأمن الاقتصادي" data-en="Economic Security">
+    <img src="Icons/IFRC-icons-colour_Food.png" alt="Economic Security" class="disaster-tab-icon">
+    <span data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security & Livelihoods"></span>
+  </button>
+</div>
+
+<!-- Flood Response Sub-Tab Content -->
+<div class="disaster-tab-content active" id="flood-response" role="tabpanel" aria-labelledby="flood-response-btn">
+<section class="flood-response-section">
+<div class="container">
+<p class="flood-description"></p>
+<div class="table-wrapper">
+<table class="projects-table flood-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
+<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="floodTableBody"></tbody>
+</table>
+</div>
+
+<!-- Yemen Map Visualization -->
+<div class="yemen-map-container">
+<h3 data-ar="خريطة الاستجابة للسيول في اليمن" data-en="Yemen Flood Response Map"></h3>
+<div class="yemen-map">
+<svg viewBox="0 0 1000 800" id="yemenMapSvg">
+<!-- Yemen Governorates Paths - Placeholder -->
+<path id="ibb" d="M500 300 L520 320 L510 340 L490 330 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<path id="abyan" d="M450 400 L470 420 L460 440 L440 430 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
+<!-- Add more paths for all governorates -->
+<text x="505" y="320" text-anchor="middle" font-size="12" fill="#000">إب</text>
+<text x="455" y="420" text-anchor="middle" font-size="12" fill="#000">أبين</text>
+<!-- Add text labels for all -->
+</svg>
+</div>
+<div class="map-legend">
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.2);"></span><span data-ar="منخفض" data-en="Low"></span></div>
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.5);"></span><span data-ar="متوسط" data-en="Medium"></span></div>
+<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.8);"></span><span data-ar="عالي" data-en="High"></span></div>
+</div>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Aerial Bombing Sub-Tab Content -->
+<div class="disaster-tab-content" id="aerial-bombing" role="tabpanel" aria-labelledby="aerial-bombing-btn">
+<section class="aerial-bombing-section">
+<div class="container">
+<p class="aerial-description"></p>
+<div class="table-wrapper">
+<table class="projects-table aerial-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
+<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="aerialTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Lightning Sub-Tab Content -->
+<div class="disaster-tab-content" id="lightning" role="tabpanel" aria-labelledby="lightning-btn">
+<section class="lightning-response-section">
+<div class="container">
+<p class="lightning-description"></p>
+
+<h3 data-ar="المساعدات المقدمة" data-en="Aid Provided"></h3>
+<div class="table-wrapper">
+<table class="projects-table lightning-aid-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="lightningAidTableBody"></tbody>
+</table>
+</div>
+
+<h3 data-ar="الإصابات والوفيات" data-en="Casualties and Deaths"></h3>
+<div class="table-wrapper">
+<table class="projects-table lightning-casualty-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="الوفيات" data-en="Deaths"></th>
+<th data-ar="الإصابات" data-en="Injuries"></th>
+</tr>
+</thead>
+<tbody id="lightningCasualtyTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Fire Response Sub-Tab Content -->
+<div class="disaster-tab-content" id="fire-response" role="tabpanel" aria-labelledby="fire-response-btn">
+<section class="fire-response-section">
+<div class="container">
+<h3 data-ar="الاستجابة للحرائق" data-en="Fire Response"></h3>
+<div class="table-wrapper">
+<table class="projects-table fire-response-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="مواد إيواء" data-en="Shelter Materials"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="fireResponseTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Rockslides Sub-Tab Content -->
+<div class="disaster-tab-content" id="rockslides" role="tabpanel" aria-labelledby="rockslides-btn">
+<section class="rockslides-section">
+<div class="container">
+<h3 data-ar="الانهيارات الصخرية" data-en="Rockslides"></h3>
+<div class="table-wrapper">
+<table class="projects-table rockslides-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="rockslidesTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+
+<!-- Aid Distribution Sub-Tab Content -->
+<div class="disaster-tab-content" id="aid-distribution" role="tabpanel" aria-labelledby="aid-distribution-btn">
+<section class="aid-distribution-section">
+<div class="container">
+<h3 data-ar="توزيع السلال الغذائية والمواد غير الغذائية" data-en="Distribution of Food Baskets and Non-Food Items"></h3>
+<div class="table-wrapper">
+<table class="projects-table aid-distribution-table">
+<thead>
+<tr>
+<th data-ar="المحافظة" data-en="Governorate"></th>
+<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+<th data-ar="حصة إيوائية" data-en="Shelter Kits"></th>
+<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
+</tr>
+</thead>
+<tbody id="aidDistributionTableBody"></tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+<!-- Economic Security Sub-Tab Content -->
+<div class="disaster-tab-content" id="economic-security" role="tabpanel" aria-labelledby="economic-security-btn">
+<section class="economic-security-section">
+<div class="container">
+<h3 data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security and Livelihoods"></h3>
+<p>الأمن الاقتصادي وسبل العيش:
+- يمكن أن تتسبب الكوارث والأزمات بخسائر فادحة بالأمن الغذائي للناس وسبل عيشهم. وتزيد من ضعف الناس الاجتماعي والاقتصادي، وتؤثر على قدرتهم على التعافي والتعامل مع الصدمات والضغوط المستقبلية. لذلك يعمل الهلال الأحمر على محاولة التخفيف من وطأة ذلك على الاسر وذلك من خلال تقديم عدد من المشاريع:</p>
+<h4>1- تم دعم مشاريع تمكين سبل العيش لحوالي 40,095 أسرة 280,665 مستفيد.</h4>
+<h5>أ‌- أنشطة زراعية</h5>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>النشاط</th>
+<th>المنطقة</th>
+<th>عدد الأسر المستهدفة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>تربية النحل</td><td>تعز-لحج - الضالع - أبين - البيضاء - حجة - عمران- الحديدة</td><td>6430</td></tr>
+<tr><td>توزيع شتلات البن</td><td>تعز- إب</td><td>990</td></tr>
+<tr><td>توزيع بذور الطماطم</td><td>مارب</td><td>200</td></tr>
+<tr><td>توزيع بذور القمح</td><td>مارب</td><td>250</td></tr>
+<tr><td>توزيع درنات البطاط</td><td>مارب</td><td>200</td></tr>
+<tr><td>توزيع شتلات التين</td><td>البيضاء</td><td>50</td></tr>
+<tr><td>توزيع شتلات الوردة الحمراء</td><td>تعز</td><td>1512</td></tr>
+<tr><td>توزيع أشجار مثمرة</td><td>أبين</td><td>50</td></tr>
+<tr><td>توزيع الأدوات والقسائم الإلكترونية لمزارعي البن</td><td>تعز</td><td>200</td></tr>
+<tr><td>الإجمالي</td><td></td><td>9,882</td></tr>
+</tbody>
+</table>
+</div>
+<h5>ب‌- مساعدات نقدية</h5>
+<h6>- تعزيز سبل العيش</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>تعز</td><td>16,090</td></tr>
+<tr><td>لحج</td><td>5,000</td></tr>
+<tr><td>صعدة</td><td>3,005</td></tr>
+<tr><td>الحديدة</td><td>2,100</td></tr>
+<tr><td>حجة</td><td>1,363</td></tr>
+<tr><td>عدن</td><td>1,504</td></tr>
+<tr><td>الإجمالي</td><td>29,062</td></tr>
+</tbody>
+</table>
+</div>
+<h6>- النقد مقابل العمل</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>محافظة الضالع– دمت</td><td>463</td></tr>
+</tbody>
+</table>
+</div>
+<h5>ج - مشاريع اقتصادية صغيرة</h5>
+<p>قدم الهلال الأحمر مساعدات للمشاريع الاقتصادية في المجتمعات المحلية استفاد منها 614 أسرة.</p>
+<h6>- (مشاريع مدرة للدخل)</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المشروع</th>
+<th>المحافظة</th>
+<th>عدد الاسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>مشاريع صغيرة</td><td>لحج</td><td>50</td></tr>
+<tr><td>مشروع الحدائق المنزلية</td><td>لحج</td><td>63</td></tr>
+<tr><td>مشاريع صغيرة</td><td>البيضاء</td><td>51</td></tr>
+<tr><td>توزيع 24 قارب صيد</td><td>حضرموت</td><td>220</td></tr>
+<tr><td></td><td>الحديدة</td><td>120</td></tr>
+<tr><td>الإجمالي</td><td></td><td>504</td></tr>
+</tbody>
+</table>
+</div>
+<h6>- التمكين الاقتصادي</h6>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المشروع</th>
+<th>المحافظة</th>
+<th>عدد الاسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>مشروع الخياطة</td><td>عمران</td><td>110</td></tr>
+</tbody>
+</table>
+</div>
+<h5>د- بناء القدرات</h5>
+<p>قدم الهلال الأحمر تدريبات حول التمكين الاقتصادي وفي مجال الإغاثة الإنسانية لعدد 74 أسرة</p>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>النشاط</th>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>تدريب حول التمكين الاقتصادي- المشاريع الصغيرة</td><td>لحج</td><td>59</td></tr>
+<tr><td>تدريب في مجال الإغاثة الإنسانية وتوزيع المساعدات</td><td>لحج</td><td>15</td></tr>
+<tr><td>الإجمالي</td><td></td><td>74</td></tr>
+</tbody>
+</table>
+</div>
+<h4>2- توزيع السلال الغذائية:</h4>
+<p>ضمن مشروع الأمن الاقتصادي تم توزيع 14,620 سلة غذائية استفاد منها ما يقارب 102,340 شخص.</p>
+<div class="table-wrapper">
+<table class="projects-table economic-table">
+<thead>
+<tr>
+<th>المحافظة</th>
+<th>عدد الأسر المستفيدة</th>
+</tr>
+</thead>
+<tbody>
+<tr><td>البيضاء</td><td>1,048</td></tr>
+<tr><td>تعز</td><td>2,000</td></tr>
+<tr><td>المهرة</td><td>1,500</td></tr>
+<tr><td>ريمة</td><td>1,500</td></tr>
+<tr><td>لحج</td><td>2,038</td></tr>
+<tr><td>الحديدة</td><td>3,000</td></tr>
+<tr><td>عدن</td><td>1,300</td></tr>
+<tr><td>أبين</td><td>322</td></tr>
+<tr><td>الضالع</td><td>1,612</td></tr>
+<tr><td>أمانة العاصمة</td><td>100</td></tr>
+<tr><td>حضرموت</td><td>200</td></tr>
+<tr><td>الإجمالي</td><td>14,620</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</section>
+</div>
+</div>
+</section>
+</div>
+
+</section>
 <section class="tab-content" id="tab-wash"></section>
 <div class="sub-tab-content active" id="sub-overview" role="tabpanel" aria-labelledby="sub-overview-btn">
   <!-- ================= SECTOR IMPACT ================= -->
@@ -841,377 +1214,7 @@
 </div>
 </section>
 </div>
-<div class="sub-tab-content" id="sub-disasters" role="tabpanel" aria-labelledby="sub-disasters-btn">
-<section class="hero-stats sector-impact">
-<div class="container">
-<h2 class="section-title" data-ar="الكوارث والأزمات" data-en="Disasters & Crises"></h2>
-<div class="stats-grid impact-grid" id="sectorDisastersGrid">
-</div>
-</div>
-</section>
 
-<!-- Disaster Response Sub-Tabs -->
-<div class="disaster-sub-tabs" role="tablist">
-  <button class="disaster-sub-tab-btn active" id="flood-response-btn" role="tab" aria-controls="flood-response" aria-selected="true" tabindex="0" data-disaster-tab="flood-response" data-ar="السيول" data-en="Floods">
-    <img src="Icons/IFRC-icons-colour_Floods.png" alt="Floods" class="disaster-tab-icon">
-    <span data-ar="السيول" data-en="Floods"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="aerial-bombing-btn" role="tab" aria-controls="aerial-bombing" aria-selected="false" tabindex="-1" data-disaster-tab="aerial-bombing" data-ar="القصف الجوي" data-en="Aerial Bombing">
-    <img src="Icons/IFRC-icons-colour_Conflict.png" alt="Aerial Bombing" class="disaster-tab-icon">
-    <span data-ar="القصف الجوي" data-en="Aerial Bombing"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="lightning-btn" role="tab" aria-controls="lightning" aria-selected="false" tabindex="-1" data-disaster-tab="lightning" data-ar="الصواعق" data-en="Lightning">
-    <img src="Icons/IFRC-icons-colour_Storm.png" alt="Lightning" class="disaster-tab-icon">
-    <span data-ar="الصواعق" data-en="Lightning"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="fire-response-btn" role="tab" aria-controls="fire-response" aria-selected="false" tabindex="-1" data-disaster-tab="fire-response" data-ar="الحرائق" data-en="Fire Response">
-    <img src="Icons/IFRC-icons-colour_Wildfire.png" alt="Fire Response" class="disaster-tab-icon">
-    <span data-ar="الحرائق" data-en="Fire Response"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="rockslides-btn" role="tab" aria-controls="rockslides" aria-selected="false" tabindex="-1" data-disaster-tab="rockslides" data-ar="الانهيارات الصخرية" data-en="Rockslides">
-    <img src="Icons/IFRC-icons-colour_Landslide-Mudslide.png" alt="Rockslides" class="disaster-tab-icon">
-    <span data-ar="الانهيارات الصخرية" data-en="Rockslides"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="aid-distribution-btn" role="tab" aria-controls="aid-distribution" aria-selected="false" tabindex="-1" data-disaster-tab="aid-distribution" data-ar="الأشد فقرا" data-en="Most Poor">
-    <img src="Icons/IFRC-icons-colour_Food.png" alt="Aid Distribution" class="disaster-tab-icon">
-    <span data-ar="توزيع المساعدات" data-en="Aid Distribution"></span>
-  </button>
-  <button class="disaster-sub-tab-btn" id="economic-security-btn" role="tab" aria-controls="economic-security" aria-selected="false" tabindex="-1" data-disaster-tab="economic-security" data-ar="الأمن الاقتصادي" data-en="Economic Security">
-    <img src="Icons/IFRC-icons-colour_Food.png" alt="Economic Security" class="disaster-tab-icon">
-    <span data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security & Livelihoods"></span>
-  </button>
-</div>
-
-<!-- Flood Response Sub-Tab Content -->
-<div class="disaster-tab-content active" id="flood-response" role="tabpanel" aria-labelledby="flood-response-btn">
-<section class="flood-response-section">
-<div class="container">
-<p class="flood-description"></p>
-<div class="table-wrapper">
-<table class="projects-table flood-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
-<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="floodTableBody"></tbody>
-</table>
-</div>
-
-<!-- Yemen Map Visualization -->
-<div class="yemen-map-container">
-<h3 data-ar="خريطة الاستجابة للسيول في اليمن" data-en="Yemen Flood Response Map"></h3>
-<div class="yemen-map">
-<svg viewBox="0 0 1000 800" id="yemenMapSvg">
-<!-- Yemen Governorates Paths - Placeholder -->
-<path id="ibb" d="M500 300 L520 320 L510 340 L490 330 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-<path id="abyan" d="M450 400 L470 420 L460 440 L440 430 Z" fill="#f0f0f0" stroke="#000" stroke-width="1"/>
-<!-- Add more paths for all governorates -->
-<text x="505" y="320" text-anchor="middle" font-size="12" fill="#000">إب</text>
-<text x="455" y="420" text-anchor="middle" font-size="12" fill="#000">أبين</text>
-<!-- Add text labels for all -->
-</svg>
-</div>
-<div class="map-legend">
-<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.2);"></span><span data-ar="منخفض" data-en="Low"></span></div>
-<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.5);"></span><span data-ar="متوسط" data-en="Medium"></span></div>
-<div class="legend-item"><span class="legend-color" style="background: rgba(231, 76, 60, 0.8);"></span><span data-ar="عالي" data-en="High"></span></div>
-</div>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Aerial Bombing Sub-Tab Content -->
-<div class="disaster-tab-content" id="aerial-bombing" role="tabpanel" aria-labelledby="aerial-bombing-btn">
-<section class="aerial-bombing-section">
-<div class="container">
-<p class="aerial-description"></p>
-<div class="table-wrapper">
-<table class="projects-table aerial-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
-<th data-ar="حقائب النظافة" data-en="Hygiene Kits"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="aerialTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Lightning Sub-Tab Content -->
-<div class="disaster-tab-content" id="lightning" role="tabpanel" aria-labelledby="lightning-btn">
-<section class="lightning-response-section">
-<div class="container">
-<p class="lightning-description"></p>
-
-<h3 data-ar="المساعدات المقدمة" data-en="Aid Provided"></h3>
-<div class="table-wrapper">
-<table class="projects-table lightning-aid-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="مواد الإيواء" data-en="Shelter Materials"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="السلال الغذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="lightningAidTableBody"></tbody>
-</table>
-</div>
-
-<h3 data-ar="الإصابات والوفيات" data-en="Casualties and Deaths"></h3>
-<div class="table-wrapper">
-<table class="projects-table lightning-casualty-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="الوفيات" data-en="Deaths"></th>
-<th data-ar="الإصابات" data-en="Injuries"></th>
-</tr>
-</thead>
-<tbody id="lightningCasualtyTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Fire Response Sub-Tab Content -->
-<div class="disaster-tab-content" id="fire-response" role="tabpanel" aria-labelledby="fire-response-btn">
-<section class="fire-response-section">
-<div class="container">
-<h3 data-ar="الاستجابة للحرائق" data-en="Fire Response"></h3>
-<div class="table-wrapper">
-<table class="projects-table fire-response-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="مواد إيواء" data-en="Shelter Materials"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="fireResponseTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Rockslides Sub-Tab Content -->
-<div class="disaster-tab-content" id="rockslides" role="tabpanel" aria-labelledby="rockslides-btn">
-<section class="rockslides-section">
-<div class="container">
-<h3 data-ar="الانهيارات الصخرية" data-en="Rockslides"></h3>
-<div class="table-wrapper">
-<table class="projects-table rockslides-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="مواد إيوائية" data-en="Shelter Materials"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="rockslidesTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-
-<!-- Aid Distribution Sub-Tab Content -->
-<div class="disaster-tab-content" id="aid-distribution" role="tabpanel" aria-labelledby="aid-distribution-btn">
-<section class="aid-distribution-section">
-<div class="container">
-<h3 data-ar="توزيع السلال الغذائية والمواد غير الغذائية" data-en="Distribution of Food Baskets and Non-Food Items"></h3>
-<div class="table-wrapper">
-<table class="projects-table aid-distribution-table">
-<thead>
-<tr>
-<th data-ar="المحافظة" data-en="Governorate"></th>
-<th data-ar="سلة غذائية" data-en="Food Baskets"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-<th data-ar="حصة إيوائية" data-en="Shelter Kits"></th>
-<th data-ar="المستفيدين" data-en="Beneficiaries"></th>
-</tr>
-</thead>
-<tbody id="aidDistributionTableBody"></tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-<!-- Economic Security Sub-Tab Content -->
-<div class="disaster-tab-content" id="economic-security" role="tabpanel" aria-labelledby="economic-security-btn">
-<section class="economic-security-section">
-<div class="container">
-<h3 data-ar="الأمن الاقتصادي وسبل العيش" data-en="Economic Security and Livelihoods"></h3>
-<p>الأمن الاقتصادي وسبل العيش:
-- يمكن أن تتسبب الكوارث والأزمات بخسائر فادحة بالأمن الغذائي للناس وسبل عيشهم. وتزيد من ضعف الناس الاجتماعي والاقتصادي، وتؤثر على قدرتهم على التعافي والتعامل مع الصدمات والضغوط المستقبلية. لذلك يعمل الهلال الأحمر على محاولة التخفيف من وطأة ذلك على الاسر وذلك من خلال تقديم عدد من المشاريع:</p>
-<h4>1- تم دعم مشاريع تمكين سبل العيش لحوالي 40,095 أسرة 280,665 مستفيد.</h4>
-<h5>أ‌- أنشطة زراعية</h5>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>النشاط</th>
-<th>المنطقة</th>
-<th>عدد الأسر المستهدفة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>تربية النحل</td><td>تعز-لحج - الضالع - أبين - البيضاء - حجة - عمران- الحديدة</td><td>6430</td></tr>
-<tr><td>توزيع شتلات البن</td><td>تعز- إب</td><td>990</td></tr>
-<tr><td>توزيع بذور الطماطم</td><td>مارب</td><td>200</td></tr>
-<tr><td>توزيع بذور القمح</td><td>مارب</td><td>250</td></tr>
-<tr><td>توزيع درنات البطاط</td><td>مارب</td><td>200</td></tr>
-<tr><td>توزيع شتلات التين</td><td>البيضاء</td><td>50</td></tr>
-<tr><td>توزيع شتلات الوردة الحمراء</td><td>تعز</td><td>1512</td></tr>
-<tr><td>توزيع أشجار مثمرة</td><td>أبين</td><td>50</td></tr>
-<tr><td>توزيع الأدوات والقسائم الإلكترونية لمزارعي البن</td><td>تعز</td><td>200</td></tr>
-<tr><td>الإجمالي</td><td></td><td>9,882</td></tr>
-</tbody>
-</table>
-</div>
-<h5>ب‌- مساعدات نقدية</h5>
-<h6>- تعزيز سبل العيش</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>تعز</td><td>16,090</td></tr>
-<tr><td>لحج</td><td>5,000</td></tr>
-<tr><td>صعدة</td><td>3,005</td></tr>
-<tr><td>الحديدة</td><td>2,100</td></tr>
-<tr><td>حجة</td><td>1,363</td></tr>
-<tr><td>عدن</td><td>1,504</td></tr>
-<tr><td>الإجمالي</td><td>29,062</td></tr>
-</tbody>
-</table>
-</div>
-<h6>- النقد مقابل العمل</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>محافظة الضالع– دمت</td><td>463</td></tr>
-</tbody>
-</table>
-</div>
-<h5>ج - مشاريع اقتصادية صغيرة</h5>
-<p>قدم الهلال الأحمر مساعدات للمشاريع الاقتصادية في المجتمعات المحلية استفاد منها 614 أسرة.</p>
-<h6>- (مشاريع مدرة للدخل)</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المشروع</th>
-<th>المحافظة</th>
-<th>عدد الاسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>مشاريع صغيرة</td><td>لحج</td><td>50</td></tr>
-<tr><td>مشروع الحدائق المنزلية</td><td>لحج</td><td>63</td></tr>
-<tr><td>مشاريع صغيرة</td><td>البيضاء</td><td>51</td></tr>
-<tr><td>توزيع 24 قارب صيد</td><td>حضرموت</td><td>220</td></tr>
-<tr><td></td><td>الحديدة</td><td>120</td></tr>
-<tr><td>الإجمالي</td><td></td><td>504</td></tr>
-</tbody>
-</table>
-</div>
-<h6>- التمكين الاقتصادي</h6>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المشروع</th>
-<th>المحافظة</th>
-<th>عدد الاسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>مشروع الخياطة</td><td>عمران</td><td>110</td></tr>
-</tbody>
-</table>
-</div>
-<h5>د- بناء القدرات</h5>
-<p>قدم الهلال الأحمر تدريبات حول التمكين الاقتصادي وفي مجال الإغاثة الإنسانية لعدد 74 أسرة</p>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>النشاط</th>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>تدريب حول التمكين الاقتصادي- المشاريع الصغيرة</td><td>لحج</td><td>59</td></tr>
-<tr><td>تدريب في مجال الإغاثة الإنسانية وتوزيع المساعدات</td><td>لحج</td><td>15</td></tr>
-<tr><td>الإجمالي</td><td></td><td>74</td></tr>
-</tbody>
-</table>
-</div>
-<h4>2- توزيع السلال الغذائية:</h4>
-<p>ضمن مشروع الأمن الاقتصادي تم توزيع 14,620 سلة غذائية استفاد منها ما يقارب 102,340 شخص.</p>
-<div class="table-wrapper">
-<table class="projects-table economic-table">
-<thead>
-<tr>
-<th>المحافظة</th>
-<th>عدد الأسر المستفيدة</th>
-</tr>
-</thead>
-<tbody>
-<tr><td>البيضاء</td><td>1,048</td></tr>
-<tr><td>تعز</td><td>2,000</td></tr>
-<tr><td>المهرة</td><td>1,500</td></tr>
-<tr><td>ريمة</td><td>1,500</td></tr>
-<tr><td>لحج</td><td>2,038</td></tr>
-<tr><td>الحديدة</td><td>3,000</td></tr>
-<tr><td>عدن</td><td>1,300</td></tr>
-<tr><td>أبين</td><td>322</td></tr>
-<tr><td>الضالع</td><td>1,612</td></tr>
-<tr><td>أمانة العاصمة</td><td>100</td></tr>
-<tr><td>حضرموت</td><td>200</td></tr>
-<tr><td>الإجمالي</td><td>14,620</td></tr>
-</tbody>
-</table>
-</div>
-</div>
-</section>
-</div>
-</div>
-</section>
-</div>
  <div class="sub-tab-content" id="sub-wash" role="tabpanel" aria-labelledby="sub-wash-btn">
 
   <!-- Section Title -->
