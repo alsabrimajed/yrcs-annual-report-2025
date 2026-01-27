@@ -1399,22 +1399,44 @@
     </section>
 
     <!-- ================= CHARTS ================= -->
-    <section class="tab-content" id="tab-charts" role="tabpanel" aria-labelledby="tab-charts-btn" hidden>
-      <div class="container">
-        <h2 class="section-title" data-ar="الرسوم البيانية" data-en="Charts"></h2>
+<section class="tab-content"
+         id="tab-charts"
+         role="tabpanel"
+         aria-labelledby="tab-charts-btn">
 
-        <div class="charts-grid">
-          <div class="chart-card">
-            <h3 data-ar="مثال رسم بياني" data-en="Sample Chart"></h3>
-            <canvas id="mainChart" height="120" aria-label="Main chart" role="img"></canvas>
-            <div class="chart-card"><canvas id="categoryChart"></canvas></div>
-        <div class="chart-card"><canvas id="donorChart"></canvas></div>
-        <div class="chart-card"><canvas id="activitiesChart"></canvas></div>
-        <div class="chart-card"><canvas id="ambulanceChart"></canvas></div>
-          </div>
-        </div>
+  <div class="container">
+    <h2 class="section-title" data-ar="الرسوم البيانية" data-en="Charts"></h2>
+
+    <div class="charts-grid">
+
+      <div class="chart-card">
+        <h3 data-ar="إجمالي المستفيدين" data-en="Total Beneficiaries"></h3>
+        <canvas id="mainChart" height="120" aria-label="Total Beneficiaries Chart" role="img"></canvas>
       </div>
-    </section>
+
+      <div class="chart-card">
+        <h3 data-ar="حسب الفئة" data-en="By Category"></h3>
+        <canvas id="categoryChart" aria-label="Category Chart" role="img"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3 data-ar="الجهات المانحة" data-en="Donors"></h3>
+        <canvas id="donorChart" aria-label="Donor Chart" role="img"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3 data-ar="الأنشطة" data-en="Activities"></h3>
+        <canvas id="activitiesChart" aria-label="Activities Chart" role="img"></canvas>
+      </div>
+
+      <div class="chart-card">
+        <h3 data-ar="الإحالات الإسعافية" data-en="Ambulance Referrals"></h3>
+        <canvas id="ambulanceChart" aria-label="Ambulance Chart" role="img"></canvas>
+      </div>
+
+    </div>
+  </div>
+</section>
 
     <!-- ================= TRAINING ================= -->
     <section class="tab-content" id="tab-training" role="tabpanel" aria-labelledby="tab-training-btn" hidden>
