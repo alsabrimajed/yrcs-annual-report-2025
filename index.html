@@ -720,9 +720,63 @@
       <div class="container">
         <h2 class="section-title" data-ar="دعم تطوير الجمعية" data-en="Organizational Development"></h2>
         <div class="content-card">
-          <p data-ar="سيتم إضافة محتوى هذا القسم هنا." data-en="Content for this section will be added here.">
-            سيتم إضافة محتوى هذا القسم هنا.
-          </p>
+          <div class="health-sub-tabs" role="tablist">
+  <!-- أزرار تبويبات أخرى هنا -->
+  <button class="health-sub-tab-btn" id="orgdev-infrastructure-btn" role="tab"
+    aria-controls="orgdev-infrastructure" aria-selected="false" tabindex="-1"
+    data-health-tab="orgdev-infrastructure" data-ar="الأعمال التطويرية" data-en="Development Works">
+    <img src="Icons/IFRC-icons-colour_Infrastructure.png" alt="Infrastructure Icon" class="health-tab-icon">
+    <span data-ar="الأعمال التطويرية" data-en="Development Works"></span>
+  </button>
+<button class="sub-tab-btn" id="sub-community-btn" role="tab"
+  aria-controls="sub-community" aria-selected="false" tabindex="-1"
+  data-sub-tab="sub-community"
+  data-ar="المبادرات المجتمعية" data-en="Community Initiatives">
+  <img src="Icons/IFRC-icons-colour_Community-engagement.png" alt="Community" class="sub-tab-icon">
+  <span data-ar="المبادرات المجتمعية" data-en="Community Initiatives"></span>
+</button>
+</div>
+<div class="health-tab-content" id="orgdev-infrastructure" role="tabpanel" aria-labelledby="orgdev-infrastructure-btn">
+  <section class="orgdev-infrastructure-section">
+    <div class="container">
+      <h3 data-ar="الأعمال التطويرية للمركز الرئيسي والفروع" data-en="Developmental Works for HQ and Branches"></h3>
+      <ul>
+        <li data-ar="تجهيز 5 قاعات تدريبية نموذجية..." data-en="Equipped 5 modern training halls..."></li>
+        <li data-ar="تغطية شاملة لـ 22 فرع..." data-en="Comprehensive coverage of 22 branches..."></li>
+        <li data-ar="تمتلك الجمعية 15 مقراً..." data-en="15 owned premises ensuring institutional sustainability..."></li>
+        <li data-ar="تشغيل وتطوير 28 مركزاً..." data-en="Operation and development of 28 primary healthcare centers..."></li>
+        <li data-ar="اسطول مكون من 90 سيارة..." data-en="Fleet of 90 ambulances for rapid response..."></li>
+        <li data-ar="امتلاك 5 مخازن استراتيجية..." data-en="5 strategic warehouses and 4 operational stores..."></li>
+        <li data-ar="تركيب وتفعيل 17 منظومة..." data-en="17 solar systems installed to reduce operational costs..."></li>
+        <li data-ar="إنشاء إدارة متكاملة للوجيستك." data-en="Established a dedicated logistics management unit."></li>
+        <li data-ar="تعزيز الهوية البصرية..." data-en="Enhanced visual identity on premises and vehicles..."></li>
+        <li data-ar="تدريب مدربين لمكافحة الفساد..." data-en="54 staff trained on anti-corruption and transparency..."></li>
+        <li data-ar="تطبيق نظام ERP..." data-en="ERP implemented for finance/admin ops in 7 branches."></li>
+        <li data-ar="الانتهاء من الهيكل التنظيمي..." data-en="Completed org structure, job descriptions, evaluations."></li>
+      </ul>
+    </div>
+
+</div>
+<div class="sub-tab-content" id="sub-community" role="tabpanel" aria-labelledby="sub-community-btn">
+  <section class="table-section">
+    <div class="container">
+      <h2 class="section-title" data-ar="المبادرات المجتمعية" data-en="Community Initiatives"></h2>
+      <div class="table-wrapper">
+        <table class="projects-table">
+          <thead>
+            <tr>
+              <th data-ar="الرقم" data-en="No."></th>
+              <th data-ar="المبادرة" data-en="Initiative"></th>
+              <th data-ar="الفرع" data-en="Branch"></th>
+              <th data-ar="عدد المستفيدين" data-en="Beneficiaries"></th>
+            </tr>
+          </thead>
+          <tbody id="communityInitiativesBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+</div>
         </div>
       </div>
     </section>
