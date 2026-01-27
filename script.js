@@ -97,9 +97,6 @@ function renderTabContent(tabId) {
 
   const tables = appData.tables || {};
 
-  if (tabId === "tab-projects" && tables.projects) {
-    renderProjectsTable(tables.projects);
-  }
 
   if (tabId === "tab-training" && tables.training) {
     renderTrainingTable(tables.training);
@@ -288,7 +285,7 @@ function renderCategoryCards(categories) {
       <div class="category-card">
         <div class="category-icon"><i class="fas ${cat.icon}"></i></div>
         <h4>${cat.title?.[currentLang] || cat.title}</h4>
-        <span>${cat.projects} ${currentLang === "ar" ? "مشاريع" : "Projects"}</span>
+        
         <span>${cat.beneficiaries.toLocaleString()}
           ${currentLang === "ar" ? "مستفيد" : "Beneficiaries"}
         </span>
@@ -297,41 +294,6 @@ function renderCategoryCards(categories) {
   });
 }
 
-/* =========================
-   PROJECTS TABLE
-========================= */
-function renderProjectsTable(projects) {
-  const tbody = document.getElementById("projectsTableBody");
-  if (!tbody) {
-    console.error("projectsTableBody not found");
-    return;
-  }
-  if (!projects || !Array.isArray(projects)) {
-    console.error("Invalid projects data:", projects);
-    return;
-  }
-  tbody.innerHTML = "";
-
-  projects.forEach((p, i) => {
-    const name = p.name?.[currentLang] || p.name || '';
-    const category = p.category?.[currentLang] || p.category || '';
-    const location = p.location?.[currentLang] || p.location || '';
-    const period = p.period?.[currentLang] || p.period || '';
-    const donor = p.donor?.[currentLang] || p.donor || '';
-    const beneficiaries = p.beneficiaries ? p.beneficiaries.toLocaleString() : '';
-    tbody.insertAdjacentHTML("beforeend", `
-      <tr>
-        <td>${i + 1}</td>
-        <td>${name}</td>
-        <td>${category}</td>
-        <td>${location}</td>
-        <td>${period}</td>
-        <td>${donor}</td>
-        <td>${beneficiaries}</td>
-      </tr>
-    `);
-  });
-}
 
 /* =========================
    TRAINING TABLE

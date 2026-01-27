@@ -240,30 +240,6 @@ button:focus-visible {
   overflow-x: auto;
 }
 
-.projects-table {
-  width: 100%;
-  border-collapse: collapse;
-  background: #fff;
-  box-shadow: var(--shadow-soft);
-}
-
-.projects-table th,
-.projects-table td {
-  padding: 14px;
-  border: 1px solid var(--border-color);
-  text-align: center;
-  font-size: 0.95rem;
-}
-
-.projects-table thead {
-  background: var(--secondary-blue);
-  color: #fff;
-}
-
-.projects-table tbody tr:nth-child(even) {
-  background: #f9f9f9;
-}
-
 /* ===============================
    Gallery
 ================================ */
@@ -1691,4 +1667,10 @@ html[dir="ltr"] .category-card {
   position: relative;
   height: 320px;   /* 👈 REQUIRED */
   width: 100%;
+}
+.chart-box canvas,
+.chart-card canvas,
+.chart-wrapper canvas {
+  width: 100% !important;
+  height: 100% !important;
 }
